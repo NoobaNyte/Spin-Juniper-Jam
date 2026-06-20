@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://crb71ym43kld7"]
+
+[ext_resource type="PackedScene" uid="uid://diwjyo0sc440" path="res://Assets/3D/Wheel Draft.fbx" id="1_7u3vc"]
+[ext_resource type="Script" uid="uid://b32hiftj63t16" path="res://Scenes/Wheel/Base Wheel/base_wheel.gd" id="1_lw85n"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7u3vc"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7u3vc"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_lw85n"]
+sky_material = SubResource("ProceduralSkyMaterial_7u3vc")
+
+[sub_resource type="Environment" id="Environment_ie8sb"]
+background_mode = 2
+sky = SubResource("Sky_lw85n")
+
+[node name="BaseWheel" type="RigidBody3D" unique_id=1069795839]
+freeze = true
+script = ExtResource("1_lw85n")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1109667608]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 29.039433)
+shape = SubResource("SphereShape3D_7u3vc")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=486880670]
+environment = SubResource("Environment_ie8sb")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1150264308]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Wheel Draft" parent="." unique_id=1689250900 instance=ExtResource("1_7u3vc")]
+visible = false
+
+[node name="Base Wheel" type="CSGCombiner3D" parent="." unique_id=1212294370]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Base Wheel" unique_id=2110905143]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+radius = 20.0
+sides = 32
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Base Wheel/CSGCylinder3D" unique_id=980271567]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.000021, 0, 0)
+depth = 0.01
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=670515558]
+transform = Transform3D(1, 0, 0, 0, -0.26133308, 0.9652487, 0, -0.9652487, -0.26133308, 0, 23.295557, -10.934895)
