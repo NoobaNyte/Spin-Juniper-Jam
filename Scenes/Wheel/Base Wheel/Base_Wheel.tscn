@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://diwjyo0sc440" path="res://Assets/3D/Wheel Draft.fbx" id="1_7u3vc"]
 [ext_resource type="Script" uid="uid://b32hiftj63t16" path="res://Scenes/Wheel/Base Wheel/base_wheel.gd" id="1_lw85n"]
+[ext_resource type="PackedScene" uid="uid://dqhsrngl043po" path="res://Scenes/PlayerCharacter/PlayerCharacter.tscn" id="3_ie8sb"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7u3vc"]
 
@@ -34,10 +35,14 @@ shadow_enabled = true
 [node name="Wheel Draft" parent="." unique_id=1689250900 instance=ExtResource("1_7u3vc")]
 visible = false
 
+[node name="Camera3D" type="Camera3D" parent="." unique_id=751322189]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.08614406, 1.0620909, -24.198895)
+
 [node name="Base Wheel" type="CSGCombiner3D" parent="." unique_id=1212294370]
+use_collision = true
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Base Wheel" unique_id=2110905143]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 radius = 20.0
 sides = 32
 
@@ -45,5 +50,13 @@ sides = 32
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.000021, 0, 0)
 depth = 0.01
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=670515558]
-transform = Transform3D(1, 0, 0, 0, -0.26133308, 0.9652487, 0, -0.9652487, -0.26133308, 0, 23.295557, -10.934895)
+[node name="CSGBox3D" type="CSGBox3D" parent="Base Wheel" unique_id=179536285]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -20.121037)
+
+[node name="PlayerCharacter" parent="." unique_id=1881213073 instance=ExtResource("3_ie8sb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.052173913, 0, -18.631073)
+
+[node name="Camera3D" parent="PlayerCharacter/Head" parent_id_path=PackedInt32Array(1881213073, 949301898) index="0" unique_id=832332793]
+visible = false
+
+[editable path="PlayerCharacter"]
