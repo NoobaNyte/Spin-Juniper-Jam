@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b4s102iodbf7f"]
 
 [ext_resource type="PackedScene" uid="uid://dkobqdf0o1m7a" path="res://Scenes/RotatingPlatform/RotatingPlatform.tscn" id="1_gy2d5"]
-[ext_resource type="ArrayMesh" uid="uid://btnsdcbsqjrba" path="res://Assets/3D/test.tres" id="2_cqp6s"]
+[ext_resource type="ArrayMesh" uid="uid://dqoldtwb8bobo" path="res://Assets/3D/test.tres" id="2_cqp6s"]
 [ext_resource type="PackedScene" uid="uid://dqhsrngl043po" path="res://Scenes/PlayerCharacter/PlayerCharacter.tscn" id="3_l02uu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6srx6"]
