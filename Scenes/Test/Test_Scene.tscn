@@ -15,6 +15,10 @@ sky_material = SubResource("ProceduralSkyMaterial_6srx6")
 background_mode = 2
 sky = SubResource("Sky_l02uu")
 
+[sub_resource type="SphereMesh" id="SphereMesh_24fsb"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_gy2d5"]
+
 [node name="Node3D" type="Node3D" unique_id=132285134]
 
 [node name="RotatingPlatform" parent="." unique_id=1596451553 node_paths=PackedStringArray("player") instance=ExtResource("1_gy2d5")]
@@ -41,3 +45,21 @@ fov = 60.0
 
 [node name="PlayerCharacter" parent="." unique_id=1881213073 instance=ExtResource("3_l02uu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.363929, 15.883021, -0.20983243)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=922417447]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -8.544493, 26.490522, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=2073997509]
+mesh = SubResource("SphereMesh_24fsb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1563518409]
+shape = SubResource("SphereShape3D_gy2d5")
+
+[node name="RigidBody3D2" type="RigidBody3D" parent="." unique_id=1210040018]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -8.544493, 40.653297, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D2" unique_id=849514734]
+mesh = SubResource("SphereMesh_24fsb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2" unique_id=11381072]
+shape = SubResource("SphereShape3D_gy2d5")
