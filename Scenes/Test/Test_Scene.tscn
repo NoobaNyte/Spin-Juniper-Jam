@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dkobqdf0o1m7a" path="res://Scenes/RotatingPlatform/RotatingPlatform.tscn" id="1_gy2d5"]
 [ext_resource type="PackedScene" uid="uid://diwjyo0sc440" path="res://Assets/3D/Wheel Draft.fbx" id="1_wo5u4"]
 [ext_resource type="Script" uid="uid://bthfdx8ovv7tx" path="res://Scenes/Test/hole_test.gd" id="2_6srx6"]
+[ext_resource type="ArrayMesh" uid="uid://btnsdcbsqjrba" path="res://Assets/3D/test.tres" id="2_cqp6s"]
 [ext_resource type="PackedScene" uid="uid://dqhsrngl043po" path="res://Scenes/PlayerCharacter/PlayerCharacter.tscn" id="3_l02uu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6srx6"]
@@ -39,6 +40,7 @@ _surfaces = [{
 
 [node name="RotatingPlatform" parent="." unique_id=1596451553 node_paths=PackedStringArray("player") instance=ExtResource("1_gy2d5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40227222, 2.237589, -0.11294079)
+wall_meshes = Array[Mesh]([ExtResource("2_cqp6s")])
 player = NodePath("../PlayerCharacter")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=349329365]
