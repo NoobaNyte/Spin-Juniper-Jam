@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://diwjyo0sc440" path="res://Assets/3D/Wheel Draft.fbx" id="1_7u3vc"]
 [ext_resource type="Script" uid="uid://b32hiftj63t16" path="res://Scenes/Wheel/Base Wheel/base_wheel.gd" id="1_lw85n"]
 [ext_resource type="PackedScene" uid="uid://dqhsrngl043po" path="res://Scenes/PlayerCharacter/PlayerCharacter.tscn" id="3_ie8sb"]
+[ext_resource type="PackedScene" uid="uid://w8et47rtmo2h" path="res://Assets/3D/Default_Wall.fbx" id="4_e6cq3"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7u3vc"]
 
@@ -58,5 +59,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.052173913, 0, -18.631073)
 
 [node name="Camera3D" parent="PlayerCharacter/Head" parent_id_path=PackedInt32Array(1881213073, 949301898) index="0" unique_id=832332793]
 visible = false
+
+[node name="Default_Wall" parent="." unique_id=346839646 instance=ExtResource("4_e6cq3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7329977, 4.7683716e-07, -15.529267)
 
 [editable path="PlayerCharacter"]
