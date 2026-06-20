@@ -27,12 +27,12 @@ extends Node3D
 # ── Visuals ────────────────────────────────────────────────────────────────────
 @export var platform_material: Material = null
 
-@export var hole_radius_min: float = 1.0
+@export var hole_radius_min: float = 1.5
 @export var hole_radius_max: float = 3.0
-@export var hole_distance_min: float = 8.0
-@export var hole_distance_max: float = 15.0
+@export var hole_distance_min: float = 7.0
+@export var hole_distance_max: float = 13.0
 
-@export var hole_chance: float = .8
+@export var hole_chance: float = .5
 
 # ── Player reference ───────────────────────────────────────────────────────────
 @export var player: CharacterBody3D = null
@@ -271,7 +271,6 @@ func _build_wedge_mesh(section_angle_deg: float, outer_r: float, inner_r: float,
 					if face == 0: indices.append_array([i0,i0+1,i0+3,i0,i0+3,i0+2])
 					else:         indices.append_array([i0,i0+3,i0+1,i0,i0+2,i0+3])
 		else:
-			# Use ray-circle intersection to find exact hole boundary per radial slice
 			for ai in range(arc_steps):
 				var a0: float = deg_to_rad(section_angle_deg * float(ai)     / arc_steps)
 				var a1: float = deg_to_rad(section_angle_deg * float(ai + 1) / arc_steps)
@@ -285,7 +284,7 @@ func _build_wedge_mesh(section_angle_deg: float, outer_r: float, inner_r: float,
 				var in1   := Vector3(sin(a1)*eff_inner, y, -cos(a1)*eff_inner)
 
 				if t0.x < 0.0 or t1.x < 0.0:
-					# This slice doesn't cross the hole — emit one full strip
+					# Slice doesn't cross hole — full strip
 					var b: int = verts.size()
 					for v in [in0, in1, out0, out1]:
 						verts.append(v); normals.append(normal)
@@ -293,27 +292,34 @@ func _build_wedge_mesh(section_angle_deg: float, outer_r: float, inner_r: float,
 					if face == 0: indices.append_array([b,b+2,b+3, b,b+3,b+1])
 					else:         indices.append_array([b,b+3,b+2, b,b+1,b+3])
 				else:
-					# Near hole edge (inner intersection) and far hole edge (outer intersection)
-					var near0 := Vector3(sin(a0)*t0.x, y, -cos(a0)*t0.x)
-					var far0  := Vector3(sin(a0)*t0.y, y, -cos(a0)*t0.y)
-					var near1 := Vector3(sin(a1)*t1.x, y, -cos(a1)*t1.x)
-					var far1  := Vector3(sin(a1)*t1.y, y, -cos(a1)*t1.y)
+					# Clamp intersection distances to [eff_inner, outer_r]
+					var near0_t: float = clamp(t0.x, eff_inner, outer_r)
+					var far0_t:  float = clamp(t0.y, eff_inner, outer_r)
+					var near1_t: float = clamp(t1.x, eff_inner, outer_r)
+					var far1_t:  float = clamp(t1.y, eff_inner, outer_r)
 
-					# Strip from platform inner edge up to near side of hole
-					var b0: int = verts.size()
-					for v in [in0, in1, near0, near1]:
-						verts.append(v); normals.append(normal)
-						uvs.append(Vector2(v.x/outer_r*0.5+0.5, v.z/outer_r*0.5+0.5))
-					if face == 0: indices.append_array([b0,b0+2,b0+3, b0,b0+3,b0+1])
-					else:         indices.append_array([b0,b0+3,b0+2, b0,b0+1,b0+3])
+					var near0 := Vector3(sin(a0)*near0_t, y, -cos(a0)*near0_t)
+					var far0  := Vector3(sin(a0)*far0_t,  y, -cos(a0)*far0_t)
+					var near1 := Vector3(sin(a1)*near1_t, y, -cos(a1)*near1_t)
+					var far1  := Vector3(sin(a1)*far1_t,  y, -cos(a1)*far1_t)
 
-					# Strip from far side of hole out to platform outer edge
-					var b1: int = verts.size()
-					for v in [far0, far1, out0, out1]:
-						verts.append(v); normals.append(normal)
-						uvs.append(Vector2(v.x/outer_r*0.5+0.5, v.z/outer_r*0.5+0.5))
-					if face == 0: indices.append_array([b1,b1+2,b1+3, b1,b1+3,b1+1])
-					else:         indices.append_array([b1,b1+3,b1+2, b1,b1+1,b1+3])
+					# Inner strip: platform inner edge to near hole edge
+					if near0_t > eff_inner or near1_t > eff_inner:
+						var b0: int = verts.size()
+						for v in [in0, in1, near0, near1]:
+							verts.append(v); normals.append(normal)
+							uvs.append(Vector2(v.x/outer_r*0.5+0.5, v.z/outer_r*0.5+0.5))
+						if face == 0: indices.append_array([b0,b0+2,b0+3, b0,b0+3,b0+1])
+						else:         indices.append_array([b0,b0+3,b0+2, b0,b0+1,b0+3])
+
+					# Outer strip: far hole edge to platform outer edge
+					if far0_t < outer_r and far1_t < outer_r:
+						var b1: int = verts.size()
+						for v in [far0, far1, out0, out1]:
+							verts.append(v); normals.append(normal)
+							uvs.append(Vector2(v.x/outer_r*0.5+0.5, v.z/outer_r*0.5+0.5))
+						if face == 0: indices.append_array([b1,b1+2,b1+3, b1,b1+3,b1+1])
+						else:         indices.append_array([b1,b1+3,b1+2, b1,b1+1,b1+3])
 
 	# ── Outer rim wall ─────────────────────────────────────────────────────────
 	var ws: int = verts.size()
@@ -339,17 +345,40 @@ func _build_wedge_mesh(section_angle_deg: float, outer_r: float, inner_r: float,
 
 	# ── Hole rim wall ──────────────────────────────────────────────────────────
 	if has_hole:
-		var hws: int = verts.size()
-		for s in range(arc_steps + 1):
-			var a := PI * 2.0 * s / arc_steps
-			var nx: float = sin(a); var nz: float = cos(a)
-			var px: float = hole_cx + nx * hole_r
-			var pz: float = hole_cz + nz * hole_r
-			verts.append(Vector3(px,  half_t, pz)); normals.append(Vector3(-nx, 0, -nz)); uvs.append(Vector2(float(s)/arc_steps, 1.0))
-			verts.append(Vector3(px, -half_t, pz)); normals.append(Vector3(-nx, 0, -nz)); uvs.append(Vector2(float(s)/arc_steps, 0.0))
-		for s in range(arc_steps):
-			var i0: int = hws + s*2
-			indices.append_array([i0,i0+3,i0+2, i0,i0+1,i0+3])
+			var hws: int = verts.size()
+			var rim_pairs: Array = []  # each entry: [top_pos, bot_pos, normal]
+
+			for s in range(arc_steps + 1):
+				var a := PI * 2.0 * s / arc_steps
+				var nx: float = sin(a)
+				var nz: float = cos(a)
+				var px: float = hole_cx + nx * hole_r
+				var pz: float = hole_cz + nz * hole_r
+				var dist: float = sqrt(px * px + pz * pz)
+
+				if dist <= outer_r + 0.001 and dist >= eff_inner - 0.001:
+					rim_pairs.append([
+						Vector3(px,  half_t, pz),
+						Vector3(px, -half_t, pz),
+						Vector3(-nx, 0.0, -nz)
+					])
+
+			for pair in rim_pairs:
+				verts.append(pair[0]); normals.append(pair[2]); uvs.append(Vector2(0.0, 1.0))
+				verts.append(pair[1]); normals.append(pair[2]); uvs.append(Vector2(0.0, 0.0))
+
+			var seg_count: int = rim_pairs.size()
+			for s in range(seg_count - 1):
+				# Check if this segment crosses outside the platform — skip it if so
+				var p0: Vector3 = rim_pairs[s][0]
+				var p1: Vector3 = rim_pairs[s + 1][0]
+				var mid_x: float = (p0.x + p1.x) * 0.5
+				var mid_z: float = (p0.z + p1.z) * 0.5
+				var mid_dist: float = sqrt(mid_x * mid_x + mid_z * mid_z)
+				if mid_dist > outer_r or mid_dist < eff_inner:
+					continue
+				var i0: int = hws + s * 2
+				indices.append_array([i0, i0+3, i0+2, i0, i0+1, i0+3])
 
 	# ── Flat edge caps ─────────────────────────────────────────────────────────
 	for edge in 2:
