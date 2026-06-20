@@ -1,8 +1,6 @@
-[gd_scene format=4 uid="uid://b4s102iodbf7f"]
+[gd_scene format=3 uid="uid://b4s102iodbf7f"]
 
 [ext_resource type="PackedScene" uid="uid://dkobqdf0o1m7a" path="res://Scenes/RotatingPlatform/RotatingPlatform.tscn" id="1_gy2d5"]
-[ext_resource type="PackedScene" uid="uid://diwjyo0sc440" path="res://Assets/3D/Wheel Draft.fbx" id="1_wo5u4"]
-[ext_resource type="Script" uid="uid://bthfdx8ovv7tx" path="res://Scenes/Test/hole_test.gd" id="2_6srx6"]
 [ext_resource type="ArrayMesh" uid="uid://btnsdcbsqjrba" path="res://Assets/3D/test.tres" id="2_cqp6s"]
 [ext_resource type="PackedScene" uid="uid://dqhsrngl043po" path="res://Scenes/PlayerCharacter/PlayerCharacter.tscn" id="3_l02uu"]
 
@@ -17,30 +15,13 @@ sky_material = SubResource("ProceduralSkyMaterial_6srx6")
 background_mode = 2
 sky = SubResource("Sky_l02uu")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vvcby"]
-albedo_color = Color(0.3098958, 0.15979002, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6srx6"]
-transparency = 1
-albedo_color = Color(1, 0, 0, 0.16862746)
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_6srx6"]
-_surfaces = [{
-"aabb": AABB(-29.728027, -22.885895, -151.8832, 59.456055, 41.433594, 52.979492),
-"attribute_data": PackedByteArray("AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/"),
-"format": 34359738391,
-"material": SubResource("StandardMaterial3D_6srx6"),
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 36,
-"vertex_data": PackedByteArray("ANPtwVAWt8GyzsXCANPtwVAWt8EZ4hfDANPtwbBhlEEZ4hfDANPtQVAWt8EZ4hfDANPtwVAWt8EZ4hfDANPtwVAWt8GyzsXCANPtwbBhlEEZ4hfDANPtwVAWt8EZ4hfDANPtQVAWt8EZ4hfDANPtwbBhlEEZ4hfDANPtwbBhlEGyzsXCANPtwVAWt8GyzsXCANPtwVAWt8GyzsXCANPtwbBhlEGyzsXCANPtQbBhlEGyzsXCANPtQbBhlEGyzsXCANPtwbBhlEGyzsXCANPtwbBhlEEZ4hfDANPtwVAWt8GyzsXCANPtQVAWt8GyzsXCANPtQVAWt8EZ4hfDANPtQbBhlEGyzsXCANPtQVAWt8GyzsXCANPtwVAWt8GyzsXCANPtQVAWt8EZ4hfDANPtQVAWt8GyzsXCANPtQbBhlEGyzsXCANPtQVAWt8EZ4hfDANPtQbBhlEEZ4hfDANPtwbBhlEEZ4hfDANPtwbBhlEEZ4hfDANPtQbBhlEEZ4hfDANPtQbBhlEGyzsXCANPtQbBhlEGyzsXCANPtQbBhlEEZ4hfDANPtQVAWt8EZ4hfDAAD/f/9//n8AAP9//3/+fwAA/3//f/5//38AAP//AAD/fwAA//8AAP9/AAD//wAA/////wAA/z//////AAD/P/////8AAP8/AAD/f/9//n8AAP9//3/+fwAA/3//f/5//3//fwAA/z//f/9/AAD/P/9//38AAP8//3//////AAD/f/////8AAP9//////wAA/38AAP//AAD/fwAA//8AAP9/AAD//wAA/3//fwAA/z//f/9/AAD/P/9//38AAP8/////f/9//n////9//3/+f////3//f/5//////wAA/z//////AAD/P/////8AAP8//3//////AAD/f/////8AAP9//////wAA////f/9//n////9//3/+f////3//f/5/")
-}]
-
 [node name="Node3D" type="Node3D" unique_id=132285134]
 
 [node name="RotatingPlatform" parent="." unique_id=1596451553 node_paths=PackedStringArray("player") instance=ExtResource("1_gy2d5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40227222, 2.237589, -0.11294079)
 wall_meshes = Array[Mesh]([ExtResource("2_cqp6s")])
+section_colors = Array[Color]([Color(1, 0, 0, 1), Color(0, 1, 0, 1), Color(0, 0, 1, 1)])
+sequential_colors = true
 hole_chance = 0.0
 player = NodePath("../PlayerCharacter")
 
@@ -54,33 +35,9 @@ shadow_enabled = true
 [node name="Node3D" type="Node3D" parent="." unique_id=294065263]
 transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 0, 0, 0)
 
-[node name="Wheel Draft" parent="." unique_id=1689250900 instance=ExtResource("1_wo5u4")]
-visible = false
-
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1791513845]
-script = ExtResource("2_6srx6")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=286007638]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.359375, -1, 0)
-size = Vector3(7.404297, 1, 179.5957)
-material = SubResource("StandardMaterial3D_vvcby")
-
-[node name="HoleTest" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1111906592]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.169098, -125.39345)
-operation = 2
-size = Vector3(59.456055, 41.433594, 52.979492)
-material = SubResource("StandardMaterial3D_vvcby")
-
-[node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="CSGCombiner3D/HoleTest" unique_id=503519283]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.169098, 125.39345)
-visible = false
-mesh = SubResource("ArrayMesh_6srx6")
-
 [node name="Top Down" type="Camera3D" parent="." unique_id=1577127877]
 transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, -7.9359, 19.43115, 0.7550125)
 fov = 60.0
 
 [node name="PlayerCharacter" parent="." unique_id=1881213073 instance=ExtResource("3_l02uu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.363929, 15.883021, -0.20983243)
-
-[editable path="Wheel Draft"]

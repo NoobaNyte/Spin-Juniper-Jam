@@ -21,11 +21,16 @@ extends Node3D
 # ── Walls ──────────────────────────────────────────────────────────────────────
 @export var wall_meshes: Array[Mesh] = []
 @export var wall_height: float = 1.5
-@export var wall_on_trailing_edge: bool = true
+@export var wall_on_trailing_edge: bool = false
 @export var wall_on_leading_edge: bool = true
 
 # ── Visuals ────────────────────────────────────────────────────────────────────
 @export var platform_material: Material = null
+
+@export var section_colors: Array[Color] = [Color.WHITE]
+@export var sequential_colors: bool = false
+var _color_index: int = 0
+
 
 @export var hole_radius_min: float = 1.5
 @export var hole_radius_max: float = 3.0
@@ -155,7 +160,14 @@ func _spawn_section(trailing_angle_deg: float, section_angle_deg: float) -> void
 		mi.material_override = platform_material
 	else:
 		var mat := StandardMaterial3D.new()
-		mat.albedo_color = Color(randf(), randf(), randf())
+		if section_colors.size() > 0:
+			if sequential_colors:
+				mat.albedo_color = section_colors[_color_index % section_colors.size()]
+				_color_index += 1
+			else:
+				mat.albedo_color = section_colors[randi() % section_colors.size()]
+		else:
+			mat.albedo_color = Color(randf(), randf(), randf())
 		mi.material_override = mat
 	body.add_child(mi)
 
