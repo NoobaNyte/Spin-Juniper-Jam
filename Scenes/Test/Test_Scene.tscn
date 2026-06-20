@@ -20,7 +20,7 @@ sky = SubResource("Sky_l02uu")
 [node name="RotatingPlatform" parent="." unique_id=1596451553 node_paths=PackedStringArray("player") instance=ExtResource("1_gy2d5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40227222, 2.237589, -0.11294079)
 wall_meshes = Array[Mesh]([ExtResource("2_cqp6s")])
-section_colors = Array[Color]([Color(1, 0, 0, 1), Color(0, 1, 0, 1), Color(0, 0, 1, 1)])
+section_colors = Array[Color]([Color(0.98119634, 0.37531948, 0, 1), Color(0.07290412, 0.38077685, 0.19628096, 1)])
 sequential_colors = true
 hole_chance = 0.0
 player = NodePath("../PlayerCharacter")
