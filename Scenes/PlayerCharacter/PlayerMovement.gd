@@ -97,7 +97,7 @@ func _handle_coyote(delta: float) -> void:
 # ── Jump Buffering ─────────────────────────────────────────────────────────────
 
 func _handle_jump_buffer(delta: float) -> void:
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("Jump"):
 		_jump_buffer = jump_buffer_time
 	else:
 		_jump_buffer = max(_jump_buffer - delta, 0.0)
@@ -122,8 +122,8 @@ func _handle_jump() -> void:
 
 func _handle_movement(delta: float) -> void:
 	var input_dir := Vector2.ZERO
-	input_dir.x = Input.get_axis("move_left", "move_right")
-	input_dir.y = Input.get_axis("move_up", "move_down")   # up = -1, down = +1
+	input_dir.y = Input.get_axis("MoveRight", "MoveLeft")
+	input_dir.x = Input.get_axis("MoveUp", "MoveDown")   # up = -1, down = +1
 
 	# Map 2-D screen input to 3-D world horizontal plane
 	var wish_dir := Vector3(input_dir.x, 0.0, input_dir.y).normalized()
