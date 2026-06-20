@@ -7,104 +7,103 @@ extends CharacterBody3D
 
 # ── Jump Settings ──────────────────────────────────────────────────────────────
 @export var jump_velocity: float = 8.0
-@export var gravity_scale: float = 2.5       # Snappier feel; 1.0 = default gravity
-@export var jump_buffer_time: float = 0.12   # Seconds of jump input buffering
-@export var coyote_time: float = 0.07        # Seconds of grace after walking off edge
+@export var gravity_scale: float = 2.5
+@export var jump_buffer_time: float = 0.12
+@export var coyote_time: float = 0.07
 
 # ── Platform Riding ────────────────────────────────────────────────────────────
-# World-space point all platform pieces rotate around. Set this at runtime
-# when you spawn the platform, e.g. player.pivot_point = platform_center
 @export var pivot_point: Vector3 = Vector3.ZERO
+@export var carry_decay: float = 3.0
 
-# Internally tracked — updated automatically from collision data each frame
 var _current_platform: RigidBody3D = null
-
-# Internal state
 var _gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var _jump_buffer: float = 0.0
 var _coyote_timer: float = 0.0
 var _was_on_floor: bool = false
-var _platform_velocity: Vector3 = Vector3.ZERO
+
+# The angular offset of the player relative to the platform at the moment
+# they landed. We add the platform's cumulative rotation to this each frame
+# to find where they should be.
+var _on_platform: bool = false
+var _platform_angle_on_land: float = 0.0   # platform cumulative angle when landed
+var _player_angle_on_land: float = 0.0     # player's world angle when landed
+var _player_radius: float = 0.0            # player's distance from pivot when landed
+var _platform_cumulative_angle: float = 0.0  # integrated from angular_velocity each frame
+
+# Carry momentum when leaving platform
+var _carry_velocity: Vector3 = Vector3.ZERO
 
 
 func _physics_process(delta: float) -> void:
 	_detect_platform()
-	_update_platform_velocity()
+
+	if _current_platform != null:
+		_platform_cumulative_angle += _current_platform.angular_velocity.y * delta
+
 	_apply_gravity(delta)
 	_handle_coyote(delta)
 	_handle_jump_buffer(delta)
 	_handle_jump()
 	_handle_movement(delta)
-	_apply_platform_velocity()
+
+	if _on_platform and _current_platform != null and is_on_floor():
+		var platform_rotation: float = _platform_cumulative_angle - _platform_angle_on_land
+		var current_angle: float = _player_angle_on_land + platform_rotation
+		var prev_x: float = global_position.x
+		var prev_z: float = global_position.z
+		global_position.x = pivot_point.x + sin(current_angle) * _player_radius
+		global_position.z = pivot_point.z - cos(current_angle) * _player_radius
+		_carry_velocity = Vector3(
+			(global_position.x - prev_x) / delta,
+			0.0,
+			(global_position.z - prev_z) / delta
+		)
 
 	move_and_slide()
 
+	var on_platform_now: bool = is_on_floor() and _current_platform != null
+
+	if on_platform_now and not _on_platform:
+		# Just landed — record reference angles and radius, clear carry
+		var to_player := global_position - pivot_point
+		to_player.y = 0.0
+		_player_radius = to_player.length()
+		_player_angle_on_land = atan2(to_player.x, -to_player.z)
+		_platform_angle_on_land = _platform_cumulative_angle
+		_carry_velocity = Vector3.ZERO
+		velocity.x = 0.0
+		velocity.z = 0.0
+
+	elif _on_platform and not on_platform_now:
+		# Just left the platform — bake carry into velocity exactly once
+		velocity.x += _carry_velocity.x
+		velocity.z += _carry_velocity.z
+
+	elif not on_platform_now:
+		# Already airborne — just decay, never add to velocity again
+		_carry_velocity = _carry_velocity.move_toward(Vector3.ZERO, carry_decay * delta)
+
+	_on_platform = on_platform_now
 	_was_on_floor = is_on_floor()
 
-
-# ── Platform Auto-Detection ────────────────────────────────────────────────────
-# Reads collision results from the previous move_and_slide() call to find
-# whichever RigidBody3D the player is standing on right now.
 
 func _detect_platform() -> void:
 	if not is_on_floor():
 		_current_platform = null
 		return
-
 	for i in get_slide_collision_count():
 		var col := get_slide_collision(i)
 		var collider := col.get_collider()
-		if collider is RigidBody3D:
-			# Only count it as the floor platform if the contact normal
-			# points generally upward (not a wall hit)
-			if col.get_normal().y > 0.5:
-				if collider != _current_platform:
-					_current_platform = collider
-				return
-
-	# Stood on something that isn't a RigidBody3D (e.g. a StaticBody floor)
+		if collider is RigidBody3D and col.get_normal().y > 0.5:
+			_current_platform = collider
+			return
 	_current_platform = null
 
-
-# ── Platform Velocity ──────────────────────────────────────────────────────────
-# Uses the platform's angular velocity around the shared pivot to compute
-# the tangential velocity at the player's position.
-# Only X and Z are applied — gravity owns Y.
-
-func _update_platform_velocity() -> void:
-	_platform_velocity = Vector3.ZERO
-
-	if _current_platform == null or not is_on_floor():
-		return
-
-	# Vector from the pivot to the player in the horizontal plane
-	var to_player := global_position - pivot_point
-	to_player.y = 0.0  # flatten — we only want horizontal tangential velocity
-
-	# Angular velocity of the rigid body (world space, rad/s)
-	# For a platform spinning around the world Y axis this is typically (0, ω, 0)
-	var ang_vel: Vector3 = _current_platform.angular_velocity
-
-	# Tangential velocity = ω × r  (cross product gives the perpendicular velocity)
-	var tangential: Vector3 = ang_vel.cross(to_player)
-
-	# Zero out vertical component — let gravity handle Y
-	_platform_velocity = Vector3(tangential.x, 0.0, tangential.z)
-
-
-func _apply_platform_velocity() -> void:
-	velocity.x += _platform_velocity.x
-	velocity.z += _platform_velocity.z
-
-
-# ── Gravity ────────────────────────────────────────────────────────────────────
 
 func _apply_gravity(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= _gravity * gravity_scale * delta
 
-
-# ── Coyote Time ────────────────────────────────────────────────────────────────
 
 func _handle_coyote(delta: float) -> void:
 	if _was_on_floor and not is_on_floor():
@@ -114,8 +113,6 @@ func _handle_coyote(delta: float) -> void:
 	else:
 		_coyote_timer = max(_coyote_timer - delta, 0.0)
 
-
-# ── Jump Buffering ─────────────────────────────────────────────────────────────
 
 func _handle_jump_buffer(delta: float) -> void:
 	if Input.is_action_just_pressed("Jump"):
@@ -132,29 +129,28 @@ func _handle_jump() -> void:
 		_coyote_timer = 0.0
 
 
-# ── Directional Movement ───────────────────────────────────────────────────────
-
 func _handle_movement(delta: float) -> void:
 	var input_dir := Vector2.ZERO
 	input_dir.y = Input.get_axis("MoveRight", "MoveLeft")
 	input_dir.x = Input.get_axis("MoveUp", "MoveDown")
-
 	var wish_dir := Vector3(input_dir.x, 0.0, input_dir.y).normalized()
 
-	# ── Optional: rotate wish_dir to match a non-axis-aligned camera ──────────
-	# var cam_basis := get_viewport().get_camera_3d().global_transform.basis
-	# var cam_forward := -cam_basis.z
-	# cam_forward.y = 0.0
-	# cam_forward = cam_forward.normalized()
-	# var cam_right := cam_basis.x
-	# cam_right.y = 0.0
-	# cam_right = cam_right.normalized()
-	# wish_dir = (cam_right * input_dir.x + cam_forward * -input_dir.y).normalized()
-	# ──────────────────────────────────────────────────────────────────────────
-
-	if wish_dir != Vector3.ZERO:
-		velocity.x = move_toward(velocity.x, wish_dir.x * move_speed, acceleration * delta)
-		velocity.z = move_toward(velocity.z, wish_dir.z * move_speed, acceleration * delta)
+	if _on_platform and _current_platform != null:
+		# Update the stored angle and radius to reflect player input
+		# so movement is relative to the rotating platform
+		if wish_dir != Vector3.ZERO:
+			var to_player := global_position - pivot_point
+			to_player.y = 0.0
+			# Move in world space, then re-derive polar coords so platform
+			# rotation stays in sync next frame
+			var new_pos := to_player + wish_dir * move_speed * delta
+			_player_radius = new_pos.length()
+			var platform_rotation: float = _platform_cumulative_angle - _platform_angle_on_land
+			_player_angle_on_land = atan2(new_pos.x, -new_pos.z) - platform_rotation
 	else:
-		velocity.x = move_toward(velocity.x, 0.0, friction * delta)
-		velocity.z = move_toward(velocity.z, 0.0, friction * delta)
+		if wish_dir != Vector3.ZERO:
+			velocity.x = move_toward(velocity.x, wish_dir.x * move_speed, acceleration * delta)
+			velocity.z = move_toward(velocity.z, wish_dir.z * move_speed, acceleration * delta)
+		else:
+			velocity.x = move_toward(velocity.x, 0.0, friction * delta)
+			velocity.z = move_toward(velocity.z, 0.0, friction * delta)

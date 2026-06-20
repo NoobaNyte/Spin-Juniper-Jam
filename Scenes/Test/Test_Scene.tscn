@@ -41,6 +41,7 @@ _surfaces = [{
 [node name="RotatingPlatform" parent="." unique_id=1596451553 node_paths=PackedStringArray("player") instance=ExtResource("1_gy2d5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40227222, 2.237589, -0.11294079)
 wall_meshes = Array[Mesh]([ExtResource("2_cqp6s")])
+hole_chance = 0.0
 player = NodePath("../PlayerCharacter")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=349329365]
