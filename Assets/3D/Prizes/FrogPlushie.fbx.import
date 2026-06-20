@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://jf0o7yvs7pvu"
-path="res://.godot/imported/FrogPlushie.fbx-929ac9a9d37f5559bfd47b7a5231f319.scn"
+path="res://.godot/imported/FrogPlushie.fbx-812c5ce22e0e4069152e0c4f2a494c76.scn"
 
 [deps]
 
-source_file="res://Assets/3D/FrogPlushie.fbx"
-dest_files=["res://.godot/imported/FrogPlushie.fbx-929ac9a9d37f5559bfd47b7a5231f319.scn"]
+source_file="res://Assets/3D/Prizes/FrogPlushie.fbx"
+dest_files=["res://.godot/imported/FrogPlushie.fbx-812c5ce22e0e4069152e0c4f2a494c76.scn"]
 
 [params]
 
