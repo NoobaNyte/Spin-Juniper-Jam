@@ -2,7 +2,7 @@ extends Node3D
 
 # ── Platform Shape ─────────────────────────────────────────────────────────────
 @export var pivot_point: Vector3 = Vector3.ZERO
-@export var platform_radius: float = 15.0
+@export var platform_radius: float = 18.0
 @export var platform_inner_radius: float = 0.0
 @export var platform_thickness: float = 0.3
 
@@ -16,7 +16,7 @@ extends Node3D
 
 # Fixed world-space angle where sections are both created and destroyed.
 # Sections spawn here, complete one full revolution, and despawn here.
-@export var spawn_angle_deg: float = 180.0
+@export var spawn_angle_deg: float = 45.0
 
 # ── Walls ──────────────────────────────────────────────────────────────────────
 @export var wall_meshes: Array[Mesh] = []
