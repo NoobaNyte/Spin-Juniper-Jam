@@ -27,6 +27,10 @@ window/stretch/mode="canvas_items"
 
 project/assembly_name="Project"
 
+[global_group]
+
+Player=""
+
 [input]
 
 Jump={
