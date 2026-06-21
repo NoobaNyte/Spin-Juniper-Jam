@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cna1dtu2sft2k"]
+
+[resource]
+resource_name = "Secondary"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.91071427, 0.91071427, 0.91071427, 1)
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.0

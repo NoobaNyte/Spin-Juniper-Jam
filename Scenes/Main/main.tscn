@@ -9,9 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://daxgm5dhgo1dk" path="res://Scenes/Prizes/Grip/grip_prize.tscn" id="5_xlvfx"]
 [ext_resource type="PackedScene" uid="uid://do2s7rajjiqji" path="res://Scenes/Prizes/Jump Prize/jump_prize.tscn" id="5_y3v7k"]
 [ext_resource type="PackedScene" uid="uid://bpc6exg8npidb" path="res://Scenes/Main/button.tscn" id="6_4e4y2"]
+[ext_resource type="PackedScene" uid="uid://b5f1b5xy70e7n" path="res://Scenes/Prizes/Bear Prize/bear_prize.tscn" id="7_6t3k2"]
 [ext_resource type="PackedScene" uid="uid://d2bdcu8nu61s5" path="res://Assets/3D/Shop/Wheel Board.fbx" id="8_y3v7k"]
 [ext_resource type="PackedScene" uid="uid://dkobqdf0o1m7a" path="res://Scenes/RotatingPlatform/RotatingPlatform.tscn" id="9_imbg2"]
-[ext_resource type="ArrayMesh" uid="uid://btnsdcbsqjrba" path="res://Assets/3D/test.tres" id="10_hfg1r"]
+[ext_resource type="ArrayMesh" uid="uid://dqoldtwb8bobo" path="res://Assets/3D/test.tres" id="10_hfg1r"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1r6ip"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -132,12 +133,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.086308, 0, 5.193143)
 [node name="Next Button" parent="Shop" unique_id=2050255989 instance=ExtResource("6_4e4y2")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -7.9810905, 0, 5.193143)
 
+[node name="Bear_Prize" parent="Shop" unique_id=2124177430 instance=ExtResource("7_6t3k2")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.6263511, 30.809998, 14.1433325)
+
 [node name="Prizes" type="Node3D" parent="." unique_id=242406510]
 
 [node name="Invincibility Frames Prize" parent="Prizes" unique_id=715589344 instance=ExtResource("4_5yls4")]
 transform = Transform3D(0.46255508, 0, 0.88659054, 0, 1, 0, -0.88659054, 0, 0.46255508, -20.713642, 7.02101, 11.665668)
 
-[node name="HP_Prize" parent="Prizes" unique_id=2124177430 instance=ExtResource("5_p6jpk")]
+[node name="HP_Prize" parent="Prizes" unique_id=1220233561 instance=ExtResource("5_p6jpk")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 27.080153, 7.0651617, 10.651638)
 
 [node name="Speed_Prize" parent="Prizes" unique_id=1849157300 instance=ExtResource("4_2a143")]
