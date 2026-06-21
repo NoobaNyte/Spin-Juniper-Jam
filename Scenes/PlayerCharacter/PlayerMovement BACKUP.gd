@@ -2,13 +2,11 @@ extends CharacterBody3D
 
 # ── Animation Settings ──────────────────────────────────────────────────────────
 @export var animation_player: AnimationPlayer
-@export var anim_blend_time: float = 0.15 # How long the transition takes
 
 # ── Movement Settings ──────────────────────────────────────────────────────────
 @export var move_speed: float = 6.0
 @export var acceleration: float = 20.0
 @export var friction: float = 18.0
-@export var rotation_speed: float = 12.0 # How fast the player turns to face movement
 
 # ── Jump Settings ──────────────────────────────────────────────────────────────
 @export var jump_velocity: float = 8.0
@@ -26,12 +24,14 @@ var _jump_buffer: float = 0.0
 var _coyote_timer: float = 0.0
 var _was_on_floor: bool = false
 
-# Platform memory variables
+# The angular offset of the player relative to the platform at the moment
+# they landed. We add the platform's cumulative rotation to this each frame
+# to find where they should be.
 var _on_platform: bool = false
-var _platform_angle_on_land: float = 0.0
-var _player_angle_on_land: float = 0.0
-var _player_radius: float = 0.0
-var _platform_cumulative_angle: float = 0.0
+var _platform_angle_on_land: float = 0.0 # platform cumulative angle when landed
+var _player_angle_on_land: float = 0.0 # player's world angle when landed
+var _player_radius: float = 0.0 # player's distance from pivot when landed
+var _platform_cumulative_angle: float = 0.0 # integrated from angular_velocity each frame
 
 # Carry momentum when leaving platform
 var _carry_velocity: Vector3 = Vector3.ZERO
@@ -43,21 +43,12 @@ func _physics_process(delta: float) -> void:
 	if _current_platform != null:
 		_platform_cumulative_angle += _current_platform.angular_velocity.y * delta
 
-	# 1. Grab input
-	var input_dir := Vector2.ZERO
-	input_dir.y = Input.get_axis("MoveRight", "MoveLeft")
-	input_dir.x = Input.get_axis("MoveUp", "MoveDown")
-	var wish_dir := Vector3(input_dir.x, 0.0, input_dir.y).normalized()
-
 	_apply_gravity(delta)
 	_handle_coyote(delta)
 	_handle_jump_buffer(delta)
 	_handle_jump()
-	_handle_movement(delta, wish_dir)
-	_handle_rotation(delta, wish_dir)
-	_handle_animations(wish_dir)
+	_handle_movement(delta)
 
-	# 2. Platform Polar Coordinate Math
 	if _on_platform and _current_platform != null and is_on_floor():
 		var platform_rotation: float = _platform_cumulative_angle - _platform_angle_on_land
 		var current_angle: float = _player_angle_on_land + platform_rotation
@@ -73,10 +64,10 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-	# 3. Platform momentum handling
 	var on_platform_now: bool = is_on_floor() and _current_platform != null
 
 	if on_platform_now and not _on_platform:
+		# Just landed — record reference angles and radius, clear carry
 		var to_player := global_position - pivot_point
 		to_player.y = 0.0
 		_player_radius = to_player.length()
@@ -87,10 +78,12 @@ func _physics_process(delta: float) -> void:
 		velocity.z = 0.0
 
 	elif _on_platform and not on_platform_now:
+		# Just left the platform — bake carry into velocity exactly once
 		velocity.x += _carry_velocity.x
 		velocity.z += _carry_velocity.z
 
 	elif not on_platform_now:
+		# Already airborne — just decay, never add to velocity again
 		_carry_velocity = _carry_velocity.move_toward(Vector3.ZERO, carry_decay * delta)
 
 	_on_platform = on_platform_now
@@ -139,11 +132,20 @@ func _handle_jump() -> void:
 		_coyote_timer = 0.0
 
 
-func _handle_movement(delta: float, wish_dir: Vector3) -> void:
+func _handle_movement(delta: float) -> void:
+	var input_dir := Vector2.ZERO
+	input_dir.y = Input.get_axis("MoveRight", "MoveLeft")
+	input_dir.x = Input.get_axis("MoveUp", "MoveDown")
+	var wish_dir := Vector3(input_dir.x, 0.0, input_dir.y).normalized()
+
 	if _on_platform and _current_platform != null:
+		# Update the stored angle and radius to reflect player input
+		# so movement is relative to the rotating platform
 		if wish_dir != Vector3.ZERO:
 			var to_player := global_position - pivot_point
 			to_player.y = 0.0
+			# Move in world space, then re-derive polar coords so platform
+			# rotation stays in sync next frame
 			var new_pos := to_player + wish_dir * move_speed * delta
 			_player_radius = new_pos.length()
 			var platform_rotation: float = _platform_cumulative_angle - _platform_angle_on_land
@@ -155,23 +157,3 @@ func _handle_movement(delta: float, wish_dir: Vector3) -> void:
 		else:
 			velocity.x = move_toward(velocity.x, 0.0, friction * delta)
 			velocity.z = move_toward(velocity.z, 0.0, friction * delta)
-
-
-# NEW: Smoothly rotates the character to face the input direction
-func _handle_rotation(delta: float, wish_dir: Vector3) -> void:
-	if wish_dir != Vector3.ZERO:
-		var target_angle := atan2(wish_dir.x, wish_dir.z)
-		rotation.y = lerp_angle(rotation.y, target_angle, rotation_speed * delta)
-
-
-# UPDATED: Added the anim_blend_time parameter to the play calls
-func _handle_animations(wish_dir: Vector3) -> void:
-	if not animation_player:
-		return
-		
-	if not is_on_floor():
-		animation_player.play("Jump", anim_blend_time)
-	elif wish_dir != Vector3.ZERO:
-		animation_player.play("Running", anim_blend_time)
-	else:
-		animation_player.play("Idle", anim_blend_time)
