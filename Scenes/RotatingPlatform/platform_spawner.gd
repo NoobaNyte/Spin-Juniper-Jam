@@ -145,6 +145,7 @@ func _spawn_sphere() -> void:
 			mi.material_override = sphere_material
 	else:
 		var shape := BoxShape3D.new()
+		shape.size = Vector3(beam_width, beam_height, beam_length)
 		col.shape = shape
 
 		var mesh := BoxMesh.new()
@@ -164,6 +165,9 @@ func _spawn_sphere() -> void:
 		sphere_spawn_height,
 		-cos(angle) * dist
 	)
+	
+	var rot_angle: float = randf() * PI * 2.0
+	body.rotate(Vector3(0, 1, 0), rot_angle)
 
 	var vel_angle: float = randf() * PI * 2.0
 	var vel_h: float = randf_range(sphere_velocity_horizontal_min, sphere_velocity_horizontal_max)
