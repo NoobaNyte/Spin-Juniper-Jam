@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://b0qgvckf7sefc"]
+
+[ext_resource type="PackedScene" uid="uid://cfqh7ao1mlciy" path="res://Scenes/Prizes/Base_Prize/base_prize.tscn" id="1_ji27f"]
+
+[node name="Template_Prize" unique_id=2124177430 instance=ExtResource("1_ji27f")]
