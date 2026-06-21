@@ -30,7 +30,7 @@ ssao_radius = 6.04
 ssao_intensity = 10.1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6t3k2"]
-size = Vector3(22.552734, 2.0408897, 9.756348)
+size = Vector3(22.552734, 3.8933697, 9.756348)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4e4y2"]
 size = Vector3(25.786184, 0.95687485, 4.6926003)
@@ -81,7 +81,7 @@ visible = false
 [node name="ZoomArea" type="Area3D" parent="Shop" unique_id=1632722335]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Shop/ZoomArea" unique_id=2063383922]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.89248466, 4.6250844)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8187246, 4.6250844)
 shape = SubResource("BoxShape3D_6t3k2")
 debug_color = Color(1, 0, 0, 0.41960785)
 
