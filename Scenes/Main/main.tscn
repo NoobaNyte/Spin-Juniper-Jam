@@ -1,11 +1,12 @@
 [gd_scene format=3 uid="uid://pcyvfvyj4lhu"]
 
 [ext_resource type="PackedScene" uid="uid://dyfwa0tin2osj" path="res://Assets/3D/Shop.fbx" id="1_1r6ip"]
-[ext_resource type="PackedScene" uid="uid://doigq7nkfb887" path="res://Scenes/Prizes/Jump Prize/jump_prize.tscn" id="4_2a143"]
+[ext_resource type="PackedScene" uid="uid://doigq7nkfb887" path="res://Scenes/Prizes/Speed Prize/speed_prize.tscn" id="4_2a143"]
 [ext_resource type="PackedScene" uid="uid://dnp8jfq1nm1rg" path="res://Scenes/Prizes/Invincibility Frames/invincibility_frames_prize.tscn" id="4_5yls4"]
 [ext_resource type="PackedScene" uid="uid://dqhsrngl043po" path="res://Scenes/PlayerCharacter/PlayerCharacter.tscn" id="5_2a143"]
 [ext_resource type="PackedScene" uid="uid://f84ucq2mqwcd" path="res://Scenes/Prizes/HP/hp_prize.tscn" id="5_p6jpk"]
 [ext_resource type="PackedScene" uid="uid://daxgm5dhgo1dk" path="res://Scenes/Prizes/Grip/grip_prize.tscn" id="5_xlvfx"]
+[ext_resource type="PackedScene" uid="uid://do2s7rajjiqji" path="res://Scenes/Prizes/Jump Prize/jump_prize.tscn" id="5_y3v7k"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1r6ip"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -59,13 +60,16 @@ shape = SubResource("BoxShape3D_p6jpk")
 transform = Transform3D(0.46255508, 0, 0.88659054, 0, 1, 0, -0.88659054, 0, 0.46255508, -4.9395094, 7.02101, 0.95419574)
 
 [node name="HP_Prize" parent="Prizes" unique_id=2124177430 instance=ExtResource("5_p6jpk")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 8.876408, 4.119856, 1.9362621)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 9.4329815, 4.119856, 1.9362621)
 
-[node name="Jump_Prize" parent="Prizes" unique_id=1849157300 instance=ExtResource("4_2a143")]
-transform = Transform3D(0.6210165, 0, 0.78379744, 0, 1, 0, -0.78379744, 0, 0.6210165, 5.6535954, 4.4430475, 1.7053533)
+[node name="Speed_Prize" parent="Prizes" unique_id=1849157300 instance=ExtResource("4_2a143")]
+transform = Transform3D(0.6210165, 0, 0.78379744, 0, 1, 0, -0.78379744, 0, 0.6210165, 6.160708, 4.4430475, 1.7053533)
 
 [node name="Grip_Prize" parent="Prizes" unique_id=1085671967 instance=ExtResource("5_xlvfx")]
-transform = Transform3D(-0.2802492, 0, 0.95992726, 0, 1, 0, -0.95992726, 0, -0.2802492, -8.382154, 3.8357124, 0.83304024)
+transform = Transform3D(-0.9191025, 0, 0.39401886, 0, 1, 0, -0.39401886, 0, -0.9191025, 2.1572738, 4.587859, 0.83304024)
+
+[node name="Jump_Prize" parent="Prizes" unique_id=1661532089 instance=ExtResource("5_y3v7k")]
+transform = Transform3D(-0.28417328, 0, 0.95877296, 0, 1, 0, -0.95877296, 0, -0.28417328, -8.25702, 4.099969, 0.54590833)
 
 [node name="Shop" parent="." unique_id=725113405 instance=ExtResource("1_1r6ip")]
 
