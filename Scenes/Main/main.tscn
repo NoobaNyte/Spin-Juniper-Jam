@@ -76,6 +76,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1964708)
 [node name="Wheel" parent="Wheel Board/Wheel Board" index="2" unique_id=2030928217]
 visible = false
 
+[node name="RotatingPlatform" parent="Wheel Board" unique_id=1596451553 instance=ExtResource("9_imbg2")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -21, 2)
+pivot_point = Vector3(0, -21, 2)
+spawn_angle_deg = -50.0
+wall_meshes = Array[Mesh]([ExtResource("10_hfg1r")])
+section_colors = Array[Color]([Color(0.98119634, 0.37531948, 0, 1), Color(0.07290412, 0.38077685, 0.19628096, 1)])
+sequential_colors = true
+hole_chance = 0.0
+
 [node name="Shop" type="StaticBody3D" parent="." unique_id=294995878]
 
 [node name="ZoomArea" type="Area3D" parent="Shop" unique_id=1632722335]
@@ -134,17 +143,9 @@ anim_blend_time = 0.25
 speed_running = 2.0
 speed_jump = 1.15
 
-[node name="RotatingPlatform" parent="." unique_id=1596451553 instance=ExtResource("9_imbg2")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -21, 2)
-pivot_point = Vector3(0, -21, 2)
-wall_meshes = Array[Mesh]([ExtResource("10_hfg1r")])
-section_colors = Array[Color]([Color(0.98119634, 0.37531948, 0, 1), Color(0.07290412, 0.38077685, 0.19628096, 1)])
-sequential_colors = true
-hole_chance = 0.0
-
 [connection signal="body_entered" from="Shop/ZoomArea" to="MainCamera" method="_on_zoom_area_body_entered"]
 [connection signal="body_exited" from="Shop/ZoomArea" to="MainCamera" method="_on_zoom_area_body_exited"]
 
 [editable path="Wheel Board/Wheel Board"]
+[editable path="Wheel Board/RotatingPlatform"]
 [editable path="Shop/Shop"]
-[editable path="RotatingPlatform"]
