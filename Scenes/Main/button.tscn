@@ -1,0 +1,123 @@
+[gd_scene format=4 uid="uid://bpc6exg8npidb"]
+
+[ext_resource type="Script" uid="uid://bw86t6dc7jajo" path="res://Scenes/Main/button.gd" id="1_spc3s"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cexdg"]
+points = PackedVector3Array(-0.8773726, 5.551115e-17, -1.9775054, 2.434838, 0.4461447, 0.06338907, -1.1326039, 0, 2.0414507, -1.0997171, 0.73653334, -1.8935583, -1.0997171, 0.73653334, 1.8935583, 2.439236, -5.551115e-17, 0.06354555, 1.9727523, 0.6807, -0.05975763, -1.1700691, 0.5259785, -2.244673, -1.1700691, 0.5259785, 2.244673, -1.1326039, 0, -2.0414507, 2.439236, -5.551115e-17, -0.06354555, 2.434838, 0.4461447, -0.06338907, -0.95939755, 0.73653334, 1.8935583, -0.8773726, 5.551115e-17, 1.9775054, -0.95939755, 0.73653334, -1.8935583, 1.9727523, 0.6807, 0.05975763, -1.0049882, 0, 2.0414507, -1.0049882, 0, -2.0414507, -0.4306293, 8.5218824e-05, -1.7217059, -0.4306293, 8.5218824e-05, 1.7217059, 2.325829, 0.50554645, -0.061721623, 2.325829, 0.50554645, 0.061721623, 1.2267, 0.00022123978, -0.76486146, 1.2267, 0.00022123978, 0.76486146)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ob8lu"]
+resource_name = "Button Main"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.9063355, 0, 0.03440706, 1)
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_8bwri"]
+_surfaces = [{
+"aabb": AABB(-1.2757416, 0, -2.2096498, 3.8272257, 0.68067396, 4.419299),
+"format": 34359742465,
+"index_count": 42,
+"index_data": PackedByteArray("AAABAAIAAwABAAAABAACAAEAAQADAAQABQAAAAIAAgAEAAUAAAAFAAMABQAEAAYABgAEAAMAAwAFAAcABgAHAAUABwAIAAMAAwAIAAYACAAHAAYA"),
+"name": "Button Main",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 9,
+"vertex_data": PackedByteArray("gEujvwAAAADkag1AhEsjQAAAAAAAAAAAgEujvwAAAADnag3AhEsjQFiK4j4AAAAAgEujv1iK4j7nag3AgEujv1iK4j7kag1AuJOGv6ZALj8oGOm/tJOGv6ZALj8oGOk/wJMGQKZALj8AAAAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_b36ky"]
+resource_name = "Circle_002"
+_surfaces = [{
+"aabb": AABB(-1.2757416, 0, -2.2096498, 3.8272257, 0.68067396, 4.419299),
+"attribute_data": PackedByteArray("AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/"),
+"format": 34359742487,
+"index_count": 42,
+"index_data": PackedByteArray("AAABAAIAAwAEAAUABQAGAAMABwAIAAkACQAKAAcACwAMAA0ADQAOAAsADwAQABEAEQASAA8AEwAUABUAFgAXABgAGAAZABYAGgAbABwAHAAdABoA"),
+"material": SubResource("StandardMaterial3D_ob8lu"),
+"name": "Button Main",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 30,
+"vertex_data": PackedByteArray("gEujvwAAAADkag1AhEsjQAAAAAAAAAAAgEujvwAAAADnag3AhEsjQFiK4j4AAAAAwJMGQKZALj8AAAAAuJOGv6ZALj8oGOm/gEujv1iK4j7nag3AgEujv1iK4j7kag1AgEujv1iK4j7nag3AuJOGv6ZALj8oGOm/tJOGv6ZALj8oGOk/hEsjQFiK4j4AAAAAgEujv1iK4j7kag1AtJOGv6ZALj8oGOk/wJMGQKZALj8AAAAAgEujv1iK4j7nag3AgEujvwAAAADnag3AhEsjQAAAAAAAAAAAhEsjQFiK4j4AAAAAwJMGQKZALj8AAAAAtJOGv6ZALj8oGOk/uJOGv6ZALj8oGOm/gEujv1iK4j7kag1AgEujvwAAAADkag1AgEujvwAAAADnag3AgEujv1iK4j7nag3AhEsjQFiK4j4AAAAAhEsjQAAAAAAAAAAAgEujvwAAAADkag1AgEujv1iK4j7kag1A/38AAP///7//fwAA////v/9/AAD///+/wstD5P///7/Cy0Pk////v8LLQ+T///+/wstD5P///78VPhS+////PxU+FL7///8/FT4Uvv///z8VPhS+////P7qbO7T///8/ups7tP///z+6mzu0////P7qbO7T///8///8l0f///7///yXR////v///JdH///+///8l0f///7//f///////v/9///////+//3///////78AAP9/////vwAA/3////+/AAD/f////78AAP9/////v9mu/3////8/2a7/f////z/Zrv9/////P9mu/3////8/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_8bwri")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hfg1r"]
+points = PackedVector3Array(-0.8773726, 5.551115e-17, -1.9775054, 2.434838, 0.4461447, 0.06338907, -1.1326039, 0, 2.0414507, -1.0997171, 0.73653334, -1.8935583, -1.0997171, 0.73653334, 1.8935583, 2.439236, -5.551115e-17, 0.06354555, 1.9727523, 0.6807, -0.05975763, -1.1700691, 0.5259785, -2.244673, -1.1700691, 0.5259785, 2.244673, -1.1326039, 0, -2.0414507, 2.439236, -5.551115e-17, -0.06354555, 2.434838, 0.4461447, -0.06338907, -0.95939755, 0.73653334, 1.8935583, -0.8773726, 5.551115e-17, 1.9775054, -0.95939755, 0.73653334, -1.8935583, 1.9727523, 0.6807, 0.05975763, -1.0049882, 0, 2.0414507, -1.0049882, 0, -2.0414507, -0.4306293, 8.5218824e-05, -1.7217059, -0.4306293, 8.5218824e-05, 1.7217059, 2.325829, 0.50554645, -0.061721623, 2.325829, 0.50554645, 0.061721623, 1.2267, 0.00022123978, -0.76486146, 1.2267, 0.00022123978, 0.76486146)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6t3k2"]
+points = PackedVector3Array(-1.7095413, -0.19554129, -2.9274414, 3.0363693, 0.15015593, 0.07770882, 3.4134808, -0.19554129, 0.091124356, -1.7095413, -0.19554129, 2.9274414, -1.6177723, 0.26187143, 2.7440464, -1.4347355, 0.26187143, -2.7440464, 2.789623, 0.22696075, -0.07721476, -1.343468, 0.17035307, 2.835744, 3.4134808, -0.19554129, -0.091124356, -0.70309013, 0.17035307, -2.4695272, -1.6177723, 0.26187143, -2.7440464, -0.6108195, 0.26187143, 2.2867055, -1.343468, -0.19554129, -2.835744, -1.343468, -0.19554129, 2.835744, -0.6108195, 0.26187143, -2.2867055, 3.036369, 0.15015593, -0.07770882, -0.70309013, 0.17035307, 2.4695272, -1.5265048, 0.17035307, -2.9274414, 2.789623, 0.22696076, 0.07721477, -1.5265048, 0.17035307, 2.9274414, -1.4347355, 0.26187143, 2.7440464, -1.5265048, -0.19554129, 2.9274414, -1.5265048, -0.19554129, -2.9274414, -0.70309013, -0.19554129, -2.4695272, -0.70309013, -0.19554129, 2.4695272, -1.343468, 0.17035307, -2.835744, -1.251699, 0.26187143, 2.6529222, -1.251699, 0.26187143, -2.6529222)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f007q"]
+resource_name = "Button Base"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.067611404, 0.067611404, 0.067611404, 1)
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_h8ppw"]
+_surfaces = [{
+"aabb": AABB(-1.6637692, -0.14984898, -2.881735, 4.9913116, 0.4011619, 5.763468),
+"format": 34359742465,
+"index_count": 78,
+"index_data": PackedByteArray("AAABAAIAAwAAAAIABAACAAEAAgAEAAMABQABAAAAAQAFAAQAAAADAAUABgAEAAUAAwAEAAYABwAFAAMABQAHAAYAAwAIAAcABgAIAAMACQAHAAgABgAHAAkACgAIAAYACAAKAAkACQALAAYABgALAAoACwAJAAwADAAJAAoACgALAA0ADAANAAsADQAOAAoACgAOAAwADAAOAA0A"),
+"name": "Button Base",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 15,
+"vertex_data": PackedByteArray("YPbUvwNyGb5QbjhAdPZUQANyGb4AAAC1ZPbUvwNyGb5ZbjjAYPbUv4gb0D1QbjhAZPbUv4gb0D1ZbjjAdPZUQIgb0D0AAAC1YBK2vxasgD7NrR3AcBI2QBasgD4AAAC1YBK2vxasgD7KrR1AeK8fQKZ2OT4AAAC1bK+fv6Z2OT6gSgpAcK+fv6Z2OT6kSgrA+FkTQAD9Xz4AAAC18FmTvwD9Xz5UOP+/7FmTvwD9Xz5QOP8/")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_nwaol"]
+resource_name = "Circle_003"
+_surfaces = [{
+"aabb": AABB(-1.6637692, -0.14984898, -2.881735, 4.9913116, 0.4011619, 5.763468),
+"attribute_data": PackedByteArray("AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/"),
+"format": 34359742487,
+"index_count": 78,
+"index_data": PackedByteArray("AAABAAIAAwAEAAUABQAGAAMABwAIAAkACQAKAAcACwAMAA0ADQAOAAsADwAQABEAEQASAA8AEwAUABUAFgAXABgAGAAZABYAGgAbABwAHAAdABoAHgAfACAAIAAhAB4AIgAjACQAJAAlACIAJgAnACgAKAApACYAKgArACwALAAtACoALgAvADAAMAAxAC4AMgAzADQANAA1ADIA"),
+"material": SubResource("StandardMaterial3D_f007q"),
+"name": "Button Base",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 54,
+"vertex_data": PackedByteArray("YPbUvwNyGb5QbjhAdPZUQANyGb4AAAC1ZPbUvwNyGb5ZbjjAdPZUQIgb0D0AAAC1cBI2QBasgD4AAAC1YBK2vxasgD7NrR3AZPbUv4gb0D1ZbjjAYPbUv4gb0D1QbjhAZPbUv4gb0D1ZbjjAYBK2vxasgD7NrR3AYBK2vxasgD7KrR1AYPbUv4gb0D1QbjhAYBK2vxasgD7KrR1AcBI2QBasgD4AAAC1dPZUQIgb0D0AAAC1ZPbUv4gb0D1ZbjjAZPbUvwNyGb5ZbjjAdPZUQANyGb4AAAC1dPZUQIgb0D0AAAC1+FkTQAD9Xz4AAAC17FmTvwD9Xz5QOP8/8FmTvwD9Xz5UOP+/YPbUv4gb0D1QbjhAYPbUvwNyGb5QbjhAZPbUvwNyGb5ZbjjAZPbUv4gb0D1ZbjjAdPZUQIgb0D0AAAC1dPZUQANyGb4AAAC1YPbUvwNyGb5QbjhAYPbUv4gb0D1QbjhAYBK2vxasgD7NrR3AcBI2QBasgD4AAAC1eK8fQKZ2OT4AAAC1cK+fv6Z2OT6kSgrAYBK2vxasgD7NrR3AcK+fv6Z2OT6kSgrAbK+fv6Z2OT6gSgpAYBK2vxasgD7KrR1AYBK2vxasgD7KrR1AbK+fv6Z2OT6gSgpAeK8fQKZ2OT4AAAC1cBI2QBasgD4AAAC1cK+fv6Z2OT6kSgrAeK8fQKZ2OT4AAAC1+FkTQAD9Xz4AAAC18FmTvwD9Xz5UOP+/bK+fv6Z2OT6gSgpAcK+fv6Z2OT6kSgrA8FmTvwD9Xz5UOP+/7FmTvwD9Xz5QOP8/bK+fv6Z2OT6gSgpA7FmTvwD9Xz5QOP8/+FkTQAD9Xz4AAAC1eK8fQKZ2OT4AAAC1/38AAP///7//fwAA////v/9/AAD///+/tbqB6v///7+1uoHq////v7W6ger///+/tbqB6v///7//Tv7O////P/9O/s7///8//07+zv///z//Tv7O////P3yVScX///8/fJVJxf///z98lUnF////P3yVScX///8///8l0f///7///yXR////v///JdH///+///8l0f///7//f///////v/9///////+//3///////78AAP9/////PwAA/3////8/AAD/f////z8AAP9/////P9mu/3////8/2a7/f////z/Zrv9/////P9mu/3////8/aG+r0v///z9ob6vS////P2hvq9L///8/aG+r0v///z+opFbb////v6ikVtv///+/qKRW2////7+opFbb////v6tSZ+////+/q1Jn7////7+rUmfv////v6tSZ+////+/hayz7////7+FrLPv////v4Wss+////+/hayz7////78OXA3c////Pw5cDdz///8/DlwN3P///z8OXA3c////P0uQedP///8/S5B50////z9LkHnT////P0uQedP///8/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_h8ppw")
+
+[node name="Button" type="Node3D" unique_id=1282772521 node_paths=PackedStringArray("button")]
+script = ExtResource("1_spc3s")
+button = NodePath("Button")
+
+[node name="Button" type="RigidBody3D" parent="." unique_id=1236850209]
+freeze = true
+
+[node name="TriggerArea" type="Area3D" parent="Button" unique_id=271461517]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Button/TriggerArea" unique_id=1270486776]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09387976, 0)
+shape = SubResource("ConvexPolygonShape3D_cexdg")
+debug_color = Color(1, 0.61607146, 0, 0.41960785)
+
+[node name="RightButton" type="MeshInstance3D" parent="Button" unique_id=203675362]
+mesh = SubResource("ArrayMesh_b36ky")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Button" unique_id=1370888228]
+shape = SubResource("ConvexPolygonShape3D_hfg1r")
+
+[node name="Base" type="StaticBody3D" parent="." unique_id=1919864908]
+
+[node name="BaseCollision" type="CollisionShape3D" parent="Base" unique_id=1302503064]
+shape = SubResource("ConvexPolygonShape3D_6t3k2")
+
+[node name="RightButtonBase" type="MeshInstance3D" parent="Base" unique_id=1168848658]
+mesh = SubResource("ArrayMesh_nwaol")
+
+[connection signal="body_entered" from="Button/TriggerArea" to="." method="_on_trigger_area_body_entered"]
+[connection signal="body_exited" from="Button/TriggerArea" to="." method="_on_trigger_area_body_exited"]

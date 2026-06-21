@@ -16,8 +16,6 @@ sky_material = SubResource("ProceduralSkyMaterial_6srx6")
 background_mode = 2
 sky = SubResource("Sky_l02uu")
 
-[sub_resource type="PlaceholderMaterial" id="PlaceholderMaterial_gy2d5"]
-
 [node name="Node3D" type="Node3D" unique_id=132285134]
 
 [node name="RotatingPlatform" parent="." unique_id=1596451553 node_paths=PackedStringArray("player") instance=ExtResource("1_gy2d5")]
@@ -48,4 +46,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.3281975, 15.994578, -0.172
 [node name="LevelManager" type="Node3D" parent="." unique_id=10753789 node_paths=PackedStringArray("platform")]
 script = ExtResource("4_gy2d5")
 platform = NodePath("../RotatingPlatform")
-sphere_material = SubResource("PlaceholderMaterial_gy2d5")

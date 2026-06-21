@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://f84ucq2mqwcd" path="res://Scenes/Prizes/HP/hp_prize.tscn" id="5_p6jpk"]
 [ext_resource type="PackedScene" uid="uid://daxgm5dhgo1dk" path="res://Scenes/Prizes/Grip/grip_prize.tscn" id="5_xlvfx"]
 [ext_resource type="PackedScene" uid="uid://do2s7rajjiqji" path="res://Scenes/Prizes/Jump Prize/jump_prize.tscn" id="5_y3v7k"]
+[ext_resource type="PackedScene" uid="uid://bpc6exg8npidb" path="res://Scenes/Main/button.tscn" id="6_4e4y2"]
 [ext_resource type="PackedScene" uid="uid://d2bdcu8nu61s5" path="res://Assets/3D/Shop/Wheel Board.fbx" id="8_y3v7k"]
 [ext_resource type="PackedScene" uid="uid://dkobqdf0o1m7a" path="res://Scenes/RotatingPlatform/RotatingPlatform.tscn" id="9_imbg2"]
 [ext_resource type="ArrayMesh" uid="uid://btnsdcbsqjrba" path="res://Assets/3D/test.tres" id="10_hfg1r"]
@@ -79,6 +80,7 @@ visible = false
 [node name="RotatingPlatform" parent="Wheel Board" unique_id=1596451553 instance=ExtResource("9_imbg2")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -21, 2)
 pivot_point = Vector3(0, -21, 2)
+display_platform = true
 spawn_angle_deg = -50.0
 wall_meshes = Array[Mesh]([ExtResource("10_hfg1r")])
 section_colors = Array[Color]([Color(0.98119634, 0.37531948, 0, 1), Color(0.07290412, 0.38077685, 0.19628096, 1)])
@@ -117,6 +119,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32.686108, 19.856825)
 shape = SubResource("BoxShape3D_imbg2")
 
 [node name="Shop" parent="Shop" unique_id=725113405 instance=ExtResource("1_1r6ip")]
+
+[node name="Buttons" parent="Shop/Shop" index="1" unique_id=1028501208]
+visible = false
+
+[node name="Buttons Base" parent="Shop/Shop" index="2" unique_id=293042335]
+visible = false
+
+[node name="Previous Button" parent="Shop" unique_id=1282772521 instance=ExtResource("6_4e4y2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.086308, 0, 5.193143)
+
+[node name="Next Button" parent="Shop" unique_id=2050255989 instance=ExtResource("6_4e4y2")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -7.9810905, 0, 5.193143)
 
 [node name="Prizes" type="Node3D" parent="." unique_id=242406510]
 
