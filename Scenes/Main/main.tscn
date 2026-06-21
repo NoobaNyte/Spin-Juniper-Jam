@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://pcyvfvyj4lhu"]
+
+[ext_resource type="PackedScene" uid="uid://dyfwa0tin2osj" path="res://Assets/3D/Shop.fbx" id="1_1r6ip"]
+[ext_resource type="PackedScene" uid="uid://ckjoqowugv5m1" path="res://Assets/3D/Prizes/HP.fbx" id="2_5yls4"]
+[ext_resource type="PackedScene" uid="uid://do01dmr4fkwab" path="res://Assets/3D/Prizes/Invincibility Frames.fbx" id="3_p6jpk"]
+[ext_resource type="PackedScene" uid="uid://dsy8drh41rjeh" path="res://Assets/3D/Prizes/Jump Height.fbx" id="4_2a143"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1r6ip"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_lixft"]
+sky_material = SubResource("ProceduralSkyMaterial_1r6ip")
+
+[sub_resource type="Environment" id="Environment_qw60k"]
+background_mode = 1
+background_color = Color(0.45089287, 0.82342446, 1, 1)
+sky = SubResource("Sky_lixft")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.6
+
+[node name="Main" type="Node3D" unique_id=224682750]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=643451075]
+environment = SubResource("Environment_qw60k")
+
+[node name="Shop" parent="." unique_id=725113405 instance=ExtResource("1_1r6ip")]
+
+[node name="Prizes" type="Node3D" parent="." unique_id=242406510]
+
+[node name="HP" parent="Prizes" unique_id=812234728 instance=ExtResource("2_5yls4")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6.8196087, 6.063457, 0)
+
+[node name="Invincibility Frames" parent="Prizes" unique_id=1778633720 instance=ExtResource("3_p6jpk")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.9259591, 6.176932, 0)
+
+[node name="Jump Height" parent="Prizes" unique_id=742141496 instance=ExtResource("4_2a143")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2732558, 5.598751, 0)

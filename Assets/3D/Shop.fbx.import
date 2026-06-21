@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bhgn0eq6cqgvs"
-path="res://.godot/imported/RabbitPlushie.fbx-ce538aa3b2990c1d9351885c043eb3a5.scn"
+uid="uid://dyfwa0tin2osj"
+path="res://.godot/imported/Shop.fbx-619022a811adb797dfac89c6db1ad8f8.scn"
 
 [deps]
 
-source_file="res://Assets/3D/RabbitPlushie.fbx"
-dest_files=["res://.godot/imported/RabbitPlushie.fbx-ce538aa3b2990c1d9351885c043eb3a5.scn"]
+source_file="res://Assets/3D/Shop.fbx"
+dest_files=["res://.godot/imported/Shop.fbx-619022a811adb797dfac89c6db1ad8f8.scn"]
 
 [params]
 
