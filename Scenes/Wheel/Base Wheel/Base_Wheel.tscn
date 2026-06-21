@@ -57,6 +57,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -20.121037)
 [node name="PlayerCharacter" parent="." unique_id=1881213073 instance=ExtResource("3_ie8sb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.052173913, 0, -18.631073)
 
+[node name="Skeleton3D" parent="PlayerCharacter/Main Character Animated/Armature" parent_id_path=PackedInt32Array(1881213073, 1448694444, 1175148561) index="0" unique_id=549346042]
+bones/7/rotation = Quaternion(-0.12364952, -0.48415923, 0.86170805, -0.08809148)
+bones/15/rotation = Quaternion(0.8187356, -0.021719266, -0.038066782, 0.5724956)
+bones/16/rotation = Quaternion(0.3001855, -0.097157344, -0.043046646, 0.94794315)
+bones/24/rotation = Quaternion(-0.21164249, 0.085871786, -0.25651538, 0.93916637)
+bones/25/rotation = Quaternion(0.6464669, -0.38227597, 0.3622319, 0.552027)
+bones/30/rotation = Quaternion(0.27347803, -0.60955876, 0.7377697, 0.09666301)
+bones/31/rotation = Quaternion(0.12439756, -0.008782508, -0.041968107, 0.99130565)
+
 [node name="Camera3D" parent="PlayerCharacter/Head" parent_id_path=PackedInt32Array(1881213073, 949301898) index="0" unique_id=832332793]
 visible = false
 
@@ -64,3 +73,4 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7329977, 4.7683716e-07, -15.529267)
 
 [editable path="PlayerCharacter"]
+[editable path="PlayerCharacter/Main Character Animated"]
