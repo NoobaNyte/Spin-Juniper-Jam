@@ -83,4 +83,4 @@ speed_running = 2.0
 speed_jump = 1.15
 
 [node name="Wheel Board" parent="." unique_id=844042927 instance=ExtResource("8_y3v7k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.619)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1964708)

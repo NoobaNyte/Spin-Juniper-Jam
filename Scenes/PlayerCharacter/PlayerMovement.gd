@@ -11,7 +11,7 @@ extends CharacterBody3D
 @export_group("Animation Speeds")
 @export var speed_idle: float = 1.0
 @export var speed_running: float = 1.0
-@export var speed_walking: float = 1.0
+@export var speed_walking: float = 1.0 # walking is not hooked up rn because set movement speed
 @export var speed_jump: float = 1.0
 
 # ── Movement Settings ──────────────────────────────────────────────────────────
@@ -183,14 +183,14 @@ func _handle_animations(wish_dir: Vector3) -> void:
 	if not animation_player:
 		return
 		
-	var target_anim: String = "Idle"
+	var target_anim: String = "Armature|Idle"
 	var target_speed: float = speed_idle
 	
 	if not is_on_floor():
-		target_anim = "Jump"
+		target_anim = "Armature|Jump"
 		target_speed = speed_jump
 	elif wish_dir != Vector3.ZERO:
-		target_anim = "Running"
+		target_anim = "Armature|Running"
 		target_speed = speed_running
 
 	# Only call play if we are actually changing animations. 
