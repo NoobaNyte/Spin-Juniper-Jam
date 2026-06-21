@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dsy8drh41rjeh"
-path="res://.godot/imported/Jump Height.fbx-ff5405fa3bd67c60337f2a2a8688d96b.scn"
+path="res://.godot/imported/Grip.fbx-f822e431d87848d00f4bfe71691dade9.scn"
 
 [deps]
 
-source_file="res://Assets/3D/Prizes/Jump Height.fbx"
-dest_files=["res://.godot/imported/Jump Height.fbx-ff5405fa3bd67c60337f2a2a8688d96b.scn"]
+source_file="res://Assets/3D/Prizes/Grip.fbx"
+dest_files=["res://.godot/imported/Grip.fbx-f822e431d87848d00f4bfe71691dade9.scn"]
 
 [params]
 
