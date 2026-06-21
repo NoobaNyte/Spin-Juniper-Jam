@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dkobqdf0o1m7a" path="res://Scenes/RotatingPlatform/RotatingPlatform.tscn" id="1_gy2d5"]
 [ext_resource type="ArrayMesh" uid="uid://dqoldtwb8bobo" path="res://Assets/3D/test.tres" id="2_cqp6s"]
 [ext_resource type="PackedScene" uid="uid://dqhsrngl043po" path="res://Scenes/PlayerCharacter/PlayerCharacter.tscn" id="3_l02uu"]
+[ext_resource type="Script" uid="uid://bxdyahj71ry4i" path="res://Scenes/LevelManager.gd" id="4_gy2d5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6srx6"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -63,3 +64,7 @@ mesh = SubResource("SphereMesh_24fsb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2" unique_id=11381072]
 shape = SubResource("SphereShape3D_gy2d5")
+
+[node name="LevelManager" type="Node3D" parent="." unique_id=10753789 node_paths=PackedStringArray("platform")]
+script = ExtResource("4_gy2d5")
+platform = NodePath("../RotatingPlatform")
