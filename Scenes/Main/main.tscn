@@ -77,7 +77,7 @@ transform = Transform3D(-0.28417328, 0, 0.95877296, 0, 1, 0, -0.95877296, 0, -0.
 [node name="Shop" parent="." unique_id=725113405 instance=ExtResource("1_1r6ip")]
 
 [node name="PlayerCharacter" parent="." unique_id=1881213073 instance=ExtResource("5_2a143")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 8.436314, 0.3936805, -0.5346956)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.9646444, 0.3936805, 4.4478264)
 in_game = false
 in_menu = true
 anim_blend_time = 0.25
@@ -87,11 +87,10 @@ speed_jump = 1.15
 [node name="Wheel Board" parent="." unique_id=844042927 instance=ExtResource("8_y3v7k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1964708)
 
-[node name="RotatingPlatform" parent="." unique_id=1596451553 node_paths=PackedStringArray("player") instance=ExtResource("9_imbg2")]
+[node name="RotatingPlatform" parent="." unique_id=1596451553 instance=ExtResource("9_imbg2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40227222, -8.453808, -23.39281)
 pivot_point = Vector3(0.402, -8.454, -23.393)
 wall_meshes = Array[Mesh]([ExtResource("10_hfg1r")])
 section_colors = Array[Color]([Color(0.98119634, 0.37531948, 0, 1), Color(0.07290412, 0.38077685, 0.19628096, 1)])
 sequential_colors = true
 hole_chance = 0.0
-player = NodePath("")
