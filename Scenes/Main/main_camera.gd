@@ -98,3 +98,6 @@ func trigger_special_area() -> void:
 
 func exit_special_area() -> void:
 	is_in_special_area = false
+
+func _on_zoom_area_body_entered(body: Node3D) -> void:
+	pass # Replace with function body.
