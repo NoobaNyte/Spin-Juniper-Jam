@@ -75,5 +75,10 @@ transform = Transform3D(-0.28417328, 0, 0.95877296, 0, 1, 0, -0.95877296, 0, -0.
 
 [node name="PlayerCharacter" parent="." unique_id=1881213073 instance=ExtResource("5_2a143")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13638735, 0.3936805, -0.5346956)
+in_game = false
+in_menu = true
+anim_blend_time = 0.5
+speed_running = 2.0
+speed_jump = 1.15
 
 [editable path="Shop"]

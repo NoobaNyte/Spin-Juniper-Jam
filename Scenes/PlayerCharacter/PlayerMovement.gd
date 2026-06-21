@@ -1,14 +1,24 @@
 extends CharacterBody3D
 
+# ── Movement Type Settings ──────────────────────────────────────────────────────────
+@export var in_game: bool = true
+@export var in_menu: bool = false
+
 # ── Animation Settings ──────────────────────────────────────────────────────────
 @export var animation_player: AnimationPlayer
-@export var anim_blend_time: float = 0.15 # How long the transition takes
+@export var anim_blend_time: float = 0.15
+
+@export_group("Animation Speeds")
+@export var speed_idle: float = 1.0
+@export var speed_running: float = 1.0
+@export var speed_walking: float = 1.0
+@export var speed_jump: float = 1.0
 
 # ── Movement Settings ──────────────────────────────────────────────────────────
 @export var move_speed: float = 6.0
 @export var acceleration: float = 20.0
 @export var friction: float = 18.0
-@export var rotation_speed: float = 12.0 # How fast the player turns to face movement
+@export var rotation_speed: float = 12.0
 
 # ── Jump Settings ──────────────────────────────────────────────────────────────
 @export var jump_velocity: float = 8.0
@@ -48,6 +58,10 @@ func _physics_process(delta: float) -> void:
 	input_dir.y = Input.get_axis("MoveRight", "MoveLeft")
 	input_dir.x = Input.get_axis("MoveUp", "MoveDown")
 	var wish_dir := Vector3(input_dir.x, 0.0, input_dir.y).normalized()
+
+	# Rotate inputs 90 degrees if in menu
+	if in_menu:
+		wish_dir = wish_dir.rotated(Vector3.UP, PI / 2.0)
 
 	_apply_gravity(delta)
 	_handle_coyote(delta)
@@ -157,21 +171,28 @@ func _handle_movement(delta: float, wish_dir: Vector3) -> void:
 			velocity.z = move_toward(velocity.z, 0.0, friction * delta)
 
 
-# NEW: Smoothly rotates the character to face the input direction
 func _handle_rotation(delta: float, wish_dir: Vector3) -> void:
 	if wish_dir != Vector3.ZERO:
 		var target_angle := atan2(wish_dir.x, wish_dir.z)
 		rotation.y = lerp_angle(rotation.y, target_angle, rotation_speed * delta)
 
 
-# UPDATED: Added the anim_blend_time parameter to the play calls
+# UPDATED: No more stuttering!
 func _handle_animations(wish_dir: Vector3) -> void:
 	if not animation_player:
 		return
 		
+	var target_anim: String = "Idle"
+	var target_speed: float = speed_idle
+	
 	if not is_on_floor():
-		animation_player.play("Jump", anim_blend_time)
+		target_anim = "Jump"
+		target_speed = speed_jump
 	elif wish_dir != Vector3.ZERO:
-		animation_player.play("Running", anim_blend_time)
-	else:
-		animation_player.play("Idle", anim_blend_time)
+		target_anim = "Running"
+		target_speed = speed_running
+
+	# If the animation is already playing, drop the blend time to 0 to prevent stuttering
+	var current_blend: float = anim_blend_time if animation_player.current_animation != target_anim else 0.0
+	
+	animation_player.play(target_anim, current_blend, target_speed)
