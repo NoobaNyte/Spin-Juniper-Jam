@@ -30,7 +30,7 @@ ssao_radius = 6.04
 ssao_intensity = 10.1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6t3k2"]
-size = Vector3(27.658203, 3.0034103, 10.050903)
+size = Vector3(22.552734, 2.0408897, 9.756348)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4e4y2"]
 size = Vector3(25.786184, 0.95687485, 4.6926003)
@@ -54,10 +54,16 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 visible = false
 shadow_enabled = true
 
-[node name="MainCamera" type="Camera3D" parent="." unique_id=1331169492 node_paths=PackedStringArray("player")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.0052981, 2.489451, -7.0519886)
+[node name="MainCamera" type="Camera3D" parent="." unique_id=1331169492 node_paths=PackedStringArray("player", "zoom_pos")]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 2.0052977, 2.489451, -7.0519886)
+current = true
 script = ExtResource("1_hfg1r")
 player = NodePath("../PlayerCharacter")
+zoom_pos = NodePath("../MainCamera Zoomed Out")
+
+[node name="MainCamera Zoomed Out" type="Camera3D" parent="." unique_id=582228753]
+transform = Transform3D(-0.9999619, -0.0029846854, 0.008200356, 0, 0.9396927, 0.3420201, -0.008726637, 0.3420071, -0.93965685, 0, 6.3409996, -15.032999)
+visible = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=643451075]
 environment = SubResource("Environment_qw60k")
@@ -67,12 +73,15 @@ environment = SubResource("Environment_qw60k")
 [node name="Wheel Board" parent="Wheel Board" unique_id=844042927 instance=ExtResource("8_y3v7k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1964708)
 
+[node name="Wheel" parent="Wheel Board/Wheel Board" index="2" unique_id=2030928217]
+visible = false
+
 [node name="Shop" type="StaticBody3D" parent="." unique_id=294995878]
 
 [node name="ZoomArea" type="Area3D" parent="Shop" unique_id=1632722335]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Shop/ZoomArea" unique_id=2063383922]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.373745, 4.9187856)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.89248466, 4.6250844)
 shape = SubResource("BoxShape3D_6t3k2")
 debug_color = Color(1, 0, 0, 0.41960785)
 
@@ -117,7 +126,7 @@ transform = Transform3D(-0.9191025, 0, 0.39401886, 0, 1, 0, -0.39401886, 0, -0.9
 [node name="Jump_Prize" parent="Prizes" unique_id=1661532089 instance=ExtResource("5_y3v7k")]
 transform = Transform3D(-0.28417328, 0, 0.95877296, 0, 1, 0, -0.95877296, 0, -0.28417328, -27.185265, 4.09997, 11.569756)
 
-[node name="PlayerCharacter" parent="." unique_id=1881213073 instance=ExtResource("5_2a143")]
+[node name="PlayerCharacter" parent="." unique_id=1881213073 groups=["Player"] instance=ExtResource("5_2a143")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 4.448)
 in_game = false
 in_menu = true
@@ -126,11 +135,16 @@ speed_running = 2.0
 speed_jump = 1.15
 
 [node name="RotatingPlatform" parent="." unique_id=1596451553 instance=ExtResource("9_imbg2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40227222, -8.453808, -23.39281)
-pivot_point = Vector3(0.402, -8.454, -23.393)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -21, 2)
+pivot_point = Vector3(0, -21, 2)
 wall_meshes = Array[Mesh]([ExtResource("10_hfg1r")])
 section_colors = Array[Color]([Color(0.98119634, 0.37531948, 0, 1), Color(0.07290412, 0.38077685, 0.19628096, 1)])
 sequential_colors = true
 hole_chance = 0.0
 
+[connection signal="body_entered" from="Shop/ZoomArea" to="MainCamera" method="_on_zoom_area_body_entered"]
+[connection signal="body_exited" from="Shop/ZoomArea" to="MainCamera" method="_on_zoom_area_body_exited"]
+
+[editable path="Wheel Board/Wheel Board"]
 [editable path="Shop/Shop"]
+[editable path="RotatingPlatform"]
