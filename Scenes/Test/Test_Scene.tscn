@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b4s102iodbf7f"]
 
 [ext_resource type="PackedScene" uid="uid://dkobqdf0o1m7a" path="res://Scenes/RotatingPlatform/RotatingPlatform.tscn" id="1_gy2d5"]
-[ext_resource type="ArrayMesh" uid="uid://dqoldtwb8bobo" path="res://Assets/3D/test.tres" id="2_cqp6s"]
+[ext_resource type="ArrayMesh" uid="uid://btnsdcbsqjrba" path="res://Assets/3D/test.tres" id="2_cqp6s"]
 [ext_resource type="PackedScene" uid="uid://dqhsrngl043po" path="res://Scenes/PlayerCharacter/PlayerCharacter.tscn" id="3_l02uu"]
 [ext_resource type="Script" uid="uid://bxdyahj71ry4i" path="res://Scenes/LevelManager.gd" id="4_gy2d5"]
 
@@ -41,11 +41,11 @@ shadow_enabled = true
 transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 0, 0, 0)
 
 [node name="Top Down" type="Camera3D" parent="." unique_id=1577127877]
-transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, -7.9359, 19.43115, 0.7550125)
+transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, -10.19, 16.229, 0)
 fov = 60.0
 
 [node name="PlayerCharacter" parent="." unique_id=1881213073 instance=ExtResource("3_l02uu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.363929, 15.883021, -0.20983243)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.3281975, 15.994578, -0.17253232)
 
 [node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=922417447]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -8.544493, 26.490522, 0)

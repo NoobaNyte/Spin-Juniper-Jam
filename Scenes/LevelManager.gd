@@ -7,6 +7,7 @@ extends Node
 @export var platform: Node3D = null
 @export var start_on_ready: bool = true
 
+var Startup = true
 # ── Level Data ─────────────────────────────────────────────────────────────────
 class Level:
 	# Speed: platform accelerates from speed_min to speed_max over speed_ramp_time
@@ -73,7 +74,7 @@ class Level:
 # Edit or extend this array to add more levels.
 var levels: Array = []
 
-var current_level: int = 3
+var current_level: int = 0
 var _level_time: float = 0.0   # time spent in the current level
 
 
@@ -83,11 +84,14 @@ func _ready() -> void:
 	# Easiest to construct them with named assignment after init instead:
 
 	var l0 := Level.new()
-	l0.speed_min         = 15.0
-	l0.speed_max         = 35.0
+	l0.speed_min         = 20.0
+	l0.speed_max         = 45.0
 	l0.speed_ramp_time   = 40.0
 	l0.min_section_angle = 30.0
 	l0.max_section_angle = 90.0
+	l0.wall_height       = 0.0
+	l0.wall_on_leading_edge = false
+	l0.wall_on_trailing_edge = false
 	l0.hole_chance       = 0.0
 	l0.section_colors    = [Color(0.2, 0.6, 1.0), Color(0.014, 0.153, 0.392, 1.0)]
 	l0.sequential_colors = true
@@ -167,7 +171,13 @@ func _ready() -> void:
 	
 
 	if start_on_ready:
+		current_level = -1
 		apply_level(current_level)
+		await get_tree().create_timer(2.5).timeout
+		current_level = 0
+		Startup = false
+		apply_level(current_level)
+		
 
 
 func _physics_process(delta: float) -> void:
@@ -210,7 +220,39 @@ func apply_level(index: int) -> void:
 	if platform == null:
 		push_error("LevelManager: platform is not assigned")
 		return
+		
+		
 	if index < 0 or index >= levels.size():
+		if Startup:
+			var l0 := Level.new()
+
+			l0.speed_min         = 300.0
+			l0.speed_max         = 300.0
+			l0.speed_ramp_time   = 40.0
+			l0.min_section_angle = 30.0
+			l0.max_section_angle = 90.0
+			l0.wall_height       = 0.0
+			l0.wall_on_leading_edge = false
+			l0.wall_on_trailing_edge = false
+			l0.hole_chance       = 0.0
+			l0.section_colors    = [Color(0.2, 0.6, 1.0), Color(0.014, 0.153, 0.392, 1.0)]
+			l0.sequential_colors = true
+			levels.append(l0)
+			
+			platform.rotation_speed_deg   = l0.speed_min
+			platform.min_section_angle    = l0.min_section_angle
+			platform.max_section_angle    = l0.max_section_angle
+			platform.hole_chance          = l0.hole_chance
+			platform.hole_radius_min      = l0.hole_radius_min
+			platform.hole_radius_max      = l0.hole_radius_max
+			platform.hole_distance_min    = l0.hole_distance_min
+			platform.hole_distance_max    = l0.hole_distance_max
+			platform.section_colors       = l0.section_colors
+			platform.sequential_colors    = l0.sequential_colors
+			platform.wall_on_trailing_edge = l0.wall_on_trailing_edge
+			platform.wall_on_leading_edge  = l0.wall_on_leading_edge
+			platform.wall_height          = l0.wall_height
+			return
 		push_error("LevelManager: level index %d out of range" % index)
 		return
 
