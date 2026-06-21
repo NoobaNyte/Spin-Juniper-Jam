@@ -1,7 +1,12 @@
 extends Node3D
 
+
 # ── Platform Shape ─────────────────────────────────────────────────────────────
+
 @export var pivot_point: Vector3 = Vector3.ZERO
+
+@export var display_platform: bool = false
+
 @export var platform_radius: float = 18.0
 @export var platform_inner_radius: float = 0.0
 @export var platform_thickness: float = 0.3
@@ -43,6 +48,25 @@ var _color_index: int = 0
 @export var player: CharacterBody3D = null
 
 var _pending_angle: float = 0.0
+
+# ── Sphere Spawning ────────────────────────────────────────────────────────────
+@export var spawn_spheres: bool = false
+@export var sphere_spawn_rate: float = 0.5      # spheres per second
+@export var sphere_radius: float = 1
+@export var sphere_spawn_height: float = 8.0    # height above platform to spawn
+@export var sphere_material: Material = null
+@export var beam_material: Material = null
+
+@export var beam_width: float = 2
+@export var beam_height: float = 2
+@export var beam_length: float = 6
+
+@export var sphere_velocity_horizontal_min: float = 0.0
+@export var sphere_velocity_horizontal_max: float = 10.0
+@export var sphere_velocity_vertical_min: float = 0.0
+@export var sphere_velocity_vertical_max: float = 2.0
+
+var _sphere_timer: float = 0.0
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Internal
@@ -87,6 +111,74 @@ func _physics_process(delta: float) -> void:
 
 	# _next_trailing_angle line removed — spawn point is always spawn_angle_deg
 	_try_spawn()
+	
+	if spawn_spheres:
+		_sphere_timer += delta
+		var interval: float = 1.0 / max(sphere_spawn_rate, 0.001)
+		while _sphere_timer >= interval:
+			_sphere_timer -= interval
+			_spawn_sphere()
+
+func _spawn_sphere() -> void:
+	if display_platform:
+		return
+		
+	var body := RigidBody3D.new()
+	add_child(body)
+
+	var col := CollisionShape3D.new()
+	var mi := MeshInstance3D.new()
+
+	var is_sphere: bool = randf() < 0.5
+
+	if is_sphere:
+		var shape := SphereShape3D.new()
+		shape.radius = sphere_radius
+		col.shape = shape
+
+		var mesh := SphereMesh.new()
+		mesh.radius = sphere_radius
+		mesh.height = sphere_radius * 2.0
+		mi.mesh = mesh
+
+		if sphere_material:
+			mi.material_override = sphere_material
+	else:
+		var shape := BoxShape3D.new()
+		col.shape = shape
+
+		var mesh := BoxMesh.new()
+		mesh.size = Vector3(beam_width, beam_height, beam_length)
+		mi.mesh = mesh
+
+		if beam_material:
+			mi.material_override = beam_material
+
+	body.add_child(col)
+	body.add_child(mi)
+
+	var angle: float = randf() * PI * 2.0
+	var dist: float = randf_range(platform_inner_radius, platform_radius)
+	body.global_position = pivot_point + Vector3(
+		sin(angle) * dist,
+		sphere_spawn_height,
+		-cos(angle) * dist
+	)
+
+	var vel_angle: float = randf() * PI * 2.0
+	var vel_h: float = randf_range(sphere_velocity_horizontal_min, sphere_velocity_horizontal_max)
+	var vel_v: float = randf_range(sphere_velocity_vertical_min, sphere_velocity_vertical_max)
+	body.linear_velocity = Vector3(
+		sin(vel_angle) * vel_h,
+		vel_v,
+		cos(vel_angle) * vel_h
+	)
+
+	var lifetime: float = (360.0 / max(rotation_speed_deg, 0.001)) + 5.0
+	get_tree().create_timer(lifetime).timeout.connect(func():
+		if is_instance_valid(body):
+			body.queue_free()
+	)
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -247,8 +339,6 @@ func _build_wedge_mesh(section_angle_deg: float, outer_r: float, inner_r: float,
 	var solid: bool = inner_r <= 0.001
 	var has_hole: bool = hole_r > 0.001
 	var eff_inner: float = inner_r if not solid else 0.0
-
-	var mid_r: float = (outer_r + eff_inner) * 0.5
 	
 	var mid_a: float = deg_to_rad(section_angle_deg * 0.5)
 	var hole_cx: float = sin(mid_a) * hole_dist

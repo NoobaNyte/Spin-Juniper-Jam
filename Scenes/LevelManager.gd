@@ -6,6 +6,7 @@ extends Node
 
 @export var platform: Node3D = null
 @export var start_on_ready: bool = true
+@export var sphere_material: Material = null
 
 var Startup = true
 # ── Level Data ─────────────────────────────────────────────────────────────────
@@ -35,6 +36,12 @@ class Level:
 	var wall_on_trailing_edge: bool = false
 	var wall_on_leading_edge: bool = true
 	var wall_height: float = 1.5
+	
+	# Sphere spawning
+	var spawn_spheres: bool = false
+	var sphere_spawn_rate: float = 1.0
+	var sphere_radius: float = 0.4
+	var sphere_spawn_height: float = 8.0
 
 	func _init(
 		p_speed_min: float = 20.0,
@@ -51,23 +58,31 @@ class Level:
 		p_sequential_colors: bool = false,
 		p_wall_on_trailing_edge: bool = false,
 		p_wall_on_leading_edge: bool = true,
-		p_wall_height: float = 1.5
+		p_wall_height: float = 1.5,
+		p_spawn_spheres: bool = false,
+		p_sphere_spawn_rate: float = 1.0,
+		p_sphere_radius: float = 0.4,
+		p_sphere_spawn_height: float = 8.0,
 	) -> void:
-		speed_min            = p_speed_min
-		speed_max            = p_speed_max
-		speed_ramp_time      = p_speed_ramp_time
-		min_section_angle    = p_min_section_angle
-		max_section_angle    = p_max_section_angle
-		hole_chance          = p_hole_chance
-		hole_radius_min      = p_hole_radius_min
-		hole_radius_max      = p_hole_radius_max
-		hole_distance_min    = p_hole_distance_min
-		hole_distance_max    = p_hole_distance_max
-		section_colors       = p_section_colors
-		sequential_colors    = p_sequential_colors
+		speed_min             = p_speed_min
+		speed_max             = p_speed_max
+		speed_ramp_time       = p_speed_ramp_time
+		min_section_angle     = p_min_section_angle
+		max_section_angle     = p_max_section_angle
+		hole_chance           = p_hole_chance
+		hole_radius_min       = p_hole_radius_min
+		hole_radius_max       = p_hole_radius_max
+		hole_distance_min     = p_hole_distance_min
+		hole_distance_max     = p_hole_distance_max
+		section_colors        = p_section_colors
+		sequential_colors     = p_sequential_colors
 		wall_on_trailing_edge = p_wall_on_trailing_edge
 		wall_on_leading_edge  = p_wall_on_leading_edge
-		wall_height          = p_wall_height
+		wall_height           = p_wall_height
+		spawn_spheres         = p_spawn_spheres
+		sphere_spawn_rate     = p_sphere_spawn_rate
+		sphere_radius         = p_sphere_radius
+		sphere_spawn_height   = p_sphere_spawn_height
 
 
 # ── Define your levels here ────────────────────────────────────────────────────
@@ -95,6 +110,11 @@ func _ready() -> void:
 	l0.hole_chance       = 0.0
 	l0.section_colors    = [Color(0.2, 0.6, 1.0), Color(0.014, 0.153, 0.392, 1.0)]
 	l0.sequential_colors = true
+	l0.spawn_spheres = true
+	l0.sphere_spawn_rate = 1
+	l0.sphere_spawn_height = 15
+	l0.sphere_radius = 2
+	
 	levels.append(l0)
 
 	var l1 := Level.new()
@@ -103,7 +123,7 @@ func _ready() -> void:
 	l1.speed_ramp_time   = 40.0
 	l1.min_section_angle = 25.0
 	l1.max_section_angle = 70.0
-	l1.hole_chance       = 0.3
+	l1.hole_chance       = 0.5
 	l1.hole_radius_min   = 1.0
 	l1.hole_radius_max   = 2.5
 	l1.hole_distance_min = 5.0
@@ -128,6 +148,10 @@ func _ready() -> void:
 	l2.wall_on_leading_edge  = true
 	l2.wall_on_trailing_edge = false
 	l2.wall_height           = 1.5
+	l2.spawn_spheres = true
+	l2.sphere_spawn_rate = 1
+	l2.sphere_spawn_height = 15
+	l2.sphere_radius = 2
 	levels.append(l2)
 	
 	
@@ -147,6 +171,10 @@ func _ready() -> void:
 	l3.wall_on_leading_edge  = true
 	l3.wall_on_trailing_edge = false
 	l3.wall_height           = 1.5
+	l3.spawn_spheres = true
+	l3.sphere_spawn_rate = 1
+	l3.sphere_spawn_height = 15
+	l3.sphere_radius = 2
 
 	levels.append(l3);
 	
@@ -272,3 +300,8 @@ func apply_level(index: int) -> void:
 	platform.wall_on_trailing_edge = lvl.wall_on_trailing_edge
 	platform.wall_on_leading_edge  = lvl.wall_on_leading_edge
 	platform.wall_height          = lvl.wall_height
+	platform.spawn_spheres        = lvl.spawn_spheres
+	platform.sphere_spawn_rate    = lvl.sphere_spawn_rate
+	platform.sphere_radius        = lvl.sphere_radius
+	platform.sphere_spawn_height  = lvl.sphere_spawn_height
+	platform.sphere_material      = sphere_material	
