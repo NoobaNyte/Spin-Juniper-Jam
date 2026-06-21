@@ -20,4 +20,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.987043, 0)
 
 [node name="Collision" type="CollisionShape3D" parent="Prize" parent_id_path=PackedInt32Array(1583447403) index="1" unique_id=262744825]
 shape = SubResource("ConvexPolygonShape3D_abeok")
-disabled = true

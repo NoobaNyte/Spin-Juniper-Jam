@@ -20,7 +20,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3620057, 0)
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Prize" index="0" unique_id=1077124498]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.036120057, -0.7364796, 0.02663511)
 shape = SubResource("ConvexPolygonShape3D_gpt26")
-disabled = true
 
 [node name="Invincibility Frames" parent="Prize" index="1" unique_id=49285525 instance=ExtResource("2_gpt26")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.036120057, -0.7364796, 0.02663511)
