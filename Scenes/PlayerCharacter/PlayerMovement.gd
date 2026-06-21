@@ -15,6 +15,7 @@ extends CharacterBody3D
 @export var speed_jump: float = 1.0
 
 # ── Movement Settings ──────────────────────────────────────────────────────────
+@export_group("Settings")
 @export var move_speed: float = 6.0
 @export var acceleration: float = 20.0
 @export var friction: float = 18.0
@@ -192,7 +193,7 @@ func _handle_animations(wish_dir: Vector3) -> void:
 		target_anim = "Running"
 		target_speed = speed_running
 
-	# If the animation is already playing, drop the blend time to 0 to prevent stuttering
-	var current_blend: float = anim_blend_time if animation_player.current_animation != target_anim else 0.0
-	
-	animation_player.play(target_anim, current_blend, target_speed)
+	# Only call play if we are actually changing animations. 
+	# This lets Godot's internal blending finish smoothly without being interrupted!
+	if animation_player.current_animation != target_anim:
+		animation_player.play(target_anim, anim_blend_time, target_speed)
