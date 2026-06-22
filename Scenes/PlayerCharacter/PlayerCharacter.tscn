@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://dqhsrngl043po"]
 
-[ext_resource type="Script" uid="uid://p364eykyybm8" path="res://Scenes/PlayerCharacter/PlayerMovement.gd" id="1_7sflc"]
+[ext_resource type="Script" uid="uid://p364eykyybm8" path="res://Scenes/PlayerCharacter/Scripts/PlayerMovement.gd" id="1_7sflc"]
 [ext_resource type="PackedScene" uid="uid://cu6d35o7kf53" path="res://Assets/3D/Main Character Animated.fbx" id="2_vlfjb"]
+[ext_resource type="Script" uid="uid://bph2epx86k0m0" path="res://Scenes/PlayerCharacter/Scripts/stats_updater.gd" id="2_wwltf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iof21"]
 albedo_color = Color(0.91806, 0.575202, 0.222449, 1)
@@ -17,6 +18,11 @@ height = 1.8
 [node name="PlayerCharacter" type="CharacterBody3D" unique_id=1881213073 node_paths=PackedStringArray("animation_player")]
 script = ExtResource("1_7sflc")
 animation_player = NodePath("Main Character Animated/AnimationPlayer")
+
+[node name="Scripts" type="Node" parent="." unique_id=2113954071]
+
+[node name="Stats_Updater" type="Node" parent="Scripts" unique_id=1441759509]
+script = ExtResource("2_wwltf")
 
 [node name="Main Character Animated" parent="." unique_id=1448694444 instance=ExtResource("2_vlfjb")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)

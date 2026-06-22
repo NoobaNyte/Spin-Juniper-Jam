@@ -1,0 +1,4 @@
+extends Node
+
+signal set_in_menu_stats
+signal set_in_game_stats
