@@ -11,11 +11,14 @@ points = PackedVector3Array(0.009710623, 0.014435349, -0.0015136534, -0.01409488
 [node name="TopPin" parent="." index="0" unique_id=393680634]
 node_a = NodePath("../Shop String Segment")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Prize" parent_id_path=PackedInt32Array(1583447403) index="0" unique_id=1397741579]
-transform = Transform3D(82.41047, -56.643753, -6.7524616e-06, 0, -1.1920929e-05, 99.99999, -56.643753, -82.41047, -9.8240935e-06, 0, 0.48317564, 0)
+[node name="Prize" parent="." index="6" unique_id=1583447403]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0.5056817, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Prize" index="0" unique_id=186164669]
+transform = Transform3D(225, 0, 2.1684043e-19, 0, -2.682209e-05, 224.99998, 1.8189894e-12, -224.99998, -2.682209e-05, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_us7j5")
 
-[node name="FrogPlushie" parent="Prize" parent_id_path=PackedInt32Array(1583447403) index="1" unique_id=854971900 instance=ExtResource("2_us7j5")]
-transform = Transform3D(0.82410467, 0, 0.56643754, 0, 1, 0, -0.56643754, 0, 0.82410467, 0, 0.48317564, 0)
+[node name="FrogPlushie" parent="Prize" index="1" unique_id=854971900 instance=ExtResource("2_us7j5")]
+transform = Transform3D(2.25, 0, 0, 0, 2.25, 0, 0, 0, 2.25, 0, 0, 0)
 
 [editable path="Prize/FrogPlushie"]

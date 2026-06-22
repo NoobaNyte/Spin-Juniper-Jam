@@ -15,11 +15,11 @@ node_a = NodePath("../Shop String Segment")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0230228, 0)
 
 [node name="Prize" parent="." index="6" unique_id=1583447403]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3620057, 0)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, -3.3352222, 0)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Prize" index="0" unique_id=1077124498]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.036120057, -0.7364796, 0.02663511)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.11394024, 0)
 shape = SubResource("ConvexPolygonShape3D_gpt26")
 
 [node name="Invincibility Frames" parent="Prize" index="1" unique_id=49285525 instance=ExtResource("2_gpt26")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.036120057, -0.7364796, 0.02663511)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.11394024, 0)

@@ -16,8 +16,11 @@ node_b = NodePath("")
 [node name="Top" parent="." index="1" unique_id=269816899]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.987043, 0)
 
+[node name="PrizePin" parent="." index="4" unique_id=1049927685]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0583615, 0)
+
 [node name="Prize" parent="." index="6" unique_id=1583447403]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.21102542, 0)
 
 [node name="HP" parent="Prize" index="0" unique_id=812234728 instance=ExtResource("2_kivwe")]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
