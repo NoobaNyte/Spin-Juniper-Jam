@@ -3,7 +3,7 @@ extends Node
 var player_character: CharacterBody3D
 
 @export_group("In Menu Player Stats")
-@export var menu_scale: float = 1.5
+@export var menu_scale: float = 1.75
 @export var menu_move_speed: float = 8
 @export var menu_jump_velocity: float = 12
 @export var menu_running_animation_speed: float = 2.75
@@ -20,6 +20,7 @@ var player_character: CharacterBody3D
 
 func _ready() -> void:
 	player_character = owner
+
 	PlayerGlobals.set_in_menu_stats.connect(set_in_menu_stats)
 	PlayerGlobals.set_in_game_stats.connect(set_in_game_stats)
 

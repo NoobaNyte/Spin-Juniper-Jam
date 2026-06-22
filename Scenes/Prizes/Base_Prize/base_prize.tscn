@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://cfqh7ao1mlciy"]
 
 [ext_resource type="PackedScene" uid="uid://bxu8p3a5g5hvv" path="res://Scenes/Prizes/Base_Prize/shop_string_segment.tscn" id="1_6u7tq"]
+[ext_resource type="PackedScene" uid="uid://buf6xs4m2tmk8" path="res://Assets/3D/Prizes/Direction Arrow.fbx" id="2_wnyqy"]
+[ext_resource type="Script" uid="uid://10ojd2tyhwfj" path="res://Assets/Utility Scripts/hide_on_load.gd" id="3_f7psc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6u7tq"]
 
@@ -34,3 +36,7 @@ node_b = NodePath("../Prize Connecter Segment")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.034724, 0)
 
 [node name="Prize" type="RigidBody3D" parent="." unique_id=1583447403]
+
+[node name="Direction Arrow" parent="." unique_id=1837532217 instance=ExtResource("2_wnyqy")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 4.1452055, 0)
+script = ExtResource("3_f7psc")

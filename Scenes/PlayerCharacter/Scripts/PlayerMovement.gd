@@ -6,13 +6,13 @@ extends CharacterBody3D
 
 # ── Animation Settings ──────────────────────────────────────────────────────────
 @export var animation_player: AnimationPlayer
-@export var anim_blend_time: float = 0.15
+@export var anim_blend_time: float = 0.25
 
 @export_group("Animation Speeds")
 @export var speed_idle: float = 1.0
-@export var speed_running: float = 1.0
+@export var speed_running: float = 2.0
 @export var speed_walking: float = 1.0 # walking is not hooked up rn because set movement speed
-@export var speed_jump: float = 1.0
+@export var speed_jump: float = 1.15
 
 # ── Movement Settings ──────────────────────────────────────────────────────────
 @export_group("Settings")
