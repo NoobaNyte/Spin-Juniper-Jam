@@ -1,7 +1,12 @@
 extends Node3D
 class_name BasePrize
 
-@export_category("String Settings")
+@export_group("Prize Data")
+@export var quantity_owned: int = 0
+@export var item_name: String = "EMPTY NAME"
+@export var item_description: String = "EMPTY DESCRIPTION"
+
+@export_group("String Settings")
 ## How tall each standard string segment is.
 @export var segment_height: float = 2.0
 ## Negative values create overlap between joints, positive values create gaps.
@@ -93,6 +98,7 @@ func gen_strings():
 func _on_selection_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):
 		var prize_popups_ui = UI.get_node("PrizePopups")
+		prize_popups_ui.update_text_boxes(quantity_owned, item_name, item_description)
 		prize_popups_ui.fade_in(prize_popups_ui)
 
 

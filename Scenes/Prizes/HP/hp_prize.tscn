@@ -13,6 +13,8 @@ radius = 2.5
 
 [node name="HP_Prize" unique_id=2124177430 instance=ExtResource("1_vot0h")]
 script = ExtResource("2_4tuay")
+item_name = "HP"
+item_description = "yes"
 
 [node name="Price" parent="Overlays" parent_id_path=PackedInt32Array(998585642) index="0" unique_id=1137845194]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.283, 0)

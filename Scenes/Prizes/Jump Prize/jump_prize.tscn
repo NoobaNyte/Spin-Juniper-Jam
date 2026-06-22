@@ -12,6 +12,8 @@ radius = 4.0
 
 [node name="Jump_Prize" unique_id=2124177430 instance=ExtResource("1_2gxeh")]
 script = ExtResource("2_qiirr")
+item_name = "Jump Boost"
+item_description = "Increases your max jump height"
 
 [node name="Prize" parent="." index="1" unique_id=2110599126]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 7.835952, 0)

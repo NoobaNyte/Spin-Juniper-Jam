@@ -92,6 +92,24 @@ hole_chance = 0.0
 
 [node name="Shop" type="StaticBody3D" parent="." unique_id=294995878]
 
+[node name="Prizes" type="Node3D" parent="Shop" unique_id=242406510]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.065692425, 0)
+
+[node name="HP_Prize" parent="Shop/Prizes" unique_id=1220233561 instance=ExtResource("5_p6jpk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.028084, 0.065692425, 13.813984)
+
+[node name="Speed_Prize" parent="Shop/Prizes" unique_id=1849157300 instance=ExtResource("4_2a143")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.575, 0.06569219, 13.974)
+
+[node name="Jump_Prize" parent="Shop/Prizes" unique_id=1661532089 instance=ExtResource("5_y3v7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.792, 0.0656929, 13.224)
+
+[node name="Invincibility Frames Prize" parent="Shop/Prizes" unique_id=715589344 instance=ExtResource("4_5yls4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.009, 0.06569147, 13.807)
+
+[node name="Bear_Prize" parent="Shop/Prizes" unique_id=2124177430 instance=ExtResource("7_6t3k2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.157011, 0.06569052, 12.855449)
+
 [node name="ZoomArea" type="Area3D" parent="Shop" unique_id=1632722335]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5889311)
 
@@ -123,24 +141,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32.686108, 19.856825)
 shape = SubResource("BoxShape3D_imbg2")
 
 [node name="Shop" parent="Shop" unique_id=725113405 instance=ExtResource("1_1r6ip")]
-
-[node name="Prizes" type="Node3D" parent="." unique_id=242406510]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.065692425, 0)
-
-[node name="HP_Prize" parent="Prizes" unique_id=1220233561 instance=ExtResource("5_p6jpk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.028084, 0.065692425, 13.813984)
-
-[node name="Speed_Prize" parent="Prizes" unique_id=1849157300 instance=ExtResource("4_2a143")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.575, 0.06569219, 13.974)
-
-[node name="Jump_Prize" parent="Prizes" unique_id=1661532089 instance=ExtResource("5_y3v7k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.792, 0.0656929, 13.224)
-
-[node name="Invincibility Frames Prize" parent="Prizes" unique_id=715589344 instance=ExtResource("4_5yls4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.009, 0.06569147, 13.807)
-
-[node name="Bear_Prize" parent="Prizes" unique_id=2124177430 instance=ExtResource("7_6t3k2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.157011, 0.06569052, 12.855449)
 
 [node name="PlayerCharacter" parent="." unique_id=1881213073 groups=["Player"] instance=ExtResource("5_2a143")]
 transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, 0, 0, 6.984)

@@ -100,7 +100,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_de23q")
 [node name="YouHaveText" type="RichTextLabel" parent="PrizePopups/InfoBoxes/Vbox/HBoxContainer/YouHaveContainer" unique_id=605199213]
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 57
-text = "YOU HAVE: 5"
+text = "YOU HAVE: 0"
 fit_content = true
 autowrap_mode = 0
 horizontal_alignment = 1

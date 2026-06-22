@@ -7,8 +7,6 @@ func _ready() -> void:
 	pass
 
 func set_height() -> void:
-	print("new segment pos: ", position)
-	print("new segment height to be set: ", height)
 	var mesh_instance = $MeshInstance3D
 	var collision_shape = $CollisionShape3D
 
