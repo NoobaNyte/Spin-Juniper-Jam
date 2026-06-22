@@ -88,3 +88,15 @@ func gen_strings():
 			top_pin.node_b = anchor.get_path()
 			
 			break # Safety exit
+
+
+func _on_selection_area_body_entered(body: Node3D) -> void:
+	if body.is_in_group("Player"):
+		var prize_popups_ui = UI.get_node("PrizePopups")
+		prize_popups_ui.fade_in(prize_popups_ui)
+
+
+func _on_selection_area_body_exited(body: Node3D) -> void:
+	if body.is_in_group("Player"):
+		var prize_popups_ui = UI.get_node("PrizePopups")
+		prize_popups_ui.fade_out(prize_popups_ui)

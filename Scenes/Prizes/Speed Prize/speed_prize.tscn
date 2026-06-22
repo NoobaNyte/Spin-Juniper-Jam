@@ -13,7 +13,7 @@ radius = 3.25
 [node name="Speed_Prize" unique_id=2124177430 instance=ExtResource("1_2gxeh")]
 script = ExtResource("2_lbh1i")
 
-[node name="Prize" parent="." index="0" unique_id=2110599126]
+[node name="Prize" parent="." index="1" unique_id=2110599126]
 transform = Transform3D(0.99929893, 0, -0.037442036, 0, 1, 0, 0.037442036, 0, 0.99929893, 0, 6.6111107, 0)
 
 [node name="StringBottom" parent="Prize" index="1" unique_id=1526911761]
@@ -31,5 +31,8 @@ transform = Transform3D(0.825, 0, 3.7252903e-09, 0, 0.825, 0, -3.7252903e-09, 0,
 
 [node name="CollisionShape3D" parent="SelectionArea" parent_id_path=PackedInt32Array(664817428) index="1" unique_id=1064057567]
 shape = SubResource("CylinderShape3D_lbh1i")
+
+[connection signal="body_entered" from="SelectionArea" to="." method="_on_selection_area_body_entered"]
+[connection signal="body_exited" from="SelectionArea" to="." method="_on_selection_area_body_exited"]
 
 [editable path="Prize/Prize/RabbitPlushie"]

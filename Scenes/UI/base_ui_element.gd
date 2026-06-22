@@ -36,7 +36,8 @@ func fade_out(target: CanvasItem, duration: float = 0.5) -> Signal:
 	tween.finished.connect(func():
 		# Safety check just in case the node was deleted before the tween finished
 		if is_instance_valid(target):
-			target.hide()
+			#target.hide()
+			pass
 )
    
 	# 4. Return the tween directly at the end of the function!
