@@ -16,9 +16,6 @@ script = ExtResource("2_yxrll")
 [node name="Prize" parent="." index="0" unique_id=2110599126]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 8.353238, 0)
 
-[node name="StringTop" parent="Prize" index="0" unique_id=701341643]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19.67493, 0)
-
 [node name="StringBottom" parent="Prize" index="1" unique_id=1526911761]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.9612875, 0)
 

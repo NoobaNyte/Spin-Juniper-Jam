@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 PlayerGlobals="*uid://dxuwc4lmkhpgw"
+UI="*uid://bg0rylw7ww1mr"
 
 [display]
 

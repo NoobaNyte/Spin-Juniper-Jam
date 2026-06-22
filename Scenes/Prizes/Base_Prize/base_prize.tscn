@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cfqh7ao1mlciy"]
 
+[ext_resource type="FontFile" uid="uid://b0n7e232wvpbg" path="res://Assets/Fonts/Montserrat-Bold.ttf" id="1_f7psc"]
 [ext_resource type="PackedScene" uid="uid://buf6xs4m2tmk8" path="res://Assets/3D/Prizes/Direction Arrow.fbx" id="2_wnyqy"]
 [ext_resource type="Script" uid="uid://10ojd2tyhwfj" path="res://Assets/Utility Scripts/hide_on_load.gd" id="3_f7psc"]
 
@@ -15,6 +16,17 @@ height = 0.9003906
 radius = 2.9448242
 
 [node name="Base_Prize" type="Node3D" unique_id=2124177430]
+
+[node name="Overlays" type="Node3D" parent="." unique_id=998585642]
+
+[node name="Price" type="Label3D" parent="Overlays" unique_id=1137845194]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03094101, 6.283478, -2.0936952)
+billboard = 1
+no_depth_test = true
+text = "$2000"
+font = ExtResource("1_f7psc")
+font_size = 300
+outline_size = 100
 
 [node name="Prize" type="Node3D" parent="." unique_id=2110599126]
 

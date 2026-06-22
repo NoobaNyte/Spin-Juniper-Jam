@@ -14,11 +14,13 @@ radius = 2.5
 [node name="HP_Prize" unique_id=2124177430 instance=ExtResource("1_vot0h")]
 script = ExtResource("2_4tuay")
 
-[node name="Prize" parent="." index="0" unique_id=2110599126]
+[node name="Price" parent="Overlays" parent_id_path=PackedInt32Array(998585642) index="0" unique_id=1137845194]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.283, 0)
+
+[node name="Prize" parent="." index="1" unique_id=2110599126]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 6.2127304, 0)
 
 [node name="StringTop" parent="Prize" index="0" unique_id=701341643]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.3887863, 0)
 script = null
 
 [node name="Mesh" parent="Prize/StringTop" index="0" unique_id=1110656561]
