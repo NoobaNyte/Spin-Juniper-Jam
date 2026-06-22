@@ -1,24 +1,35 @@
 [gd_scene format=3 uid="uid://do2s7rajjiqji"]
 
 [ext_resource type="PackedScene" uid="uid://cfqh7ao1mlciy" path="res://Scenes/Prizes/Base_Prize/base_prize.tscn" id="1_2gxeh"]
+[ext_resource type="Script" uid="uid://c5rii72uurvut" path="res://Scenes/Prizes/Jump Prize/jump_prize.gd" id="2_qiirr"]
 [ext_resource type="PackedScene" uid="uid://jf0o7yvs7pvu" path="res://Assets/3D/Prizes/FrogPlushie.fbx" id="2_us7j5"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_us7j5"]
 points = PackedVector3Array(0.009710623, 0.014435349, -0.0015136534, -0.01409488, -0.004011903, -0.0134139275, -0.013500633, -0.004011903, -0.0146046365, 0.0049456884, -0.01770098, 0.0038445378, 0.012687338, -0.006983898, -0.0146046365, -0.008738437, -0.009366714, 0.0074166656, -0.010523918, 0.013842442, -0.0116301365, 0.009710623, 0.011459625, -0.0146046365, -0.0027877453, 0.019197254, 0.00086776493, 0.00851939, -0.009366714, 0.0074166656, -0.003381993, -0.01770098, -0.00032294425, -0.0123093985, 0.0049115405, -0.0009182987, -0.010523918, -0.0063909907, -0.015797619, 0.012687338, 0.0031290893, -0.0009182987, -0.010523918, 0.009076809, -0.015199992, 0.00016781066, 0.012467534, 0.00390024, -0.009332684, -0.012939075, 0.0062259557, 0.012090351, 0.012056261, -0.012223219, 0.0013774646, 0.01979762, -0.002109008, 0.009116376, -0.012935346, 0.0068190387, -0.00992967, 0.013245805, -0.00032294425, 0.011496104, -0.00281863, -0.015797619, 0.00851939, 0.009076809, 0.0032491833, -0.011120903, -0.0081771705, -0.0146046365, 0.013875833, -0.004008174, -0.01103251, 0.010901856, -0.0081734415, -0.0146046365, -0.012903647, 0.009076809, -0.012818573, 0.0031629459, 0.018604346, 0.0014631194, -0.0015965117, -0.018297616, 0.0050352467, 0.00018623102, -0.017104343, -0.002109008, 0.010304871, 0.013838713, -0.012223219, -0.008144189, 0.013245805, -0.0134139275)
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qiirr"]
+radius = 4.0
+
 [node name="Jump_Prize" unique_id=2124177430 instance=ExtResource("1_2gxeh")]
+script = ExtResource("2_qiirr")
 
-[node name="TopPin" parent="." index="0" unique_id=393680634]
-node_a = NodePath("../Shop String Segment")
+[node name="Prize" parent="." index="0" unique_id=2110599126]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 7.835952, 0)
 
-[node name="Prize" parent="." index="6" unique_id=1583447403]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0.5056817, 0)
+[node name="StringTop" parent="Prize" index="0" unique_id=701341643]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36.12026, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Prize" index="0" unique_id=186164669]
+[node name="StringBottom" parent="Prize" index="1" unique_id=1526911761]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2073555, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Prize/Prize" parent_id_path=PackedInt32Array(1583447403) index="0" unique_id=186164669]
 transform = Transform3D(225, 0, 2.1684043e-19, 0, -2.682209e-05, 224.99998, 1.8189894e-12, -224.99998, -2.682209e-05, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_us7j5")
 
-[node name="FrogPlushie" parent="Prize" index="1" unique_id=854971900 instance=ExtResource("2_us7j5")]
+[node name="FrogPlushie" parent="Prize/Prize" parent_id_path=PackedInt32Array(1583447403) index="1" unique_id=854971900 instance=ExtResource("2_us7j5")]
 transform = Transform3D(2.25, 0, 0, 0, 2.25, 0, 0, 0, 2.25, 0, 0, 0)
 
-[editable path="Prize/FrogPlushie"]
+[node name="CollisionShape3D" parent="SelectionArea" parent_id_path=PackedInt32Array(664817428) index="1" unique_id=1064057567]
+shape = SubResource("CylinderShape3D_qiirr")
+
+[editable path="Prize/Prize/FrogPlushie"]

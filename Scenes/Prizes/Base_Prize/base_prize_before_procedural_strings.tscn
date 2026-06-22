@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://chwku7oo4nptu"]
+
+[ext_resource type="PackedScene" uid="uid://buf6xs4m2tmk8" path="res://Assets/3D/Prizes/Direction Arrow.fbx" id="1_kfu3t"]
+[ext_resource type="Script" uid="uid://10ojd2tyhwfj" path="res://Assets/Utility Scripts/hide_on_load.gd" id="2_pytre"]
+[ext_resource type="PackedScene" uid="uid://bxu8p3a5g5hvv" path="res://Scenes/Prizes/Base_Prize/shop_string_segment.tscn" id="3_7u0g1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6u7tq"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_vvcby"]
+radius = 2.9448242
+
+[node name="Base_Prize" type="Node3D" unique_id=2124177430]
+
+[node name="Direction Arrow" parent="." unique_id=1837532217 instance=ExtResource("1_kfu3t")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 8.757399, 0)
+script = ExtResource("2_pytre")
+
+[node name="TopPin" type="PinJoint3D" parent="." unique_id=393680634]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.58642, 0)
+node_b = NodePath("../Top")
+
+[node name="Top" type="StaticBody3D" parent="." unique_id=269816899]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.612193, 0)
+
+[node name="TopCollision" type="CollisionShape3D" parent="Top" unique_id=1008848268]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.9888315, 0)
+shape = SubResource("BoxShape3D_6u7tq")
+disabled = true
+
+[node name="StringPin" type="PinJoint3D" parent="." unique_id=1987908017]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.6173925, 0)
+node_a = NodePath("../Shop String Segment")
+node_b = NodePath("../Prize Connector String Segment")
+
+[node name="Shop String Segment" parent="." unique_id=890094251 instance=ExtResource("3_7u0g1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.629455, 0)
+
+[node name="PrizePin" type="PinJoint3D" parent="." unique_id=1049927685]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.6186476, 0)
+node_a = NodePath("../Prize")
+node_b = NodePath("../Prize Connector String Segment")
+
+[node name="Prize Connector String Segment" parent="." unique_id=952622522 instance=ExtResource("3_7u0g1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.646917, 0)
+
+[node name="Prize" type="RigidBody3D" parent="." unique_id=1583447403]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.612193, 0)
+mass = 0.01
+gravity_scale = 0.2
+
+[node name="SelectionArea" type="Area3D" parent="." unique_id=664817428]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SelectionArea" unique_id=208406191]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_vvcby")
+debug_color = Color(1, 0.91071427, 0, 0.41960785)

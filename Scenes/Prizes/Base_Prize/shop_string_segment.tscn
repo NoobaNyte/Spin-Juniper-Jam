@@ -1,17 +1,29 @@
 [gd_scene format=3 uid="uid://bxu8p3a5g5hvv"]
 
+[ext_resource type="Script" uid="uid://d0f1vqwm47tkn" path="res://Scenes/Prizes/Base_Prize/shop_string_segment.gd" id="1_gsje7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gsje7"]
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_vvcby"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_gsje7")
 top_radius = 0.1
 bottom_radius = 0.1
+height = 1.0
 radial_segments = 5
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_aovwg"]
+resource_local_to_scene = true
+height = 1.0
 radius = 0.1
 
 [node name="Shop String Segment" type="RigidBody3D" unique_id=952622522]
+script = ExtResource("1_gsje7")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=655469322]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("CylinderMesh_vvcby")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1762043339]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CylinderShape3D_aovwg")

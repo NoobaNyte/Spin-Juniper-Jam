@@ -1,42 +1,81 @@
 [gd_scene format=3 uid="uid://cfqh7ao1mlciy"]
 
-[ext_resource type="PackedScene" uid="uid://bxu8p3a5g5hvv" path="res://Scenes/Prizes/Base_Prize/shop_string_segment.tscn" id="1_6u7tq"]
 [ext_resource type="PackedScene" uid="uid://buf6xs4m2tmk8" path="res://Assets/3D/Prizes/Direction Arrow.fbx" id="2_wnyqy"]
 [ext_resource type="Script" uid="uid://10ojd2tyhwfj" path="res://Assets/Utility Scripts/hide_on_load.gd" id="3_f7psc"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_6u7tq"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wnyqy"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_wnyqy"]
+material = SubResource("StandardMaterial3D_wnyqy")
+top_radius = 0.099999994
+bottom_radius = 0.099999994
+height = 0.9003906
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_wnyqy"]
+radius = 2.9448242
 
 [node name="Base_Prize" type="Node3D" unique_id=2124177430]
 
-[node name="TopPin" type="PinJoint3D" parent="." unique_id=393680634]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.9742274, 0)
-node_b = NodePath("../Top")
+[node name="Prize" type="Node3D" parent="." unique_id=2110599126]
 
-[node name="Top" type="StaticBody3D" parent="." unique_id=269816899]
-
-[node name="TopCollision" type="CollisionShape3D" parent="Top" unique_id=1008848268]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.9888315, 0)
-shape = SubResource("BoxShape3D_6u7tq")
-disabled = true
-
-[node name="StringPin" type="PinJoint3D" parent="." unique_id=1987908017]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0052, 0)
-node_a = NodePath("../Shop String Segment")
-node_b = NodePath("../Prize Connecter Segment")
-
-[node name="Shop String Segment" parent="." unique_id=890094251 instance=ExtResource("1_6u7tq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.0172615, 0)
-
-[node name="PrizePin" type="PinJoint3D" parent="." unique_id=1049927685]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0064546, 0)
-node_a = NodePath("../Prize")
-node_b = NodePath("../Prize Connecter Segment")
-
-[node name="Prize Connecter Segment" parent="." unique_id=952622522 instance=ExtResource("1_6u7tq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.034724, 0)
-
-[node name="Prize" type="RigidBody3D" parent="." unique_id=1583447403]
-
-[node name="Direction Arrow" parent="." unique_id=1837532217 instance=ExtResource("2_wnyqy")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 4.1452055, 0)
+[node name="StringTop" type="Marker3D" parent="Prize" unique_id=701341643]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
 script = ExtResource("3_f7psc")
+
+[node name="Mesh" type="Node3D" parent="Prize/StringTop" unique_id=1110656561]
+transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Prize/StringTop/Mesh" unique_id=596368737]
+mesh = SubResource("CylinderMesh_wnyqy")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Prize/StringTop/Mesh" unique_id=2092902437]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_wnyqy")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Prize/StringTop/Mesh" unique_id=1320233392]
+transform = Transform3D(1.9106855e-15, -4.371139e-08, -1, -1, -4.371139e-08, 0, -4.371139e-08, 1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_wnyqy")
+
+[node name="Label" type="Label3D" parent="Prize/StringTop" unique_id=1358491420]
+billboard = 1
+no_depth_test = true
+text = "StringTop
+"
+
+[node name="StringBottom" type="Marker3D" parent="Prize" unique_id=1526911761]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.5, 0)
+script = ExtResource("3_f7psc")
+
+[node name="Mesh" type="Node3D" parent="Prize/StringBottom" unique_id=1685624421]
+transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Prize/StringBottom/Mesh" unique_id=1845163444]
+mesh = SubResource("CylinderMesh_wnyqy")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Prize/StringBottom/Mesh" unique_id=1035647811]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_wnyqy")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Prize/StringBottom/Mesh" unique_id=152324262]
+transform = Transform3D(1.9106855e-15, -4.371139e-08, -1, -1, -4.371139e-08, 0, -4.371139e-08, 1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_wnyqy")
+
+[node name="Label" type="Label3D" parent="Prize/StringBottom" unique_id=39829515]
+billboard = 1
+no_depth_test = true
+text = "StringBottom"
+
+[node name="Prize" type="RigidBody3D" parent="Prize" unique_id=1583447403]
+mass = 0.01
+gravity_scale = 0.2
+
+[node name="SelectionArea" type="Area3D" parent="." unique_id=664817428]
+
+[node name="Direction Arrow" parent="SelectionArea" unique_id=1837532217 instance=ExtResource("2_wnyqy")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+script = ExtResource("3_f7psc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SelectionArea" unique_id=1064057567]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_wnyqy")
+debug_color = Color(1, 0.91071427, 0, 0.41960785)

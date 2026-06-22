@@ -2,24 +2,32 @@
 
 [ext_resource type="PackedScene" uid="uid://cfqh7ao1mlciy" path="res://Scenes/Prizes/Base_Prize/base_prize.tscn" id="1_aavh3"]
 [ext_resource type="PackedScene" uid="uid://do01dmr4fkwab" path="res://Assets/3D/Prizes/Invincibility Frames.fbx" id="2_gpt26"]
+[ext_resource type="Script" uid="uid://brhxa466snhqd" path="res://Scenes/Prizes/Invincibility Frames/invincibility_frames_prize.gd" id="2_yxrll"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gpt26"]
 points = PackedVector3Array(0.5858077, 0.46583274, 0.34038213, -0.25431082, 0.50039536, -2.0738392, -0.25431082, 0.6413358, 2.074786, 0.025513766, -1.9522763, 1.3900403, -0.61331373, -0.6746186, -0.03454995, -0.1839473, 2.3998387, 0.03549692, 0.23771068, -1.8895206, -1.440774, 0.16734716, 0.7822762, -2.2143734, 0.15239401, 0.6024606, 2.024188, 0.5241985, -0.8488171, 0.7166759, -0.5457658, 1.0381109, -0.09755177, -0.25431082, -1.8895206, 1.3716741, 0.0919554, 2.2267344, -0.03454995, 0.5847745, -0.59529364, -0.34625447, -0.1839473, -2.030461, -1.3702866, 0.57703686, 0.7082786, -0.15729627, -0.60511374, -0.2864061, -0.59970635, -0.60413694, 0.403606, 0.4043404, 0.15180667, -1.8344743, 1.3115085, -0.60020435, -0.5937545, 0.33899155, -0.25431082, 0.71202284, -2.0033517, -0.550211, -0.8673154, -0.7356988, 0.024609458, 0.6798052, 2.0782776, 0.3946193, 1.331084, 0.027193999, 0.57154435, 0.45908305, -0.4004807, -0.5970545, 0.15411425, -0.5303431, 0.59373707, -0.67039096, -0.03454995, 0.15190762, 2.0765736, -0.09843964, 0.5883529, 0.40429315, 0.40454805, -0.25431082, 0.5710824, 2.074786, 0.024948837, 0.6178583, 2.1000662, 0.5809695, -0.09416564, -0.40642872)
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_yxrll"]
+radius = 4.5
+
 [node name="Invincibility Frames Prize" unique_id=2124177430 instance=ExtResource("1_aavh3")]
+script = ExtResource("2_yxrll")
 
-[node name="TopPin" parent="." index="0" unique_id=393680634]
-node_a = NodePath("../Shop String Segment")
+[node name="Prize" parent="." index="0" unique_id=2110599126]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 8.353238, 0)
 
-[node name="PrizePin" parent="." index="4" unique_id=1049927685]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0230228, 0)
+[node name="StringTop" parent="Prize" index="0" unique_id=701341643]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19.67493, 0)
 
-[node name="Prize" parent="." index="6" unique_id=1583447403]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, -3.3352222, 0)
+[node name="StringBottom" parent="Prize" index="1" unique_id=1526911761]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.9612875, 0)
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Prize" index="0" unique_id=1077124498]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.11394024, 0)
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Prize/Prize" parent_id_path=PackedInt32Array(1583447403) index="0" unique_id=1077124498]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_gpt26")
 
-[node name="Invincibility Frames" parent="Prize" index="1" unique_id=49285525 instance=ExtResource("2_gpt26")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.11394024, 0)
+[node name="Invincibility Frames" parent="Prize/Prize" parent_id_path=PackedInt32Array(1583447403) index="1" unique_id=49285525 instance=ExtResource("2_gpt26")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="CollisionShape3D" parent="SelectionArea" parent_id_path=PackedInt32Array(664817428) index="1" unique_id=1064057567]
+shape = SubResource("CylinderShape3D_yxrll")
