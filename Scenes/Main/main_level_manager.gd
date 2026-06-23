@@ -85,5 +85,20 @@ func _input(event: InputEvent) -> void:
 				_on_start_game()
 
 func _on_start_game() -> void:
-	# the play progress bar is completed, logic here will start the game 
-	print("Interaction confirmed! The bar filled entirely.")
+	print("Starting Game!")
+	# play sfx and confirm animations
+	#await get_tree().create_timer(1.0).timeout
+
+	var player = $PlayerCharacter
+	var player_particles: GPUParticles3D = player.find_child("PoofGPUParticles3D", true, false)
+	var player_mesh: Node3D = player.find_child("Main Character Animated", true, false)
+	player_particles.emitting = true
+	await get_tree().create_timer(0.4).timeout # wait for particles to cover player before hiding player
+	player_mesh.visible = false
+
+	await get_tree().create_timer(0.5).timeout
+
+	$MainCamera.detached_from_player = true
+	$MainCamera.toggle_playing_camera(true)
+	var anim_player: AnimationPlayer = $AnimationPlayer
+	anim_player.play("rotate_everything")

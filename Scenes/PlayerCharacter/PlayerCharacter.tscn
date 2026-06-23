@@ -4,17 +4,133 @@
 [ext_resource type="PackedScene" uid="uid://cu6d35o7kf53" path="res://Assets/3D/Main Character Animated.fbx" id="2_vlfjb"]
 [ext_resource type="Script" uid="uid://bph2epx86k0m0" path="res://Scenes/PlayerCharacter/Scripts/stats_updater.gd" id="2_wwltf"]
 [ext_resource type="Script" uid="uid://dpvponjw8r6ty" path="res://Scenes/PlayerCharacter/powerup_updater.gd" id="3_wwltf"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iof21"]
-albedo_color = Color(0.91806, 0.575202, 0.222449, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_ucva2"]
-radius = 0.4
-height = 1.8
+[ext_resource type="Script" uid="uid://buk7jbm3rk4vx" path="res://Scenes/PlayerCharacter/particles_manager.gd" id="4_eb1wa"]
+[ext_resource type="Texture2D" uid="uid://ba2gq32sxlqbj" path="res://Assets/2D/Poof Particles/Poofs.png" id="6_250gc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iof21"]
 radius = 0.4
 height = 1.8
+
+[sub_resource type="Gradient" id="Gradient_250gc"]
+offsets = PackedFloat32Array(0.6058315, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_g70ow"]
+gradient = SubResource("Gradient_250gc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_eb1wa"]
+use_rotation_3d = true
+rotation_3d_min = Vector3(0, -30, 0)
+rotation_3d_max = Vector3(0, 30, 0)
+direction = Vector3(0, 0, 0)
+radial_velocity_min = 1.9999776
+radial_velocity_max = 2.9999776
+gravity = Vector3(0, 0, 0)
+scale_min = 0.75
+scale_max = 2.0
+scale_over_velocity_max = 39.5
+color_ramp = SubResource("GradientTexture1D_g70ow")
+anim_offset_max = 1.0
+
+[sub_resource type="Shader" id="Shader_250gc"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.7.stable's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx, unshaded;
+
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color, filter_linear_mipmap, repeat_enable;
+uniform ivec2 albedo_texture_size;
+uniform float point_size : hint_range(0.1, 128.0, 0.1);
+
+uniform float roughness : hint_range(0.0, 1.0);
+uniform sampler2D texture_metallic : hint_default_white, filter_linear_mipmap, repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r, filter_linear_mipmap, repeat_enable;
+
+uniform float specular : hint_range(0.0, 1.0, 0.01);
+uniform float metallic : hint_range(0.0, 1.0, 0.01);
+
+uniform int particles_anim_h_frames : hint_range(1, 128);
+uniform int particles_anim_v_frames : hint_range(1, 128);
+uniform bool particles_anim_loop;
+
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+void vertex() {
+	UV = UV * uv1_scale.xy + uv1_offset.xy;
+
+	// Billboard Mode: Particles
+	mat4 mat_world = mat4(
+			normalize(INV_VIEW_MATRIX[0]),
+			normalize(INV_VIEW_MATRIX[1]),
+			normalize(INV_VIEW_MATRIX[2]),
+			MODEL_MATRIX[3]);
+	mat_world = mat_world * mat4(
+			vec4(cos(INSTANCE_CUSTOM.x), -sin(INSTANCE_CUSTOM.x), 0.0, 0.0),
+			vec4(sin(INSTANCE_CUSTOM.x), cos(INSTANCE_CUSTOM.x), 0.0, 0.0),
+			vec4(0.0, 0.0, 1.0, 0.0),
+			vec4(0.0, 0.0, 0.0, 1.0));
+	MODELVIEW_MATRIX = VIEW_MATRIX * mat_world;
+
+	MODELVIEW_NORMAL_MATRIX = mat3(MODELVIEW_MATRIX);
+
+	float h_frames = float(particles_anim_h_frames);
+	float v_frames = float(particles_anim_v_frames);
+	float particle_total_frames = float(particles_anim_h_frames * particles_anim_v_frames);
+	float particle_frame = floor(INSTANCE_CUSTOM.z * float(particle_total_frames));
+	if (!particles_anim_loop) {
+		particle_frame = clamp(particle_frame, 0.0, particle_total_frames - 1.0);
+	} else {
+		particle_frame = mod(particle_frame, particle_total_frames);
+	}
+	UV /= vec2(h_frames, v_frames);
+	UV += vec2(mod(particle_frame, h_frames) / h_frames, floor((particle_frame + 0.5) / h_frames) / v_frames);
+	
+}
+
+void fragment() {
+	vec2 base_uv = UV;
+
+	vec4 albedo_tex = texture(texture_albedo, base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+
+	float metallic_tex = dot(texture(texture_metallic, base_uv), metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	SPECULAR = specular;
+
+	vec4 roughness_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
+	float roughness_tex = dot(texture(texture_roughness, base_uv), roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	ALPHA = albedo.a * albedo_tex.a * COLOR.a;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yu0t5"]
+render_priority = 0
+shader = SubResource("Shader_250gc")
+shader_parameter/albedo = Color(0.9882353, 0.9882353, 0.9882353, 1)
+shader_parameter/texture_albedo = ExtResource("6_250gc")
+shader_parameter/albedo_texture_size = Vector2i(1024, 1024)
+shader_parameter/point_size = 1.0000000149012
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/particles_anim_h_frames = 2
+shader_parameter/particles_anim_v_frames = 2
+shader_parameter/particles_anim_loop = false
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="QuadMesh" id="QuadMesh_250gc"]
+material = SubResource("ShaderMaterial_yu0t5")
+size = Vector2(2.4, 3)
 
 [node name="PlayerCharacter" type="CharacterBody3D" unique_id=1881213073 node_paths=PackedStringArray("animation_player")]
 script = ExtResource("1_7sflc")
@@ -28,6 +144,10 @@ menu_gravity_scale = 3.75
 
 [node name="Powerup_Updater" type="Node" parent="Scripts" unique_id=493433040]
 script = ExtResource("3_wwltf")
+
+[node name="Particles_Manager" type="Node" parent="Scripts" unique_id=226190566 node_paths=PackedStringArray("particles")]
+script = ExtResource("4_eb1wa")
+particles = NodePath("../../PoofGPUParticles3D")
 
 [node name="Main Character Animated" parent="." unique_id=1448694444 instance=ExtResource("2_vlfjb")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
@@ -61,13 +181,6 @@ bones/32/rotation = Quaternion(-0.040852744, -0.09302109, 0.9909232, -0.08803046
 bones/34/rotation = Quaternion(0.273478, -0.6095588, 0.7377697, 0.096662976)
 bones/35/rotation = Quaternion(0.124397576, -0.008782504, -0.04196812, 0.99130565)
 
-[node name="PlayerMesh" type="MeshInstance3D" parent="." unique_id=1812860166]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
-visible = false
-material_override = SubResource("StandardMaterial3D_iof21")
-cast_shadow = 0
-mesh = SubResource("CapsuleMesh_ucva2")
-
 [node name="Collider" type="CollisionShape3D" parent="." unique_id=1214091686]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("CapsuleShape3D_iof21")
@@ -76,5 +189,14 @@ shape = SubResource("CapsuleShape3D_iof21")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head" unique_id=832332793]
+
+[node name="PoofGPUParticles3D" type="GPUParticles3D" parent="." unique_id=928208153]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.42858994)
+amount = 15
+lifetime = 2.0
+speed_scale = 2.0
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_eb1wa")
+draw_pass_1 = SubResource("QuadMesh_250gc")
 
 [editable path="Main Character Animated"]
