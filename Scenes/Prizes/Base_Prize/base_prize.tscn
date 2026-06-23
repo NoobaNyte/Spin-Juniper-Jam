@@ -102,8 +102,6 @@ no_depth_test = true
 text = "StringBottom"
 
 [node name="Prize" type="RigidBody3D" parent="Prize" unique_id=1583447403]
-mass = 0.01
-gravity_scale = 0.2
 
 [node name="SelectionArea" type="Area3D" parent="." unique_id=664817428 groups=["PrizeSelectionArea"]]
 script = ExtResource("4_680mr")

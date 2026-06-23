@@ -7,3 +7,7 @@ func _ready() -> void:
 
 func buy_prize():
 	super.buy_prize()
+	if bought:
+		PlayerGlobals.jump_powerup_amount += 1
+		quantity_owned += 1
+		bought = false

@@ -4,7 +4,11 @@ class_name BasePrize
 @export_group("Prize Data")
 @export var price: int = 0
 var price_label: Sprite3D
-@export var quantity_owned: int = 0
+@export var quantity_owned: int = 0:
+	set(value):
+		quantity_owned = value
+		prize_popups_ui.update_text_boxes(quantity_owned, item_name, item_description)
+
 @export var item_name: String = "EMPTY NAME"
 @export var item_description: String = "EMPTY DESCRIPTION"
 
@@ -15,19 +19,30 @@ var price_label: Sprite3D
 const string_piece_file_path: String = "res://Scenes/Prizes/Base_Prize/shop_string_segment.tscn"
 var string_piece: PackedScene
 
-# --- NEW VARIABLES FOR RESPAWNING ---
+var prize_popups_ui
+var bought: bool = false # used to update the quantity owned in each individual prize script
+
+# --- VARIABLES FOR RESPAWNING ---
 var bottom_anchor_pin: PinJoint3D
 var lowest_string_segment: RigidBody3D
 var current_prize_node: RigidBody3D
-var prize_template: Node # Holds a clean backup copy of the prize
+
+# Memory variables to perfectly restore the prize
+var original_prize_scale: Vector3
+var original_prize_rotation: Vector3
+var original_prize_position: Vector3 # NEW: Saves the exact starting height!
 
 func _ready() -> void:
 	PlayerGlobals.show_prize_prices.connect(on_show_prize_prices)
 	PlayerGlobals.hide_prize_prices.connect(on_hide_prize_prices)
 	
-	# Save the active prize and create a clean backup for respawning later
+	prize_popups_ui = UI.get_node("PrizePopups")
 	current_prize_node = $Prize/Prize
-	prize_template = current_prize_node.duplicate()
+	
+	# Save the pristine transforms so we can perfectly recreate it
+	original_prize_scale = current_prize_node.scale
+	original_prize_rotation = current_prize_node.rotation
+	original_prize_position = current_prize_node.global_position
 
 	string_piece = preload(string_piece_file_path)
 	if string_piece:
@@ -39,68 +54,87 @@ func update_price():
 
 func buy_prize():
 	if PlayerGlobals.tickets >= price:
+		bought = true
 		PlayerGlobals.tickets -= price
 		release_prize()
 
-# ==========================================
-# NEW: The Animated Release Sequence
-# ==========================================
 func release_prize() -> void:
 	if not is_instance_valid(bottom_anchor_pin):
-		return # Prevents crashing if they spam the interact button
+		return
 		
-	# 1. Snip the BOTTOM string so the prize falls
+	# 1. STOP THE HESITATION
+	current_prize_node.set_collision_layer_value(1, false)
+	current_prize_node.set_collision_mask_value(1, false)
+	
+	current_prize_node.set_collision_layer_value(2, true)
+	current_prize_node.set_collision_mask_value(2, true)
+	
+	# 2. Snip the BOTTOM string so the prize falls
 	bottom_anchor_pin.queue_free()
 	
-	# 2. Switch collision layer to 2 (disabling layer 1)
-	current_prize_node.set_collision_layer_value(1, false)
-	current_prize_node.set_collision_layer_value(2, true)
+	# 3. Wait while it drops and bounces
+	await get_tree().create_timer(1.0).timeout
 	
-	# 3. Wait 2 seconds while it drops and bounces
-	await get_tree().create_timer(2.0).timeout
+	# --- NEW: Freeze physics so it doesn't fight the Tween! ---
+	current_prize_node.freeze = true
 	
-	# 4. Smooth scale down to 0
+	# 4. Smooth scale down
 	var tween = create_tween()
-	# Using TRANS_BACK gives it a slight "pop" before shrinking!
-	tween.tween_property(current_prize_node, "scale", Vector3.ZERO, 0.5).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
+	tween.tween_property(current_prize_node, "scale", Vector3(0.01, 0.01, 0.01), 0.5).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
 	await tween.finished
-	
-	# (You can trigger your particle emitter here!)
 	
 	# 5. Hide the prize completely
 	current_prize_node.hide()
 	
-	# 6. Wait 2 seconds before restocking
-	await get_tree().create_timer(2.0).timeout
+	# 6. Wait exactly 1 second before magically restoring it
+	await get_tree().create_timer(1.0).timeout
 	
-	# 7. Restock!
-	respawn_prize()
+	# 7. Restore the original prize!
+	reset_prize()
 
-func respawn_prize() -> void:
-	# Delete the old invisible prize
-	if is_instance_valid(current_prize_node):
-		current_prize_node.queue_free()
-		
-	# Spawn a fresh copy from our template
-	current_prize_node = prize_template.duplicate()
-	$Prize.add_child(current_prize_node)
-	
-	# Move it exactly to the string bottom marker
+func reset_prize() -> void:
 	var string_bottom: Marker3D = $Prize/StringBottom
-	current_prize_node.global_position = string_bottom.global_position
 	
-	# Re-pin the new prize to the lowest string segment!
+	# 1. Zero out momentum
+	current_prize_node.linear_velocity = Vector3.ZERO
+	current_prize_node.angular_velocity = Vector3.ZERO
+	
+	# 2. Teleport it back to its original spot
+	current_prize_node.global_position = original_prize_position
+	current_prize_node.rotation = original_prize_rotation
+	
+	# 3. Force scale to tiny
+	current_prize_node.scale = Vector3(0.01, 0.01, 0.01)
+	
+	# 4. Unhide and smoothly scale it back up FIRST
+	current_prize_node.show()
+	var tween = create_tween()
+	tween.tween_property(current_prize_node, "scale", original_prize_scale, 0.5).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	
+	# --- NEW: We MUST wait for the animation to finish before turning physics back on ---
+	await tween.finished
+	
+	# 5. NOW restore the collision layers back to layer 1 normal physics
+	current_prize_node.set_collision_layer_value(2, false)
+	current_prize_node.set_collision_mask_value(2, false)
+	
+	current_prize_node.set_collision_layer_value(1, true)
+	current_prize_node.set_collision_mask_value(1, true)
+	
+	# 6. Re-create the pin to hold it up
 	bottom_anchor_pin = PinJoint3D.new()
 	add_child(bottom_anchor_pin)
 	bottom_anchor_pin.global_position = string_bottom.global_position
 	bottom_anchor_pin.node_a = current_prize_node.get_path()
 	bottom_anchor_pin.node_b = lowest_string_segment.get_path()
 
+	# --- NEW: Unfreeze it now that everything is safely attached! ---
+	current_prize_node.freeze = false
 
 func gen_strings():
 	var string_bottom: Marker3D = $Prize/StringBottom
 	var string_top: Marker3D = $Prize/StringTop
-	var prize: RigidBody3D = current_prize_node # Use our tracked variable
+	var prize: RigidBody3D = current_prize_node
 	
 	if not string_bottom or not string_top or not prize:
 		push_error("Missing required nodes for string generation!")
@@ -136,7 +170,7 @@ func gen_strings():
 		pin.node_a = prev_body.get_path()
 		pin.node_b = seg.get_path()
 		
-		# --- NEW: Save the bottom pin and lowest string on the first loop ---
+		# Save the bottom pin and lowest string on the first loop
 		if prev_body == current_prize_node:
 			bottom_anchor_pin = pin
 			lowest_string_segment = seg
@@ -156,7 +190,6 @@ func gen_strings():
 			anchor_shape.disabled = true
 			anchor.add_child(anchor_shape)
 			
-			# Pin the top string to the ceiling (we don't need to save this one anymore)
 			var top_pin = PinJoint3D.new()
 			add_child(top_pin)
 			top_pin.global_position = anchor.global_position
@@ -167,13 +200,11 @@ func gen_strings():
 
 func _on_selection_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):
-		var prize_popups_ui = UI.get_node("PrizePopups")
 		prize_popups_ui.update_text_boxes(quantity_owned, item_name, item_description)
 		prize_popups_ui.fade_in(prize_popups_ui)
 
 func _on_selection_area_body_exited(body: Node3D) -> void:
 	if body.is_in_group("Player"):
-		var prize_popups_ui = UI.get_node("PrizePopups")
 		prize_popups_ui.fade_out(prize_popups_ui)
 
 func on_show_prize_prices():
