@@ -4,7 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://cglypxqnx1lqk" path="res://Assets/2D/Input Outline.png" id="1_de23q"]
 [ext_resource type="Script" uid="uid://cp1eumjlkb5fm" path="res://Scenes/UI/prize_popups.gd" id="1_fo61o"]
 [ext_resource type="Script" uid="uid://cwggult5gy1qs" path="res://Scenes/UI/input_text.gd" id="2_c7mb3"]
+[ext_resource type="Script" uid="uid://dwys4atdn16sd" path="res://Scenes/UI/input_prompt.gd" id="2_duuxe"]
 [ext_resource type="Script" uid="uid://u2s6anfsepqs" path="res://Scenes/UI/ticket_count.gd" id="5_alcrr"]
+[ext_resource type="Texture2D" uid="uid://bpitsyw8t55px" path="res://Assets/2D/wheel select reference.png" id="6_1c2ca"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_de23q"]
 bg_color = Color(0.04241073, 0.02669604, 0, 0.67058825)
@@ -15,40 +17,36 @@ expand_margin_bottom = 20.0
 
 [node name="UI" type="CanvasLayer" unique_id=841098919]
 
-[node name="PrizePopups" type="Control" parent="." unique_id=541596702]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_fo61o")
+[node name="WheelSelectReference" type="Sprite2D" parent="." unique_id=1385635253]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("6_1c2ca")
 
-[node name="Instructions" type="MarginContainer" parent="PrizePopups" unique_id=1718387743]
-layout_mode = 1
+[node name="InputPrompt" type="MarginContainer" parent="." unique_id=1718387743]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_bottom = 31
+script = ExtResource("2_duuxe")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PrizePopups/Instructions" unique_id=616540742]
+[node name="VBoxContainer" type="VBoxContainer" parent="InputPrompt" unique_id=616540742]
 layout_mode = 2
 alignment = 2
 
-[node name="Instructions" type="HBoxContainer" parent="PrizePopups/Instructions/VBoxContainer" unique_id=191958186]
+[node name="Instructions" type="HBoxContainer" parent="InputPrompt/VBoxContainer" unique_id=191958186]
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Input" type="TextureRect" parent="PrizePopups/Instructions/VBoxContainer/Instructions" unique_id=1654860470]
+[node name="Input" type="TextureRect" parent="InputPrompt/VBoxContainer/Instructions" unique_id=1654860470]
 layout_mode = 2
 texture = ExtResource("1_de23q")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="InputText" type="RichTextLabel" parent="PrizePopups/Instructions/VBoxContainer/Instructions/Input" unique_id=446838033]
+[node name="InputText" type="RichTextLabel" parent="InputPrompt/VBoxContainer/Instructions/Input" unique_id=446838033]
 texture_filter = 4
 layout_mode = 1
 anchors_preset = 15
@@ -64,7 +62,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("2_c7mb3")
 
-[node name="BuyText" type="RichTextLabel" parent="PrizePopups/Instructions/VBoxContainer/Instructions" unique_id=1813455372]
+[node name="BuyText" type="RichTextLabel" parent="InputPrompt/VBoxContainer/Instructions" unique_id=1813455372]
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 66
 text = "BUY"
@@ -73,11 +71,10 @@ autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="PrizePopups/Instructions/VBoxContainer/Instructions" unique_id=1327132849]
+[node name="MarginContainer" type="MarginContainer" parent="InputPrompt/VBoxContainer/Instructions" unique_id=1327132849]
 layout_mode = 2
 
-[node name="InfoBoxes" type="MarginContainer" parent="PrizePopups" unique_id=382063247]
-layout_mode = 1
+[node name="PrizePopups" type="MarginContainer" parent="." unique_id=382063247]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -85,21 +82,22 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_ahcct")
 theme_override_constants/margin_bottom = 165
+script = ExtResource("1_fo61o")
 
-[node name="Vbox" type="VBoxContainer" parent="PrizePopups/InfoBoxes" unique_id=245430012]
+[node name="Vbox" type="VBoxContainer" parent="PrizePopups" unique_id=245430012]
 layout_mode = 2
 alignment = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PrizePopups/InfoBoxes/Vbox" unique_id=1249421316]
+[node name="HBoxContainer" type="HBoxContainer" parent="PrizePopups/Vbox" unique_id=1249421316]
 layout_mode = 2
 theme_override_constants/separation = 114
 alignment = 1
 
-[node name="YouHaveContainer" type="PanelContainer" parent="PrizePopups/InfoBoxes/Vbox/HBoxContainer" unique_id=1214341260]
+[node name="YouHaveContainer" type="PanelContainer" parent="PrizePopups/Vbox/HBoxContainer" unique_id=1214341260]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_de23q")
 
-[node name="YouHaveText" type="RichTextLabel" parent="PrizePopups/InfoBoxes/Vbox/HBoxContainer/YouHaveContainer" unique_id=605199213]
+[node name="YouHaveText" type="RichTextLabel" parent="PrizePopups/Vbox/HBoxContainer/YouHaveContainer" unique_id=605199213]
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 57
 text = "YOU HAVE: 0"
@@ -108,11 +106,11 @@ autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PrizeNameContainer" type="PanelContainer" parent="PrizePopups/InfoBoxes/Vbox/HBoxContainer" unique_id=1329387488]
+[node name="PrizeNameContainer" type="PanelContainer" parent="PrizePopups/Vbox/HBoxContainer" unique_id=1329387488]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_de23q")
 
-[node name="PrizeNameText" type="RichTextLabel" parent="PrizePopups/InfoBoxes/Vbox/HBoxContainer/PrizeNameContainer" unique_id=808921634]
+[node name="PrizeNameText" type="RichTextLabel" parent="PrizePopups/Vbox/HBoxContainer/PrizeNameContainer" unique_id=808921634]
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 57
 text = "ITEM NAME"
@@ -121,12 +119,12 @@ autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control" type="Control" parent="PrizePopups/InfoBoxes/Vbox/HBoxContainer" unique_id=1371919156]
+[node name="Control" type="Control" parent="PrizePopups/Vbox/HBoxContainer" unique_id=1371919156]
 custom_maximum_size = Vector2(400, -1)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PrizeDescriptionContainer" type="PanelContainer" parent="PrizePopups/InfoBoxes/Vbox/HBoxContainer/Control" unique_id=69254458]
+[node name="PrizeDescriptionContainer" type="PanelContainer" parent="PrizePopups/Vbox/HBoxContainer/Control" unique_id=69254458]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -136,7 +134,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_de23q")
 
-[node name="PrizeDescriptionText" type="RichTextLabel" parent="PrizePopups/InfoBoxes/Vbox/HBoxContainer/Control/PrizeDescriptionContainer" unique_id=174347676]
+[node name="PrizeDescriptionText" type="RichTextLabel" parent="PrizePopups/Vbox/HBoxContainer/Control/PrizeDescriptionContainer" unique_id=174347676]
 custom_minimum_size = Vector2(275.7, 0)
 layout_mode = 2
 offset_transform_enabled = true
@@ -144,7 +142,7 @@ theme_override_font_sizes/normal_font_size = 33
 text = "ITEM DESCRIPTION BOX"
 autowrap_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PrizePopups/InfoBoxes/Vbox" unique_id=417777697]
+[node name="VBoxContainer" type="VBoxContainer" parent="PrizePopups/Vbox" unique_id=417777697]
 layout_mode = 2
 
 [node name="TicketCount" type="MarginContainer" parent="." unique_id=154889642]

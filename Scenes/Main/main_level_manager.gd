@@ -2,25 +2,16 @@ extends Node3D
 
 @export var play_area_hologram: Node3D
 
-@export_group("Progress Bar Settings")
-@export var play_area_progress_bar: Node3D
-@export var fill_delay: float = 0.5 # How long to wait before showing/filling the bar
-@export var fill_time: float = 2
-@export var empty_time: float = 0.6 # how fast the progress bar takes to go back to 0 scale
-
 var current_tween: Tween
 var progress_tween: Tween
 var original_progress_scale: Vector3
 
+var input_prompt_ui
+
 func _ready() -> void:
 	PlayerGlobals.set_in_menu_stats.emit()
+	input_prompt_ui = UI.get_node("InputPrompt")
 
-	# --- PROGRESS BAR SETUP ---
-	if play_area_progress_bar:
-		original_progress_scale = Vector3.ONE
-		play_area_progress_bar.scale = Vector3(0.001, original_progress_scale.y, original_progress_scale.z)
-		play_area_progress_bar.hide()
-	
 	# --- HOLOGRAM WALL SETUP ---
 	var play_area_walls = play_area_hologram.get_children()
 	for wall in play_area_walls:
@@ -37,21 +28,20 @@ func _ready() -> void:
 				
 				# Apply the invisible material to the wall
 				wall.set_surface_override_material(0, unique_mat)
-				
+
 				# Force the node to hide
 				wall.hide()
 
 func _on_play_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):
-		print("fading in")
 		fade_all_play_area_hologram_walls(false) # false = fade in
-		start_progress_bar()
+		input_prompt_ui.change_input_text("PLAY")
+		input_prompt_ui.fade_in(input_prompt_ui)
 
 func _on_play_area_body_exited(body: Node3D) -> void:
 	if body.is_in_group("Player"):
-		print("fading out")
 		fade_all_play_area_hologram_walls(true) # true = fade out
-		cancel_progress_bar()
+		input_prompt_ui.fade_out(input_prompt_ui)
 
 func fade_all_play_area_hologram_walls(is_fade_out: bool = false, fade_time: float = 0.4) -> void:
 	# MATH FIX: Godot alpha uses 0.0 to 1.0!
@@ -82,46 +72,6 @@ func fade_all_play_area_hologram_walls(is_fade_out: bool = false, fade_time: flo
 		for wall in play_area_walls:
 			if wall is MeshInstance3D:
 				wall.hide()
-
-func start_progress_bar() -> void:
-	if not play_area_progress_bar: return
-
-	# Kill the empty animation if they step back in quickly
-	if progress_tween and progress_tween.is_valid():
-		progress_tween.kill()
-
-	progress_tween = create_tween()
-
-	# 1. Wait for the spam-proof delay BEFORE showing or scaling anything!
-	if fill_delay > 0.0:
-		progress_tween.tween_interval(fill_delay)
-
-	# 2. Tell the tween to unhide the bar ONLY after the delay finishes
-	progress_tween.tween_callback(play_area_progress_bar.show)
-
-	# 3. Animate the scale
-	progress_tween.tween_property(play_area_progress_bar, "scale:x", original_progress_scale.x, fill_time) \
-		.set_trans(Tween.TRANS_SINE) \
-		.set_ease(Tween.EASE_OUT)
-
-	# Connect the finish line to a function so you can trigger the actual purchase/interaction!
-	progress_tween.finished.connect(_on_start_game)
-
-func cancel_progress_bar() -> void:
-	if not play_area_progress_bar: return
-
-	if progress_tween and progress_tween.is_valid():
-		progress_tween.kill()
-
-	progress_tween = create_tween()
-	
-	# TRANS_SINE empties it out quickly and cleanly
-	progress_tween.tween_property(play_area_progress_bar, "scale:x", 0.001, empty_time) \
-		.set_trans(Tween.TRANS_SINE) \
-		.set_ease(Tween.EASE_OUT)
-
-	await progress_tween.finished
-	play_area_progress_bar.hide()
 
 func _on_start_game() -> void:
 	# the play progress bar is completed, logic here will start the game 

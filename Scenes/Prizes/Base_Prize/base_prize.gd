@@ -20,6 +20,7 @@ const string_piece_file_path: String = "res://Scenes/Prizes/Base_Prize/shop_stri
 var string_piece: PackedScene
 
 var prize_popups_ui
+var input_prompt_ui
 var should_be_hidden: bool = true # used to prevent from becoming visible again when resetting (in reset_prize method, it could run after you've left the prize area and everything else is faded out )
 var bought: bool = false # used to update the quantity owned in each individual prize script
 var on_buy_cooldown: bool = false # used to disable buying the item until a new one is spawned in
@@ -39,6 +40,7 @@ func _ready() -> void:
 	PlayerGlobals.hide_prize_prices.connect(on_hide_prize_prices)
 	
 	prize_popups_ui = UI.get_node("PrizePopups")
+	input_prompt_ui = UI.get_node("InputPrompt")
 	current_prize_node = $Prize/Prize
 	
 	# Save the pristine transforms so we can perfectly recreate it
@@ -211,10 +213,14 @@ func _on_selection_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):
 		prize_popups_ui.update_text_boxes(quantity_owned, item_name, item_description)
 		prize_popups_ui.fade_in(prize_popups_ui)
+		input_prompt_ui.change_input_text("BUY")
+		input_prompt_ui.fade_in(input_prompt_ui)
+
 
 func _on_selection_area_body_exited(body: Node3D) -> void:
 	if body.is_in_group("Player"):
 		prize_popups_ui.fade_out(prize_popups_ui)
+		input_prompt_ui.fade_out(input_prompt_ui)
 
 func on_show_prize_prices():
 	should_be_hidden = false
