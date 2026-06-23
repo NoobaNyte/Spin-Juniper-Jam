@@ -18,6 +18,8 @@ const string_piece_file_path: String = "res://Scenes/Prizes/Base_Prize/shop_stri
 var string_piece: PackedScene
 
 func _ready() -> void:
+	PlayerGlobals.show_prize_prices.connect(on_show_prize_prices)
+	PlayerGlobals.hide_prize_prices.connect(on_hide_prize_prices)
 	price_label = find_child("PriceLabel", true, false)
 	price_label.update_price()
 	string_piece = preload(string_piece_file_path)
@@ -100,20 +102,20 @@ func gen_strings():
 
 func _on_selection_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):
-		# fade price label
-		price_label.fade_in(price_label)
-
 		# fade UI
 		var prize_popups_ui = UI.get_node("PrizePopups")
 		prize_popups_ui.update_text_boxes(quantity_owned, item_name, item_description)
 		prize_popups_ui.fade_in(prize_popups_ui)
 
-
 func _on_selection_area_body_exited(body: Node3D) -> void:
 	if body.is_in_group("Player"):
-		# fade price label
-		price_label.fade_out(price_label)
-
 		# fade UI
 		var prize_popups_ui = UI.get_node("PrizePopups")
 		prize_popups_ui.fade_out(prize_popups_ui)
+
+# hooked up here vs in price_label.gd to prevent circular dependency issues (price label needs price var from here)
+func on_show_prize_prices():
+	price_label.fade_in(price_label)
+
+func on_hide_prize_prices():
+	price_label.fade_out(price_label)

@@ -15,6 +15,7 @@ radius = 4.5
 
 [node name="Invincibility Frames Prize" unique_id=2124177430 instance=ExtResource("1_aavh3")]
 script = ExtResource("2_yxrll")
+price = 500
 
 [node name="PriceLabel" parent="Overlays" parent_id_path=PackedInt32Array(998585642) index="0" unique_id=1926436885]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.452067, 0)

@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://f84ucq2mqwcd" path="res://Scenes/Prizes/HP/hp_prize.tscn" id="5_p6jpk"]
 [ext_resource type="PackedScene" uid="uid://do2s7rajjiqji" path="res://Scenes/Prizes/Jump Prize/jump_prize.tscn" id="5_y3v7k"]
 [ext_resource type="PackedScene" uid="uid://bpc6exg8npidb" path="res://Scenes/Main/button.tscn" id="6_4e4y2"]
+[ext_resource type="Script" uid="uid://dm1qgwe8areex" path="res://Scenes/Main/prize_area.gd" id="7_2ok46"]
 [ext_resource type="PackedScene" uid="uid://b5f1b5xy70e7n" path="res://Scenes/Prizes/Bear Prize/bear_prize.tscn" id="7_6t3k2"]
 [ext_resource type="PackedScene" uid="uid://d2bdcu8nu61s5" path="res://Assets/3D/Shop/Wheel Board.fbx" id="8_y3v7k"]
 [ext_resource type="PackedScene" uid="uid://dkobqdf0o1m7a" path="res://Scenes/RotatingPlatform/RotatingPlatform.tscn" id="9_imbg2"]
@@ -32,6 +33,9 @@ ambient_light_color = Color(1, 1, 1, 1)
 ssao_enabled = true
 ssao_radius = 6.04
 ssao_intensity = 10.1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wliom"]
+size = Vector3(66.72644, 3.8933697, 8.959991)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6t3k2"]
 size = Vector3(22.552734, 3.8933697, 8.776489)
@@ -91,6 +95,15 @@ hole_chance = 0.0
 
 [node name="Shop" type="StaticBody3D" parent="." unique_id=294995878]
 
+[node name="PrizeArea" type="Area3D" parent="Shop" unique_id=1926756228]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5889311)
+script = ExtResource("7_2ok46")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Shop/PrizeArea" unique_id=346782699]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7588501, 1.8187246, 15.370141)
+shape = SubResource("BoxShape3D_wliom")
+debug_color = Color(1, 0.87053573, 0, 0.41960785)
+
 [node name="Prizes" type="Node3D" parent="Shop" unique_id=242406510]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.065692425, 0)
 
@@ -141,11 +154,16 @@ shape = SubResource("BoxShape3D_imbg2")
 
 [node name="Shop" parent="Shop" unique_id=725113405 instance=ExtResource("1_1r6ip")]
 
+[node name="Floor" parent="Shop/Shop" index="3" unique_id=1323032207]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0005631447, 0.01571107, 0.00493598)
+
 [node name="PlayerCharacter" parent="." unique_id=1881213073 groups=["Player"] instance=ExtResource("5_2a143")]
 transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, 0, 0, 6.984)
 in_game = false
 in_menu = true
 
+[connection signal="body_entered" from="Shop/PrizeArea" to="Shop/PrizeArea" method="_on_body_entered"]
+[connection signal="body_exited" from="Shop/PrizeArea" to="Shop/PrizeArea" method="_on_body_exited"]
 [connection signal="body_entered" from="Shop/ZoomArea" to="MainCamera" method="_on_zoom_area_body_entered"]
 [connection signal="body_exited" from="Shop/ZoomArea" to="MainCamera" method="_on_zoom_area_body_exited"]
 

@@ -16,6 +16,7 @@ radius = 2.5
 
 [node name="HP_Prize" unique_id=2124177430 instance=ExtResource("1_vot0h")]
 script = ExtResource("2_4tuay")
+price = 10
 item_name = "HP"
 item_description = "yes"
 
