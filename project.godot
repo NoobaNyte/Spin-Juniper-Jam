@@ -35,6 +35,7 @@ project/assembly_name="Project"
 [global_group]
 
 Player=""
+PrizeSelectionArea=""
 
 [input]
 

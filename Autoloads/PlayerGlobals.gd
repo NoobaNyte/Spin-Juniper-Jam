@@ -22,14 +22,19 @@ var tickets: int = 0:
     set(value):
         tickets = value
         update_tickets.emit(tickets)
-
 var starting_tickets: int = 10000 # set higher to start with more for dev testing
 
+# starting powerup amount and costs are set individually in inspector for each prize in each prize scene
 var hp_powerup_amount: int = 0
+var hp_powerup_cost: int = 10
 var speed_powerup_amount: int = 0
+var speed_powerup_cost: int = 0
 var jump_powerup_amount: int = 0
+var jump_powerup_cost: int = 0
 var invincibility_powerup_amount: int = 0
-
+var invincibility_powerup_cost: int = 0
+var bear_powerup_amount: int = 0
+var bear_powerup_cost: int = 0
 
 func _init() -> void:
     tickets = starting_tickets

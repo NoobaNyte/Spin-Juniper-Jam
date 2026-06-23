@@ -1,9 +1,7 @@
 extends Node
 
+var player: CharacterBody3D
 
 func _ready() -> void:
-	pass # Replace with function body.
-
-
-func _process(delta: float) -> void:
-	pass
+	# Assuming 'owner' is the Player CharacterBody3D
+	player = owner

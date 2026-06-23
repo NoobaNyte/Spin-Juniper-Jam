@@ -6,14 +6,13 @@ func _ready() -> void:
 	fade_out(self, 0)
 	
 
-func update_price():
+func update_price_label():
 	# new_price is emitted from each prize in the base_prize.gd "price" var that they all have
 	var new_price = owner.price
 	## CRITICAL - there are 2 half spaces right after the "/img]" for nice spacing
 	price_text.text = "[img=190x0]res://Assets/2D/Ticket Black Stroke.png[/img] " + str(new_price)
 
 func fade_in(target: Node3D, duration: float = 0.5) -> Signal:
-	print("trying to fade in")
 	# 1. Force the target to start completely invisible
 	target.modulate.a = 0.0
 	target.show()

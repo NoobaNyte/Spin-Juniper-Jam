@@ -2,6 +2,7 @@ extends Node3D
 class_name BasePrize
 
 @export_group("Prize Data")
+# starts out at this price but then this price also gets updated/increased later so the price_label.gd can use it
 @export var price: int = 0
 var price_label: Sprite3D
 @export var quantity_owned: int = 0
@@ -20,12 +21,19 @@ var string_piece: PackedScene
 func _ready() -> void:
 	PlayerGlobals.show_prize_prices.connect(on_show_prize_prices)
 	PlayerGlobals.hide_prize_prices.connect(on_hide_prize_prices)
-	price_label = find_child("PriceLabel", true, false)
-	price_label.update_price()
+
 	string_piece = preload(string_piece_file_path)
 	if string_piece:
 		gen_strings()
-	
+
+func update_price():
+	price_label = find_child("PriceLabel", true, false)
+	price_label.update_price_label()
+
+func buy_prize():
+	if PlayerGlobals.tickets >= price:
+		PlayerGlobals.tickets -= price
+
 func gen_strings():
 	var string_bottom: Marker3D = $Prize/StringBottom
 	var string_top: Marker3D = $Prize/StringTop

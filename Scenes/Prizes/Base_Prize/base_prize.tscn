@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://detark3720eql" path="res://Scenes/Prizes/Base_Prize/price_label.gd" id="2_tiqnv"]
 [ext_resource type="PackedScene" uid="uid://buf6xs4m2tmk8" path="res://Assets/3D/Prizes/Direction Arrow.fbx" id="2_wnyqy"]
 [ext_resource type="Script" uid="uid://10ojd2tyhwfj" path="res://Assets/Utility Scripts/hide_on_load.gd" id="3_f7psc"]
+[ext_resource type="Script" uid="uid://l8yms7qhkdn8" path="res://Scenes/Prizes/Base_Prize/selection_area.gd" id="4_680mr"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_680mr"]
 viewport_path = NodePath("Overlays/PriceLabel/SubViewport")
@@ -104,7 +105,8 @@ text = "StringBottom"
 mass = 0.01
 gravity_scale = 0.2
 
-[node name="SelectionArea" type="Area3D" parent="." unique_id=664817428]
+[node name="SelectionArea" type="Area3D" parent="." unique_id=664817428 groups=["PrizeSelectionArea"]]
+script = ExtResource("4_680mr")
 
 [node name="Direction Arrow" parent="SelectionArea" unique_id=1837532217 instance=ExtResource("2_wnyqy")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)

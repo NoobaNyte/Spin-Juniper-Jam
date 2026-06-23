@@ -167,6 +167,6 @@ layout_mode = 2
 theme_override_constants/outline_size = 35
 theme_override_font_sizes/normal_font_size = 90
 bbcode_enabled = true
-text = "[img=90x0]res://Assets/2D/Ticket Black Stroke.png[/img] 2000"
+text = "[img=90x0]res://Assets/2D/Ticket Black Stroke.png[/img] 9999"
 fit_content = true
 vertical_alignment = 2
