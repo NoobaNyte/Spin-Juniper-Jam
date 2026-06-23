@@ -33,6 +33,7 @@ var selected_level: int = 1: # this number is the default selected level
         selected_level = value
         update_selected_level.emit()
 
+
 # starting powerup amount and costs are set individually in inspector for each prize in each prize scene
 var hp_powerup_amount: int = 0
 var hp_powerup_cost: int = 10

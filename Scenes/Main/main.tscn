@@ -86,9 +86,10 @@ size = Vector3(79.72221, 1.5944442, 21.256598)
 [sub_resource type="BoxShape3D" id="BoxShape3D_imbg2"]
 size = Vector3(79.72221, 65.372215, 2.8250542)
 
-[node name="Main" type="Node3D" unique_id=224682750 node_paths=PackedStringArray("play_area_hologram")]
+[node name="Main" type="Node3D" unique_id=224682750 node_paths=PackedStringArray("play_area_hologram", "play_area")]
 script = ExtResource("1_vk4q2")
 play_area_hologram = NodePath("Shop/PlayArea/Hologram")
+play_area = NodePath("Shop/PlayArea/PlayArea")
 
 [node name="UI" parent="." unique_id=841098919 instance=ExtResource("2_wliom")]
 

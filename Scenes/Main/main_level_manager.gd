@@ -1,6 +1,7 @@
 extends Node3D
 
 @export var play_area_hologram: Node3D
+@export var play_area: Area3D
 
 var current_tween: Tween
 var progress_tween: Tween
@@ -72,6 +73,16 @@ func fade_all_play_area_hologram_walls(is_fade_out: bool = false, fade_time: flo
 		for wall in play_area_walls:
 			if wall is MeshInstance3D:
 				wall.hide()
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("Interact"):
+		# Get all bodies currently inside this area
+		var bodies = play_area.get_overlapping_bodies()
+		
+		# Check if the player is one of them
+		for body in bodies:
+			if body.is_in_group("Player"):
+				_on_start_game()
 
 func _on_start_game() -> void:
 	# the play progress bar is completed, logic here will start the game 
