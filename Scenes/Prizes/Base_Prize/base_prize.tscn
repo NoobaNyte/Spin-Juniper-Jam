@@ -1,8 +1,18 @@
 [gd_scene format=3 uid="uid://cfqh7ao1mlciy"]
 
-[ext_resource type="FontFile" uid="uid://b0n7e232wvpbg" path="res://Assets/Fonts/Montserrat-Bold.ttf" id="1_f7psc"]
+[ext_resource type="Theme" uid="uid://bafby1ck50m6g" path="res://Assets/Fonts/bold.tres" id="1_f7psc"]
+[ext_resource type="Script" uid="uid://detark3720eql" path="res://Scenes/Prizes/Base_Prize/price_label.gd" id="2_tiqnv"]
 [ext_resource type="PackedScene" uid="uid://buf6xs4m2tmk8" path="res://Assets/3D/Prizes/Direction Arrow.fbx" id="2_wnyqy"]
 [ext_resource type="Script" uid="uid://10ojd2tyhwfj" path="res://Assets/Utility Scripts/hide_on_load.gd" id="3_f7psc"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_680mr"]
+viewport_path = NodePath("Overlays/PriceLabel/SubViewport")
+
+[sub_resource type="GDScript" id="GDScript_f7psc"]
+script/source = "extends BaseUIElement
+
+func _ready() -> void:
+	fade_out(self, 0)"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wnyqy"]
 
@@ -19,14 +29,34 @@ radius = 2.9448242
 
 [node name="Overlays" type="Node3D" parent="." unique_id=998585642]
 
-[node name="Price" type="Label3D" parent="Overlays" unique_id=1137845194]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03094101, 6.283478, -2.0936952)
+[node name="PriceLabel" type="Sprite3D" parent="Overlays" unique_id=1926436885]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
 billboard = 1
 no_depth_test = true
+texture = SubResource("ViewportTexture_680mr")
+script = ExtResource("2_tiqnv")
+
+[node name="SubViewport" type="SubViewport" parent="Overlays/PriceLabel" unique_id=575096655]
+transparent_bg = true
+size = Vector2i(1024, 512)
+render_target_update_mode = 4
+
+[node name="PriceText" type="RichTextLabel" parent="Overlays/PriceLabel/SubViewport" unique_id=1123811529]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_f7psc")
+theme_override_constants/outline_size = 84
+theme_override_font_sizes/normal_font_size = 162
+bbcode_enabled = true
 text = "$2000"
-font = ExtResource("1_f7psc")
-font_size = 300
-outline_size = 100
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+script = SubResource("GDScript_f7psc")
 
 [node name="Prize" type="Node3D" parent="." unique_id=2110599126]
 

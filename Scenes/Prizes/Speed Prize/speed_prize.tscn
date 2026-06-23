@@ -4,6 +4,9 @@
 [ext_resource type="Script" uid="uid://bq7mt1f1sdf2a" path="res://Scenes/Prizes/Speed Prize/speed_prize.gd" id="2_lbh1i"]
 [ext_resource type="PackedScene" uid="uid://bhgn0eq6cqgvs" path="res://Assets/3D/Prizes/RabbitPlushie.fbx" id="2_us7j5"]
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_lbh1i"]
+viewport_path = NodePath("Overlays/PriceLabel/SubViewport")
+
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_yxeu0"]
 points = PackedVector3Array(0.14082186, 1.9432075, -4.8824806, -1.6363935, -2.8930755, 1.8835995, 1.6353669, -2.8930755, 1.8835995, -0.44650364, 1.5690409, 3.819107, 1.1893766, 3.9494615, -2.7254624, -1.1904032, 3.9494615, -3.022731, -1.6903512, -2.2880657, -1.9030101, 1.8330458, -2.2921574, -1.7636522, 2.2307487, -1.7028651, 2.1818, -2.2317753, -1.7028651, 2.1818, 0.7429495, 1.2716558, 3.819107, -0.42328456, 1.2329497, -5.00676, -1.566104, -2.4608243, 2.7784896, 1.8507425, -2.319378, 2.7802126, -1.9429984, -1.9691793, -1.7428691, -0.2857133, 0.528193, 4.069097, 0.6938761, 1.5003382, -4.6618657, -0.7439761, 1.2716558, 3.819107, 1.9425586, -1.9699339, -1.7432463, 1.1893766, 3.8000991, -3.1718314, 1.4058882, -2.283784, -2.040972, -1.1904032, 3.9494615, -2.7254624, 0.28167802, 1.0924098, -5.010053, -2.2317753, -2.4456582, 1.8835995, 2.2307487, -2.4456582, 1.8835995, -1.5359094, -2.4031768, -1.750527, -0.69469786, 1.5000513, -4.660636, 0.445477, 1.5690409, 3.819107, 1.761505, 0.25777268, 1.2668848, -1.7617543, 0.25789198, 1.2661078, -1.4068342, -2.283623, -2.0408835, -1.8513991, -2.318809, 2.7795584)
 
@@ -12,6 +15,10 @@ radius = 3.25
 
 [node name="Speed_Prize" unique_id=2124177430 instance=ExtResource("1_2gxeh")]
 script = ExtResource("2_lbh1i")
+
+[node name="PriceLabel" parent="Overlays" parent_id_path=PackedInt32Array(998585642) index="0" unique_id=1926436885]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.8096004, 0)
+texture = SubResource("ViewportTexture_lbh1i")
 
 [node name="Prize" parent="." index="1" unique_id=2110599126]
 transform = Transform3D(0.99929893, 0, -0.037442036, 0, 1, 0, 0.037442036, 0, 0.99929893, 0, 6.6111107, 0)

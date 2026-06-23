@@ -5,6 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://ckjoqowugv5m1" path="res://Assets/3D/Prizes/HP.fbx" id="2_kivwe"]
 [ext_resource type="Script" uid="uid://10ojd2tyhwfj" path="res://Assets/Utility Scripts/hide_on_load.gd" id="3_8d66t"]
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_8d66t"]
+viewport_path = NodePath("Overlays/PriceLabel/SubViewport")
+
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_abeok"]
 points = PackedVector3Array(-0.04256867, 1.2864254, 1.0845146, 0.0026000142, -1.4394088, -0.26485425, 0.04627225, -1.4266319, -0.262425, 0.0026000142, 1.1122117, -1.3182905, 0.47321603, 0.53063184, 0.17063104, -0.47137395, 0.577799, -0.12912945, -0.041242804, -0.41976622, 1.1843432, 0.046427373, -0.42043978, -1.1866829, -0.38380456, -0.49767083, -0.5150595, -0.38276958, 0.017280266, 0.81347114, 0.39161628, -0.19805057, 0.7343164, 0.39156625, -0.19803113, -0.73442197, 0.39604986, 0.9363604, -0.34958217, -0.39335477, 0.7669962, -0.836018, 0.047166158, 0.95862937, 1.3854144, 0.0026000142, -1.2761447, 0.5359195, -0.087628126, 1.3737714, -0.6312997, -0.39094418, 0.8060086, 0.7871597, -0.38322562, -0.58267665, 0.38567528, 0.39544386, 0.7604082, 0.8290518, 0.3003539, -1.0039816, 0.08465366, -0.04174245, 0.19693111, -1.420171, 0.39539713, 0.76031226, -0.82915324, 0.09243805, 1.3691533, 0.6290479, -0.041747857, 0.19696084, 1.4201441, 0.09259436, 1.326351, -0.90060776, -0.39279732, 0.9417351, 0.3514714, -0.2955331, -1.0052005, 0.12745927, -0.04009605, -0.709091, -1.0253408, 0.089995734, 0.19338648, -1.3556926, 0.26083112, -0.111138046, 1.0326221, -0.29810032, -0.02544351, -0.9881804)
 
@@ -16,8 +19,9 @@ script = ExtResource("2_4tuay")
 item_name = "HP"
 item_description = "yes"
 
-[node name="Price" parent="Overlays" parent_id_path=PackedInt32Array(998585642) index="0" unique_id=1137845194]
+[node name="PriceLabel" parent="Overlays" parent_id_path=PackedInt32Array(998585642) index="0" unique_id=1926436885]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.283, 0)
+texture = SubResource("ViewportTexture_8d66t")
 
 [node name="Prize" parent="." index="1" unique_id=2110599126]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 6.2127304, 0)

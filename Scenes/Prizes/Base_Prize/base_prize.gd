@@ -2,6 +2,8 @@ extends Node3D
 class_name BasePrize
 
 @export_group("Prize Data")
+@export var price: int = 0
+var price_label: Sprite3D
 @export var quantity_owned: int = 0
 @export var item_name: String = "EMPTY NAME"
 @export var item_description: String = "EMPTY DESCRIPTION"
@@ -16,6 +18,7 @@ const string_piece_file_path: String = "res://Scenes/Prizes/Base_Prize/shop_stri
 var string_piece: PackedScene
 
 func _ready() -> void:
+	price_label = find_child("PriceLabel", true, false)
 	string_piece = preload(string_piece_file_path)
 	if string_piece:
 		gen_strings()
@@ -94,9 +97,12 @@ func gen_strings():
 			
 			break # Safety exit
 
-
 func _on_selection_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):
+		# fade price label
+		price_label.fade_in(price_label)
+
+		# fade UI
 		var prize_popups_ui = UI.get_node("PrizePopups")
 		prize_popups_ui.update_text_boxes(quantity_owned, item_name, item_description)
 		prize_popups_ui.fade_in(prize_popups_ui)
@@ -104,5 +110,9 @@ func _on_selection_area_body_entered(body: Node3D) -> void:
 
 func _on_selection_area_body_exited(body: Node3D) -> void:
 	if body.is_in_group("Player"):
+		# fade price label
+		price_label.fade_out(price_label)
+
+		# fade UI
 		var prize_popups_ui = UI.get_node("PrizePopups")
 		prize_popups_ui.fade_out(prize_popups_ui)

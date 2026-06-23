@@ -11,7 +11,6 @@ func _ready() -> void:
 	fade_out(self, 0)
 
 func update_text_boxes(quantity_owned: int, item_name: String, item_description: String):
-	print("trying to update text boxes!")
 	you_have_text.text = "YOU HAVE: " + str(quantity_owned)
 	prize_name_text.text = item_name
 	prize_description_text.text = item_description
