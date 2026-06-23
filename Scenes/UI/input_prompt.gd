@@ -6,5 +6,5 @@ func _ready() -> void:
 	prompt_text = find_child("BuyText", true, false)
 	fade_out(self, 0)
 
-func change_input_text(new_text: String):
+func change_input_text_to(new_text: String):
 	prompt_text.text = new_text

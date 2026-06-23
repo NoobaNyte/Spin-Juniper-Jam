@@ -2,6 +2,9 @@ extends Node3D
 
 @export_category("Button Setup")
 @export var button: RigidBody3D
+@export var left_button: bool = false
+@export var right_button: bool = false
+
 
 @export_category("Button Physics")
 ## How far down the button gets pushed (in local 3D units).
@@ -22,8 +25,9 @@ func _ready() -> void:
 
 func _on_trigger_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player") and button:
-		# Tween the button down
+		change_selected_level()
 		animate_button(base_y - press_depth)
+		
 
 func _on_trigger_area_body_exited(body: Node3D) -> void:
 	if body.is_in_group("Player") and button:
@@ -41,3 +45,16 @@ func animate_button(target_y: float) -> void:
 	
 	# 3. Animate the BUTTON's Y position, not the root node
 	active_tween.tween_property(button, "position:y", target_y, transition_speed)
+
+func change_selected_level():
+	if left_button and not right_button:
+		if PlayerGlobals.selected_level - 1 > 0:
+			PlayerGlobals.selected_level -= 1
+		else:
+			PlayerGlobals.selected_level = 5
+	
+	if right_button and not left_button:
+		if PlayerGlobals.selected_level < PlayerGlobals.total_levels:
+			PlayerGlobals.selected_level += 1
+		else:
+			PlayerGlobals.selected_level = 1

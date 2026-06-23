@@ -213,7 +213,7 @@ func _on_selection_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):
 		prize_popups_ui.update_text_boxes(quantity_owned, item_name, item_description)
 		prize_popups_ui.fade_in(prize_popups_ui)
-		input_prompt_ui.change_input_text("BUY")
+		input_prompt_ui.change_input_text_to("BUY")
 		input_prompt_ui.fade_in(input_prompt_ui)
 
 

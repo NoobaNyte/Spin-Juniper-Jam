@@ -35,7 +35,7 @@ func _ready() -> void:
 func _on_play_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):
 		fade_all_play_area_hologram_walls(false) # false = fade in
-		input_prompt_ui.change_input_text("PLAY")
+		input_prompt_ui.change_input_text_to("PLAY")
 		input_prompt_ui.fade_in(input_prompt_ui)
 
 func _on_play_area_body_exited(body: Node3D) -> void:
