@@ -5,8 +5,8 @@ extends Node3D
 @export_group("Progress Bar Settings")
 @export var play_area_progress_bar: Node3D
 @export var fill_delay: float = 0.5 # How long to wait before showing/filling the bar
-@export var fill_time: float = 3
-@export var empty_time: float = 0.3 # how fast the progress bar takes to go back to 0 scale
+@export var fill_time: float = 2
+@export var empty_time: float = 0.6 # how fast the progress bar takes to go back to 0 scale
 
 var current_tween: Tween
 var progress_tween: Tween
@@ -53,7 +53,7 @@ func _on_play_area_body_exited(body: Node3D) -> void:
 		fade_all_play_area_hologram_walls(true) # true = fade out
 		cancel_progress_bar()
 
-func fade_all_play_area_hologram_walls(is_fade_out: bool = false, fade_time: float = 0.5) -> void:
+func fade_all_play_area_hologram_walls(is_fade_out: bool = false, fade_time: float = 0.4) -> void:
 	# MATH FIX: Godot alpha uses 0.0 to 1.0!
 	var fade_to: float = 0.0 if is_fade_out else 1.0
 
@@ -83,7 +83,6 @@ func fade_all_play_area_hologram_walls(is_fade_out: bool = false, fade_time: flo
 			if wall is MeshInstance3D:
 				wall.hide()
 
-
 func start_progress_bar() -> void:
 	if not play_area_progress_bar: return
 
@@ -106,7 +105,7 @@ func start_progress_bar() -> void:
 		.set_ease(Tween.EASE_OUT)
 
 	# Connect the finish line to a function so you can trigger the actual purchase/interaction!
-	progress_tween.finished.connect(_on_progress_completed)
+	progress_tween.finished.connect(_on_start_game)
 
 func cancel_progress_bar() -> void:
 	if not play_area_progress_bar: return
@@ -124,6 +123,6 @@ func cancel_progress_bar() -> void:
 	await progress_tween.finished
 	play_area_progress_bar.hide()
 
-func _on_progress_completed() -> void:
-	# THE BAR IS FULL! DO YOUR STUFF HERE!
+func _on_start_game() -> void:
+	# the play progress bar is completed, logic here will start the game 
 	print("Interaction confirmed! The bar filled entirely.")
