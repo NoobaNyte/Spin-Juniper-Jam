@@ -93,10 +93,10 @@ func _on_start_game() -> void:
 	var player_particles: GPUParticles3D = player.find_child("PoofGPUParticles3D", true, false)
 	var player_mesh: Node3D = player.find_child("Main Character Animated", true, false)
 	player_particles.emitting = true
-	await get_tree().create_timer(0.4).timeout # wait for particles to cover player before hiding player
+	await get_tree().create_timer(0.2).timeout # wait for particles to cover player before hiding player
 	player_mesh.visible = false
 
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(0.75).timeout
 
 	$MainCamera.detached_from_player = true
 	$MainCamera.toggle_playing_camera(true)
