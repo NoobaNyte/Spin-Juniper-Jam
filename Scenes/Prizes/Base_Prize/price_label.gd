@@ -1,9 +1,17 @@
 extends Sprite3D
 
+@onready var price_text = $SubViewport/PriceText
+
 func _ready() -> void:
-	#fade_out(self, 0)
-	pass
+	update_price()
+	fade_out(self, 0)
 	
+
+func update_price():
+	# new_price is emitted from each prize in the base_prize.gd "price" var that they all have
+	var new_price = owner.price
+	price_text.text = "$" + str(new_price)
+
 func fade_in(target: Node3D, duration: float = 0.5) -> Signal:
 	print("trying to fade in")
 	# 1. Force the target to start completely invisible

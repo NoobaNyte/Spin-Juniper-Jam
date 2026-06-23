@@ -14,17 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://d2bdcu8nu61s5" path="res://Assets/3D/Shop/Wheel Board.fbx" id="8_y3v7k"]
 [ext_resource type="PackedScene" uid="uid://dkobqdf0o1m7a" path="res://Scenes/RotatingPlatform/RotatingPlatform.tscn" id="9_imbg2"]
 [ext_resource type="ArrayMesh" uid="uid://dqoldtwb8bobo" path="res://Assets/3D/test.tres" id="10_hfg1r"]
-[ext_resource type="Theme" uid="uid://bafby1ck50m6g" path="res://Assets/Fonts/bold.tres" id="11_es6iu"]
 [ext_resource type="PackedScene" uid="uid://c4rlmrucmhwnv" path="res://Assets/3D/Shop/Play Area.fbx" id="15_wliom"]
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_koken"]
-viewport_path = NodePath("PriceLabel/SubViewport")
-
-[sub_resource type="GDScript" id="GDScript_es6iu"]
-script/source = "extends BaseUIElement
-
-func _ready() -> void:
-	fade_out(self, 0)"
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1r6ip"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -57,30 +47,6 @@ size = Vector3(79.72221, 65.372215, 2.8250542)
 
 [node name="Main" type="Node3D" unique_id=224682750]
 script = ExtResource("1_vk4q2")
-
-[node name="PriceLabel" type="Sprite3D" parent="." unique_id=893648936]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 2.575153, 11.824944)
-billboard = 1
-no_depth_test = true
-texture = SubResource("ViewportTexture_koken")
-
-[node name="SubViewport" type="SubViewport" parent="PriceLabel" unique_id=650419503]
-transparent_bg = true
-size = Vector2i(1024, 512)
-render_target_update_mode = 4
-
-[node name="PriceText" type="RichTextLabel" parent="PriceLabel/SubViewport" unique_id=1347134684]
-custom_minimum_size = Vector2(1024, 512)
-offset_right = 1024.0
-offset_bottom = 512.0
-theme = ExtResource("11_es6iu")
-theme_override_constants/outline_size = 84
-theme_override_font_sizes/normal_font_size = 162
-text = "$2000"
-autowrap_mode = 0
-horizontal_alignment = 1
-vertical_alignment = 1
-script = SubResource("GDScript_es6iu")
 
 [node name="UI" parent="." unique_id=841098919 instance=ExtResource("2_wliom")]
 
