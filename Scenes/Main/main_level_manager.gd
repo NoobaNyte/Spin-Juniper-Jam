@@ -94,11 +94,20 @@ func _on_start_game() -> void:
 	var player_mesh: Node3D = player.find_child("Main Character Animated", true, false)
 	player_particles.emitting = true
 	await get_tree().create_timer(0.2).timeout # wait for particles to cover player before hiding player
-	player_mesh.visible = false
 
+	# hide player
+	player_mesh.visible = false
 	await get_tree().create_timer(0.75).timeout
 
+	# detach camera from player and toggle the gameplay cam
 	$MainCamera.detached_from_player = true
 	$MainCamera.toggle_playing_camera(true)
-	var anim_player: AnimationPlayer = $AnimationPlayer
-	anim_player.play("rotate_everything")
+	await get_tree().create_timer(3).timeout # wait for cam anim to be done before rotating everything
+
+	# rotate everything 90 degrees so gravity is correct
+	rotation.x = 90
+	var start_game_spawnpoint: Marker3D = find_child("StartGameSpawnPoint")
+	player.rotation.x = -90
+	player.position = start_game_spawnpoint.position
+	player_particles.emitting = true
+	player_mesh.visible = true
