@@ -19,6 +19,7 @@ var string_piece: PackedScene
 
 func _ready() -> void:
 	price_label = find_child("PriceLabel", true, false)
+	price_label.update_price()
 	string_piece = preload(string_piece_file_path)
 	if string_piece:
 		gen_strings()

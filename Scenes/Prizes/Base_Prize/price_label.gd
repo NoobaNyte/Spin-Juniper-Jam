@@ -3,7 +3,6 @@ extends Sprite3D
 @onready var price_text = $SubViewport/PriceText
 
 func _ready() -> void:
-	update_price()
 	fade_out(self, 0)
 	
 
