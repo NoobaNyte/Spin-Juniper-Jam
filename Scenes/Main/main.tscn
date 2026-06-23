@@ -37,6 +37,9 @@ ssao_intensity = 10.1
 [sub_resource type="BoxShape3D" id="BoxShape3D_wliom"]
 size = Vector3(66.72644, 3.8933697, 8.959991)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_2ok46"]
+size = Vector3(22.446716, 3.8933697, 17.211678)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_6t3k2"]
 size = Vector3(22.552734, 3.8933697, 8.776489)
 
@@ -102,6 +105,11 @@ script = ExtResource("7_2ok46")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Shop/PrizeArea" unique_id=346782699]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7588501, 1.8187246, 15.370141)
 shape = SubResource("BoxShape3D_wliom")
+debug_color = Color(1, 0.87053573, 0, 0.41960785)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Shop/PrizeArea" unique_id=857644521]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.898712, 1.8187246, 11.244298)
+shape = SubResource("BoxShape3D_2ok46")
 debug_color = Color(1, 0.87053573, 0, 0.41960785)
 
 [node name="Prizes" type="Node3D" parent="Shop" unique_id=242406510]

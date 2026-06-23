@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cglypxqnx1lqk" path="res://Assets/2D/Input Outline.png" id="1_de23q"]
 [ext_resource type="Script" uid="uid://cp1eumjlkb5fm" path="res://Scenes/UI/prize_popups.gd" id="1_fo61o"]
 [ext_resource type="Script" uid="uid://cwggult5gy1qs" path="res://Scenes/UI/input_text.gd" id="2_c7mb3"]
+[ext_resource type="Script" uid="uid://u2s6anfsepqs" path="res://Scenes/UI/ticket_count.gd" id="5_alcrr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_de23q"]
 bg_color = Color(0.04241073, 0.02669604, 0, 0.67058825)
@@ -145,3 +146,27 @@ autowrap_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PrizePopups/InfoBoxes/Vbox" unique_id=417777697]
 layout_mode = 2
+
+[node name="TicketCount" type="MarginContainer" parent="." unique_id=154889642]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ahcct")
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_bottom = 20
+script = ExtResource("5_alcrr")
+
+[node name="MarginContainer" type="VBoxContainer" parent="TicketCount" unique_id=1711964896]
+layout_mode = 2
+alignment = 2
+
+[node name="TicketCountLabel" type="RichTextLabel" parent="TicketCount/MarginContainer" unique_id=1252484784]
+layout_mode = 2
+theme_override_constants/outline_size = 35
+theme_override_font_sizes/normal_font_size = 90
+bbcode_enabled = true
+text = "[img=90x0]res://Assets/2D/Ticket Black Stroke.png[/img] 2000"
+fit_content = true
+vertical_alignment = 2
