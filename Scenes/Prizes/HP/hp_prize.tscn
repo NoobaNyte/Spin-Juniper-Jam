@@ -17,7 +17,7 @@ radius = 2.5
 [node name="HP_Prize" unique_id=2124177430 instance=ExtResource("1_vot0h")]
 script = ExtResource("2_4tuay")
 price = 10
-item_name = "HP"
+item_name = "BIG TINY HEART"
 item_description = "yes"
 
 [node name="PriceLabel" parent="Overlays" parent_id_path=PackedInt32Array(998585642) index="0" unique_id=1926436885]

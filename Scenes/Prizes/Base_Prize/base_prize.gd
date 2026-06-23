@@ -20,6 +20,7 @@ const string_piece_file_path: String = "res://Scenes/Prizes/Base_Prize/shop_stri
 var string_piece: PackedScene
 
 var prize_popups_ui
+var should_be_hidden: bool = true # used to prevent from becoming visible again when resetting (in reset_prize method, it could run after you've left the prize area and everything else is faded out )
 var bought: bool = false # used to update the quantity owned in each individual prize script
 
 # --- VARIABLES FOR RESPAWNING ---
@@ -56,6 +57,7 @@ func buy_prize():
 	if PlayerGlobals.tickets >= price:
 		bought = true
 		PlayerGlobals.tickets -= price
+		fade_out_prize_prices()
 		release_prize()
 
 func release_prize() -> void:
@@ -73,7 +75,7 @@ func release_prize() -> void:
 	bottom_anchor_pin.queue_free()
 	
 	# 3. Wait while it drops and bounces
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(0.7).timeout
 	
 	# --- NEW: Freeze physics so it doesn't fight the Tween! ---
 	current_prize_node.freeze = true
@@ -93,6 +95,8 @@ func release_prize() -> void:
 	reset_prize()
 
 func reset_prize() -> void:
+	if not should_be_hidden:
+		on_show_prize_prices()
 	var string_bottom: Marker3D = $Prize/StringBottom
 	
 	# 1. Zero out momentum
@@ -208,7 +212,12 @@ func _on_selection_area_body_exited(body: Node3D) -> void:
 		prize_popups_ui.fade_out(prize_popups_ui)
 
 func on_show_prize_prices():
+	should_be_hidden = false
 	price_label.fade_in(price_label)
 
 func on_hide_prize_prices():
+	should_be_hidden = true
+	fade_out_prize_prices()
+
+func fade_out_prize_prices():
 	price_label.fade_out(price_label)
