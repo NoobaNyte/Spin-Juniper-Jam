@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://d2bdcu8nu61s5" path="res://Assets/3D/Shop/Wheel Board.fbx" id="8_y3v7k"]
 [ext_resource type="PackedScene" uid="uid://dkobqdf0o1m7a" path="res://Scenes/RotatingPlatform/RotatingPlatform.tscn" id="9_imbg2"]
 [ext_resource type="ArrayMesh" uid="uid://dqoldtwb8bobo" path="res://Assets/3D/test.tres" id="10_hfg1r"]
+[ext_resource type="Material" uid="uid://b7g0cvi0cqule" path="res://Assets/Materials/Main/PlayAreaHologram.tres" id="14_koken"]
 [ext_resource type="PackedScene" uid="uid://c4rlmrucmhwnv" path="res://Assets/3D/Shop/Play Area.fbx" id="15_wliom"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1r6ip"]
@@ -43,6 +44,17 @@ size = Vector3(22.446716, 3.8933697, 17.211678)
 [sub_resource type="BoxShape3D" id="BoxShape3D_6t3k2"]
 size = Vector3(22.552734, 3.8933697, 8.776489)
 
+[sub_resource type="QuadMesh" id="QuadMesh_es6iu"]
+material = ExtResource("14_koken")
+size = Vector2(9.527, 18)
+
+[sub_resource type="QuadMesh" id="QuadMesh_koken"]
+material = ExtResource("14_koken")
+size = Vector2(6.367, 18)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_koken"]
+size = Vector3(9.527121, 6.4335938, 6.367402)
+
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_imbg2"]
 data = PackedVector3Array(36.0503, 81.545296, 6.9996996, 36.0503, 1.7803999, 6.9996996, 32.85, 1.7803999, 6.9996996, 32.85, 1.7803999, 6.9996996, 32.85, 81.545296, 6.9996996, 36.0503, 81.545296, 6.9996996, 32.85, 81.545296, 6.9996996, 32.85, 81.545296, 3.7993999, 36.0503, 81.545296, 3.7993999, 36.0503, 81.545296, 3.7993999, 36.0503, 81.545296, 6.9996996, 32.85, 81.545296, 6.9996996, 32.85, 81.545296, 3.7993999, 32.85, 1.7803999, 3.7993999, 36.0503, 1.7803999, 3.7993999, 36.0503, 1.7803999, 3.7993999, 36.0503, 81.545296, 3.7993999, 32.85, 81.545296, 3.7993999, 36.0503, 81.545296, 3.7993999, 36.0503, 1.7803999, 3.7993999, 36.0503, 1.7803999, 6.9996996, 36.0503, 1.7803999, 6.9996996, 36.0503, 81.545296, 6.9996996, 36.0503, 81.545296, 3.7993999, 32.85, 81.545296, 6.9996996, 32.85, 1.7803999, 6.9996996, 32.85, 1.7803999, 3.7993999, 32.85, 1.7803999, 3.7993999, 32.85, 81.545296, 3.7993999, 32.85, 81.545296, 6.9996996, -36.0503, 81.545296, 6.9996996, -32.85, 81.545296, 6.9996996, -32.85, 1.7803999, 6.9996996, -32.85, 1.7803999, 6.9996996, -36.0503, 1.7803999, 6.9996996, -36.0503, 81.545296, 6.9996996, -32.85, 81.545296, 6.9996996, -36.0503, 81.545296, 6.9996996, -36.0503, 81.545296, 3.7993999, -36.0503, 81.545296, 3.7993999, -32.85, 81.545296, 3.7993999, -32.85, 81.545296, 6.9996996, -32.85, 81.545296, 3.7993999, -36.0503, 81.545296, 3.7993999, -36.0503, 1.7803999, 3.7993999, -36.0503, 1.7803999, 3.7993999, -32.85, 1.7803999, 3.7993999, -32.85, 81.545296, 3.7993999, -36.0503, 81.545296, 3.7993999, -36.0503, 81.545296, 6.9996996, -36.0503, 1.7803999, 6.9996996, -36.0503, 1.7803999, 6.9996996, -36.0503, 1.7803999, 3.7993999, -36.0503, 81.545296, 3.7993999, -32.85, 81.545296, 6.9996996, -32.85, 81.545296, 3.7993999, -32.85, 1.7803999, 3.7993999, -32.85, 1.7803999, 3.7993999, -32.85, 1.7803999, 6.9996996, -32.85, 81.545296, 6.9996996, 31.898998, 1.7803999, 2.8485, 31.898998, 1.7803999, 7.9507, 31.2612, 0, 8.5885, 31.2612, 0, 8.5885, 31.2612, 0, 2.2107, 31.898998, 1.7803999, 2.8485, 37.001198, 1.7803999, 2.8485, 31.898998, 1.7803999, 2.8485, 31.2612, 0, 2.2107, 31.2612, 0, 2.2107, 37.639, 0, 2.2107, 37.001198, 1.7803999, 2.8485, 37.639, 0, 8.5885, 37.001198, 1.7803999, 7.9507, 37.001198, 1.7803999, 2.8485, 37.001198, 1.7803999, 2.8485, 37.639, 0, 2.2107, 37.639, 0, 8.5885, 31.2612, 0, 8.5885, 31.898998, 1.7803999, 7.9507, 37.001198, 1.7803999, 7.9507, 37.001198, 1.7803999, 7.9507, 37.639, 0, 8.5885, 31.2612, 0, 8.5885, 37.639, 0, 8.5885, 37.639, 0, 2.2107, 31.2612, 0, 2.2107, 31.2612, 0, 2.2107, 31.2612, 0, 8.5885, 37.639, 0, 8.5885, 31.898998, 1.7803999, 2.8485, 32.85, 1.7803999, 3.7993999, 32.85, 1.7803999, 6.9996996, 32.85, 1.7803999, 6.9996996, 31.898998, 1.7803999, 7.9507, 31.898998, 1.7803999, 2.8485, 31.898998, 1.7803999, 7.9507, 32.85, 1.7803999, 6.9996996, 36.0503, 1.7803999, 6.9996996, 36.0503, 1.7803999, 6.9996996, 37.001198, 1.7803999, 7.9507, 31.898998, 1.7803999, 7.9507, 37.001198, 1.7803999, 7.9507, 36.0503, 1.7803999, 6.9996996, 36.0503, 1.7803999, 3.7993999, 36.0503, 1.7803999, 3.7993999, 37.001198, 1.7803999, 2.8485, 37.001198, 1.7803999, 7.9507, 37.001198, 1.7803999, 2.8485, 36.0503, 1.7803999, 3.7993999, 32.85, 1.7803999, 3.7993999, 32.85, 1.7803999, 3.7993999, 31.898998, 1.7803999, 2.8485, 37.001198, 1.7803999, 2.8485, -31.898998, 1.7803999, 2.8485, -31.2612, 0, 2.2107, -31.2612, 0, 8.5885, -31.2612, 0, 8.5885, -31.898998, 1.7803999, 7.9507, -31.898998, 1.7803999, 2.8485, -37.001198, 1.7803999, 2.8485, -37.639, 0, 2.2107, -31.2612, 0, 2.2107, -31.2612, 0, 2.2107, -31.898998, 1.7803999, 2.8485, -37.001198, 1.7803999, 2.8485, -37.001198, 1.7803999, 2.8485, -37.001198, 1.7803999, 7.9507, -37.639, 0, 8.5885, -37.639, 0, 8.5885, -37.639, 0, 2.2107, -37.001198, 1.7803999, 2.8485, -37.001198, 1.7803999, 7.9507, -31.898998, 1.7803999, 7.9507, -31.2612, 0, 8.5885, -31.2612, 0, 8.5885, -37.639, 0, 8.5885, -37.001198, 1.7803999, 7.9507, -37.639, 0, 8.5885, -31.2612, 0, 8.5885, -31.2612, 0, 2.2107, -31.2612, 0, 2.2107, -37.639, 0, 2.2107, -37.639, 0, 8.5885, -31.898998, 1.7803999, 2.8485, -31.898998, 1.7803999, 7.9507, -32.85, 1.7803999, 6.9996996, -32.85, 1.7803999, 6.9996996, -32.85, 1.7803999, 3.7993999, -31.898998, 1.7803999, 2.8485, -37.001198, 1.7803999, 2.8485, -31.898998, 1.7803999, 2.8485, -32.85, 1.7803999, 3.7993999, -32.85, 1.7803999, 3.7993999, -36.0503, 1.7803999, 3.7993999, -37.001198, 1.7803999, 2.8485, -37.001198, 1.7803999, 7.9507, -37.001198, 1.7803999, 2.8485, -36.0503, 1.7803999, 3.7993999, -36.0503, 1.7803999, 3.7993999, -36.0503, 1.7803999, 6.9996996, -37.001198, 1.7803999, 7.9507, -31.898998, 1.7803999, 7.9507, -37.001198, 1.7803999, 7.9507, -36.0503, 1.7803999, 6.9996996, -36.0503, 1.7803999, 6.9996996, -32.85, 1.7803999, 6.9996996, -31.898998, 1.7803999, 7.9507)
 
@@ -52,8 +64,9 @@ size = Vector3(79.72221, 1.5944442, 21.256598)
 [sub_resource type="BoxShape3D" id="BoxShape3D_imbg2"]
 size = Vector3(79.72221, 65.372215, 2.8250542)
 
-[node name="Main" type="Node3D" unique_id=224682750]
+[node name="Main" type="Node3D" unique_id=224682750 node_paths=PackedStringArray("play_area")]
 script = ExtResource("1_vk4q2")
+play_area = NodePath("Shop/PlayArea/PlayArea")
 
 [node name="UI" parent="." unique_id=841098919 instance=ExtResource("2_wliom")]
 
@@ -139,8 +152,34 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8187246, 4.135155)
 shape = SubResource("BoxShape3D_6t3k2")
 debug_color = Color(1, 0, 0, 0.41960785)
 
-[node name="Play Area" parent="Shop" unique_id=508539647 instance=ExtResource("15_wliom")]
+[node name="PlayArea" parent="Shop" unique_id=508539647 instance=ExtResource("15_wliom")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5889311)
+
+[node name="PlayArea" type="Area3D" parent="Shop/PlayArea" unique_id=1864538314]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5889311)
+
+[node name="Hologram" type="Node3D" parent="Shop/PlayArea/PlayArea" unique_id=1152341546]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, 0, 0, 4.411)
+
+[node name="FrontWall" type="MeshInstance3D" parent="Shop/PlayArea/PlayArea/Hologram" unique_id=1865928426]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 9.000001, -2.9300003)
+mesh = SubResource("QuadMesh_es6iu")
+
+[node name="BackWall" type="MeshInstance3D" parent="Shop/PlayArea/PlayArea/Hologram" unique_id=171260119]
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 1.1058064e-07, 9.000001, 3.4369998)
+mesh = SubResource("QuadMesh_es6iu")
+
+[node name="LeftWall" type="MeshInstance3D" parent="Shop/PlayArea/PlayArea/Hologram" unique_id=1248137730]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.7634997, 9.000001, 0.25349903)
+mesh = SubResource("QuadMesh_koken")
+
+[node name="RightWall" type="MeshInstance3D" parent="Shop/PlayArea/PlayArea/Hologram" unique_id=1883204223]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4.7634997, 9.000001, 0.2534995)
+mesh = SubResource("QuadMesh_koken")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Shop/PlayArea/PlayArea" unique_id=2105784576]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4305115e-06, 3.2167966, 4.6645756)
+shape = SubResource("BoxShape3D_koken")
 
 [node name="Previous Button" parent="Shop" unique_id=1282772521 instance=ExtResource("6_4e4y2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.086308, 0, 4.604212)
@@ -168,7 +207,7 @@ shape = SubResource("BoxShape3D_imbg2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0005631447, 0.01571107, 0.00493598)
 
 [node name="PlayerCharacter" parent="." unique_id=1881213073 groups=["Player"] instance=ExtResource("5_2a143")]
-transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, 0, 0, 6.984)
+transform = Transform3D(-1.5, 0, -2.2649371e-07, 0, 1.5, 0, 2.2649371e-07, 0, -1.5, 17.974636, 0, 6.9839973)
 in_game = false
 in_menu = true
 
@@ -176,7 +215,10 @@ in_menu = true
 [connection signal="body_exited" from="Shop/PrizeArea" to="Shop/PrizeArea" method="_on_body_exited"]
 [connection signal="body_entered" from="Shop/ZoomArea" to="MainCamera" method="_on_zoom_area_body_entered"]
 [connection signal="body_exited" from="Shop/ZoomArea" to="MainCamera" method="_on_zoom_area_body_exited"]
+[connection signal="body_entered" from="Shop/PlayArea/PlayArea" to="." method="_on_play_area_body_entered"]
+[connection signal="body_exited" from="Shop/PlayArea/PlayArea" to="." method="_on_play_area_body_exited"]
 
 [editable path="Wheel Board/Wheel Board"]
 [editable path="Wheel Board/RotatingPlatform"]
+[editable path="Shop/PlayArea"]
 [editable path="Shop/Shop"]
