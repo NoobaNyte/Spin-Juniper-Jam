@@ -22,6 +22,7 @@ var string_piece: PackedScene
 var prize_popups_ui
 var should_be_hidden: bool = true # used to prevent from becoming visible again when resetting (in reset_prize method, it could run after you've left the prize area and everything else is faded out )
 var bought: bool = false # used to update the quantity owned in each individual prize script
+var on_buy_cooldown: bool = false # used to disable buying the item until a new one is spawned in
 
 # --- VARIABLES FOR RESPAWNING ---
 var bottom_anchor_pin: PinJoint3D
@@ -54,8 +55,11 @@ func update_price():
 	price_label.update_price_label()
 
 func buy_prize():
+	if on_buy_cooldown: return
+	
 	if PlayerGlobals.tickets >= price:
 		bought = true
+		on_buy_cooldown = true
 		PlayerGlobals.tickets -= price
 		fade_out_prize_prices()
 		release_prize()
@@ -134,6 +138,7 @@ func reset_prize() -> void:
 
 	# --- NEW: Unfreeze it now that everything is safely attached! ---
 	current_prize_node.freeze = false
+	on_buy_cooldown = false
 
 func gen_strings():
 	var string_bottom: Marker3D = $Prize/StringBottom
