@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://dvmgy7jxf07fb"]
+
+[ext_resource type="PackedScene" uid="uid://1oqhw28q3s16" path="res://Scenes/RotatingPlatform/base_wheel.tscn" id="1_17mty"]
+[ext_resource type="Shader" uid="uid://cvqo3c6sl8agr" path="res://Assets/Materials/Prizes/Bear/rainbow_bear.gdshader" id="1_u6lqn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vvcby"]
+size = Vector3(0.5, 1, 1.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u6lqn"]
+size = Vector3(0.5, 1, 1.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1ojrx"]
+render_priority = 0
+shader = ExtResource("1_u6lqn")
+shader_parameter/speed = 0.1
+shader_parameter/frequency = 0.5
+shader_parameter/angle = 90.0
+shader_parameter/saturation = 1.0
+shader_parameter/brightness = 1.0
+shader_parameter/metallic = 0.0
+shader_parameter/roughness = 0.5
+
+[sub_resource type="PrismMesh" id="PrismMesh_1ojrx"]
+material = SubResource("ShaderMaterial_1ojrx")
+
+[node name="PieceGenTemplate" type="Node3D" unique_id=1564069275]
+
+[node name="DestroyDetectionArea" type="Area3D" parent="." unique_id=335405244]
+transform = Transform3D(0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DestroyDetectionArea" unique_id=1828780406]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24999999, -17.5, 0)
+shape = SubResource("BoxShape3D_vvcby")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="PieceMeshGenerator" type="CSGCombiner3D" parent="." unique_id=1438327930]
+use_collision = true
+
+[node name="BaseWheel" parent="PieceMeshGenerator" unique_id=187194179 instance=ExtResource("1_17mty")]
+
+[node name="TopCut" type="CSGCombiner3D" parent="PieceMeshGenerator" unique_id=1828365277]
+transform = Transform3D(0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 0, 0, 0, 1, 0, 0, 0)
+operation = 2
+
+[node name="Cut" type="CSGBox3D" parent="PieceMeshGenerator/TopCut" unique_id=798205190]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+size = Vector3(18, 36, 1.6)
+
+[node name="AngleCut" type="CSGCombiner3D" parent="PieceMeshGenerator" unique_id=2004352390]
+transform = Transform3D(0.7071067, -0.7071067, 0, 0.7071067, 0.7071067, 0, 0, 0, 1, 0, 0, 0)
+operation = 2
+
+[node name="NextSpawnTimeDetectionArea" type="Area3D" parent="PieceMeshGenerator/AngleCut" unique_id=924367536]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PieceMeshGenerator/AngleCut/NextSpawnTimeDetectionArea" unique_id=1841074628]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 17.5, 0)
+shape = SubResource("BoxShape3D_u6lqn")
+debug_color = Color(0.36607146, 1, 0, 0.41960785)
+
+[node name="AngleDirection" type="MeshInstance3D" parent="PieceMeshGenerator/AngleCut" unique_id=1053784719]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 1, 0, 0)
+mesh = SubResource("PrismMesh_1ojrx")
+
+[node name="Cut" type="CSGBox3D" parent="PieceMeshGenerator/AngleCut" unique_id=1024605066]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.0032024384, 0.00013422966)
+size = Vector3(18, 36, 2.6220703)

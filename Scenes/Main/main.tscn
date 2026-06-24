@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://doigq7nkfb887" path="res://Scenes/Prizes/Speed Prize/speed_prize.tscn" id="4_2a143"]
 [ext_resource type="PackedScene" uid="uid://dnp8jfq1nm1rg" path="res://Scenes/Prizes/Invincibility Frames/invincibility_frames_prize.tscn" id="4_5yls4"]
 [ext_resource type="PackedScene" uid="uid://dqhsrngl043po" path="res://Scenes/PlayerCharacter/PlayerCharacter.tscn" id="5_2a143"]
-[ext_resource type="PackedScene" uid="uid://cft0qng613fvg" path="res://Scenes/RotatingPlatform/RotatingPlatform.tscn" id="5_es6iu"]
+[ext_resource type="PackedScene" uid="uid://cft0qng613fvg" path="res://Scenes/RotatingPlatform/Wheel.tscn" id="5_es6iu"]
 [ext_resource type="PackedScene" uid="uid://f84ucq2mqwcd" path="res://Scenes/Prizes/HP/hp_prize.tscn" id="5_p6jpk"]
 [ext_resource type="PackedScene" uid="uid://do2s7rajjiqji" path="res://Scenes/Prizes/Jump Prize/jump_prize.tscn" id="5_y3v7k"]
 [ext_resource type="PackedScene" uid="uid://bpc6exg8npidb" path="res://Scenes/Main/button.tscn" id="6_4e4y2"]
@@ -113,8 +113,7 @@ in_menu = true
 
 [node name="LevelPivot" type="Node3D" parent="." unique_id=1949748406]
 
-[node name="RotatingPlatform" parent="LevelPivot" unique_id=1596451553 instance=ExtResource("5_es6iu")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -18.99128, 2.328157)
+[node name="Wheel" parent="LevelPivot" unique_id=1596451553 instance=ExtResource("5_es6iu")]
 
 [node name="MainCamera" type="Camera3D" parent="LevelPivot" unique_id=1331169492 node_paths=PackedStringArray("player", "zoom_pos", "playing_pos")]
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 2.489, -7.052)

@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://1oqhw28q3s16"]
+
+[node name="BaseWheel" type="CSGCylinder3D" unique_id=187194179]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+radius = 18.0
+height = 1.5
+sides = 64
