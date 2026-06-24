@@ -28,6 +28,6 @@ func _process(delta: float) -> void:
 
 func signal_spawn_new_piece():
 	var overshoot = total_degrees_rotated - angle_size
-	WheelGlobals.spawn_new_wheel_piece.emit(50, 100, overshoot)
+	WheelGlobals.spawn_new_wheel_piece.emit(overshoot)
 	print("rotated: ", total_degrees_rotated, " now spawning new piece!")
 	tracking_enabled = false

@@ -11,11 +11,11 @@ func _ready() -> void:
 	destroy_detection_area.area_entered.connect(_on_destroy_detection_area_area_entered)
 
 	all_pieces = owner.find_child("AllPieces", true, false)
-	generate_piece(100, 110)
+	generate_piece()
 
 
-func generate_piece(min_angle: int, max_angle: int, overshoot: float = 0.0):
-	var angle_size: int = randi_range(min_angle, max_angle)
+func generate_piece(overshoot: float = 0.0):
+	var angle_size: int = randi_range(WheelGlobals.min_piece_angle_size, WheelGlobals.max_piece_angle_size)
 	
 	# instantiate the piece gen template scene
 	var piece = piece_gen_template_scene.instantiate()
@@ -64,6 +64,7 @@ func bake_piece_to_animatable(piece: Node3D):
 
 	var mesh_instance = MeshInstance3D.new()
 	mesh_instance.mesh = baked_mesh
+	assign_piece_mesh_colors(mesh_instance)
 
 	var collision = CollisionShape3D.new()
 	collision.shape = baked_mesh.create_trimesh_shape()
@@ -74,7 +75,32 @@ func bake_piece_to_animatable(piece: Node3D):
 	# hide the CSG — the AnimatableBody now handles visuals and collision
 	entire_piece_csg.queue_free()
 
+func assign_piece_mesh_colors(mesh: MeshInstance3D):
+	var level_colors = [
+		WheelGlobals.level_1_colors,
+		WheelGlobals.level_2_colors,
+		WheelGlobals.level_3_colors,
+		WheelGlobals.level_4_colors,
+		WheelGlobals.level_5_colors,
+	]
+	var colors: Array[Color] = level_colors[PlayerGlobals.selected_level - 1]
+	if colors.is_empty():
+		print("emptycolors")
+		return
+
+	var selected_color: Color
+
+	if WheelGlobals.do_checkered_colors:
+		selected_color = colors[WheelGlobals.color_index % colors.size()]
+		WheelGlobals.color_index += 1
+	else:
+		selected_color = colors[randi() % colors.size()]
 	
+	var material = StandardMaterial3D.new()
+	material.albedo_color = selected_color
+	mesh.material_override = material
+
+
 func _on_destroy_detection_area_area_entered(area: Area3D) -> void:
 	if area.name == "DestroyDetectionArea":
 		area.owner.queue_free()

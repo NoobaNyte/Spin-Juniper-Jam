@@ -117,6 +117,7 @@ piece_gen_template_scene = ExtResource("19_tdwxr")
 
 [node name="WheelController" type="Node" parent="WheelScripts" unique_id=1587187306]
 script = ExtResource("20_4o5wv")
+level_1_colors = Array[Color]([Color(1, 0, 0, 1), Color(1, 1, 1, 1)])
 
 [node name="LevelPivot" type="Node3D" parent="." unique_id=1949748406]
 
