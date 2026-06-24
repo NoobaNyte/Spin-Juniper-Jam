@@ -27,31 +27,12 @@ extends CharacterBody3D
 @export var jump_buffer_time: float = 0.12
 @export var coyote_time: float = 0.07
 
-# ── Platform Riding ────────────────────────────────────────────────────────────
-@export var wheel_center: Node3D
-@export var carry_decay: float = 3.0
-
-var _current_platform: RigidBody3D = null
 var _gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var _jump_buffer: float = 0.0
 var _coyote_timer: float = 0.0
 var _was_on_floor: bool = false
 
-# Platform memory variables
-var _on_platform: bool = false
-var _platform_angle_on_land: float = 0.0
-var _player_angle_on_land: float = 0.0
-var _player_radius: float = 0.0
-var _platform_cumulative_angle: float = 0.0
-var _carry_velocity: Vector3 = Vector3.ZERO
-
 func _physics_process(delta: float) -> void:
-	_detect_platform()
-
-	if _current_platform != null:
-		_platform_cumulative_angle += _current_platform.angular_velocity.y * delta
-
-	# 1. Grab input mapping straight to Global X and Z
 	var input_dir := Vector2.ZERO
 	input_dir.y = Input.get_axis("MoveRight", "MoveLeft")
 	input_dir.x = Input.get_axis("MoveUp", "MoveDown")
@@ -68,56 +49,9 @@ func _physics_process(delta: float) -> void:
 	_handle_rotation(delta, wish_dir)
 	_handle_animations(wish_dir)
 
-	# Platform Coordinate Math
-	if _on_platform and _current_platform != null and is_on_floor():
-		var platform_rotation: float = _platform_cumulative_angle - _platform_angle_on_land
-		var current_angle: float = _player_angle_on_land + platform_rotation
-		var prev_x: float = global_position.x
-		var prev_z: float = global_position.z
-		global_position.x = wheel_center.global_position.x + sin(current_angle) * _player_radius
-		global_position.z = wheel_center.global_position.z - cos(current_angle) * _player_radius
-		_carry_velocity = Vector3(
-			(global_position.x - prev_x) / delta,
-			0.0,
-			(global_position.z - prev_z) / delta
-		)
-
 	move_and_slide()
 
-	# Momentum Handling
-	var on_platform_now: bool = is_on_floor() and _current_platform != null
-
-	if on_platform_now and not _on_platform:
-		var to_player := global_position - wheel_center.global_position
-		to_player.y = 0.0
-		_player_radius = to_player.length()
-		_player_angle_on_land = atan2(to_player.x, -to_player.z)
-		_platform_angle_on_land = _platform_cumulative_angle
-		_carry_velocity = Vector3.ZERO
-		velocity.x = 0.0
-		velocity.z = 0.0
-
-	elif _on_platform and not on_platform_now:
-		velocity.x += _carry_velocity.x
-		velocity.z += _carry_velocity.z
-
-	elif not on_platform_now:
-		_carry_velocity = _carry_velocity.move_toward(Vector3.ZERO, carry_decay * delta)
-
-	_on_platform = on_platform_now
 	_was_on_floor = is_on_floor()
-
-func _detect_platform() -> void:
-	if not is_on_floor():
-		_current_platform = null
-		return
-	for i in get_slide_collision_count():
-		var col := get_slide_collision(i)
-		var collider := col.get_collider()
-		if collider is RigidBody3D and col.get_normal().dot(Vector3.UP) > 0.5:
-			_current_platform = collider
-			return
-	_current_platform = null
 
 func _apply_gravity(delta: float) -> void:
 	if not is_on_floor():
@@ -145,21 +79,12 @@ func _handle_jump() -> void:
 		_coyote_timer = 0.0
 
 func _handle_movement(delta: float, wish_dir: Vector3) -> void:
-	if _on_platform and _current_platform != null:
-		if wish_dir != Vector3.ZERO:
-			var to_player := global_position - wheel_center.global_position
-			to_player.y = 0.0
-			var new_pos := to_player + wish_dir * move_speed * delta
-			_player_radius = new_pos.length()
-			var platform_rotation: float = _platform_cumulative_angle - _platform_angle_on_land
-			_player_angle_on_land = atan2(new_pos.x, -new_pos.z) - platform_rotation
+	if wish_dir != Vector3.ZERO:
+		velocity.x = move_toward(velocity.x, wish_dir.x * move_speed, acceleration * delta)
+		velocity.z = move_toward(velocity.z, wish_dir.z * move_speed, acceleration * delta)
 	else:
-		if wish_dir != Vector3.ZERO:
-			velocity.x = move_toward(velocity.x, wish_dir.x * move_speed, acceleration * delta)
-			velocity.z = move_toward(velocity.z, wish_dir.z * move_speed, acceleration * delta)
-		else:
-			velocity.x = move_toward(velocity.x, 0.0, friction * delta)
-			velocity.z = move_toward(velocity.z, 0.0, friction * delta)
+		velocity.x = move_toward(velocity.x, 0.0, friction * delta)
+		velocity.z = move_toward(velocity.z, 0.0, friction * delta)
 
 func _handle_rotation(delta: float, wish_dir: Vector3) -> void:
 	if wish_dir != Vector3.ZERO:
@@ -168,10 +93,10 @@ func _handle_rotation(delta: float, wish_dir: Vector3) -> void:
 
 func _handle_animations(wish_dir: Vector3) -> void:
 	if not animation_player: return
-		
+
 	var target_anim: String = "Armature|Idle"
 	var target_speed: float = speed_idle
-	
+
 	if not is_on_floor():
 		target_anim = "Armature|Jump"
 		target_speed = speed_jump
