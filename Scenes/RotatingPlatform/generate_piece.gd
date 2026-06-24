@@ -6,10 +6,6 @@ var all_pieces: Node3D
 func _ready() -> void:
 	WheelGlobals.spawn_new_wheel_piece.connect(generate_piece)
 	all_pieces = owner.find_child("AllPieces", true, false)
-	#print(all_pieces.name)
-	#print(all_pieces.global_rotation)
-	#print(all_pieces.global_position)
-
 	generate_piece(100, 110)
 
 
@@ -43,10 +39,6 @@ func generate_piece(min_angle: int, max_angle: int, overshoot: float = 0.0):
 	piece.rotation.z += deg_to_rad(overshoot)
 
 	
-func _on_next_spawn_detection_area_area_entered(area: Area3D) -> void:
-	pass
-	#if area.name == "NextSpawnTimeDetectionArea":
-		#generate_piece(10, 50)
 func _on_destroy_detection_area_area_entered(area: Area3D) -> void:
 	if area.name == "DestroyDetectionArea":
 		area.owner.queue_free()

@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://b1em8csmfsexr"]
+
+[ext_resource type="Script" uid="uid://10ojd2tyhwfj" path="res://Assets/Utility Scripts/hide_on_load.gd" id="1_7kxvd"]
+[ext_resource type="PackedScene" uid="uid://1oqhw28q3s16" path="res://Scenes/RotatingPlatform/base_wheel.tscn" id="2_5rh2c"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xwcb8"]
+size = Vector3(1, 1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0ea77"]
+size = Vector3(1, 1, 2)
+
+[node name="WheelPivot" type="Node3D" unique_id=1333064656]
+transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0)
+
+[node name="Previews" type="Node3D" parent="." unique_id=83548312]
+script = ExtResource("1_7kxvd")
+
+[node name="Label3D" type="Label3D" parent="Previews" unique_id=1167219312]
+billboard = 1
+outline_modulate = Color(0.78125, 0, 0, 1)
+text = "Wheel Pivot Point"
+font_size = 299
+outline_size = 127
+
+[node name="BaseWheel (for preview)" parent="Previews" unique_id=187194179 instance=ExtResource("2_5rh2c")]
+
+[node name="AllPieces" type="Node3D" parent="." unique_id=549255562]
+
+[node name="DetectionAreas" type="Node3D" parent="." unique_id=869646747]
+transform = Transform3D(0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="NextSpawnDetectionArea" type="Area3D" parent="DetectionAreas" unique_id=492552537]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionAreas/NextSpawnDetectionArea" unique_id=1062596399]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.50000095, -18, 0)
+shape = SubResource("BoxShape3D_xwcb8")
+debug_color = Color(0, 1, 0.0625, 0.41960785)
+
+[node name="DestroyDetectionArea" type="Area3D" parent="DetectionAreas" unique_id=385850123]
+transform = Transform3D(0.9993908, 0.03489949, 0, -0.03489949, 0.9993908, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionAreas/DestroyDetectionArea" unique_id=2136505166]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49999905, -18, 0)
+shape = SubResource("BoxShape3D_0ea77")
+debug_color = Color(1, 0, 0, 0.41960785)

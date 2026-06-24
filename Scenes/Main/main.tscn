@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bpc6exg8npidb" path="res://Scenes/Main/button.tscn" id="6_4e4y2"]
 [ext_resource type="Script" uid="uid://dm1qgwe8areex" path="res://Scenes/Main/prize_area.gd" id="7_2ok46"]
 [ext_resource type="PackedScene" uid="uid://b5f1b5xy70e7n" path="res://Scenes/Prizes/Bear Prize/bear_prize.tscn" id="7_6t3k2"]
+[ext_resource type="PackedScene" uid="uid://b1em8csmfsexr" path="res://Scenes/RotatingPlatform/wheel_pivot.tscn" id="8_4o5wv"]
 [ext_resource type="PackedScene" uid="uid://d2bdcu8nu61s5" path="res://Assets/3D/Shop/Wheel Board.fbx" id="8_y3v7k"]
 [ext_resource type="Script" uid="uid://bjnnr2txdcwt8" path="res://Scenes/Main/level_label.gd" id="13_es6iu"]
 [ext_resource type="Theme" uid="uid://bafby1ck50m6g" path="res://Assets/Fonts/bold.tres" id="14_1t20g"]
@@ -20,7 +21,6 @@
 [ext_resource type="Script" uid="uid://10ojd2tyhwfj" path="res://Assets/Utility Scripts/hide_on_load.gd" id="18_c4b4r"]
 [ext_resource type="PackedScene" uid="uid://dvmgy7jxf07fb" path="res://Scenes/RotatingPlatform/piece_gen_template.tscn" id="19_tdwxr"]
 [ext_resource type="Script" uid="uid://dcvakcvd204wq" path="res://Scenes/RotatingPlatform/wheel_controller.gd" id="20_4o5wv"]
-[ext_resource type="PackedScene" uid="uid://1oqhw28q3s16" path="res://Scenes/RotatingPlatform/base_wheel.tscn" id="21_tdwxr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1r6ip"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -38,12 +38,6 @@ ambient_light_color = Color(1, 1, 1, 1)
 ssao_enabled = true
 ssao_radius = 6.04
 ssao_intensity = 10.1
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_4o5wv"]
-size = Vector3(1, 1, 2)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_4a3kt"]
-size = Vector3(1, 1, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wliom"]
 size = Vector3(66.72644, 3.8933697, 8.959991)
@@ -144,42 +138,8 @@ fov = 65.0
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -10.780413, -16.434547)
 fov = 65.0
 
-[node name="WheelPivot" type="Node3D" parent="LevelPivot" unique_id=847121115]
+[node name="WheelPivot" parent="LevelPivot" unique_id=1333064656 instance=ExtResource("8_4o5wv")]
 transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, -22.429012, 2.3)
-
-[node name="Previews" type="Node3D" parent="LevelPivot/WheelPivot" unique_id=1697703605]
-script = ExtResource("18_c4b4r")
-
-[node name="Label3D" type="Label3D" parent="LevelPivot/WheelPivot/Previews" unique_id=2107831137]
-billboard = 1
-no_depth_test = true
-outline_modulate = Color(0.78125, 0, 0, 1)
-text = "Wheel Pivot Point"
-font_size = 299
-outline_size = 127
-
-[node name="BaseWheel (for preview)" parent="LevelPivot/WheelPivot/Previews" unique_id=187194179 instance=ExtResource("21_tdwxr")]
-
-[node name="AllPieces" type="Node3D" parent="LevelPivot/WheelPivot" unique_id=1583281331]
-
-[node name="DetectionAreas" type="Node3D" parent="LevelPivot/WheelPivot" unique_id=1350003497]
-transform = Transform3D(0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="NextSpawnDetectionArea" type="Area3D" parent="LevelPivot/WheelPivot/DetectionAreas" unique_id=393736413]
-transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelPivot/WheelPivot/DetectionAreas/NextSpawnDetectionArea" unique_id=1171009650]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.50000095, -18, 0)
-shape = SubResource("BoxShape3D_4o5wv")
-debug_color = Color(0, 1, 0.0625, 0.41960785)
-
-[node name="DestroyDetectionArea" type="Area3D" parent="LevelPivot/WheelPivot/DetectionAreas" unique_id=1609474278]
-transform = Transform3D(0.9993908, 0.03489949, 0, -0.03489949, 0.9993908, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelPivot/WheelPivot/DetectionAreas/DestroyDetectionArea" unique_id=256683675]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49999905, -18, 0)
-shape = SubResource("BoxShape3D_4a3kt")
-debug_color = Color(1, 0, 0, 0.41960785)
 
 [node name="Wheel Board" type="StaticBody3D" parent="LevelPivot" unique_id=566790405]
 
@@ -365,8 +325,6 @@ font_size = 70
 outline_size = 36
 script = ExtResource("18_c4b4r")
 
-[connection signal="area_entered" from="LevelPivot/WheelPivot/DetectionAreas/NextSpawnDetectionArea" to="WheelScripts/GeneratePiece" method="_on_next_spawn_detection_area_area_entered"]
-[connection signal="area_entered" from="LevelPivot/WheelPivot/DetectionAreas/DestroyDetectionArea" to="WheelScripts/GeneratePiece" method="_on_destroy_detection_area_area_entered"]
 [connection signal="body_entered" from="LevelPivot/Shop/PrizeArea" to="LevelPivot/Shop/PrizeArea" method="_on_body_entered"]
 [connection signal="body_exited" from="LevelPivot/Shop/PrizeArea" to="LevelPivot/Shop/PrizeArea" method="_on_body_exited"]
 [connection signal="body_entered" from="LevelPivot/Shop/ZoomArea" to="LevelPivot/MainCamera" method="_on_zoom_area_body_entered"]

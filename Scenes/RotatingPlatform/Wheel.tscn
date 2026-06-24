@@ -3,8 +3,7 @@
 [ext_resource type="Script" uid="uid://snvonox4hd7s" path="res://Scenes/RotatingPlatform/generate_piece.gd" id="1_i4vcc"]
 [ext_resource type="PackedScene" uid="uid://dvmgy7jxf07fb" path="res://Scenes/RotatingPlatform/piece_gen_template.tscn" id="2_iem3o"]
 [ext_resource type="Script" uid="uid://dcvakcvd204wq" path="res://Scenes/RotatingPlatform/wheel_controller.gd" id="3_0ea77"]
-[ext_resource type="PackedScene" uid="uid://1oqhw28q3s16" path="res://Scenes/RotatingPlatform/base_wheel.tscn" id="3_xwcb8"]
-[ext_resource type="Script" uid="uid://10ojd2tyhwfj" path="res://Assets/Utility Scripts/hide_on_load.gd" id="4_eudrv"]
+[ext_resource type="PackedScene" uid="uid://b1em8csmfsexr" path="res://Scenes/RotatingPlatform/wheel_pivot.tscn" id="4_wno85"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iem3o"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -16,12 +15,6 @@ sky_material = SubResource("ProceduralSkyMaterial_iem3o")
 [sub_resource type="Environment" id="Environment_0ea77"]
 background_mode = 2
 sky = SubResource("Sky_xwcb8")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_xwcb8"]
-size = Vector3(1, 1, 2)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_0ea77"]
-size = Vector3(1, 1, 2)
 
 [node name="Wheel" type="Node3D" unique_id=1596451553]
 
@@ -42,51 +35,13 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="PreviewCams" unique_id=102335914]
 environment = SubResource("Environment_0ea77")
 
-[node name="Scripts" type="Node" parent="." unique_id=1170097297]
+[node name="WheelScripts" type="Node" parent="." unique_id=1170097297]
 
-[node name="GeneratePiece" type="Node" parent="Scripts" unique_id=624507588]
+[node name="GeneratePiece" type="Node" parent="WheelScripts" unique_id=624507588]
 script = ExtResource("1_i4vcc")
 piece_gen_template_scene = ExtResource("2_iem3o")
 
-[node name="WheelController" type="Node" parent="Scripts" unique_id=1533346029]
+[node name="WheelController" type="Node" parent="WheelScripts" unique_id=1533346029]
 script = ExtResource("3_0ea77")
 
-[node name="WheelPivotPoint" type="Node3D" parent="." unique_id=1973709420]
-transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0)
-
-[node name="Previews" type="Node3D" parent="WheelPivotPoint" unique_id=1319431807]
-
-[node name="Label3D" type="Label3D" parent="WheelPivotPoint/Previews" unique_id=1385072929]
-billboard = 1
-outline_modulate = Color(0.78125, 0, 0, 1)
-text = "Wheel Pivot Point"
-font_size = 299
-outline_size = 127
-script = ExtResource("4_eudrv")
-
-[node name="BaseWheel (for preview)" parent="WheelPivotPoint/Previews" unique_id=187194179 instance=ExtResource("3_xwcb8")]
-visible = false
-
-[node name="AllPieces" type="Node3D" parent="WheelPivotPoint" unique_id=893854011]
-
-[node name="DetectionAreas" type="Node3D" parent="WheelPivotPoint" unique_id=1947136971]
-transform = Transform3D(0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="NextSpawnDetectionArea" type="Area3D" parent="WheelPivotPoint/DetectionAreas" unique_id=497325678]
-transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WheelPivotPoint/DetectionAreas/NextSpawnDetectionArea" unique_id=116796787]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.50000095, -18, 0)
-shape = SubResource("BoxShape3D_xwcb8")
-debug_color = Color(0, 1, 0.0625, 0.41960785)
-
-[node name="DestroyDetectionArea" type="Area3D" parent="WheelPivotPoint/DetectionAreas" unique_id=275817601]
-transform = Transform3D(0.9993908, 0.03489949, 0, -0.03489949, 0.9993908, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WheelPivotPoint/DetectionAreas/DestroyDetectionArea" unique_id=1774644098]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49999905, -18, 0)
-shape = SubResource("BoxShape3D_0ea77")
-debug_color = Color(1, 0, 0, 0.41960785)
-
-[connection signal="area_entered" from="WheelPivotPoint/DetectionAreas/NextSpawnDetectionArea" to="Scripts/GeneratePiece" method="_on_next_spawn_detection_area_area_entered"]
-[connection signal="area_entered" from="WheelPivotPoint/DetectionAreas/DestroyDetectionArea" to="Scripts/GeneratePiece" method="_on_destroy_detection_area_area_entered"]
+[node name="WheelPivot" parent="." unique_id=1333064656 instance=ExtResource("4_wno85")]

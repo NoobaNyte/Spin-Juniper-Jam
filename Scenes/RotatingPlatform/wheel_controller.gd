@@ -1,7 +1,5 @@
 extends Node
 
-@export var rotation_speed: float = 50.0
-
 var all_pieces: Node3D
 
 func _ready() -> void:
@@ -9,4 +7,4 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
     if all_pieces:
-        all_pieces.rotation.z += deg_to_rad(rotation_speed) * delta
+        all_pieces.rotation.z += deg_to_rad(WheelGlobals.rotation_speed) * delta
