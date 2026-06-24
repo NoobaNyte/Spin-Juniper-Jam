@@ -24,3 +24,6 @@ var level_2_walls: Array[PackedScene]
 var level_3_walls: Array[PackedScene]
 var level_4_walls: Array[PackedScene]
 var level_5_walls: Array[PackedScene]
+
+var gen_walls_in_order: bool = true
+var wall_index: int = 0

@@ -3,12 +3,20 @@
 [ext_resource type="PackedScene" uid="uid://bpdgvyt0tkr67" path="res://Scenes/RotatingPlatform/Walls/Base_Wall.tscn" id="1_gkkbe"]
 [ext_resource type="PackedScene" uid="uid://w8et47rtmo2h" path="res://Assets/3D/Walls/Default_Wall.fbx" id="2_e4i0n"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_e4i0n"]
+size = Vector3(17.970453, 0.85, 0.7200028)
+
 [node name="1" unique_id=1357455585 instance=ExtResource("1_gkkbe")]
+script = null
 
 [node name="BaseWheel" parent="." index="0" unique_id=187194179]
 visible = false
 
 [node name="Default_Wall" parent="." index="1" unique_id=368583037 instance=ExtResource("2_e4i0n")]
 transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Default_Wall" index="0" unique_id=1963987924]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.985227, 0.425, -1.3411045e-06)
+shape = SubResource("BoxShape3D_e4i0n")
 
 [editable path="Default_Wall"]
