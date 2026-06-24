@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://bpdgvyt0tkr67"]
 
-[ext_resource type="Script" uid="uid://djv5w5sd4w53d" path="res://Scenes/RotatingPlatform/Walls/base_wall.gd" id="1_2d8eh"]
 [ext_resource type="PackedScene" uid="uid://1oqhw28q3s16" path="res://Scenes/RotatingPlatform/base_wheel.tscn" id="1_oqid4"]
+[ext_resource type="Script" uid="uid://10ojd2tyhwfj" path="res://Assets/Utility Scripts/hide_on_load.gd" id="3_2d8eh"]
 
-[node name="1" type="AnimatableBody3D" unique_id=1357455585]
+[node name="X" type="AnimatableBody3D" unique_id=1357455585]
 sync_to_physics = false
-script = ExtResource("1_2d8eh")
 
 [node name="BaseWheel" parent="." unique_id=187194179 instance=ExtResource("1_oqid4")]
-transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, -0.75, 0)
+script = ExtResource("3_2d8eh")
