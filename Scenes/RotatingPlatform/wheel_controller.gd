@@ -35,7 +35,6 @@ func assign_vars_to_global():
 	WheelGlobals.level_4_walls = level_4_walls
 	WheelGlobals.level_5_walls = level_5_walls
 
-
 func _process(delta: float) -> void:
 	if all_pieces:
 		all_pieces.rotation.z += deg_to_rad(WheelGlobals.rotation_speed) * delta

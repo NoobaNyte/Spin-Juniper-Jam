@@ -6,67 +6,103 @@ extends Node3D
 @export var right_button: bool = false
 
 @export_category("Button Physics")
-## How far down the button gets pushed (in local 3D units).
 @export var press_depth: float = 0.3
-## How fast the button presses down and springs back up.
 @export var transition_speed: float = 0.15
-## NEW: How long to wait after the player leaves before the button springs up.
 @export var return_delay: float = 0.1
+
+@export_category("Speed Boost")
+@export var target_speed: float = 500.0
+@export var ease_in_duration: float = 0.25
+@export var hold_duration: float = 0.25
+@export var ease_out_duration: float = 0.5
 
 var base_y: float
 var active_tween: Tween
-
-# NEW: Prevents the player from spam-changing levels by wiggling on the trigger
+var speed_tween: Tween
+var is_on_cooldown: bool = false
 var is_pressed: bool = false
+var original_speed: float = 0.0
+var body_on_button: bool = false
 
 func _ready() -> void:
-	# Make sure the button is actually assigned in the inspector!
 	if button:
-		# Save the initial resting height of the button itself
 		base_y = button.position.y
 	else:
 		push_error("Button RigidBody3D not assigned in ", name)
 
 func _on_trigger_area_body_entered(body: Node3D) -> void:
-	if body.is_in_group("Player") and button:
-		# LOGIC SPAM PROOF: Only trigger if the button has completely reset!
-		if not is_pressed:
-			is_pressed = true
-			change_selected_level()
-			
-			# Animate down instantly (0.0 delay)
-			animate_button(base_y - press_depth, 0.0)
-		else:
-			# If they step back on during the "return delay", 
-			# just force the visual back down without changing the level again.
-			animate_button(base_y - press_depth, 0.0)
+	if not body.is_in_group("Player") or not button:
+		return
+	
+	body_on_button = true
+
+	if is_on_cooldown:
+		return
+
+	if not is_pressed:
+		is_pressed = true
+		is_on_cooldown = true
+		original_speed = WheelGlobals.rotation_speed
+		animate_button(base_y - press_depth, 0.0)
+		trigger_speed_boost()
 
 func _on_trigger_area_body_exited(body: Node3D) -> void:
-	if body.is_in_group("Player") and button:
-		# Tween the button back up, passing in our configurable delay
+	if not body.is_in_group("Player") or not button:
+		return
+
+	body_on_button = false
+
+	# only spring up if cooldown is done
+	if not is_on_cooldown:
 		animate_button(base_y, return_delay)
 
+func trigger_speed_boost() -> void:
+	if speed_tween and speed_tween.is_valid():
+		speed_tween.kill()
+
+	speed_tween = create_tween()
+
+	# ease in to target speed
+	speed_tween.tween_method(
+		func(val: float): WheelGlobals.rotation_speed = val,
+		WheelGlobals.rotation_speed,
+		target_speed,
+		ease_in_duration
+	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+
+	# trigger level change exactly when ease-in finishes
+	speed_tween.tween_callback(func(): change_selected_level())
+
+	# hold at target speed
+	speed_tween.tween_interval(hold_duration)
+
+	# ease back to original speed
+	speed_tween.tween_method(
+		func(val: float): WheelGlobals.rotation_speed = val,
+		target_speed,
+		original_speed,
+		ease_out_duration
+	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+
+	# cooldown lifted after fully eased back
+	speed_tween.tween_callback(func():
+		is_on_cooldown = false
+		is_pressed = false
+		if not body_on_button:
+			animate_button(base_y, return_delay)
+	)
+
 func animate_button(target_y: float, delay: float = 0.0) -> void:
-	# 1. Interrupt any currently playing animation or waiting delay
 	if active_tween and active_tween.is_valid():
 		active_tween.kill()
-		
-	# 2. Create a fresh tween
+
 	active_tween = create_tween()
 	active_tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-	
-	# 3. ANIMATION SPAM PROOF: Add the delay before moving
+
 	if delay > 0.0:
 		active_tween.tween_interval(delay)
-	
-	# 4. Animate the BUTTON's Y position
+
 	active_tween.tween_property(button, "position:y", target_y, transition_speed)
-
-	# 5. LOGIC RESET: If the button is heading back to its original top position,
-	# unlock the button so it can be pressed again, but ONLY after the animation completely finishes.
-	if target_y == base_y:
-		active_tween.tween_callback(func(): is_pressed = false)
-
 
 func change_selected_level():
 	if left_button and not right_button:
@@ -74,7 +110,7 @@ func change_selected_level():
 			PlayerGlobals.selected_level -= 1
 		else:
 			PlayerGlobals.selected_level = 5
-	
+
 	if right_button and not left_button:
 		if PlayerGlobals.selected_level < PlayerGlobals.total_levels:
 			PlayerGlobals.selected_level += 1

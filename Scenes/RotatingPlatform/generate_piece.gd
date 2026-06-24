@@ -138,7 +138,6 @@ func generate_wall(piece: Node3D):
 			var wall_collision = child.get_node("CollisionShape3D")
 			wall_collision.reparent(selectedwall)
 
-
 func _on_destroy_detection_area_area_entered(area: Area3D) -> void:
 	if area.name == "DestroyDetectionArea":
 		area.owner.queue_free()
