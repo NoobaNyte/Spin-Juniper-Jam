@@ -1,6 +1,6 @@
 extends Node
 
-@export var rotation_speed: float = 55.0
+@export var rotation_speed: float = 50.0
 
 var all_pieces: Node3D
 

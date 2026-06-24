@@ -107,7 +107,7 @@ func _on_start_game() -> void:
 	# rotate everything 90 degrees so gravity is correct
 	$LevelPivot.rotation.x = deg_to_rad(89.9) ## CRITICAL - must be 89.9 not 90 because the wheel piece spawner breaks at 90
 	var start_game_spawnpoint: Marker3D = find_child("StartGameSpawnPoint")
-	#player.rotation.x = -90
+	#player.rotation.x = deg_to_rad(90)
 	#player.in_menu = false
 	#player.in_game = true
 	player.global_position = start_game_spawnpoint.global_position

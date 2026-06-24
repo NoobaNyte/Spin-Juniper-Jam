@@ -110,11 +110,6 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=643451075]
 environment = SubResource("Environment_qw60k")
 
-[node name="ExampleCamera" type="Camera3D" parent="." unique_id=611130779]
-transform = Transform3D(-1, 0, -8.7422784e-08, 0, 1, 0, 8.7422784e-08, 0, -1, 0, -12.176111, -42.322456)
-visible = false
-fov = 65.0
-
 [node name="PlayerCharacter" parent="." unique_id=1881213073 groups=["Player"] instance=ExtResource("5_2a143")]
 transform = Transform3D(-1.5, 0, -1.3113416e-07, 0, 1.5, 0, 1.3113416e-07, 0, -1.5, -0.06946415, 0, 4.2219563)
 in_game = false
@@ -150,7 +145,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -
 fov = 65.0
 
 [node name="WheelPivot" type="Node3D" parent="LevelPivot" unique_id=847121115]
-transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, -22.348341, 0)
+transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, -22.429012, 2.3)
 
 [node name="Previews" type="Node3D" parent="LevelPivot/WheelPivot" unique_id=1697703605]
 script = ExtResource("18_c4b4r")

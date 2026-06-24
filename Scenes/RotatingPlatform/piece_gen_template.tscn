@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dvmgy7jxf07fb"]
 
+[ext_resource type="Script" uid="uid://c4gkaegli3nq6" path="res://Scenes/RotatingPlatform/piece_gen_template.gd" id="1_3p6s2"]
 [ext_resource type="PackedScene" uid="uid://1oqhw28q3s16" path="res://Scenes/RotatingPlatform/base_wheel.tscn" id="1_17mty"]
 [ext_resource type="Shader" uid="uid://cvqo3c6sl8agr" path="res://Assets/Materials/Prizes/Bear/rainbow_bear.gdshader" id="1_u6lqn"]
 
@@ -24,6 +25,7 @@ shader_parameter/roughness = 0.5
 material = SubResource("ShaderMaterial_1ojrx")
 
 [node name="PieceGenTemplate" type="Node3D" unique_id=1564069275]
+script = ExtResource("1_3p6s2")
 
 [node name="DestroyDetectionArea" type="Area3D" parent="." unique_id=335405244]
 transform = Transform3D(0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 0, 0, 0, 1, 0, 0, 0)
