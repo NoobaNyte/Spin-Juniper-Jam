@@ -105,7 +105,7 @@ func _on_start_game() -> void:
 	await get_tree().create_timer(3).timeout # wait for cam anim to be done before rotating everything
 
 	# rotate everything 90 degrees so gravity is correct
-	$LevelPivot.rotation.x = 90
+	$LevelPivot.rotation.x = deg_to_rad(89.9) ## CRITICAL - must be 89.9 not 90 because the wheel piece spawner breaks at 90
 	var start_game_spawnpoint: Marker3D = find_child("StartGameSpawnPoint")
 	#player.rotation.x = -90
 	#player.in_menu = false

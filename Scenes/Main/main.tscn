@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://doigq7nkfb887" path="res://Scenes/Prizes/Speed Prize/speed_prize.tscn" id="4_2a143"]
 [ext_resource type="PackedScene" uid="uid://dnp8jfq1nm1rg" path="res://Scenes/Prizes/Invincibility Frames/invincibility_frames_prize.tscn" id="4_5yls4"]
 [ext_resource type="PackedScene" uid="uid://dqhsrngl043po" path="res://Scenes/PlayerCharacter/PlayerCharacter.tscn" id="5_2a143"]
-[ext_resource type="PackedScene" uid="uid://cft0qng613fvg" path="res://Scenes/RotatingPlatform/Wheel.tscn" id="5_es6iu"]
 [ext_resource type="PackedScene" uid="uid://f84ucq2mqwcd" path="res://Scenes/Prizes/HP/hp_prize.tscn" id="5_p6jpk"]
 [ext_resource type="PackedScene" uid="uid://do2s7rajjiqji" path="res://Scenes/Prizes/Jump Prize/jump_prize.tscn" id="5_y3v7k"]
 [ext_resource type="PackedScene" uid="uid://bpc6exg8npidb" path="res://Scenes/Main/button.tscn" id="6_4e4y2"]
@@ -17,7 +16,11 @@
 [ext_resource type="Script" uid="uid://bjnnr2txdcwt8" path="res://Scenes/Main/level_label.gd" id="13_es6iu"]
 [ext_resource type="Theme" uid="uid://bafby1ck50m6g" path="res://Assets/Fonts/bold.tres" id="14_1t20g"]
 [ext_resource type="Material" uid="uid://b7g0cvi0cqule" path="res://Assets/Materials/Main/PlayAreaHologram.tres" id="14_koken"]
+[ext_resource type="Script" uid="uid://snvonox4hd7s" path="res://Scenes/RotatingPlatform/generate_piece.gd" id="18_1t20g"]
 [ext_resource type="Script" uid="uid://10ojd2tyhwfj" path="res://Assets/Utility Scripts/hide_on_load.gd" id="18_c4b4r"]
+[ext_resource type="PackedScene" uid="uid://dvmgy7jxf07fb" path="res://Scenes/RotatingPlatform/piece_gen_template.tscn" id="19_tdwxr"]
+[ext_resource type="Script" uid="uid://dcvakcvd204wq" path="res://Scenes/RotatingPlatform/wheel_controller.gd" id="20_4o5wv"]
+[ext_resource type="PackedScene" uid="uid://1oqhw28q3s16" path="res://Scenes/RotatingPlatform/base_wheel.tscn" id="21_tdwxr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1r6ip"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -35,6 +38,12 @@ ambient_light_color = Color(1, 1, 1, 1)
 ssao_enabled = true
 ssao_radius = 6.04
 ssao_intensity = 10.1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4o5wv"]
+size = Vector3(1, 1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4a3kt"]
+size = Vector3(1, 1, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wliom"]
 size = Vector3(66.72644, 3.8933697, 8.959991)
@@ -111,9 +120,16 @@ transform = Transform3D(-1.5, 0, -1.3113416e-07, 0, 1.5, 0, 1.3113416e-07, 0, -1
 in_game = false
 in_menu = true
 
-[node name="LevelPivot" type="Node3D" parent="." unique_id=1949748406]
+[node name="WheelScripts" type="Node" parent="." unique_id=1601265247]
 
-[node name="Wheel" parent="LevelPivot" unique_id=1596451553 instance=ExtResource("5_es6iu")]
+[node name="GeneratePiece" type="Node" parent="WheelScripts" unique_id=368381978]
+script = ExtResource("18_1t20g")
+piece_gen_template_scene = ExtResource("19_tdwxr")
+
+[node name="WheelController" type="Node" parent="WheelScripts" unique_id=1587187306]
+script = ExtResource("20_4o5wv")
+
+[node name="LevelPivot" type="Node3D" parent="." unique_id=1949748406]
 
 [node name="MainCamera" type="Camera3D" parent="LevelPivot" unique_id=1331169492 node_paths=PackedStringArray("player", "zoom_pos", "playing_pos")]
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 2.489, -7.052)
@@ -132,6 +148,43 @@ fov = 65.0
 [node name="PlayingViewCamera" type="Camera3D" parent="LevelPivot" unique_id=903720488]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -10.780413, -16.434547)
 fov = 65.0
+
+[node name="WheelPivot" type="Node3D" parent="LevelPivot" unique_id=847121115]
+transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, -22.348341, 0)
+
+[node name="Previews" type="Node3D" parent="LevelPivot/WheelPivot" unique_id=1697703605]
+script = ExtResource("18_c4b4r")
+
+[node name="Label3D" type="Label3D" parent="LevelPivot/WheelPivot/Previews" unique_id=2107831137]
+billboard = 1
+no_depth_test = true
+outline_modulate = Color(0.78125, 0, 0, 1)
+text = "Wheel Pivot Point"
+font_size = 299
+outline_size = 127
+
+[node name="BaseWheel (for preview)" parent="LevelPivot/WheelPivot/Previews" unique_id=187194179 instance=ExtResource("21_tdwxr")]
+
+[node name="AllPieces" type="Node3D" parent="LevelPivot/WheelPivot" unique_id=1583281331]
+
+[node name="DetectionAreas" type="Node3D" parent="LevelPivot/WheelPivot" unique_id=1350003497]
+transform = Transform3D(0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="NextSpawnDetectionArea" type="Area3D" parent="LevelPivot/WheelPivot/DetectionAreas" unique_id=393736413]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelPivot/WheelPivot/DetectionAreas/NextSpawnDetectionArea" unique_id=1171009650]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.50000095, -18, 0)
+shape = SubResource("BoxShape3D_4o5wv")
+debug_color = Color(0, 1, 0.0625, 0.41960785)
+
+[node name="DestroyDetectionArea" type="Area3D" parent="LevelPivot/WheelPivot/DetectionAreas" unique_id=1609474278]
+transform = Transform3D(0.9993908, 0.03489949, 0, -0.03489949, 0.9993908, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelPivot/WheelPivot/DetectionAreas/DestroyDetectionArea" unique_id=256683675]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49999905, -18, 0)
+shape = SubResource("BoxShape3D_4a3kt")
+debug_color = Color(1, 0, 0, 0.41960785)
 
 [node name="Wheel Board" type="StaticBody3D" parent="LevelPivot" unique_id=566790405]
 
@@ -317,6 +370,8 @@ font_size = 70
 outline_size = 36
 script = ExtResource("18_c4b4r")
 
+[connection signal="area_entered" from="LevelPivot/WheelPivot/DetectionAreas/NextSpawnDetectionArea" to="WheelScripts/GeneratePiece" method="_on_next_spawn_detection_area_area_entered"]
+[connection signal="area_entered" from="LevelPivot/WheelPivot/DetectionAreas/DestroyDetectionArea" to="WheelScripts/GeneratePiece" method="_on_destroy_detection_area_area_entered"]
 [connection signal="body_entered" from="LevelPivot/Shop/PrizeArea" to="LevelPivot/Shop/PrizeArea" method="_on_body_entered"]
 [connection signal="body_exited" from="LevelPivot/Shop/PrizeArea" to="LevelPivot/Shop/PrizeArea" method="_on_body_exited"]
 [connection signal="body_entered" from="LevelPivot/Shop/ZoomArea" to="LevelPivot/MainCamera" method="_on_zoom_area_body_entered"]

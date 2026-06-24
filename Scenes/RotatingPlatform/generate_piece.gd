@@ -5,9 +5,12 @@ var all_pieces: Node3D
 
 
 func _ready() -> void:
-	all_pieces = owner.find_child("AllPieces")
+	all_pieces = owner.find_child("AllPieces", true, false)
+	#print(all_pieces.name)
+	#print(all_pieces.global_rotation)
+	#print(all_pieces.global_position)
 
-	generate_piece(10, 50)
+	generate_piece(100, 110)
 
 
 func generate_piece(min_angle: int, max_angle: int):
@@ -19,10 +22,11 @@ func generate_piece(min_angle: int, max_angle: int):
 	# add piece as a child of the "GeneratePiece" first to make sure piece spawns at perfect angle
 	add_child(piece)
 
-	#give the piece the same offset that the all_pieces currently has to make sure origin is lined up
+	# give the piece the same offset that the all_pieces currently has to make sure origin is lined up
 	piece.global_position = all_pieces.global_position
-	piece.global_rotation.y = all_pieces.global_rotation.y
 	piece.global_rotation.x = all_pieces.global_rotation.x
+	piece.global_rotation.y = all_pieces.global_rotation.y
+	
 
 	# reparent it to the all_pieces node (that rotates everything) to give it rotation and it will retain perfect spawn angle
 	piece.reparent(all_pieces)
