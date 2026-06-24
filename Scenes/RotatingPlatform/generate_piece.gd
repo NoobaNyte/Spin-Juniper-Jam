@@ -13,7 +13,6 @@ func _ready() -> void:
 	all_pieces = owner.find_child("AllPieces", true, false)
 	generate_piece()
 
-
 func generate_piece(overshoot: float = 0.0):
 	var angle_size: int = randi_range(WheelGlobals.min_piece_angle_size, WheelGlobals.max_piece_angle_size)
 	
@@ -44,9 +43,11 @@ func generate_piece(overshoot: float = 0.0):
 	await get_tree().process_frame
 	bake_piece_to_animatable(piece)
 
+	# give it a wall
+	generate_wall(piece)
+
 	# pre-rotate the new piece to cover the overshoot gap
 	piece.rotation.z += deg_to_rad(overshoot)
-
 
 func bake_piece_to_animatable(piece: Node3D):
 	# this is the top-level CSG that represents the full baked piece shape
@@ -85,7 +86,6 @@ func assign_piece_mesh_colors(mesh: MeshInstance3D):
 	]
 	var colors: Array[Color] = level_colors[PlayerGlobals.selected_level - 1]
 	if colors.is_empty():
-		print("emptycolors")
 		return
 
 	var selected_color: Color
@@ -100,6 +100,21 @@ func assign_piece_mesh_colors(mesh: MeshInstance3D):
 	material.albedo_color = selected_color
 	mesh.material_override = material
 
+func generate_wall(piece: Node3D):
+	var level_walls = [
+		WheelGlobals.level_1_walls,
+		WheelGlobals.level_2_walls,
+		WheelGlobals.level_3_walls,
+		WheelGlobals.level_4_walls,
+		WheelGlobals.level_5_walls,
+	]
+	var walls: Array[PackedScene] = level_walls[PlayerGlobals.selected_level - 1]
+	if walls.is_empty():
+		return
+
+	var random_wall: PackedScene = walls[randi() % walls.size()]
+	var wall = random_wall.instantiate()
+	piece.add_child(wall)
 
 func _on_destroy_detection_area_area_entered(area: Area3D) -> void:
 	if area.name == "DestroyDetectionArea":

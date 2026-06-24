@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://do2s7rajjiqji" path="res://Scenes/Prizes/Jump Prize/jump_prize.tscn" id="5_y3v7k"]
 [ext_resource type="PackedScene" uid="uid://bpc6exg8npidb" path="res://Scenes/Main/button.tscn" id="6_4e4y2"]
 [ext_resource type="Script" uid="uid://dm1qgwe8areex" path="res://Scenes/Main/prize_area.gd" id="7_2ok46"]
+[ext_resource type="PackedScene" uid="uid://b4fnn6bpkbu2h" path="res://Scenes/RotatingPlatform/Walls/Easy/1.tscn" id="7_4o5wv"]
 [ext_resource type="PackedScene" uid="uid://b5f1b5xy70e7n" path="res://Scenes/Prizes/Bear Prize/bear_prize.tscn" id="7_6t3k2"]
 [ext_resource type="PackedScene" uid="uid://b1em8csmfsexr" path="res://Scenes/RotatingPlatform/wheel_pivot.tscn" id="8_4o5wv"]
 [ext_resource type="PackedScene" uid="uid://d2bdcu8nu61s5" path="res://Assets/3D/Shop/Wheel Board.fbx" id="8_y3v7k"]
@@ -117,7 +118,8 @@ piece_gen_template_scene = ExtResource("19_tdwxr")
 
 [node name="WheelController" type="Node" parent="WheelScripts" unique_id=1587187306]
 script = ExtResource("20_4o5wv")
-level_1_colors = Array[Color]([Color(1, 0, 0, 1), Color(1, 1, 1, 1)])
+level_1_colors = Array[Color]([Color(1, 0, 0, 1), Color(0, 0.008928299, 1, 1), Color(0.08996334, 0.33035713, 0, 1), Color(1, 0.9508929, 0, 1)])
+level_1_walls = Array[PackedScene]([ExtResource("7_4o5wv")])
 
 [node name="LevelPivot" type="Node3D" parent="." unique_id=1949748406]
 

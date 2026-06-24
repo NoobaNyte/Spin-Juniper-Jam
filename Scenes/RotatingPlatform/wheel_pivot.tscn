@@ -17,6 +17,7 @@ script = ExtResource("1_7kxvd")
 
 [node name="Label3D" type="Label3D" parent="Previews" unique_id=1167219312]
 billboard = 1
+no_depth_test = true
 outline_modulate = Color(0.78125, 0, 0, 1)
 text = "Wheel Pivot Point"
 font_size = 299
