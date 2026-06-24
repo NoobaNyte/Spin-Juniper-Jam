@@ -5,6 +5,11 @@ var all_pieces: Node3D
 
 func _ready() -> void:
 	WheelGlobals.spawn_new_wheel_piece.connect(generate_piece)
+
+	# connect destroy area signal
+	var destroy_detection_area: Area3D = get_parent().get_parent().find_child("DestroyDetectionArea")
+	destroy_detection_area.area_entered.connect(_on_destroy_detection_area_area_entered)
+
 	all_pieces = owner.find_child("AllPieces", true, false)
 	generate_piece(100, 110)
 
