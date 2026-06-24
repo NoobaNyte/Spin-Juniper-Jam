@@ -40,8 +40,39 @@ func generate_piece(min_angle: int, max_angle: int, overshoot: float = 0.0):
 	var angle_cut: CSGCombiner3D = piece.get_node("PieceMeshGenerator/AngleCut")
 	angle_cut.rotation.z += deg_to_rad(180 - angle_size)
 
+	# wait for CSG to compute its geometry
+	await get_tree().process_frame
+	bake_piece_to_animatable(piece)
+
 	# pre-rotate the new piece to cover the overshoot gap
 	piece.rotation.z += deg_to_rad(overshoot)
+
+
+func bake_piece_to_animatable(piece: Node3D):
+	# this is the top-level CSG that represents the full baked piece shape
+	var entire_piece_csg: CSGCombiner3D = piece.get_node("PieceMeshGenerator")
+
+	var meshes = entire_piece_csg.get_meshes()
+	if meshes.is_empty():
+		push_error("CSG bake failed: no meshes returned from entire_piece_csg")
+		return
+
+	var baked_mesh: ArrayMesh = meshes[1]
+
+	#piece.sync_to_physics = true
+	#piece.transform = Transform3D.IDENTITY # sits at piece origin, inherits all parent transforms
+
+	var mesh_instance = MeshInstance3D.new()
+	mesh_instance.mesh = baked_mesh
+
+	var collision = CollisionShape3D.new()
+	collision.shape = baked_mesh.create_trimesh_shape()
+
+	piece.add_child(mesh_instance)
+	piece.add_child(collision)
+
+	# hide the CSG — the AnimatableBody now handles visuals and collision
+	entire_piece_csg.queue_free()
 
 	
 func _on_destroy_detection_area_area_entered(area: Area3D) -> void:

@@ -24,7 +24,8 @@ shader_parameter/roughness = 0.5
 [sub_resource type="PrismMesh" id="PrismMesh_1ojrx"]
 material = SubResource("ShaderMaterial_1ojrx")
 
-[node name="PieceGenTemplate" type="Node3D" unique_id=1564069275]
+[node name="PieceGenTemplate" type="AnimatableBody3D" unique_id=1492179068]
+sync_to_physics = false
 script = ExtResource("1_3p6s2")
 
 [node name="DestroyDetectionArea" type="Area3D" parent="." unique_id=335405244]
@@ -36,7 +37,6 @@ shape = SubResource("BoxShape3D_vvcby")
 debug_color = Color(1, 0, 0, 0.41960785)
 
 [node name="PieceMeshGenerator" type="CSGCombiner3D" parent="." unique_id=1438327930]
-use_collision = true
 
 [node name="BaseWheel" parent="PieceMeshGenerator" unique_id=187194179 instance=ExtResource("1_17mty")]
 
