@@ -114,7 +114,7 @@ in_menu = true
 [node name="LevelPivot" type="Node3D" parent="." unique_id=1949748406]
 
 [node name="RotatingPlatform" parent="LevelPivot" unique_id=1596451553 instance=ExtResource("5_es6iu")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -18.99128, 1.6978736)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -18.99128, 2.328157)
 
 [node name="MainCamera" type="Camera3D" parent="LevelPivot" unique_id=1331169492 node_paths=PackedStringArray("player", "zoom_pos", "playing_pos")]
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 2.489, -7.052)
@@ -131,7 +131,7 @@ transform = Transform3D(-1, 2.990035e-08, -8.215054e-08, 0, 0.9396926, 0.3420201
 fov = 65.0
 
 [node name="PlayingViewCamera" type="Camera3D" parent="LevelPivot" unique_id=903720488]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -12.17611, -16.16454)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -10.780413, -16.434547)
 fov = 65.0
 
 [node name="Wheel Board" type="StaticBody3D" parent="LevelPivot" unique_id=566790405]

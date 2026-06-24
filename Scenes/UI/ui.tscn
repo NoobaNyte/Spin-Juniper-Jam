@@ -23,6 +23,7 @@ position = Vector2(960, 540)
 texture = ExtResource("6_1c2ca")
 
 [node name="InputPrompt" type="MarginContainer" parent="." unique_id=1718387743]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -75,6 +76,7 @@ vertical_alignment = 1
 layout_mode = 2
 
 [node name="PrizePopups" type="MarginContainer" parent="." unique_id=382063247]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -146,6 +148,7 @@ autowrap_mode = 2
 layout_mode = 2
 
 [node name="TicketCount" type="MarginContainer" parent="." unique_id=154889642]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
