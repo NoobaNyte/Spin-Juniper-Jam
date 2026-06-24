@@ -7,14 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://doigq7nkfb887" path="res://Scenes/Prizes/Speed Prize/speed_prize.tscn" id="4_2a143"]
 [ext_resource type="PackedScene" uid="uid://dnp8jfq1nm1rg" path="res://Scenes/Prizes/Invincibility Frames/invincibility_frames_prize.tscn" id="4_5yls4"]
 [ext_resource type="PackedScene" uid="uid://dqhsrngl043po" path="res://Scenes/PlayerCharacter/PlayerCharacter.tscn" id="5_2a143"]
+[ext_resource type="PackedScene" uid="uid://cft0qng613fvg" path="res://Scenes/RotatingPlatform/RotatingPlatform.tscn" id="5_es6iu"]
 [ext_resource type="PackedScene" uid="uid://f84ucq2mqwcd" path="res://Scenes/Prizes/HP/hp_prize.tscn" id="5_p6jpk"]
 [ext_resource type="PackedScene" uid="uid://do2s7rajjiqji" path="res://Scenes/Prizes/Jump Prize/jump_prize.tscn" id="5_y3v7k"]
 [ext_resource type="PackedScene" uid="uid://bpc6exg8npidb" path="res://Scenes/Main/button.tscn" id="6_4e4y2"]
 [ext_resource type="Script" uid="uid://dm1qgwe8areex" path="res://Scenes/Main/prize_area.gd" id="7_2ok46"]
 [ext_resource type="PackedScene" uid="uid://b5f1b5xy70e7n" path="res://Scenes/Prizes/Bear Prize/bear_prize.tscn" id="7_6t3k2"]
 [ext_resource type="PackedScene" uid="uid://d2bdcu8nu61s5" path="res://Assets/3D/Shop/Wheel Board.fbx" id="8_y3v7k"]
-[ext_resource type="PackedScene" uid="uid://dkobqdf0o1m7a" path="res://Scenes/RotatingPlatform/z_old/OldRotatingPlatform.tscn" id="9_imbg2"]
-[ext_resource type="ArrayMesh" uid="uid://dqoldtwb8bobo" path="res://Assets/3D/test.tres" id="10_hfg1r"]
 [ext_resource type="Script" uid="uid://bjnnr2txdcwt8" path="res://Scenes/Main/level_label.gd" id="13_es6iu"]
 [ext_resource type="Theme" uid="uid://bafby1ck50m6g" path="res://Assets/Fonts/bold.tres" id="14_1t20g"]
 [ext_resource type="Material" uid="uid://b7g0cvi0cqule" path="res://Assets/Materials/Main/PlayAreaHologram.tres" id="14_koken"]
@@ -102,6 +101,11 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=643451075]
 environment = SubResource("Environment_qw60k")
 
+[node name="ExampleCamera" type="Camera3D" parent="." unique_id=611130779]
+transform = Transform3D(-1, 0, -8.7422784e-08, 0, 1, 0, 8.7422784e-08, 0, -1, 0, -12.176111, -42.322456)
+visible = false
+fov = 65.0
+
 [node name="PlayerCharacter" parent="." unique_id=1881213073 groups=["Player"] instance=ExtResource("5_2a143")]
 transform = Transform3D(-1.5, 0, -1.3113416e-07, 0, 1.5, 0, 1.3113416e-07, 0, -1.5, -0.06946415, 0, 4.2219563)
 in_game = false
@@ -109,9 +113,11 @@ in_menu = true
 
 [node name="LevelPivot" type="Node3D" parent="." unique_id=1949748406]
 
+[node name="RotatingPlatform" parent="LevelPivot" unique_id=1596451553 instance=ExtResource("5_es6iu")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -18.99128, 1.6978736)
+
 [node name="MainCamera" type="Camera3D" parent="LevelPivot" unique_id=1331169492 node_paths=PackedStringArray("player", "zoom_pos", "playing_pos")]
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 2.489, -7.052)
-visible = false
 current = true
 fov = 65.0
 script = ExtResource("1_hfg1r")
@@ -127,16 +133,6 @@ fov = 65.0
 [node name="PlayingViewCamera" type="Camera3D" parent="LevelPivot" unique_id=903720488]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -12.17611, -16.16454)
 fov = 65.0
-
-[node name="RotatingPlatform" parent="LevelPivot" unique_id=1596451553 node_paths=PackedStringArray("player") instance=ExtResource("9_imbg2")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -21, 2)
-display_platform = true
-spawn_angle_deg = -50.0
-wall_meshes = Array[Mesh]([ExtResource("10_hfg1r")])
-section_colors = Array[Color]([Color(0.98119634, 0.37531948, 0, 1), Color(0.07290412, 0.38077685, 0.19628096, 1)])
-sequential_colors = true
-hole_chance = 0.0
-player = NodePath("../../PlayerCharacter")
 
 [node name="Wheel Board" type="StaticBody3D" parent="LevelPivot" unique_id=566790405]
 
@@ -329,6 +325,5 @@ script = ExtResource("18_c4b4r")
 [connection signal="body_entered" from="LevelPivot/Shop/PlayArea/PlayArea" to="." method="_on_play_area_body_entered"]
 [connection signal="body_exited" from="LevelPivot/Shop/PlayArea/PlayArea" to="." method="_on_play_area_body_exited"]
 
-[editable path="LevelPivot/RotatingPlatform"]
 [editable path="LevelPivot/Wheel Board/Wheel Board"]
 [editable path="LevelPivot/Shop/Shop"]
