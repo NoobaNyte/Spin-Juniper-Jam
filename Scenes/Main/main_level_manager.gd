@@ -76,16 +76,17 @@ func fade_all_play_area_hologram_walls(is_fade_out: bool = false, fade_time: flo
 				wall.hide()
 
 func _input(event: InputEvent) -> void:
+	if PlayerGlobals.disable_interact:
+		return
 	if event.is_action_pressed("Interact"):
-		# Get all bodies currently inside this area
 		var bodies = play_area.get_overlapping_bodies()
 		
-		# Check if the player is one of them
 		for body in bodies:
 			if body.is_in_group("Player"):
 				start_game()
 
 func start_game() -> void:
+	PlayerGlobals.disable_interact = true
 	print("Starting Game!")
 	# play sfx and confirm animations
 	#await get_tree().create_timer(0.5).timeout
@@ -128,3 +129,4 @@ func _on_reset_game():
 	PlayerGlobals.reveal_player.emit()
 	PlayerGlobals.disable_movement = false
 	WheelGlobals.rotation_speed = WheelGlobals.preview_rotation_speed
+	PlayerGlobals.disable_interact = false
