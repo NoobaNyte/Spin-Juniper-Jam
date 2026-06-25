@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://w8et47rtmo2h"
-path="res://.godot/imported/Default_Wall.fbx-af757ebaef475ac78021175215ac7580.scn"
+uid="uid://123l2hg2k7wf"
+path="res://.godot/imported/Falling Object Spawn Area.fbx-5c454ca84146b51734cc722d6df82d48.scn"
 
 [deps]
 
-source_file="res://Assets/3D/Walls/Default_Wall.fbx"
-dest_files=["res://.godot/imported/Default_Wall.fbx-af757ebaef475ac78021175215ac7580.scn"]
+source_file="res://Assets/3D/Falling Object Spawn Area.fbx"
+dest_files=["res://.godot/imported/Falling Object Spawn Area.fbx-5c454ca84146b51734cc722d6df82d48.scn"]
 
 [params]
 
@@ -39,19 +39,7 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={
-"meshes": {
-"Cube_002": {
-"generate/lightmap_uv": 0,
-"generate/lods": 0,
-"generate/shadow_meshes": 0,
-"lods/normal_merge_angle": 20.0,
-"save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://Assets/3D/test.tres",
-"save_to_file/path": "uid://dqoldtwb8bobo"
-}
-}
-}
+_subresources={}
 fbx/importer=0
 fbx/allow_geometry_helper_nodes=false
 fbx/embedded_image_handling=1

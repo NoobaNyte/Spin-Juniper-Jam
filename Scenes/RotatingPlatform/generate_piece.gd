@@ -152,10 +152,10 @@ func generate_wall(piece: Node3D):
 			child.rotation.z = deg_to_rad(-90)
 			child.position.z = -0.75
 
-			var wall_collision = child.get_node("CollisionShape3D")
+			var wall_collision: CollisionShape3D = child.get_node("CollisionShape3D")
 			wall_collision.reparent(selectedwall)
 
-			var game_over_area = child.get_node("GameOverArea")
+			var game_over_area: Area3D = child.get_node("GameOverArea")
 			game_over_area.reparent(selectedwall)
 
 func _on_destroy_detection_area_area_entered(area: Area3D) -> void:

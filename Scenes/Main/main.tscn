@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://b1em8csmfsexr" path="res://Scenes/RotatingPlatform/wheel_pivot.tscn" id="8_4o5wv"]
 [ext_resource type="PackedScene" uid="uid://d2bdcu8nu61s5" path="res://Assets/3D/Shop/Wheel Board.fbx" id="8_y3v7k"]
 [ext_resource type="Script" uid="uid://dertvnxrxb0pw" path="res://Scenes/RotatingPlatform/game_over_area.gd" id="10_ifk88"]
+[ext_resource type="PackedScene" uid="uid://123l2hg2k7wf" path="res://Assets/3D/Falling Object Spawn Area.fbx" id="13_8sujb"]
 [ext_resource type="Script" uid="uid://bjnnr2txdcwt8" path="res://Scenes/Main/level_label.gd" id="13_es6iu"]
 [ext_resource type="Theme" uid="uid://bafby1ck50m6g" path="res://Assets/Fonts/bold.tres" id="14_1t20g"]
 [ext_resource type="Material" uid="uid://b7g0cvi0cqule" path="res://Assets/Materials/Main/PlayAreaHologram.tres" id="14_koken"]
@@ -44,6 +45,9 @@ ssao_intensity = 10.1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4a3kt"]
 size = Vector3(51.099854, 82.620514, 13.621078)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_8sujb"]
+data = PackedVector3Array(0, 0, 0, 11.4191, 0, 13.9142, 10.3158, 0, 14.7325, 0, 0, 0, 0, 0, -18, 11.4191, 0, 13.9142, 0, 0, -18, 1.7643, 0, -17.9133, 11.4191, 0, 13.9142, 1.7643, 0, -17.9133, 3.5116, 0, -17.6541, 11.4191, 0, 13.9142, 3.5116, 0, -17.6541, 5.2251, 0, -17.2249, 11.4191, 0, 13.9142, 5.2251, 0, -17.2249, 6.8883, 0, -16.629799, 11.4191, 0, 13.9142, 6.8883, 0, -16.629799, 8.4851, 0, -15.874599, 11.4191, 0, 13.9142, 8.4851, 0, -15.874599, 10.000299, 0, -14.966499, 11.4191, 0, 13.9142, 10.000299, 0, -14.966499, 11.4191, 0, -13.9142, 11.4191, 0, 13.9142, 11.4191, 0, -13.9142, 12.7279, 0, -12.7279, 11.4191, 0, 13.9142, 12.7279, 0, -12.7279, 13.9142, 0, -11.4191, 11.4191, 0, 13.9142, 13.9142, 0, -11.4191, 14.966499, 0, -10.000299, 11.4191, 0, 13.9142, 14.966499, 0, -10.000299, 15.874599, 0, -8.4851, 11.4191, 0, 13.9142, 15.874599, 0, -8.4851, 16.629799, 0, -6.8883, 11.4191, 0, 13.9142, 16.629799, 0, -6.8883, 17.2249, 0, -5.2251, 11.4191, 0, 13.9142, 17.2249, 0, -5.2251, 17.6541, 0, -3.5116, 11.4191, 0, 13.9142, 17.6541, 0, -3.5116, 17.9133, 0, -1.7643, 11.4191, 0, 13.9142, 17.9133, 0, -1.7643, 18, 0, 0, 11.4191, 0, 13.9142, 18, 0, 0, 17.9133, 0, 1.7643, 11.4191, 0, 13.9142, 17.9133, 0, 1.7643, 17.6541, 0, 3.5116, 11.4191, 0, 13.9142, 17.6541, 0, 3.5116, 17.2249, 0, 5.2251, 11.4191, 0, 13.9142, 17.2249, 0, 5.2251, 16.629799, 0, 6.8883, 11.4191, 0, 13.9142, 16.629799, 0, 6.8883, 15.874599, 0, 8.4851, 11.4191, 0, 13.9142, 15.874599, 0, 8.4851, 14.966499, 0, 10.000299, 11.4191, 0, 13.9142, 14.966499, 0, 10.000299, 13.9142, 0, 11.4191, 11.4191, 0, 13.9142, 13.9142, 0, 11.4191, 12.7279, 0, 12.7279, 11.4191, 0, 13.9142)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wliom"]
 size = Vector3(66.72644, 3.8933697, 8.959991)
@@ -145,6 +149,15 @@ zoom_pos = NodePath("../WheelViewCamera")
 playing_pos = NodePath("../PlayingViewCamera")
 base_z_offset = -15.0
 
+[node name="Label3D" type="Label3D" parent="LevelPivot/MainCamera" unique_id=1930640292]
+billboard = 1
+no_depth_test = true
+outline_modulate = Color(0.80133927, 0.0053660907, 0.0053660907, 1)
+text = "MainCamera"
+font_size = 70
+outline_size = 36
+script = ExtResource("18_c4b4r")
+
 [node name="WheelViewCamera" type="Camera3D" parent="LevelPivot" unique_id=582228753]
 transform = Transform3D(-1, 2.990035e-08, -8.215054e-08, 0, 0.9396926, 0.34202015, 8.742278e-08, 0.34202012, -0.9396927, 0, 8.025671, -15.005909)
 visible = false
@@ -152,8 +165,18 @@ fov = 65.0
 
 [node name="PlayingViewCamera" type="Camera3D" parent="LevelPivot" unique_id=903720488]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -10.780413, -16.434547)
-visible = false
 fov = 65.0
+
+[node name="Label3D" type="Label3D" parent="LevelPivot/PlayingViewCamera" unique_id=2106373984]
+transform = Transform3D(1, 0, 6.3573026e-08, 0, 1, 0, -6.3573026e-08, 0, 1, 0, 0, 0)
+billboard = 1
+no_depth_test = true
+outline_modulate = Color(0.80133927, 0.0053660907, 0.0053660907, 1)
+text = "PlayingViewCamera
+"
+font_size = 70
+outline_size = 36
+script = ExtResource("18_c4b4r")
 
 [node name="GameOverArea" type="Area3D" parent="LevelPivot" unique_id=417944345]
 script = ExtResource("10_ifk88")
@@ -166,10 +189,22 @@ debug_color = Color(1, 0, 0, 1)
 [node name="WheelPivot" parent="LevelPivot" unique_id=1333064656 instance=ExtResource("8_4o5wv")]
 transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, -22.429012, 2.3)
 
-[node name="Wheel Board" parent="LevelPivot" unique_id=844042927 instance=ExtResource("8_y3v7k")]
+[node name="Wheel Area" parent="LevelPivot" unique_id=844042927 instance=ExtResource("8_y3v7k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1964708)
 
-[node name="Wheel" parent="LevelPivot/Wheel Board" index="2" unique_id=2030928217]
+[node name="Wheel" parent="LevelPivot/Wheel Area" index="2" unique_id=2030928217]
+visible = false
+
+[node name="Falling Object Spawn Area" type="Area3D" parent="LevelPivot" unique_id=113948750]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -22.429012, -19.880497)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="LevelPivot/Falling Object Spawn Area" unique_id=1224576926]
+transform = Transform3D(-4.371139e-08, 4.371139e-08, -1, 1, 1.9106855e-15, -4.371139e-08, 0, -1, -4.371139e-08, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_8sujb")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="Falling Object Spawn Area" parent="LevelPivot/Falling Object Spawn Area" unique_id=998989406 instance=ExtResource("13_8sujb")]
+transform = Transform3D(-4.371139e-08, 4.371139e-08, -1, 1, 1.9106855e-15, -4.371139e-08, 0, -1, -4.371139e-08, 0, 0, 0)
 visible = false
 
 [node name="Shop" type="StaticBody3D" parent="LevelPivot" unique_id=294995878]
@@ -369,5 +404,6 @@ script = ExtResource("18_c4b4r")
 [connection signal="body_entered" from="LevelPivot/Shop/PlayArea/PlayArea" to="." method="_on_play_area_body_entered"]
 [connection signal="body_exited" from="LevelPivot/Shop/PlayArea/PlayArea" to="." method="_on_play_area_body_exited"]
 
-[editable path="LevelPivot/Wheel Board"]
+[editable path="LevelPivot/Wheel Area"]
+[editable path="LevelPivot/Falling Object Spawn Area/Falling Object Spawn Area"]
 [editable path="LevelPivot/Shop/Shop"]

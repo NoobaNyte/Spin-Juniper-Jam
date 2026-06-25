@@ -9,7 +9,7 @@ func _ready() -> void:
 	#await get_tree().process_frame # wait one frame so reparent/transform settles
 	last_rotation = global_rotation.z
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not tracking_enabled:
 		return
 

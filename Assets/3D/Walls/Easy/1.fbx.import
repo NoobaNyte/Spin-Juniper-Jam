@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://diwjyo0sc440"
-path="res://.godot/imported/Wheel Draft.fbx-26774556a8de4e203f7c897667866843.scn"
+uid="uid://brf13p5f6j5bx"
+path="res://.godot/imported/1.fbx-2b0de4ab3df8a7e1e46e8edb0ea51e35.scn"
 
 [deps]
 
-source_file="res://Assets/3D/Wheel Draft.fbx"
-dest_files=["res://.godot/imported/Wheel Draft.fbx-26774556a8de4e203f7c897667866843.scn"]
+source_file="res://Assets/3D/Walls/Easy/1.fbx"
+dest_files=["res://.godot/imported/1.fbx-2b0de4ab3df8a7e1e46e8edb0ea51e35.scn"]
 
 [params]
 
