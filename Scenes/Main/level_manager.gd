@@ -2,7 +2,7 @@ extends Node
 
 var grace_period_time: float = 1 # the time that you garunteed have no obstacles after the prep level time
 
-# falling objects to spawn:
+# falling objects that can be used to spawn:
 @export var ball: PackedScene
 
 func _ready() -> void:

@@ -33,11 +33,12 @@ var current_prize_node: RigidBody3D
 # Memory variables to perfectly restore the prize
 var original_prize_scale: Vector3
 var original_prize_rotation: Vector3
-var original_prize_position: Vector3 # NEW: Saves the exact starting height!
+var original_prize_position: Vector3
 
 func _ready() -> void:
 	PlayerGlobals.show_prize_prices.connect(on_show_prize_prices)
 	PlayerGlobals.hide_prize_prices.connect(on_hide_prize_prices)
+	PlayerGlobals.reset_game.connect(restore_original_position)
 	
 	prize_popups_ui = UI.get_node("PrizePopups")
 	input_prompt_ui = UI.get_node("InputPrompt")
@@ -216,7 +217,6 @@ func _on_selection_area_body_entered(body: Node3D) -> void:
 		input_prompt_ui.change_input_text_to("BUY")
 		input_prompt_ui.fade_in(input_prompt_ui)
 
-
 func _on_selection_area_body_exited(body: Node3D) -> void:
 	if body.is_in_group("Player"):
 		prize_popups_ui.fade_out(prize_popups_ui)
@@ -232,3 +232,18 @@ func on_hide_prize_prices():
 
 func fade_out_prize_prices():
 	price_label.fade_out(price_label)
+
+func restore_original_position():
+	await get_tree().create_timer(0.2).timeout # wait for scene to be fully rotated first before trying to restore positions
+	# 1. Zero out momentum
+	current_prize_node.linear_velocity = Vector3.ZERO
+	current_prize_node.angular_velocity = Vector3.ZERO
+	
+	# 2. Teleport it back to its original spot
+	current_prize_node.global_position = original_prize_position
+	current_prize_node.rotation = original_prize_rotation
+
+	var all_children = get_children()
+	for child in all_children:
+		if child is RigidBody3D:
+			child.reset_transform()

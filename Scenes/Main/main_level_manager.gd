@@ -11,7 +11,7 @@ var input_prompt_ui
 
 func _ready() -> void:
 	PlayerGlobals.set_in_menu_stats.emit()
-	PlayerGlobals.reset_game.connect(_on_reset_game)
+	PlayerGlobals.reset_game.connect(reset_game)
 	input_prompt_ui = UI.get_node("InputPrompt")
 
 	# --- HOLOGRAM WALL SETUP ---
@@ -93,12 +93,12 @@ func start_game() -> void:
 	UI.get_node("InputPrompt").fade_out(UI.get_node("InputPrompt"))
 	#await get_tree().create_timer(0.5).timeout
 
+	# poof out the player
 	PlayerGlobals.disappear_player.emit()
 	PlayerGlobals.disable_movement = true
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(0.5).timeout # wait for poof to be done
 
 	PlayerGlobals.start_game.emit()
-
 
 	# detach camera from player and toggle the gameplay cam
 	$LevelPivot/MainCamera.detached_from_player = true
@@ -115,7 +115,7 @@ func start_game() -> void:
 	PlayerGlobals.reveal_player.emit()
 	PlayerGlobals.set_in_game_stats.emit()
 
-func _on_reset_game():
+func reset_game():
 	$LevelPivot.rotation.x = deg_to_rad(0)
 
 	# re-attach camera from player and toggle the gameplay cam

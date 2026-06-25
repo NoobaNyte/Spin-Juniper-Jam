@@ -1,10 +1,11 @@
 extends RigidBody3D
 
+var original_transform: Transform3D
 var height: float = 1.0
 
 func _ready() -> void:
-	##set_height()
-	pass
+	await get_tree().create_timer(1.0).timeout # wait for string to go into position first
+	original_transform = global_transform
 
 func set_height() -> void:
 	var mesh_instance = $MeshInstance3D
@@ -21,3 +22,6 @@ func set_height() -> void:
 	# 3. Apply the offset to their local positions
 	mesh_instance.position.y = y_offset
 	collision_shape.position.y = y_offset
+
+func reset_transform():
+	global_transform = original_transform
