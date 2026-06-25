@@ -164,6 +164,7 @@ animation_player = NodePath("Main Character Animated/AnimationPlayer")
 [node name="Stats_Updater" type="Node" parent="Scripts" unique_id=1441759509]
 script = ExtResource("2_wwltf")
 menu_gravity_scale = 3.75
+game_move_speed = 10.0
 
 [node name="Powerup_Updater" type="Node" parent="Scripts" unique_id=493433040]
 script = ExtResource("3_wwltf")

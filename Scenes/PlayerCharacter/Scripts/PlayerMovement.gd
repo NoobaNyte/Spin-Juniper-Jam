@@ -1,9 +1,5 @@
 extends CharacterBody3D
 
-# ── Movement Type Settings ──────────────────────────────────────────────────────────
-@export var in_game: bool = true
-@export var in_menu: bool = false
-
 # ── Animation Settings ──────────────────────────────────────────────────────────
 @export var animation_player: AnimationPlayer
 @export var anim_blend_time: float = 0.25
@@ -38,8 +34,8 @@ func _physics_process(delta: float) -> void:
 	input_dir.x = Input.get_axis("MoveUp", "MoveDown")
 	var wish_dir := Vector3(input_dir.x, 0.0, input_dir.y).normalized()
 
-	if in_menu:
-		wish_dir = wish_dir.rotated(Vector3.UP, PI / 2.0)
+	
+	wish_dir = wish_dir.rotated(Vector3.UP, PI / 2.0)
 
 	_apply_gravity(delta)
 	_handle_coyote(delta)
