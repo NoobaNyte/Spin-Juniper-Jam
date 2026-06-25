@@ -123,8 +123,9 @@ func _on_reset_game():
 
 	$LevelPivot/MainCamera.detached_from_player = false
 	$LevelPivot/MainCamera.toggle_playing_camera(false)
-	WheelGlobals.speed_transition(WheelGlobals.preview_rotation_speed, 1)
-	await get_tree().create_timer(1.5).timeout # wait for cam anim to be done before uhhiding player
+	await WheelGlobals.speed_transition(WheelGlobals.preview_rotation_speed, 1)
+	await get_tree().create_timer(0.5).timeout # wait for cam anim to be done before uhhiding player
+	PlayerGlobals.lost_level = false
 	PlayerGlobals.set_in_menu_stats.emit()
 	PlayerGlobals.reveal_player.emit()
 	PlayerGlobals.disable_movement = false

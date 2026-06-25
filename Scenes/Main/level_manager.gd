@@ -79,5 +79,3 @@ func level_5():
 func emit_win():
 	PlayerGlobals.won_level = true
 	PlayerGlobals.game_over.emit()
-
-	PlayerGlobals.lost_level = false
