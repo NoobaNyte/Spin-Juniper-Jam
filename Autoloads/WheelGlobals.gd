@@ -29,6 +29,8 @@ var level_5_walls: Array[PackedScene]
 var gen_walls_in_order: bool = true
 var wall_index: int = 0
 
+var start_of_level_wheel_speed: float = 20 # assigned and used in level_manager.gd while the wheel is being reset/prepped when you start a level, wheel speed gets reset to this speed
+
 ## util functions
 var speed_tween: Tween
 

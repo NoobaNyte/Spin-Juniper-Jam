@@ -83,22 +83,24 @@ func _input(event: InputEvent) -> void:
 		# Check if the player is one of them
 		for body in bodies:
 			if body.is_in_group("Player"):
-				_on_start_game()
+				start_game()
 
-func _on_start_game() -> void:
+func start_game() -> void:
 	print("Starting Game!")
-	PlayerGlobals.start_game.emit()
 	# play sfx and confirm animations
-	#await get_tree().create_timer(1.0).timeout
+	#await get_tree().create_timer(0.5).timeout
 
 	PlayerGlobals.disappear_player.emit()
 	PlayerGlobals.disable_movement = true
-	await get_tree().create_timer(0.95).timeout
+	await get_tree().create_timer(0.5).timeout
+
+	PlayerGlobals.start_game.emit()
+
 
 	# detach camera from player and toggle the gameplay cam
 	$LevelPivot/MainCamera.detached_from_player = true
 	$LevelPivot/MainCamera.toggle_playing_camera(true)
-	await get_tree().create_timer(3).timeout # wait for cam anim to be done before rotating everything
+	await get_tree().create_timer(2.5).timeout # wait for cam anim to be done before rotating everything
 
 	# rotate everything 90 degrees so gravity is correct
 	$LevelPivot.rotation.x = deg_to_rad(89.9) ## CRITICAL - must be 89.9 not 90 because the wheel piece spawner breaks at 90
