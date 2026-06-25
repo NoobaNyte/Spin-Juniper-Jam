@@ -89,15 +89,8 @@ func _on_start_game() -> void:
 	# play sfx and confirm animations
 	#await get_tree().create_timer(1.0).timeout
 
-	var player = $PlayerCharacter
-	var player_particles: GPUParticles3D = player.find_child("PoofGPUParticles3D", true, false)
-	var player_mesh: Node3D = player.find_child("Main Character Animated", true, false)
-	player_particles.emitting = true
-	await get_tree().create_timer(0.2).timeout # wait for particles to cover player before hiding player
-
-	# hide player
-	player_mesh.visible = false
-	await get_tree().create_timer(0.75).timeout
+	PlayerGlobals.disappear_player.emit()
+	await get_tree().create_timer(0.95).timeout
 
 	# detach camera from player and toggle the gameplay cam
 	$LevelPivot/MainCamera.detached_from_player = true
@@ -107,9 +100,8 @@ func _on_start_game() -> void:
 	# rotate everything 90 degrees so gravity is correct
 	$LevelPivot.rotation.x = deg_to_rad(89.9) ## CRITICAL - must be 89.9 not 90 because the wheel piece spawner breaks at 90
 	var start_game_spawnpoint: Marker3D = find_child("StartGameSpawnPoint")
+	var player: CharacterBody3D = find_child("PlayerCharacter", true, false)
 	player.global_position = start_game_spawnpoint.global_position
-	player_particles.emitting = true
-	await get_tree().create_timer(0.2).timeout # wait for poof particles to cover screen to unhide player
 
+	PlayerGlobals.reveal_player.emit()
 	PlayerGlobals.set_in_game_stats.emit()
-	player_mesh.visible = true

@@ -107,8 +107,6 @@ environment = SubResource("Environment_qw60k")
 
 [node name="PlayerCharacter" parent="." unique_id=1881213073 groups=["Player"] instance=ExtResource("5_2a143")]
 transform = Transform3D(-1.5, 0, -1.3113416e-07, 0, 1.5, 0, 1.3113416e-07, 0, -1.5, -0.06946415, 0, 4.2219563)
-in_game = false
-in_menu = true
 
 [node name="WheelScripts" type="Node" parent="." unique_id=1601265247]
 
