@@ -13,15 +13,22 @@
 [ext_resource type="Script" uid="uid://dm1qgwe8areex" path="res://Scenes/Main/prize_area.gd" id="7_2ok46"]
 [ext_resource type="PackedScene" uid="uid://b4fnn6bpkbu2h" path="res://Scenes/Rotating Platform/Walls/Easy/1.tscn" id="7_4o5wv"]
 [ext_resource type="PackedScene" uid="uid://b5f1b5xy70e7n" path="res://Scenes/Prizes/Bear Prize/bear_prize.tscn" id="7_6t3k2"]
-[ext_resource type="Script" uid="uid://bbj2grlpe44rp" path="res://Scenes/Main/level_manager.gd" id="8_4a3kt"]
+[ext_resource type="Script" uid="uid://bbj2grlpe44rp" path="res://Scenes/Main/Level Manager/level_manager.gd" id="8_4a3kt"]
 [ext_resource type="PackedScene" uid="uid://b1em8csmfsexr" path="res://Scenes/Rotating Platform/wheel_pivot.tscn" id="8_4o5wv"]
 [ext_resource type="PackedScene" uid="uid://d2bdcu8nu61s5" path="res://Assets/3D/Shop/Wheel Board.fbx" id="8_y3v7k"]
+[ext_resource type="Script" uid="uid://pj0ba6ig58n6" path="res://Scenes/Main/Level Manager/level_sequence.gd" id="10_ah3if"]
 [ext_resource type="Script" uid="uid://dertvnxrxb0pw" path="res://Scenes/Rotating Platform/game_over_area.gd" id="10_ifk88"]
+[ext_resource type="Script" uid="uid://de137qjy7c1dc" path="res://Scenes/Main/Level Manager/Commands/base_level_command.gd" id="11_v4agm"]
+[ext_resource type="Script" uid="uid://dt0chq3fblt30" path="res://Scenes/Main/Level Manager/Commands/set_wall_gen_chance.gd" id="12_aq0wg"]
+[ext_resource type="Script" uid="uid://07iobwtecj2x" path="res://Scenes/Main/Level Manager/startup_commands.gd" id="12_v4agm"]
 [ext_resource type="PackedScene" uid="uid://123l2hg2k7wf" path="res://Assets/3D/Falling Object Spawn Area.fbx" id="13_8sujb"]
 [ext_resource type="Script" uid="uid://bjnnr2txdcwt8" path="res://Scenes/Main/level_label.gd" id="13_es6iu"]
+[ext_resource type="Script" uid="uid://dv3ljwheewky6" path="res://Scenes/Main/Level Manager/Commands/spawn_falling_objects.gd" id="13_wbulw"]
 [ext_resource type="Theme" uid="uid://bafby1ck50m6g" path="res://Assets/Fonts/bold.tres" id="14_1t20g"]
 [ext_resource type="Material" uid="uid://b7g0cvi0cqule" path="res://Assets/Materials/Main/PlayAreaHologram.tres" id="14_koken"]
 [ext_resource type="Script" uid="uid://ycww5228my2g" path="res://Scenes/Main/falling_object_spawn_area.gd" id="14_tyqxl"]
+[ext_resource type="Script" uid="uid://b05ipch7evaqh" path="res://Scenes/Main/Level Manager/Commands/wait.gd" id="14_u244o"]
+[ext_resource type="Script" uid="uid://dl18y8xrw0wo" path="res://Scenes/Main/Level Manager/Commands/set_gap_chance.gd" id="16_u244o"]
 [ext_resource type="Script" uid="uid://snvonox4hd7s" path="res://Scenes/Rotating Platform/generate_piece.gd" id="18_1t20g"]
 [ext_resource type="Script" uid="uid://10ojd2tyhwfj" path="res://Assets/Utility Scripts/hide_on_load.gd" id="18_c4b4r"]
 [ext_resource type="PackedScene" uid="uid://dvmgy7jxf07fb" path="res://Scenes/Rotating Platform/piece_gen_template.tscn" id="19_tdwxr"]
@@ -44,6 +51,88 @@ ambient_light_color = Color(1, 1, 1, 1)
 ssao_enabled = true
 ssao_radius = 6.04
 ssao_intensity = 10.1
+
+[sub_resource type="Resource" id="Resource_1j4pb"]
+script = ExtResource("12_aq0wg")
+new_wall_gen_chance = 100
+metadata/_custom_type_script = "uid://dt0chq3fblt30"
+
+[sub_resource type="Resource" id="Resource_0uxpu"]
+script = ExtResource("13_wbulw")
+quantity = 20
+objects = Array[PackedScene]([ExtResource("27_4ohmo")])
+metadata/_custom_type_script = "uid://dv3ljwheewky6"
+
+[sub_resource type="Resource" id="Resource_wbulw"]
+script = ExtResource("14_u244o")
+seconds = 5.0
+metadata/_custom_type_script = "uid://b05ipch7evaqh"
+
+[sub_resource type="Resource" id="Resource_ah3if"]
+script = ExtResource("12_v4agm")
+start_of_level_wheel_speed = 22.0
+min_piece_angle = 70
+max_piece_angle = 80
+metadata/_custom_type_script = "uid://07iobwtecj2x"
+
+[sub_resource type="Resource" id="Resource_4ohmo"]
+script = ExtResource("10_ah3if")
+level_name = "Level 1"
+startup_commands = SubResource("Resource_ah3if")
+commands = Array[ExtResource("11_v4agm")]([SubResource("Resource_1j4pb"), SubResource("Resource_0uxpu"), SubResource("Resource_wbulw")])
+metadata/_custom_type_script = "uid://pj0ba6ig58n6"
+
+[sub_resource type="Resource" id="Resource_gw8t2"]
+script = ExtResource("12_aq0wg")
+new_wall_gen_chance = 100
+metadata/_custom_type_script = "uid://dt0chq3fblt30"
+
+[sub_resource type="Resource" id="Resource_nsdex"]
+script = ExtResource("16_u244o")
+new_gap_chance = 20
+metadata/_custom_type_script = "uid://dl18y8xrw0wo"
+
+[sub_resource type="Resource" id="Resource_js8sm"]
+script = ExtResource("12_v4agm")
+min_piece_angle = 40
+metadata/_custom_type_script = "uid://07iobwtecj2x"
+
+[sub_resource type="Resource" id="Resource_8oboy"]
+script = ExtResource("10_ah3if")
+level_name = "Level 2"
+startup_commands = SubResource("Resource_js8sm")
+commands = Array[ExtResource("11_v4agm")]([SubResource("Resource_gw8t2"), SubResource("Resource_nsdex")])
+metadata/_custom_type_script = "uid://pj0ba6ig58n6"
+
+[sub_resource type="Resource" id="Resource_u244o"]
+script = ExtResource("12_v4agm")
+metadata/_custom_type_script = "uid://07iobwtecj2x"
+
+[sub_resource type="Resource" id="Resource_fy12w"]
+script = ExtResource("10_ah3if")
+level_name = "Level 3"
+startup_commands = SubResource("Resource_u244o")
+metadata/_custom_type_script = "uid://pj0ba6ig58n6"
+
+[sub_resource type="Resource" id="Resource_go6uc"]
+script = ExtResource("12_v4agm")
+metadata/_custom_type_script = "uid://07iobwtecj2x"
+
+[sub_resource type="Resource" id="Resource_m6uf5"]
+script = ExtResource("10_ah3if")
+level_name = "Level 4"
+startup_commands = SubResource("Resource_go6uc")
+metadata/_custom_type_script = "uid://pj0ba6ig58n6"
+
+[sub_resource type="Resource" id="Resource_37bn8"]
+script = ExtResource("12_v4agm")
+metadata/_custom_type_script = "uid://07iobwtecj2x"
+
+[sub_resource type="Resource" id="Resource_hvw5u"]
+script = ExtResource("10_ah3if")
+level_name = "Level 5"
+startup_commands = SubResource("Resource_37bn8")
+metadata/_custom_type_script = "uid://pj0ba6ig58n6"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4a3kt"]
 size = Vector3(51.099854, 82.620514, 13.621078)
@@ -139,8 +228,11 @@ level_5_walls = Array[PackedScene]([ExtResource("7_4o5wv")])
 [node name="LevelManager" type="Node" parent="." unique_id=139858581]
 script = ExtResource("8_4a3kt")
 ball = ExtResource("27_4ohmo")
+levels = Array[ExtResource("10_ah3if")]([SubResource("Resource_4ohmo"), SubResource("Resource_8oboy"), SubResource("Resource_fy12w"), SubResource("Resource_m6uf5"), SubResource("Resource_hvw5u")])
 
 [node name="LevelPivot" type="Node3D" parent="." unique_id=1949748406]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="MainCamera" type="Camera3D" parent="LevelPivot" unique_id=1331169492 node_paths=PackedStringArray("player", "zoom_pos", "playing_pos")]
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 2.489, -7.052)

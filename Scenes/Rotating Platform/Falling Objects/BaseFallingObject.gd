@@ -8,7 +8,6 @@ func _ready() -> void:
 
 func destroy_after_cooldown():
 	if not going_to_be_destroyed:
-		print("queing for destroy")
 		going_to_be_destroyed = true
 		await get_tree().create_timer(2).timeout # wait for object to get offscreen a bit
 		queue_free()
