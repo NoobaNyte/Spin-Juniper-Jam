@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://cft0qng613fvg"]
 
-[ext_resource type="Script" uid="uid://snvonox4hd7s" path="res://Scenes/RotatingPlatform/generate_piece.gd" id="1_i4vcc"]
-[ext_resource type="PackedScene" uid="uid://dvmgy7jxf07fb" path="res://Scenes/RotatingPlatform/piece_gen_template.tscn" id="2_iem3o"]
-[ext_resource type="Script" uid="uid://dcvakcvd204wq" path="res://Scenes/RotatingPlatform/wheel_controller.gd" id="3_0ea77"]
-[ext_resource type="PackedScene" uid="uid://b4fnn6bpkbu2h" path="res://Scenes/RotatingPlatform/Walls/Easy/1.tscn" id="4_eudrv"]
-[ext_resource type="PackedScene" uid="uid://b1em8csmfsexr" path="res://Scenes/RotatingPlatform/wheel_pivot.tscn" id="4_wno85"]
+[ext_resource type="Script" uid="uid://snvonox4hd7s" path="res://Scenes/Rotating Platform/generate_piece.gd" id="1_i4vcc"]
+[ext_resource type="PackedScene" uid="uid://dvmgy7jxf07fb" path="res://Scenes/Rotating Platform/piece_gen_template.tscn" id="2_iem3o"]
+[ext_resource type="Script" uid="uid://dcvakcvd204wq" path="res://Scenes/Rotating Platform/wheel_controller.gd" id="3_0ea77"]
+[ext_resource type="PackedScene" uid="uid://b4fnn6bpkbu2h" path="res://Scenes/Rotating Platform/Walls/Easy/1.tscn" id="4_eudrv"]
+[ext_resource type="PackedScene" uid="uid://b1em8csmfsexr" path="res://Scenes/Rotating Platform/wheel_pivot.tscn" id="4_wno85"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iem3o"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)

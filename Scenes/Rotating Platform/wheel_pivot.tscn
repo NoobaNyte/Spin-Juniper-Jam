@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b1em8csmfsexr"]
 
 [ext_resource type="Script" uid="uid://10ojd2tyhwfj" path="res://Assets/Utility Scripts/hide_on_load.gd" id="1_7kxvd"]
-[ext_resource type="PackedScene" uid="uid://1oqhw28q3s16" path="res://Scenes/RotatingPlatform/base_wheel.tscn" id="2_5rh2c"]
+[ext_resource type="PackedScene" uid="uid://1oqhw28q3s16" path="res://Scenes/Rotating Platform/base_wheel.tscn" id="2_5rh2c"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xwcb8"]
 size = Vector3(1, 1, 2)

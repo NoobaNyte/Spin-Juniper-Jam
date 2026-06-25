@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dkobqdf0o1m7a"]
 
-[ext_resource type="Script" uid="uid://bgh05snvs3ny8" path="res://Scenes/RotatingPlatform/z_old/platform_spawner.gd" id="1_i4vcc"]
+[ext_resource type="Script" uid="uid://bgh05snvs3ny8" path="res://Scenes/Rotating Platform/z_old/platform_spawner.gd" id="1_i4vcc"]
 
 [node name="RotatingPlatform" type="Node3D" unique_id=1596451553]
 script = ExtResource("1_i4vcc")

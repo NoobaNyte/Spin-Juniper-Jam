@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dq6sfs51sklbs"]
+
+[ext_resource type="Script" uid="uid://snvonox4hd7s" path="res://Scenes/Rotating Platform/generate_piece.gd" id="1_su3li"]
+[ext_resource type="PackedScene" uid="uid://dvmgy7jxf07fb" path="res://Scenes/Rotating Platform/piece_gen_template.tscn" id="2_dn8wk"]
+[ext_resource type="Script" uid="uid://dcvakcvd204wq" path="res://Scenes/Rotating Platform/wheel_controller.gd" id="3_np4io"]
+
+[node name="WheelScripts" type="Node" unique_id=966436254]
+
+[node name="GeneratePiece" type="Node" parent="." unique_id=834769517]
+script = ExtResource("1_su3li")
+piece_gen_template_scene = ExtResource("2_dn8wk")
+
+[node name="WheelController" type="Node" parent="." unique_id=1951756619]
+script = ExtResource("3_np4io")

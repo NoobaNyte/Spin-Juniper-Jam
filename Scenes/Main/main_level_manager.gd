@@ -88,7 +88,9 @@ func _input(event: InputEvent) -> void:
 func start_game() -> void:
 	PlayerGlobals.disable_interact = true
 	print("Starting Game!")
+	
 	# play sfx and confirm animations
+	UI.get_node("InputPrompt").fade_out(UI.get_node("InputPrompt"))
 	#await get_tree().create_timer(0.5).timeout
 
 	PlayerGlobals.disappear_player.emit()
