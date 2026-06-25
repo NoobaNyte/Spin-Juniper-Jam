@@ -7,7 +7,7 @@
 size = Vector3(1, 1, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0ea77"]
-size = Vector3(1, 1, 2)
+size = Vector3(6, 6, 2)
 
 [node name="WheelPivot" type="Node3D" unique_id=1333064656]
 transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0)
@@ -42,6 +42,6 @@ debug_color = Color(0, 1, 0.0625, 0.41960785)
 transform = Transform3D(0.9993908, 0.03489949, 0, -0.03489949, 0.9993908, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionAreas/DestroyDetectionArea" unique_id=2136505166]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49999905, -18, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.999999, -15.5, 0)
 shape = SubResource("BoxShape3D_0ea77")
 debug_color = Color(1, 0, 0, 0.41960785)

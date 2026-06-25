@@ -11,8 +11,8 @@ extends Node3D
 @export var return_delay: float = 0.1
 
 @export_category("Speed Boost")
-@export var target_speed: float = 500.0
-@export var ease_in_duration: float = 0.25
+@export var target_speed: float = 800.0
+@export var ease_in_duration: float = 0.4
 @export var hold_duration: float = 0.25
 @export var ease_out_duration: float = 0.5
 
