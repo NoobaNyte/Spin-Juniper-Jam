@@ -28,6 +28,9 @@ signal update_selected_level
 @warning_ignore("unused_signal")
 signal game_over
 
+@warning_ignore("unused_signal")
+signal reset_game
+
 
 # vars
 var disable_movement: bool = false

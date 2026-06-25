@@ -1,6 +1,5 @@
 extends Node
 
-var active_tween: Tween
 var speed_tween: Tween
 
 func _ready() -> void:
@@ -18,6 +17,7 @@ func game_over():
 		PlayerGlobals.disappear_player.emit()
 	
 	PlayerGlobals.won_level = false
+	PlayerGlobals.reset_game.emit()
 
 
 func stop_wheel() -> void:

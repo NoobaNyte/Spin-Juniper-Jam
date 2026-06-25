@@ -4,6 +4,7 @@ extends Node
 signal spawn_new_wheel_piece # emmitted in piece_gen_template.gd and used to tell generate_piece.gd to spawn a new wheel piece (when the piece has rotated enough to the spawn point area/pos)
 
 ## general
+var preview_rotation_speed: float = 55
 var rotation_speed: float = 55
 var min_piece_angle_size: int = 30
 var max_piece_angle_size: int = 60

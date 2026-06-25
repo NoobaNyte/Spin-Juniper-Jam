@@ -9,8 +9,12 @@ var original_progress_scale: Vector3
 
 var input_prompt_ui
 
+## wheel 
+var speed_tween: Tween
+
 func _ready() -> void:
 	PlayerGlobals.set_in_menu_stats.emit()
+	PlayerGlobals.reset_game.connect(_on_reset_game)
 	input_prompt_ui = UI.get_node("InputPrompt")
 
 	# --- HOLOGRAM WALL SETUP ---
@@ -100,10 +104,41 @@ func _on_start_game() -> void:
 
 	# rotate everything 90 degrees so gravity is correct
 	$LevelPivot.rotation.x = deg_to_rad(89.9) ## CRITICAL - must be 89.9 not 90 because the wheel piece spawner breaks at 90
-	var start_game_spawnpoint: Marker3D = find_child("StartGameSpawnPoint")
+	var start_game_spawnpoint: Marker3D = find_child("StartGameSpawnPoint", true, false)
 	var player: CharacterBody3D = find_child("PlayerCharacter", true, false)
 	player.global_position = start_game_spawnpoint.global_position
 
 	PlayerGlobals.disable_movement = false
 	PlayerGlobals.reveal_player.emit()
 	PlayerGlobals.set_in_game_stats.emit()
+
+func _on_reset_game():
+	$LevelPivot.rotation.x = deg_to_rad(0) ## CRITICAL - must be 89.9 not 90 because the wheel piece spawner breaks at 90
+	# detach camera from player and toggle the gameplay cam
+
+	var shop_spawnpoint: Marker3D = find_child("ShopSpawnPoint", true, false)
+	var player: CharacterBody3D = find_child("PlayerCharacter", true, false)
+	player.global_position = shop_spawnpoint.global_position
+
+	$LevelPivot/MainCamera.detached_from_player = false
+	$LevelPivot/MainCamera.toggle_playing_camera(false)
+	set_wheel_to_preview_speed()
+	await get_tree().create_timer(1.5).timeout # wait for cam anim to be done before uhhiding player
+	PlayerGlobals.set_in_menu_stats.emit()
+	PlayerGlobals.reveal_player.emit()
+	PlayerGlobals.disable_movement = false
+	WheelGlobals.rotation_speed = WheelGlobals.preview_rotation_speed
+
+func set_wheel_to_preview_speed() -> void:
+	if speed_tween and speed_tween.is_valid():
+		speed_tween.kill()
+
+	speed_tween = create_tween()
+
+	# ease in to target speed
+	speed_tween.tween_method(
+		func(val: float): WheelGlobals.rotation_speed = val,
+		WheelGlobals.rotation_speed,
+		WheelGlobals.preview_rotation_speed,
+		1
+	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
