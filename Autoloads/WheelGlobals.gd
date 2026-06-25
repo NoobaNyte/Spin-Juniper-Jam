@@ -8,6 +8,8 @@ var preview_rotation_speed: float = 55
 var rotation_speed: float = 55
 var min_piece_angle_size: int = 30
 var max_piece_angle_size: int = 60
+var min_gap_angle_size: int = 20 # if a piece runs the chance of becoming a gap, set its sizes to this so they can be smaller and easier
+var max_gap_angle_size: int = 30
 
 ## colors
 var level_1_colors: Array[Color]
@@ -29,10 +31,13 @@ var level_5_walls: Array[PackedScene]
 var gen_walls_in_order: bool = true
 var wall_index: int = 0
 
-var wall_gen_chance: float = 0: # use this variable (clamped between 0 and 100 for chance that walls will get generated)
+## set both wall gen and empty piece geen chances to start at 0 for intended defaults
+var wall_gen_chance: float = 0: # clamped between 0 and 100 for chance that walls will get generated
     set(val):
         wall_gen_chance = clamp(val, 0.0, 100.0)
-    
+var empty_piece_chance: float = 0: # clamped between 0 and 100 for chance that piece will get gen empty
+    set(val):
+        empty_piece_chance = clamp(val, 0.0, 100.0)
 
 var start_of_level_wheel_speed: float = 20 # assigned and used in level_manager.gd while the wheel is being reset/prepped when you start a level, wheel speed gets reset to this speed
 

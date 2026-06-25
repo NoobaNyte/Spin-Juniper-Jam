@@ -14,14 +14,22 @@ func _ready() -> void:
 	generate_piece()
 
 func generate_piece(overshoot: float = 0.0):
-	var angle_size: int = randi_range(WheelGlobals.min_piece_angle_size, WheelGlobals.max_piece_angle_size)
+	var is_empty_piece: bool = false
+	if randf() * 100.0 <= WheelGlobals.empty_piece_chance:
+		is_empty_piece = true
 	
+
+	var angle_size: int
+	if is_empty_piece:
+		angle_size = randi_range(WheelGlobals.min_gap_angle_size, WheelGlobals.max_gap_angle_size)
+	else:
+		angle_size = randi_range(WheelGlobals.min_piece_angle_size, WheelGlobals.max_piece_angle_size)
+
 	# instantiate the piece gen template scene
 	var piece = piece_gen_template_scene.instantiate()
 	
 	# add piece as a child of the "GeneratePiece" first to make sure piece spawns at perfect angle
 	add_child(piece)
-	
 
 	# tell the piece's script its angle size
 	piece.angle_size = angle_size
@@ -31,7 +39,6 @@ func generate_piece(overshoot: float = 0.0):
 	piece.global_rotation.x = all_pieces.global_rotation.x
 	piece.global_rotation.y = all_pieces.global_rotation.y
 
-	
 	# reparent it to the all_pieces node (that rotates everything) to give it rotation and it will retain perfect spawn angle
 	piece.reparent(all_pieces)
 	
@@ -41,10 +48,17 @@ func generate_piece(overshoot: float = 0.0):
 
 	# wait for CSG to compute its geometry
 	await get_tree().process_frame
-	bake_piece_to_animatable(piece)
 
-	# give it a wall
-	generate_wall(piece)
+	# chance that the piece will generate with no mesh and no collision (but still physical)
+	if is_empty_piece:
+		var entire_piece_csg: CSGCombiner3D = piece.get_node("PieceMeshGenerator")
+		entire_piece_csg.use_collision = false
+		entire_piece_csg.visible = false
+
+	# otherwise just bake to mesh and give it a wall
+	else:
+		bake_piece_to_animatable(piece)
+		generate_wall(piece)
 
 	# pre-rotate the new piece to cover the overshoot gap
 	piece.rotation.z += deg_to_rad(overshoot)

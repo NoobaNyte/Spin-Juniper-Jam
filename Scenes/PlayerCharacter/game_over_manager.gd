@@ -9,8 +9,9 @@ func game_over():
 	WheelGlobals.speed_transition(0, 1)
 	
 	if PlayerGlobals.won_level:
-		pass
+		print("you won!")
 	else:
+		print("you lost.")
 		PlayerGlobals.disable_movement = true
 		PlayerGlobals.disappear_player.emit()
 	

@@ -46,21 +46,13 @@ var tickets: int = 0:
 var starting_tickets: int = 10000 # set higher to start with more for dev testing
 
 var total_levels: int = 5
-var selected_level: int = 1: # this number is the default selected level
+var selected_level: int = 1: # this number is the default selected level - ALSO SETS PREVIEW STATS
     set(value):
         selected_level = value
         update_selected_level.emit()
-        ## set the preview wall gen chance for while selecting level
-        if WheelGlobals.wall_gen_chance >= 0:
-            match selected_level:
-                1: WheelGlobals.wall_gen_chance = 0
-                2: WheelGlobals.wall_gen_chance = 50
-                3: WheelGlobals.wall_gen_chance = 60
-                4: WheelGlobals.wall_gen_chance = 70
-                5: WheelGlobals.wall_gen_chance = 80
-            print(WheelGlobals.wall_gen_chance)
+        update_preview_wheel()
+       
                     
-
 # starting powerup amount and costs are set individually in inspector for each prize in each prize scene
 var hp_powerup_amount: int = 0
 var hp_powerup_cost: int = 10
@@ -75,3 +67,35 @@ var bear_powerup_cost: int = 0
 
 func _init() -> void:
     tickets = starting_tickets
+
+func update_preview_wheel():
+    match selected_level:
+        1: WheelGlobals.wall_gen_chance = 0
+        2: WheelGlobals.wall_gen_chance = 50
+        3: WheelGlobals.wall_gen_chance = 60
+        4: WheelGlobals.wall_gen_chance = 70
+        5: WheelGlobals.wall_gen_chance = 80
+
+    match selected_level:
+        1: WheelGlobals.empty_piece_chance = 0
+        2: WheelGlobals.empty_piece_chance = 20
+        3: WheelGlobals.empty_piece_chance = 0
+        4: WheelGlobals.empty_piece_chance = 0
+        5: WheelGlobals.empty_piece_chance = 0
+
+    match selected_level:
+        1:
+            WheelGlobals.min_gap_angle_size = 10
+            WheelGlobals.max_gap_angle_size = 20
+        2:
+            WheelGlobals.min_gap_angle_size = 10
+            WheelGlobals.max_gap_angle_size = 20
+        3:
+            WheelGlobals.min_gap_angle_size = 10
+            WheelGlobals.max_gap_angle_size = 20
+        4:
+            WheelGlobals.min_gap_angle_size = 10
+            WheelGlobals.max_gap_angle_size = 20
+        5:
+            WheelGlobals.min_gap_angle_size = 10
+            WheelGlobals.max_gap_angle_size = 20
