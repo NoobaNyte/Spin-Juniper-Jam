@@ -20,7 +20,7 @@ shape = SubResource("ConcavePolygonShape3D_wlij7")
 [node name="GameOverArea" type="Area3D" parent="2" index="2" unique_id=1325660436]
 script = ExtResource("3_hmacw")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="2/GameOverArea" index="0" unique_id=1287840088]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="2/GameOverArea" index="0" unique_id=1287840088]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.039569765)
 shape = SubResource("ConcavePolygonShape3D_1kkae")
 debug_color = Color(1, 0, 0, 0.41960785)
