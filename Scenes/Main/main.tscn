@@ -120,6 +120,10 @@ level_1_colors = Array[Color]([Color(1, 0, 0, 1), Color(0, 0.008928299, 1, 1), C
 level_2_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1)])
 level_3_colors = Array[Color]([Color(0.21875, 1, 0, 1), Color(0.76075214, 1, 0.64508927, 1)])
 level_1_walls = Array[PackedScene]([ExtResource("7_4o5wv")])
+level_2_walls = Array[PackedScene]([ExtResource("7_4o5wv")])
+level_3_walls = Array[PackedScene]([ExtResource("7_4o5wv")])
+level_4_walls = Array[PackedScene]([ExtResource("7_4o5wv")])
+level_5_walls = Array[PackedScene]([ExtResource("7_4o5wv")])
 
 [node name="LevelPivot" type="Node3D" parent="." unique_id=1949748406]
 
