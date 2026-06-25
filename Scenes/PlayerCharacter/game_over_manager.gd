@@ -16,7 +16,7 @@ func game_over():
 	
 	PlayerGlobals.won_level = false
 
-	# open retry / go to shop screen UI
+	# open retry / go to shop / win screen UI
 	## CRITICAL - THE GAME OVER SCREEN BUTTONS SHOULD TRIGGER THIS, THE RESET GAME EMIT HERE IS TEMPORARY
 	await get_tree().create_timer(1.0).timeout
 	PlayerGlobals.reset_game.emit()

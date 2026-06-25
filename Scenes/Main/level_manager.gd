@@ -1,6 +1,6 @@
 extends Node
 
-var prep_level_time: float = 1.75 # the time that every level will wait before starting their main logic, the time it takes the wheel to prep
+var grace_period_time: float = 3 # the time that you garunteed have no obstacles after the prep level time
 
 func _ready() -> void:
 	PlayerGlobals.start_game.connect(start_game)
@@ -10,8 +10,7 @@ func wait(seconds: float) -> void:
 
 
 func start_game() -> void:
-	await prep_wheel()
-
+	WheelGlobals.wall_gen_chance = 0 # make sure there are no walls so you don't get spawn killed
 	match PlayerGlobals.selected_level:
 		1: level_1()
 		2: level_2()
@@ -23,20 +22,29 @@ func start_game() -> void:
 func prep_wheel():
 	await wait(0.25) # wait for camera to start panning slightly to ease with panning
 	await WheelGlobals.speed_transition(800, 1)
-	await wait(0.5)
-	WheelGlobals.speed_transition(WheelGlobals.start_of_level_wheel_speed, 0.5)
+	#await wait(0.5)
+	await WheelGlobals.speed_transition(WheelGlobals.start_of_level_wheel_speed, 0.5)
+	await wait(grace_period_time)
 	
-
 func level_1():
+	WheelGlobals.start_of_level_wheel_speed = 22
+	WheelGlobals.min_piece_angle_size = 70
+	WheelGlobals.max_piece_angle_size = 80
+
+	await prep_wheel()
+	WheelGlobals.wall_gen_chance = 100
+
+	await wait(5)
+	emit_win()
+	await WheelGlobals.speed_transition(50, 30)
+
+func level_2():
 	WheelGlobals.start_of_level_wheel_speed = 20
 	WheelGlobals.min_piece_angle_size = 50
 	WheelGlobals.max_piece_angle_size = 60
-	WheelGlobals.wall_gen_chance = 0
 	
-	await wait(prep_level_time)
-
-func level_2():
-	pass
+	await prep_wheel()
+	WheelGlobals.wall_gen_chance = 100
 
 func level_3():
 	pass
@@ -46,3 +54,7 @@ func level_4():
 
 func level_5():
 	pass
+
+func emit_win():
+	PlayerGlobals.won_level = true
+	PlayerGlobals.game_over.emit()
