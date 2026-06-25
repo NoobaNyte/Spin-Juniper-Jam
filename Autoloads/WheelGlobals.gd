@@ -28,3 +28,20 @@ var level_5_walls: Array[PackedScene]
 
 var gen_walls_in_order: bool = true
 var wall_index: int = 0
+
+## util functions
+var speed_tween: Tween
+
+func speed_transition(new_speed: float, transition_time: float = 1) -> void:
+	if speed_tween and speed_tween.is_valid():
+		speed_tween.kill()
+
+	speed_tween = create_tween()
+
+	# ease in to target speed
+	speed_tween.tween_method(
+		func(val: float): WheelGlobals.rotation_speed = val,
+		WheelGlobals.rotation_speed,
+		new_speed,
+		transition_time
+	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)

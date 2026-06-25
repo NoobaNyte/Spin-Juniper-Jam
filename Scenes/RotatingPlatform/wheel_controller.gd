@@ -19,6 +19,12 @@ var all_pieces: Node3D
 func _ready() -> void:
 	all_pieces = owner.find_child("AllPieces", true, false)
 	assign_vars_to_global()
+	fastload_wheel()
+
+func fastload_wheel():
+	WheelGlobals.rotation_speed = 600
+	await get_tree().create_timer(0.2).timeout
+	WheelGlobals.rotation_speed = WheelGlobals.preview_rotation_speed
 
 func assign_vars_to_global():
 	## colors

@@ -9,9 +9,6 @@ var original_progress_scale: Vector3
 
 var input_prompt_ui
 
-## wheel 
-var speed_tween: Tween
-
 func _ready() -> void:
 	PlayerGlobals.set_in_menu_stats.emit()
 	PlayerGlobals.reset_game.connect(_on_reset_game)
@@ -90,6 +87,7 @@ func _input(event: InputEvent) -> void:
 
 func _on_start_game() -> void:
 	print("Starting Game!")
+	PlayerGlobals.start_game.emit()
 	# play sfx and confirm animations
 	#await get_tree().create_timer(1.0).timeout
 
@@ -122,23 +120,9 @@ func _on_reset_game():
 
 	$LevelPivot/MainCamera.detached_from_player = false
 	$LevelPivot/MainCamera.toggle_playing_camera(false)
-	set_wheel_to_preview_speed()
+	WheelGlobals.speed_transition(WheelGlobals.preview_rotation_speed, 1)
 	await get_tree().create_timer(1.5).timeout # wait for cam anim to be done before uhhiding player
 	PlayerGlobals.set_in_menu_stats.emit()
 	PlayerGlobals.reveal_player.emit()
 	PlayerGlobals.disable_movement = false
 	WheelGlobals.rotation_speed = WheelGlobals.preview_rotation_speed
-
-func set_wheel_to_preview_speed() -> void:
-	if speed_tween and speed_tween.is_valid():
-		speed_tween.kill()
-
-	speed_tween = create_tween()
-
-	# ease in to target speed
-	speed_tween.tween_method(
-		func(val: float): WheelGlobals.rotation_speed = val,
-		WheelGlobals.rotation_speed,
-		WheelGlobals.preview_rotation_speed,
-		1
-	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
