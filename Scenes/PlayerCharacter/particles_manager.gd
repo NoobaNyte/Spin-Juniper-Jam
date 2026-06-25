@@ -15,14 +15,23 @@ func _ready() -> void:
 	particles.emitting = false
 	particles.one_shot = true
 
-func disappear_player():
-	particles.emitting = true
-	await get_tree().create_timer(0.2).timeout # wait for particles to cover player before hiding player
+func spawn_particles() -> void:
+	var dupe: GPUParticles3D = particles.duplicate()
+	get_tree().root.add_child(dupe)
+	dupe.top_level = true
+	dupe.global_transform = particles.global_transform
+	dupe.emitting = true
 
+	# wait for all particles to finish emitting and die
+	await get_tree().create_timer(dupe.lifetime + 0.1).timeout
+	dupe.queue_free()
+
+func disappear_player():
+	spawn_particles()
+	await get_tree().create_timer(0.2).timeout
 	player_mesh.visible = false
 
 func reveal_player():
-	particles.emitting = true
-	await get_tree().create_timer(0.2).timeout # wait for poof particles to cover screen to unhide player
-
+	spawn_particles()
+	await get_tree().create_timer(0.2).timeout
 	player_mesh.visible = true

@@ -113,9 +113,9 @@ func _on_start_game() -> void:
 	PlayerGlobals.set_in_game_stats.emit()
 
 func _on_reset_game():
-	$LevelPivot.rotation.x = deg_to_rad(0) ## CRITICAL - must be 89.9 not 90 because the wheel piece spawner breaks at 90
-	# detach camera from player and toggle the gameplay cam
+	$LevelPivot.rotation.x = deg_to_rad(0)
 
+	# re-attach camera from player and toggle the gameplay cam
 	var shop_spawnpoint: Marker3D = find_child("ShopSpawnPoint", true, false)
 	var player: CharacterBody3D = find_child("PlayerCharacter", true, false)
 	player.global_position = shop_spawnpoint.global_position

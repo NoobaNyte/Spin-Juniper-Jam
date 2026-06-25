@@ -8,11 +8,6 @@ var tracking_enabled: bool = true
 func _ready() -> void:
 	#await get_tree().process_frame # wait one frame so reparent/transform settles
 	last_rotation = global_rotation.z
-	print_info()
-
-func print_info():
-	print("starting_rotation: ", rad_to_deg(last_rotation))
-	print("angle_size (degrees to rotate): ", angle_size)
 
 func _process(delta: float) -> void:
 	if not tracking_enabled:
@@ -29,5 +24,4 @@ func _process(delta: float) -> void:
 func signal_spawn_new_piece():
 	var overshoot = total_degrees_rotated - angle_size
 	WheelGlobals.spawn_new_wheel_piece.emit(overshoot)
-	print("rotated: ", total_degrees_rotated, " now spawning new piece!")
 	tracking_enabled = false
