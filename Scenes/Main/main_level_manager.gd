@@ -90,6 +90,7 @@ func _on_start_game() -> void:
 	#await get_tree().create_timer(1.0).timeout
 
 	PlayerGlobals.disappear_player.emit()
+	PlayerGlobals.disable_movement = true
 	await get_tree().create_timer(0.95).timeout
 
 	# detach camera from player and toggle the gameplay cam
@@ -103,5 +104,6 @@ func _on_start_game() -> void:
 	var player: CharacterBody3D = find_child("PlayerCharacter", true, false)
 	player.global_position = start_game_spawnpoint.global_position
 
+	PlayerGlobals.disable_movement = false
 	PlayerGlobals.reveal_player.emit()
 	PlayerGlobals.set_in_game_stats.emit()

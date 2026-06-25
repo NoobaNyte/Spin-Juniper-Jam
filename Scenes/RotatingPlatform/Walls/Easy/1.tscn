@@ -2,6 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://bpdgvyt0tkr67" path="res://Scenes/RotatingPlatform/Walls/Base_Wall.tscn" id="1_gkkbe"]
 [ext_resource type="PackedScene" uid="uid://w8et47rtmo2h" path="res://Assets/3D/Walls/Default_Wall.fbx" id="2_e4i0n"]
+[ext_resource type="Script" uid="uid://dertvnxrxb0pw" path="res://Scenes/RotatingPlatform/Walls/Easy/game_over_area.gd" id="3_ko3na"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ko3na"]
+size = Vector3(17.970453, 0.85, 0.90000004)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e4i0n"]
 size = Vector3(17.970453, 0.85, 0.7200028)
@@ -11,8 +15,18 @@ size = Vector3(17.970453, 0.85, 0.7200028)
 [node name="Default_Wall" parent="." index="1" unique_id=368583037 instance=ExtResource("2_e4i0n")]
 transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Default_Wall" index="0" unique_id=1963987924]
+[node name="GameOverArea" type="Area3D" parent="Default_Wall" index="0" unique_id=1029361347]
+script = ExtResource("3_ko3na")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Default_Wall/GameOverArea" index="0" unique_id=984500496]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.985227, 0.425, -1.3411045e-06)
+shape = SubResource("BoxShape3D_ko3na")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Default_Wall" index="1" unique_id=1963987924]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.985227, 0.425, -1.3411045e-06)
 shape = SubResource("BoxShape3D_e4i0n")
+
+[connection signal="body_entered" from="Default_Wall/GameOverArea" to="Default_Wall/GameOverArea" method="_on_body_entered"]
 
 [editable path="Default_Wall"]

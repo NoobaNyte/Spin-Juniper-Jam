@@ -29,13 +29,14 @@ var _coyote_timer: float = 0.0
 var _was_on_floor: bool = false
 
 func _physics_process(delta: float) -> void:
-	var input_dir := Vector2.ZERO
-	input_dir.y = Input.get_axis("MoveRight", "MoveLeft")
-	input_dir.x = Input.get_axis("MoveUp", "MoveDown")
-	var wish_dir := Vector3(input_dir.x, 0.0, input_dir.y).normalized()
+	var wish_dir := Vector3.ZERO
 
-	
-	wish_dir = wish_dir.rotated(Vector3.UP, PI / 2.0)
+	if not PlayerGlobals.disable_movement:
+		var input_dir := Vector2.ZERO
+		input_dir.y = Input.get_axis("MoveRight", "MoveLeft")
+		input_dir.x = Input.get_axis("MoveUp", "MoveDown")
+		wish_dir = Vector3(input_dir.x, 0.0, input_dir.y).normalized()
+		wish_dir = wish_dir.rotated(Vector3.UP, PI / 2.0)
 
 	_apply_gravity(delta)
 	_handle_coyote(delta)
@@ -62,7 +63,7 @@ func _handle_coyote(delta: float) -> void:
 		_coyote_timer = max(_coyote_timer - delta, 0.0)
 
 func _handle_jump_buffer(delta: float) -> void:
-	if Input.is_action_just_pressed("Jump"):
+	if Input.is_action_just_pressed("Jump") and not PlayerGlobals.disable_movement:
 		_jump_buffer = jump_buffer_time
 	else:
 		_jump_buffer = max(_jump_buffer - delta, 0.0)

@@ -135,10 +135,12 @@ base_z_offset = -15.0
 
 [node name="WheelViewCamera" type="Camera3D" parent="LevelPivot" unique_id=582228753]
 transform = Transform3D(-1, 2.990035e-08, -8.215054e-08, 0, 0.9396926, 0.34202015, 8.742278e-08, 0.34202012, -0.9396927, 0, 8.025671, -15.005909)
+visible = false
 fov = 65.0
 
 [node name="PlayingViewCamera" type="Camera3D" parent="LevelPivot" unique_id=903720488]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -10.780413, -16.434547)
+visible = false
 fov = 65.0
 
 [node name="WheelPivot" parent="LevelPivot" unique_id=1333064656 instance=ExtResource("8_4o5wv")]

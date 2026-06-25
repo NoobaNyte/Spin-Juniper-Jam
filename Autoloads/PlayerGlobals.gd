@@ -25,8 +25,14 @@ signal update_tickets
 @warning_ignore("unused_signal")
 signal update_selected_level
 
+@warning_ignore("unused_signal")
+signal game_over
+
 
 # vars
+var disable_movement: bool = false
+var won_level: bool = false
+
 var tickets: int = 0:
     set(value):
         tickets = value

@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://bph2epx86k0m0" path="res://Scenes/PlayerCharacter/Scripts/stats_updater.gd" id="2_wwltf"]
 [ext_resource type="Script" uid="uid://dpvponjw8r6ty" path="res://Scenes/PlayerCharacter/powerup_updater.gd" id="3_wwltf"]
 [ext_resource type="Script" uid="uid://buk7jbm3rk4vx" path="res://Scenes/PlayerCharacter/particles_manager.gd" id="4_eb1wa"]
+[ext_resource type="Script" uid="uid://cw86qwcfxmbh6" path="res://Scenes/PlayerCharacter/game_over_manager.gd" id="5_yu0t5"]
 [ext_resource type="Texture2D" uid="uid://ba2gq32sxlqbj" path="res://Assets/2D/Poof Particles/Poofs.png" id="6_250gc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iof21"]
@@ -172,6 +173,9 @@ script = ExtResource("3_wwltf")
 [node name="Particles_Manager" type="Node" parent="Scripts" unique_id=226190566 node_paths=PackedStringArray("particles")]
 script = ExtResource("4_eb1wa")
 particles = NodePath("../../PoofGPUParticles3D")
+
+[node name="Game_Over_Manager" type="Node" parent="Scripts" unique_id=25307169]
+script = ExtResource("5_yu0t5")
 
 [node name="Main Character Animated" parent="." unique_id=1448694444 instance=ExtResource("2_vlfjb")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
