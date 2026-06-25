@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://4kuv3e5aorkk"]
 
+[ext_resource type="Script" uid="uid://8xr8nhvocw28" path="res://Scenes/Rotating Platform/Falling Objects/BaseFallingObject.gd" id="1_3s44l"]
 [ext_resource type="Material" uid="uid://crlhiti6l8q13" path="res://Assets/Materials/Falling Objects/Ball.tres" id="1_aogc1"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_kvl8e"]
@@ -10,7 +11,8 @@ height = 5.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_aogc1"]
 radius = 2.5
 
-[node name="MeshInstance3D" type="RigidBody3D" unique_id=1825700377]
+[node name="Ball" type="RigidBody3D" unique_id=1825700377 groups=["FallingObject"]]
+script = ExtResource("1_3s44l")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1094350851]
 mesh = SubResource("SphereMesh_kvl8e")
