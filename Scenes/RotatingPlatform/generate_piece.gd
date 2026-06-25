@@ -101,6 +101,9 @@ func assign_piece_mesh_colors(mesh: MeshInstance3D):
 	mesh.material_override = material
 
 func generate_wall(piece: Node3D):
+	if randf() * 100.0 >= WheelGlobals.wall_gen_chance:
+		return
+
 	var level_walls = [
 		WheelGlobals.level_1_walls,
 		WheelGlobals.level_2_walls,

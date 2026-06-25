@@ -50,7 +50,16 @@ var selected_level: int = 1: # this number is the default selected level
     set(value):
         selected_level = value
         update_selected_level.emit()
-
+        ## set the preview wall gen chance for while selecting level
+        if WheelGlobals.wall_gen_chance >= 0:
+            match selected_level:
+                1: WheelGlobals.wall_gen_chance = 0
+                2: WheelGlobals.wall_gen_chance = 50
+                3: WheelGlobals.wall_gen_chance = 60
+                4: WheelGlobals.wall_gen_chance = 70
+                5: WheelGlobals.wall_gen_chance = 80
+            print(WheelGlobals.wall_gen_chance)
+                    
 
 # starting powerup amount and costs are set individually in inspector for each prize in each prize scene
 var hp_powerup_amount: int = 0

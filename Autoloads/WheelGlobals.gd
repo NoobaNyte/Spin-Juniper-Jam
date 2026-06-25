@@ -29,21 +29,27 @@ var level_5_walls: Array[PackedScene]
 var gen_walls_in_order: bool = true
 var wall_index: int = 0
 
+var wall_gen_chance: float = 0: # use this variable (clamped between 0 and 100 for chance that walls will get generated)
+    set(val):
+        wall_gen_chance = clamp(val, 0.0, 100.0)
+    
+
 var start_of_level_wheel_speed: float = 20 # assigned and used in level_manager.gd while the wheel is being reset/prepped when you start a level, wheel speed gets reset to this speed
 
 ## util functions
 var speed_tween: Tween
 
 func speed_transition(new_speed: float, transition_time: float = 1) -> void:
-	if speed_tween and speed_tween.is_valid():
-		speed_tween.kill()
+    if speed_tween and speed_tween.is_valid():
+        speed_tween.kill()
 
-	speed_tween = create_tween()
+    speed_tween = create_tween()
 
-	# ease in to target speed
-	speed_tween.tween_method(
-		func(val: float): WheelGlobals.rotation_speed = val,
-		WheelGlobals.rotation_speed,
-		new_speed,
-		transition_time
-	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+    speed_tween.tween_method(
+        func(val: float): WheelGlobals.rotation_speed = val,
+        WheelGlobals.rotation_speed,
+        new_speed,
+        transition_time
+    ).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+
+    await speed_tween.finished
