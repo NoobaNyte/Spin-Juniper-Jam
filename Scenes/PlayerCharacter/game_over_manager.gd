@@ -11,6 +11,7 @@ func game_over():
 	if PlayerGlobals.won_level:
 		print("you won!")
 	else:
+		PlayerGlobals.lost_level = true
 		print("you lost.")
 		PlayerGlobals.disable_movement = true
 		PlayerGlobals.disappear_player.emit()

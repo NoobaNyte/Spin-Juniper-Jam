@@ -154,12 +154,10 @@ fov = 65.0
 [node name="WheelPivot" parent="LevelPivot" unique_id=1333064656 instance=ExtResource("8_4o5wv")]
 transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, -22.429012, 2.3)
 
-[node name="Wheel Board" type="StaticBody3D" parent="LevelPivot" unique_id=566790405]
-
-[node name="Wheel Board" parent="LevelPivot/Wheel Board" unique_id=844042927 instance=ExtResource("8_y3v7k")]
+[node name="Wheel Board" parent="LevelPivot" unique_id=844042927 instance=ExtResource("8_y3v7k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1964708)
 
-[node name="Wheel" parent="LevelPivot/Wheel Board/Wheel Board" index="2" unique_id=2030928217]
+[node name="Wheel" parent="LevelPivot/Wheel Board" index="2" unique_id=2030928217]
 visible = false
 
 [node name="Shop" type="StaticBody3D" parent="LevelPivot" unique_id=294995878]
@@ -358,5 +356,5 @@ script = ExtResource("18_c4b4r")
 [connection signal="body_entered" from="LevelPivot/Shop/PlayArea/PlayArea" to="." method="_on_play_area_body_entered"]
 [connection signal="body_exited" from="LevelPivot/Shop/PlayArea/PlayArea" to="." method="_on_play_area_body_exited"]
 
-[editable path="LevelPivot/Wheel Board/Wheel Board"]
+[editable path="LevelPivot/Wheel Board"]
 [editable path="LevelPivot/Shop/Shop"]

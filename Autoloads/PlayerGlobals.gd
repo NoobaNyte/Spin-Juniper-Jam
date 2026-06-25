@@ -38,6 +38,7 @@ signal reset_game
 # vars
 var disable_movement: bool = false
 var won_level: bool = false
+var lost_level: bool = false # used to not emit win if you've already lost (in level_manager.gd) gets set to true in game_over_manager.gd
 
 var tickets: int = 0:
     set(value):

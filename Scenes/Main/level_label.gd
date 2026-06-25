@@ -1,6 +1,7 @@
 extends Sprite3D
 
 var level_text: RichTextLabel
+var reward_text: RichTextLabel
 
 func _ready() -> void:
 	level_text = find_child("LevelText", true, false)

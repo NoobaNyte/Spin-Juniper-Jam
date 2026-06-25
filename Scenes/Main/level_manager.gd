@@ -1,6 +1,6 @@
 extends Node
 
-var grace_period_time: float = 3 # the time that you garunteed have no obstacles after the prep level time
+var grace_period_time: float = 1 # the time that you garunteed have no obstacles after the prep level time
 
 func _ready() -> void:
 	PlayerGlobals.start_game.connect(start_game)
@@ -38,22 +38,34 @@ func level_1():
 	WheelGlobals.min_piece_angle_size = 70
 	WheelGlobals.max_piece_angle_size = 80
 
+	
 	await prep_wheel()
-	WheelGlobals.wall_gen_chance = 100
+	if PlayerGlobals.lost_level: return
 
+	WheelGlobals.wall_gen_chance = 100
 	await wait(5)
+	if PlayerGlobals.lost_level: return
+
 	emit_win()
 	await WheelGlobals.speed_transition(50, 30)
 
+	#if PlayerGlobals.lost_level: return
+
 func level_2():
 	WheelGlobals.start_of_level_wheel_speed = 20
-	WheelGlobals.min_piece_angle_size = 50
+	WheelGlobals.min_piece_angle_size = 40
 	WheelGlobals.max_piece_angle_size = 60
+
+	# also set the gap angle size because level 2's main feature is gaps
 	WheelGlobals.min_gap_angle_size = 10
 	WheelGlobals.max_gap_angle_size = 20
 	
 	await prep_wheel()
+	
 	WheelGlobals.wall_gen_chance = 100
+	WheelGlobals.empty_piece_chance = 20
+
+	#if PlayerGlobals.lost_level: return
 
 func level_3():
 	pass
@@ -67,3 +79,5 @@ func level_5():
 func emit_win():
 	PlayerGlobals.won_level = true
 	PlayerGlobals.game_over.emit()
+
+	PlayerGlobals.lost_level = false
