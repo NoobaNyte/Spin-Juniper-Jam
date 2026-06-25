@@ -5,7 +5,6 @@ func _ready() -> void:
 
 
 func game_over():
-	print("game over!")
 	WheelGlobals.speed_transition(0, 1)
 	
 	if PlayerGlobals.won_level:

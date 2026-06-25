@@ -15,7 +15,9 @@
 [ext_resource type="PackedScene" uid="uid://b5f1b5xy70e7n" path="res://Scenes/Prizes/Bear Prize/bear_prize.tscn" id="7_6t3k2"]
 [ext_resource type="Script" uid="uid://bbj2grlpe44rp" path="res://Scenes/Main/Level Manager/level_manager.gd" id="8_4a3kt"]
 [ext_resource type="PackedScene" uid="uid://b1em8csmfsexr" path="res://Scenes/Rotating Platform/wheel_pivot.tscn" id="8_4o5wv"]
+[ext_resource type="PackedScene" uid="uid://baw1uix7iyqtw" path="res://Scenes/Rotating Platform/Walls/Easy/2.tscn" id="8_u244o"]
 [ext_resource type="PackedScene" uid="uid://d2bdcu8nu61s5" path="res://Assets/3D/Shop/Wheel Board.fbx" id="8_y3v7k"]
+[ext_resource type="PackedScene" uid="uid://qbtnacx63ba5" path="res://Scenes/Rotating Platform/Walls/Easy/3.tscn" id="9_1j4pb"]
 [ext_resource type="Script" uid="uid://pj0ba6ig58n6" path="res://Scenes/Main/Level Manager/level_sequence.gd" id="10_ah3if"]
 [ext_resource type="Script" uid="uid://dertvnxrxb0pw" path="res://Scenes/Rotating Platform/game_over_area.gd" id="10_ifk88"]
 [ext_resource type="Script" uid="uid://de137qjy7c1dc" path="res://Scenes/Main/Level Manager/Commands/base_level_command.gd" id="11_v4agm"]
@@ -23,7 +25,6 @@
 [ext_resource type="Script" uid="uid://07iobwtecj2x" path="res://Scenes/Main/Level Manager/startup_commands.gd" id="12_v4agm"]
 [ext_resource type="PackedScene" uid="uid://123l2hg2k7wf" path="res://Assets/3D/Falling Object Spawn Area.fbx" id="13_8sujb"]
 [ext_resource type="Script" uid="uid://bjnnr2txdcwt8" path="res://Scenes/Main/level_label.gd" id="13_es6iu"]
-[ext_resource type="Script" uid="uid://dv3ljwheewky6" path="res://Scenes/Main/Level Manager/Commands/spawn_falling_objects.gd" id="13_wbulw"]
 [ext_resource type="Theme" uid="uid://bafby1ck50m6g" path="res://Assets/Fonts/bold.tres" id="14_1t20g"]
 [ext_resource type="Material" uid="uid://b7g0cvi0cqule" path="res://Assets/Materials/Main/PlayAreaHologram.tres" id="14_koken"]
 [ext_resource type="Script" uid="uid://ycww5228my2g" path="res://Scenes/Main/falling_object_spawn_area.gd" id="14_tyqxl"]
@@ -57,15 +58,9 @@ script = ExtResource("12_aq0wg")
 new_wall_gen_chance = 100
 metadata/_custom_type_script = "uid://dt0chq3fblt30"
 
-[sub_resource type="Resource" id="Resource_0uxpu"]
-script = ExtResource("13_wbulw")
-quantity = 20
-objects = Array[PackedScene]([ExtResource("27_4ohmo")])
-metadata/_custom_type_script = "uid://dv3ljwheewky6"
-
 [sub_resource type="Resource" id="Resource_wbulw"]
 script = ExtResource("14_u244o")
-seconds = 5.0
+seconds = 20.0
 metadata/_custom_type_script = "uid://b05ipch7evaqh"
 
 [sub_resource type="Resource" id="Resource_ah3if"]
@@ -79,7 +74,7 @@ metadata/_custom_type_script = "uid://07iobwtecj2x"
 script = ExtResource("10_ah3if")
 level_name = "Level 1"
 startup_commands = SubResource("Resource_ah3if")
-commands = Array[ExtResource("11_v4agm")]([SubResource("Resource_1j4pb"), SubResource("Resource_0uxpu"), SubResource("Resource_wbulw")])
+commands = Array[ExtResource("11_v4agm")]([SubResource("Resource_1j4pb"), SubResource("Resource_wbulw")])
 metadata/_custom_type_script = "uid://pj0ba6ig58n6"
 
 [sub_resource type="Resource" id="Resource_gw8t2"]
@@ -92,8 +87,14 @@ script = ExtResource("16_u244o")
 new_gap_chance = 20
 metadata/_custom_type_script = "uid://dl18y8xrw0wo"
 
+[sub_resource type="Resource" id="Resource_0uxpu"]
+script = ExtResource("14_u244o")
+seconds = 15.0
+metadata/_custom_type_script = "uid://b05ipch7evaqh"
+
 [sub_resource type="Resource" id="Resource_js8sm"]
 script = ExtResource("12_v4agm")
+start_of_level_wheel_speed = 30.0
 min_piece_angle = 40
 metadata/_custom_type_script = "uid://07iobwtecj2x"
 
@@ -101,7 +102,7 @@ metadata/_custom_type_script = "uid://07iobwtecj2x"
 script = ExtResource("10_ah3if")
 level_name = "Level 2"
 startup_commands = SubResource("Resource_js8sm")
-commands = Array[ExtResource("11_v4agm")]([SubResource("Resource_gw8t2"), SubResource("Resource_nsdex")])
+commands = Array[ExtResource("11_v4agm")]([SubResource("Resource_gw8t2"), SubResource("Resource_nsdex"), SubResource("Resource_0uxpu")])
 metadata/_custom_type_script = "uid://pj0ba6ig58n6"
 
 [sub_resource type="Resource" id="Resource_u244o"]
@@ -219,8 +220,8 @@ script = ExtResource("20_4o5wv")
 level_1_colors = Array[Color]([Color(1, 0, 0, 1), Color(0, 0.008928299, 1, 1), Color(0.08996334, 0.33035713, 0, 1), Color(1, 0.9508929, 0, 1)])
 level_2_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1)])
 level_3_colors = Array[Color]([Color(0.21875, 1, 0, 1), Color(0.76075214, 1, 0.64508927, 1)])
-level_1_walls = Array[PackedScene]([ExtResource("7_4o5wv")])
-level_2_walls = Array[PackedScene]([ExtResource("7_4o5wv")])
+level_1_walls = Array[PackedScene]([ExtResource("7_4o5wv"), ExtResource("8_u244o"), ExtResource("9_1j4pb")])
+level_2_walls = Array[PackedScene]([ExtResource("7_4o5wv"), ExtResource("8_u244o"), ExtResource("9_1j4pb")])
 level_3_walls = Array[PackedScene]([ExtResource("7_4o5wv")])
 level_4_walls = Array[PackedScene]([ExtResource("7_4o5wv")])
 level_5_walls = Array[PackedScene]([ExtResource("7_4o5wv")])
