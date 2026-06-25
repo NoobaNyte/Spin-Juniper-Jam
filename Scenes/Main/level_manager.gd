@@ -2,6 +2,9 @@ extends Node
 
 var grace_period_time: float = 1 # the time that you garunteed have no obstacles after the prep level time
 
+# falling objects to spawn:
+@export var ball: PackedScene
+
 func _ready() -> void:
 	PlayerGlobals.start_game.connect(start_game)
 
@@ -43,10 +46,11 @@ func level_1():
 	if PlayerGlobals.lost_level: return
 
 	WheelGlobals.wall_gen_chance = 100
+	WheelGlobals.spawn_falling_objects.emit(20, 5, ball)
 	await wait(5)
 	if PlayerGlobals.lost_level: return
 
-	emit_win()
+	#emit_win()
 	await WheelGlobals.speed_transition(50, 30)
 
 	#if PlayerGlobals.lost_level: return

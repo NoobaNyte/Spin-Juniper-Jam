@@ -17,7 +17,8 @@ func _ready() -> void:
 
 func spawn_particles() -> void:
 	var dupe: GPUParticles3D = particles.duplicate()
-	get_tree().root.add_child(dupe)
+	var level_pivot = owner.get_parent().find_child("LevelPivot", true, false)
+	level_pivot.add_child(dupe)
 	dupe.top_level = true
 	dupe.global_transform = particles.global_transform
 	dupe.emitting = true

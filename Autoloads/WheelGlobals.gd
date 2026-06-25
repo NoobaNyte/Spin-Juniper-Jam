@@ -41,6 +41,10 @@ var empty_piece_chance: float = 0: # clamped between 0 and 100 for chance that p
 
 var start_of_level_wheel_speed: float = 20 # assigned and used in level_manager.gd while the wheel is being reset/prepped when you start a level, wheel speed gets reset to this speed
 
+## falling objects
+@warning_ignore("unused_signal")
+signal spawn_falling_objects(quantity: int, time_in_seconds: float, objects: Variant)
+
 ## util functions
 var speed_tween: Tween
 

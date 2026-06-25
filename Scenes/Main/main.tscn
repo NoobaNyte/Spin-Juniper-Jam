@@ -138,6 +138,7 @@ level_5_walls = Array[PackedScene]([ExtResource("7_4o5wv")])
 
 [node name="LevelManager" type="Node" parent="." unique_id=139858581]
 script = ExtResource("8_4a3kt")
+ball = ExtResource("27_4ohmo")
 
 [node name="LevelPivot" type="Node3D" parent="." unique_id=1949748406]
 
@@ -200,7 +201,6 @@ visible = false
 [node name="Falling Object Spawn Area" type="Area3D" parent="LevelPivot" unique_id=113948750]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -22.429012, -19.880497)
 script = ExtResource("14_tyqxl")
-ball = ExtResource("27_4ohmo")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="LevelPivot/Falling Object Spawn Area" unique_id=1224576926]
 transform = Transform3D(-4.371139e-08, 4.371139e-08, -1, 1, 1.9106855e-15, -4.371139e-08, 0, -1, -4.371139e-08, 0, 0, 0)
