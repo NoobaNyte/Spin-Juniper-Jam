@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://bbj2grlpe44rp" path="res://Scenes/Main/level_manager.gd" id="8_4a3kt"]
 [ext_resource type="PackedScene" uid="uid://b1em8csmfsexr" path="res://Scenes/RotatingPlatform/wheel_pivot.tscn" id="8_4o5wv"]
 [ext_resource type="PackedScene" uid="uid://d2bdcu8nu61s5" path="res://Assets/3D/Shop/Wheel Board.fbx" id="8_y3v7k"]
+[ext_resource type="Script" uid="uid://dertvnxrxb0pw" path="res://Scenes/RotatingPlatform/game_over_area.gd" id="10_ifk88"]
 [ext_resource type="Script" uid="uid://bjnnr2txdcwt8" path="res://Scenes/Main/level_label.gd" id="13_es6iu"]
 [ext_resource type="Theme" uid="uid://bafby1ck50m6g" path="res://Assets/Fonts/bold.tres" id="14_1t20g"]
 [ext_resource type="Material" uid="uid://b7g0cvi0cqule" path="res://Assets/Materials/Main/PlayAreaHologram.tres" id="14_koken"]
@@ -40,6 +41,9 @@ ambient_light_color = Color(1, 1, 1, 1)
 ssao_enabled = true
 ssao_radius = 6.04
 ssao_intensity = 10.1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4a3kt"]
+size = Vector3(51.099854, 82.620514, 13.621078)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wliom"]
 size = Vector3(66.72644, 3.8933697, 8.959991)
@@ -150,6 +154,14 @@ fov = 65.0
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -10.780413, -16.434547)
 visible = false
 fov = 65.0
+
+[node name="GameOverArea" type="Area3D" parent="LevelPivot" unique_id=417944345]
+script = ExtResource("10_ifk88")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelPivot/GameOverArea" unique_id=1367155727]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2412109, -43.329216, 9.83996)
+shape = SubResource("BoxShape3D_4a3kt")
+debug_color = Color(1, 0, 0, 1)
 
 [node name="WheelPivot" parent="LevelPivot" unique_id=1333064656 instance=ExtResource("8_4o5wv")]
 transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, -22.429012, 2.3)
@@ -349,6 +361,7 @@ font_size = 70
 outline_size = 36
 script = ExtResource("18_c4b4r")
 
+[connection signal="body_entered" from="LevelPivot/GameOverArea" to="LevelPivot/GameOverArea" method="_on_body_entered"]
 [connection signal="body_entered" from="LevelPivot/Shop/PrizeArea" to="LevelPivot/Shop/PrizeArea" method="_on_body_entered"]
 [connection signal="body_exited" from="LevelPivot/Shop/PrizeArea" to="LevelPivot/Shop/PrizeArea" method="_on_body_exited"]
 [connection signal="body_entered" from="LevelPivot/Shop/ZoomArea" to="LevelPivot/MainCamera" method="_on_zoom_area_body_entered"]

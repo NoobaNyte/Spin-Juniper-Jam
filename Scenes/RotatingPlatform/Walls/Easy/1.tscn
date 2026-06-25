@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bpdgvyt0tkr67" path="res://Scenes/RotatingPlatform/Walls/Base_Wall.tscn" id="1_gkkbe"]
 [ext_resource type="PackedScene" uid="uid://w8et47rtmo2h" path="res://Assets/3D/Walls/Default_Wall.fbx" id="2_e4i0n"]
-[ext_resource type="Script" uid="uid://dertvnxrxb0pw" path="res://Scenes/RotatingPlatform/Walls/Easy/game_over_area.gd" id="3_ko3na"]
+[ext_resource type="Script" uid="uid://dertvnxrxb0pw" path="res://Scenes/RotatingPlatform/game_over_area.gd" id="3_ko3na"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ko3na"]
 size = Vector3(17.970453, 0.85, 0.90000004)
