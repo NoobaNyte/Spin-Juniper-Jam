@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://vfx4ojoy8phi" path="res://Scenes/Main/audio.gd" id="1_j2pf3"]
 [ext_resource type="AudioStream" uid="uid://birxmcds2l8mn" path="res://Assets/SFX/Spinner Ticks/spinner_tick_1.mp3" id="1_qyspg"]
+[ext_resource type="AudioStream" uid="uid://dph10v5s154uu" path="res://Assets/SFX/Poofs/poof_1.mp3" id="2_8l1kn"]
 [ext_resource type="AudioStream" uid="uid://cbcqkdok6kkne" path="res://Assets/SFX/Spinner Ticks/spinner_tick_2.mp3" id="2_x3k78"]
 [ext_resource type="AudioStream" uid="uid://db84i1pf1k5i7" path="res://Assets/SFX/Spinner Ticks/spinner_tick_3.mp3" id="3_8l1kn"]
 [ext_resource type="AudioStream" uid="uid://b2480rsatrcfj" path="res://Assets/SFX/Spinner Ticks/spinner_tick_4.mp3" id="4_7tq4l"]
@@ -10,6 +11,8 @@
 [ext_resource type="AudioStream" uid="uid://bqey5rsh77qfx" path="res://Assets/SFX/Spinner Ticks/spinner_tick_7.mp3" id="7_xl65g"]
 [ext_resource type="AudioStream" uid="uid://dww0nob64fubu" path="res://Assets/SFX/Spinner Ticks/spinner_tick_8.mp3" id="8_xuk58"]
 [ext_resource type="AudioStream" uid="uid://6uebeo8v3l4e" path="res://Assets/SFX/Spinner Ticks/spinner_tick_9.mp3" id="9_73t1r"]
+[ext_resource type="AudioStream" uid="uid://d2longeq8nh6e" path="res://Assets/SFX/Poofs/poof_2.mp3" id="12_yq60p"]
+[ext_resource type="AudioStream" uid="uid://d4br3bq07mnr2" path="res://Assets/SFX/Poofs/poof_3.mp3" id="13_u53hk"]
 
 [node name="Audio" type="Node" unique_id=767990636]
 script = ExtResource("1_j2pf3")
@@ -62,3 +65,17 @@ bus = &"SFX"
 stream = ExtResource("9_73t1r")
 max_polyphony = 8
 bus = &"SFX"
+
+[node name="Poof" type="Node" parent="SFX" unique_id=1607770205]
+
+[node name="Poof1" type="AudioStreamPlayer" parent="SFX/Poof" unique_id=1251469271]
+stream = ExtResource("2_8l1kn")
+volume_db = -12.522
+pitch_scale = 1.2
+
+[node name="Poof2" type="AudioStreamPlayer" parent="SFX/Poof" unique_id=11642676]
+stream = ExtResource("12_yq60p")
+pitch_scale = 0.7
+
+[node name="Poof3" type="AudioStreamPlayer" parent="SFX/Poof" unique_id=2094034460]
+stream = ExtResource("13_u53hk")
