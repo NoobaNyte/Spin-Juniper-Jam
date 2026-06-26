@@ -56,12 +56,14 @@ func execute(_owner: Node) -> void:
 	var elapsed: float = 0.0
 
 	while elapsed < seconds:
-		# Pick a random wait before the next command fires
 		var interval: float = rng.randf_range(min_interval, max_interval)
-		# Don't wait past the end of the command's total duration
 		interval = minf(interval, seconds - elapsed)
 
 		await _owner.get_tree().create_timer(interval).timeout
+
+		if PlayerGlobals.lost_level:
+			return
+
 		elapsed += interval
 
 		if elapsed >= seconds:
