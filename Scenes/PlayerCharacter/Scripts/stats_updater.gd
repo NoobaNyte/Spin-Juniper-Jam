@@ -23,6 +23,12 @@ func _ready() -> void:
 
 	PlayerGlobals.set_in_menu_stats.connect(set_in_menu_stats)
 	PlayerGlobals.set_in_game_stats.connect(set_in_game_stats)
+	
+	PlayerGlobals.set_move_speed.connect(SetPlayerMaxSpeed)
+	PlayerGlobals.increase_move_speed.connect(IncreasePlayerMaxSpeed)
+
+	PlayerGlobals.set_jump_velocity.connect(SetPlayerJumpVelocity)
+	PlayerGlobals.increase_jump_velocity.connect(IncreasePlayerJumpVelocity)
 
 
 func set_in_menu_stats():
@@ -48,3 +54,24 @@ func set_in_game_stats():
 
 	else:
 		printerr("player character not found in stats_updater.gd! go to stats_updater.gd to update it's assignment in 'ready()'")
+
+
+func SetPlayerMaxSpeed(speed: float) -> void:
+	game_move_speed = speed
+	menu_move_speed = speed
+	return
+	
+func IncreasePlayerMaxSpeed(speed: float) -> void:
+	game_move_speed += speed
+	menu_move_speed += speed
+	return
+	
+func SetPlayerJumpVelocity(vel: float) -> void:
+	game_jump_velocity = vel
+	menu_jump_velocity = vel
+	return
+
+func IncreasePlayerJumpVelocity(vel: float) -> void:
+	game_jump_velocity += vel
+	menu_jump_velocity += vel
+	return

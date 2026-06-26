@@ -9,5 +9,8 @@ func buy_prize():
 	super.buy_prize()
 	if bought:
 		PlayerGlobals.jump_powerup_amount += 1
+		
+		PlayerGlobals.increase_jump_velocity.emit(1)
+		
 		quantity_owned += 1
 		bought = false

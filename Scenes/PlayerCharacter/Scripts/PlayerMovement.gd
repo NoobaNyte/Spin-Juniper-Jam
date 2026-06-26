@@ -28,6 +28,18 @@ var _jump_buffer: float = 0.0
 var _coyote_timer: float = 0.0
 var _was_on_floor: bool = false
 
+func _ready() -> void:
+	PlayerGlobals.set_move_speed.connect(SetPlayerMaxSpeed)
+	PlayerGlobals.increase_move_speed.connect(IncreasePlayerMaxSpeed)
+	PlayerGlobals.set_rotation_speed.connect(SetPlayerRotationSpeed)
+	PlayerGlobals.increase_rotation_speed.connect(IncreasePlayerRotationSpeed)
+	PlayerGlobals.set_acceleration.connect(SetPlayerAcceleration)
+	PlayerGlobals.increase_acceleration.connect(IncreasePlayerAcceleration)
+	PlayerGlobals.set_jump_velocity.connect(SetPlayerJumpVelocity)
+	PlayerGlobals.increase_jump_velocity.connect(IncreasePlayerJumpVelocity)
+	PlayerGlobals.set_friction.connect(SetPlayerFriction)
+
+
 func _physics_process(delta: float) -> void:
 	var wish_dir := Vector3.ZERO
 
@@ -103,3 +115,49 @@ func _handle_animations(wish_dir: Vector3) -> void:
 
 	if animation_player.current_animation != target_anim:
 		animation_player.play(target_anim, anim_blend_time, target_speed)
+		
+		
+		
+# ================================================================================================================
+# ------------------------------------- GLOBAL API FUNCTIONS BELOW HERE ------------------------------------------
+# ================================================================================================================
+
+func SetPlayerMaxSpeed(speed: float) -> void:
+	move_speed = speed
+	return
+	
+func IncreasePlayerMaxSpeed(speed: float) -> void:
+	move_speed += speed
+	return
+
+func SetPlayerRotationSpeed(speed: float) -> void:
+	rotation_speed = speed
+	return
+	
+func IncreasePlayerRotationSpeed(speed: float) -> void:
+	rotation_speed += speed
+	return
+
+func SetPlayerAcceleration(accel: float) -> void:
+	acceleration = accel
+	return
+
+func IncreasePlayerAcceleration(accel: float) -> void:
+	acceleration += accel
+	return
+	
+func SetPlayerJumpVelocity(vel: float) -> void:
+	jump_velocity = vel
+	return
+
+func IncreasePlayerJumpVelocity(vel: float) -> void:
+	jump_velocity += vel
+	return
+
+func SetPlayerFriction(frict: float) -> void:
+	friction = frict
+	return
+
+func IncreasePlayerFriction(frict: float) -> void:
+	friction += frict
+	return

@@ -35,26 +35,55 @@ signal game_over
 signal reset_game
 
 
+# player movement stat change signals
+@warning_ignore("unused_signal")
+signal set_move_speed(speed: float)
+@warning_ignore("unused_signal")
+signal increase_move_speed(speed: float)
+@warning_ignore("unused_signal")
+signal set_rotation_speed(speed: float)
+@warning_ignore("unused_signal")
+signal increase_rotation_speed(speed: float)
+@warning_ignore("unused_signal")
+signal set_acceleration(accel: float)
+@warning_ignore("unused_signal")
+signal increase_acceleration(accel: float)
+@warning_ignore("unused_signal")
+signal set_jump_velocity(vel: float)
+@warning_ignore("unused_signal")
+signal increase_jump_velocity(vel: float)
+@warning_ignore("unused_signal")
+signal set_friction(frict: float)
+@warning_ignore("unused_signal")
+signal increase_friction(frict: float)
+# end player movement stat change signals
+
 # vars
 var disable_movement: bool = false
 var disable_interact: bool = false
 var won_level: bool = false
 var lost_level: bool = false # used to not emit win if you've already lost (in level_manager.gd) gets set to true in game_over_manager.gd
 
+# prize behavior vars
+
+var speedPrizeAccel: bool = false
+
+# end prize behavior vars
+
 var tickets: int = 0:
-    set(value):
-        tickets = value
-        update_tickets.emit(tickets)
+	set(value):
+		tickets = value
+		update_tickets.emit(tickets)
 var starting_tickets: int = 10000 # set higher to start with more for dev testing
 
 var total_levels: int = 5
 var selected_level: int = 1: # this number is the default selected level - ALSO SETS PREVIEW STATS
-    set(value):
-        selected_level = value
-        update_selected_level.emit()
-        update_preview_wheel()
-       
-                    
+	set(value):
+		selected_level = value
+		update_selected_level.emit()
+		update_preview_wheel()
+	   
+					
 # starting powerup amount and costs are set individually in inspector for each prize in each prize scene
 var hp_powerup_amount: int = 0
 var hp_powerup_cost: int = 10
@@ -68,36 +97,36 @@ var bear_powerup_amount: int = 0
 var bear_powerup_cost: int = 0
 
 func _init() -> void:
-    tickets = starting_tickets
+	tickets = starting_tickets
 
 func update_preview_wheel():
-    match selected_level:
-        1: WheelGlobals.wall_gen_chance = 0
-        2: WheelGlobals.wall_gen_chance = 50
-        3: WheelGlobals.wall_gen_chance = 60
-        4: WheelGlobals.wall_gen_chance = 70
-        5: WheelGlobals.wall_gen_chance = 80
+	match selected_level:
+		1: WheelGlobals.wall_gen_chance = 0
+		2: WheelGlobals.wall_gen_chance = 50
+		3: WheelGlobals.wall_gen_chance = 60
+		4: WheelGlobals.wall_gen_chance = 70
+		5: WheelGlobals.wall_gen_chance = 80
 
-    match selected_level:
-        1: WheelGlobals.empty_piece_chance = 0
-        2: WheelGlobals.empty_piece_chance = 20
-        3: WheelGlobals.empty_piece_chance = 0
-        4: WheelGlobals.empty_piece_chance = 0
-        5: WheelGlobals.empty_piece_chance = 0
+	match selected_level:
+		1: WheelGlobals.empty_piece_chance = 0
+		2: WheelGlobals.empty_piece_chance = 20
+		3: WheelGlobals.empty_piece_chance = 0
+		4: WheelGlobals.empty_piece_chance = 0
+		5: WheelGlobals.empty_piece_chance = 0
 
-    match selected_level:
-        1:
-            WheelGlobals.min_gap_angle_size = 10
-            WheelGlobals.max_gap_angle_size = 20
-        2:
-            WheelGlobals.min_gap_angle_size = 10
-            WheelGlobals.max_gap_angle_size = 20
-        3:
-            WheelGlobals.min_gap_angle_size = 10
-            WheelGlobals.max_gap_angle_size = 20
-        4:
-            WheelGlobals.min_gap_angle_size = 10
-            WheelGlobals.max_gap_angle_size = 20
-        5:
-            WheelGlobals.min_gap_angle_size = 10
-            WheelGlobals.max_gap_angle_size = 20
+	match selected_level:
+		1:
+			WheelGlobals.min_gap_angle_size = 10
+			WheelGlobals.max_gap_angle_size = 20
+		2:
+			WheelGlobals.min_gap_angle_size = 10
+			WheelGlobals.max_gap_angle_size = 20
+		3:
+			WheelGlobals.min_gap_angle_size = 10
+			WheelGlobals.max_gap_angle_size = 20
+		4:
+			WheelGlobals.min_gap_angle_size = 10
+			WheelGlobals.max_gap_angle_size = 20
+		5:
+			WheelGlobals.min_gap_angle_size = 10
+			WheelGlobals.max_gap_angle_size = 20
