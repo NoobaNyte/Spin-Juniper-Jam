@@ -64,6 +64,8 @@ var disable_interact: bool = false
 var won_level: bool = false
 var lost_level: bool = false # used to not emit win if you've already lost (in level_manager.gd) gets set to true in game_over_manager.gd
 
+var playerCurrentHealth: int = 1
+
 # prize behavior vars
 
 var speedPrizeAccel: bool = false
@@ -98,6 +100,11 @@ var bear_powerup_cost: int = 0
 
 func _init() -> void:
 	tickets = starting_tickets
+
+func respawnPlayer() -> void:
+	#TODO put the player back on the platform here.
+	return
+
 
 func update_preview_wheel():
 	match selected_level:

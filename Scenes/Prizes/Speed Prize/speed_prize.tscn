@@ -16,6 +16,8 @@ radius = 3.25
 [node name="Speed_Prize" unique_id=2124177430 instance=ExtResource("1_2gxeh")]
 script = ExtResource("2_lbh1i")
 price = 50
+item_name = "Speed Boost"
+item_description = "Increases your max speed and acceleration."
 
 [node name="PriceLabel" parent="Overlays" parent_id_path=PackedInt32Array(998585642) index="0" unique_id=1926436885]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.8096004, 0)
