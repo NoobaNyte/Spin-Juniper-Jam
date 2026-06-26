@@ -18,8 +18,6 @@ func game_over():
 		if not PlayerGlobals.fell:
 			PlayerGlobals.disappear_player.emit()
 			
-	
-	PlayerGlobals.won_level = false
 
 	# wait for the hit anim to be done
 	await get_tree().create_timer(0.5).timeout
@@ -34,9 +32,19 @@ func game_over():
 
 
 	await get_tree().create_timer(0.5).timeout
-	# do ticket stuff
-	PlayerGlobals.reset_game.emit()
+	
+	if PlayerGlobals.won_level:
+		print("emitting win level sfx")
+		AudioGlobals.play_win_level_sfx.emit()
+		# trigger win effects and wait for them to be done
+		await get_tree().create_timer(5.5).timeout
+		PlayerGlobals.won_level = false
+		PlayerGlobals.disappear_player.emit()
+		await get_tree().create_timer(0.5).timeout
 
+		PlayerGlobals.reset_game.emit()
+
+	
 func stop_music_after_wait():
 	await get_tree().create_timer(0.1).timeout
 	AudioGlobals.fade_out_level_music.emit(0.2)

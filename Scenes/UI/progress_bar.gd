@@ -10,6 +10,7 @@ var _shown_y: float = 0.0
 
 var progress_bar: TextureProgressBar
 var _progress_tween: Tween = null
+var _active_ticket_points: Array = []
 
 func _ready() -> void:
 	ticket_point_template = find_child("TicketPointTemplate", true, false)
@@ -25,12 +26,12 @@ func _ready() -> void:
 	hide_progress_bar()
 	slide_duration = 1.2
 	
-
 func add_ticket_point(progress_ratio: float = 0):
 	var new_point := ticket_point_template.duplicate() as PathFollow2D
 	ticket_point_template.get_parent().add_child(new_point)
 	new_point.progress_ratio = progress_ratio
 	new_point.show()
+	_active_ticket_points.append(new_point)
 
 func show_progress_bar():
 	_play_tween(_shown_y)
@@ -45,6 +46,14 @@ func _play_tween(target_y: float) -> void:
 	_tween.tween_property(self, "position:y", target_y, slide_duration)
 
 func start_progress_bar():
+	for point in _active_ticket_points:
+		var sprite: Node = point.get_child(0)
+		if sprite and sprite.has_method("remove"):
+			sprite.remove()
+		else:
+			point.queue_free()
+		_active_ticket_points.clear()
+
 	show_progress_bar()
 	for ticket_point in ProgressBarGlobals.current_level_ticket_points:
 		add_ticket_point(ticket_point.point_on_progress_bar_from_0_to_1)
@@ -67,3 +76,11 @@ func start_progress_bar():
 func give_reward(ticket_reward_amount) -> void:
 	print("rewarding ", ticket_reward_amount, " tickets!")
 	PlayerGlobals.tickets += ticket_reward_amount
+
+	# Find the ticket point at this reward's progress ratio and remove its sprite
+	for point in _active_ticket_points:
+		var sprite: Node = point.get_child(0)
+		if sprite and sprite.has_method("remove"):
+			sprite.remove()
+			_active_ticket_points.erase(point)
+			break

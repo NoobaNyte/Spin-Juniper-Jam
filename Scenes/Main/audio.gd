@@ -25,6 +25,8 @@ func _ready() -> void:
 	AudioGlobals.play_jump_landing_sfx.connect(play_jump_landing_sfx)
 	AudioGlobals.play_wall_hit_sfx.connect(play_wall_hit_sfx)
 	AudioGlobals.play_lose_sfx.connect(play_lose_sfx)
+	AudioGlobals.play_win_tickets_sfx.connect(play_win_tickets_sfx)
+	AudioGlobals.play_win_level_sfx.connect(play_win_level_sfx)
 	AudioGlobals.play_shop_music.connect(play_shop_music)
 	AudioGlobals.fade_out_shop_music.connect(fade_out_shop_music)
 	AudioGlobals.play_level_music.connect(play_level_music)
@@ -86,6 +88,16 @@ func play_wall_hit_sfx():
 
 func play_lose_sfx():
 	var sfx = find_child("Lose", true, false)
+	#sfx.pitch_scale = randf_range(0.7, 0.8)
+	sfx.play()
+
+func play_win_tickets_sfx():
+	var sfx = find_child("Win2", true, false)
+	#sfx.pitch_scale = randf_range(0.7, 0.8)
+	sfx.play()
+
+func play_win_level_sfx():
+	var sfx = find_child("Win1", true, false)
 	#sfx.pitch_scale = randf_range(0.7, 0.8)
 	sfx.play()
 

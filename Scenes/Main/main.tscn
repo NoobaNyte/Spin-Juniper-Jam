@@ -132,27 +132,14 @@ metadata/_custom_type_script = "uid://d28puqtgo62cv"
 [sub_resource type="Resource" id="Resource_e4sw6"]
 script = ExtResource("17_gw8t2")
 target_speed = 45.0
-duration = 35.0
+duration = 0.0
 metadata/_custom_type_script = "uid://b5ace8o0pllgp"
-
-[sub_resource type="Resource" id="Resource_vy225"]
-script = ExtResource("61_4vdw8")
-point_on_progress_bar_from_0_to_1 = 0.1
-ticket_reward_amount = 30
-metadata/_custom_type_script = "uid://c5tlt0npn6e58"
-
-[sub_resource type="Resource" id="Resource_4vdw8"]
-script = ExtResource("61_4vdw8")
-point_on_progress_bar_from_0_to_1 = 0.2
-ticket_reward_amount = 1000
-metadata/_custom_type_script = "uid://c5tlt0npn6e58"
 
 [sub_resource type="Resource" id="Resource_ah3if"]
 script = ExtResource("12_v4agm")
 start_of_level_wheel_speed = 22.0
 min_piece_angle = 70
 max_piece_angle = 80
-ticket_points = Array[ExtResource("61_4vdw8")]([SubResource("Resource_vy225"), SubResource("Resource_4vdw8")])
 metadata/_custom_type_script = "uid://07iobwtecj2x"
 
 [sub_resource type="Resource" id="Resource_4ohmo"]
@@ -590,6 +577,7 @@ bus = &"SFX"
 
 [node name="Win2" type="AudioStreamPlayer" parent="Audio/SFX/Results" unique_id=1754758563]
 stream = ExtResource("27_pt420")
+volume_db = -8.544
 bus = &"SFX"
 
 [node name="Purchase" type="AudioStreamPlayer" parent="Audio/SFX" unique_id=1375403643]

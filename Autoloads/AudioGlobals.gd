@@ -30,6 +30,12 @@ signal play_wall_hit_sfx
 signal play_lose_sfx
 
 @warning_ignore("unused_signal")
+signal play_win_tickets_sfx
+
+@warning_ignore("unused_signal")
+signal play_win_level_sfx
+
+@warning_ignore("unused_signal")
 signal play_shop_music
 
 @warning_ignore("unused_signal")

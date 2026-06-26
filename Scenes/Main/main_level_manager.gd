@@ -122,6 +122,7 @@ func start_game() -> void:
 
 func reset_game():
 	$LevelPivot.rotation.x = deg_to_rad(0)
+	ProgressBarGlobals.hide_progress_bar.emit()
 
 	# re-attach camera from player and toggle the gameplay cam
 	var shop_spawnpoint: Marker3D = find_child("ShopSpawnPoint", true, false)

@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cowq72o55fk12" path="res://Assets/2D/Progress Bar Stroke.png" id="9_mbl0m"]
 [ext_resource type="Texture2D" uid="uid://csg0folk7kvr2" path="res://Assets/2D/Progress Bar Back.png" id="10_s3gqk"]
 [ext_resource type="Texture2D" uid="uid://2boaxcwk78e6" path="res://Assets/2D/Ticket Black Stroke.png" id="11_pmm6b"]
+[ext_resource type="Script" uid="uid://d1bijfxlordby" path="res://Scenes/UI/ticket_icon.gd" id="12_fy0us"]
 [ext_resource type="Texture2D" uid="uid://bywxyf6ehlx2j" path="res://Assets/2D/Progress Bar Star.png" id="12_vy225"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_de23q"]
@@ -245,8 +246,10 @@ position = Vector2(278.91837, 40.000004)
 progress = 278.92
 
 [node name="TicketIcon" type="Sprite2D" parent="ProgressBar/VBoxContainer/HBoxContainer/Bar/Path2D/TicketPointTemplate" unique_id=744049847]
+position = Vector2(0.08163452, 0)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("11_pmm6b")
+script = ExtResource("12_fy0us")
 
 [node name="End" type="PathFollow2D" parent="ProgressBar/VBoxContainer/HBoxContainer/Bar/Path2D" unique_id=1612816820]
 position = Vector2(1405, 40)
