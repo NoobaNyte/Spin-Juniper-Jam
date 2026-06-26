@@ -43,6 +43,7 @@
 [ext_resource type="PackedScene" uid="uid://dyirvgfdkx3g8" path="res://Scenes/Rotating Platform/Walls/Hard/Wall_Hard_2.tscn" id="20_m6uf5"]
 [ext_resource type="PackedScene" uid="uid://b7njsl3eelwrt" path="res://Scenes/Rotating Platform/Walls/Hard/Wall_Hard_3.tscn" id="21_37bn8"]
 [ext_resource type="PackedScene" uid="uid://bbli41p8cji18" path="res://Scenes/Rotating Platform/Walls/Medium/Wall_Medium_1.tscn" id="22_eo50k"]
+[ext_resource type="PackedScene" uid="uid://ctbrwu3ny5qpg" path="res://Scenes/Rotating Platform/Walls/Hard/4.tscn" id="24_vae3x"]
 [ext_resource type="PackedScene" uid="uid://4kuv3e5aorkk" path="res://Scenes/Rotating Platform/Falling Objects/Ball.tscn" id="27_4ohmo"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1r6ip"]
@@ -169,7 +170,7 @@ metadata/_custom_type_script = "uid://pj0ba6ig58n6"
 [sub_resource type="Resource" id="Resource_c8mgu"]
 script = ExtResource("13_0uxpu")
 colors = Array[Color]([Color(0.09803922, 0.05882353, 0.62352943, 1), Color(0.61960787, 0.5254902, 0.03137255, 1), Color(0.14117648, 0.1254902, 0.36862746, 1), Color(0.9490196, 0.83137256, 0.19607843, 1), Color(0.12156863, 0.11764706, 0.2, 1)])
-walls = Array[PackedScene]([ExtResource("10_hvw5u")])
+walls = Array[PackedScene]([ExtResource("24_vae3x")])
 metadata/_custom_type_script = "uid://baim3ol20wcky"
 
 [sub_resource type="Resource" id="Resource_go6uc"]
@@ -345,7 +346,7 @@ transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, -22.429012
 [node name="Wheel Area" parent="LevelPivot" unique_id=844042927 instance=ExtResource("8_y3v7k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1964708)
 
-[node name="Wheel" parent="LevelPivot/Wheel Area" index="2" unique_id=1861039474]
+[node name="Wheel" parent="LevelPivot/Wheel Area" index="2" unique_id=2030928217]
 visible = false
 
 [node name="Falling Object Spawn Area" type="Area3D" parent="LevelPivot" unique_id=113948750]
@@ -506,7 +507,7 @@ right_button = true
 
 [node name="Shop Mesh" parent="LevelPivot/Shop" unique_id=725113405 instance=ExtResource("1_1r6ip")]
 
-[node name="Floor" parent="LevelPivot/Shop/Shop Mesh" index="3" unique_id=142224917]
+[node name="Floor" parent="LevelPivot/Shop/Shop Mesh" index="3" unique_id=1323032207]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0005631447, 0.01571107, 0.00493598)
 
 [node name="Collision" type="StaticBody3D" parent="LevelPivot/Shop" unique_id=1433688602]
