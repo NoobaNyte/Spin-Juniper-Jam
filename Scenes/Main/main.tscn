@@ -95,11 +95,6 @@ target_speed = 45.0
 duration = 35.0
 metadata/_custom_type_script = "uid://b5ace8o0pllgp"
 
-[sub_resource type="Resource" id="Resource_wbulw"]
-script = ExtResource("14_u244o")
-seconds = 5.0
-metadata/_custom_type_script = "uid://b05ipch7evaqh"
-
 [sub_resource type="Resource" id="Resource_ah3if"]
 script = ExtResource("12_v4agm")
 start_of_level_wheel_speed = 22.0
@@ -112,12 +107,12 @@ script = ExtResource("10_ah3if")
 level_name = "Carnival Fun"
 base_level_data = SubResource("Resource_1j4pb")
 startup_commands = SubResource("Resource_ah3if")
-commands = Array[ExtResource("11_v4agm")]([SubResource("Resource_4rjtj"), SubResource("Resource_eo50k"), SubResource("Resource_4veoy"), SubResource("Resource_e4sw6"), SubResource("Resource_wbulw")])
+commands = Array[ExtResource("11_v4agm")]([SubResource("Resource_4rjtj"), SubResource("Resource_eo50k"), SubResource("Resource_4veoy"), SubResource("Resource_e4sw6")])
 metadata/_custom_type_script = "uid://pj0ba6ig58n6"
 
 [sub_resource type="Resource" id="Resource_0uxpu"]
 script = ExtResource("13_0uxpu")
-colors = Array[Color]([Color(0.1254902, 0.73333335, 0.14901961, 1), Color(0.7294118, 0.4, 0.1254902, 1), Color(0.25490198, 0.1254902, 0.7294118, 1), Color(0.2, 0.39607844, 0.20784314, 1), Color(0.23137255, 0.1882353, 0.15294118, 1)])
+colors = Array[Color]([Color(0.1254902, 0.73333335, 0.14901961, 1), Color(0.91, 0.40950006, 0, 1), Color(0.25490198, 0.1254902, 0.7294118, 1), Color(0.2, 0.39607844, 0.20784314, 1), Color(0.23137255, 0.1882353, 0.15294118, 1)])
 walls = Array[PackedScene]([ExtResource("10_hvw5u"), ExtResource("22_eo50k"), ExtResource("14_nsdex"), ExtResource("12_m6uf5"), ExtResource("11_go6uc")])
 metadata/_custom_type_script = "uid://baim3ol20wcky"
 
@@ -138,7 +133,7 @@ metadata/_custom_type_script = "uid://b5ace8o0pllgp"
 
 [sub_resource type="Resource" id="Resource_vae3x"]
 script = ExtResource("14_u244o")
-seconds = 15.0
+seconds = 5.0
 metadata/_custom_type_script = "uid://b05ipch7evaqh"
 
 [sub_resource type="Resource" id="Resource_js8sm"]
@@ -161,31 +156,26 @@ colors = Array[Color]([Color(0.28235295, 0.3019608, 0.98039216, 1), Color(0.2431
 walls = Array[PackedScene]([ExtResource("10_hvw5u"), ExtResource("24_vae3x"), ExtResource("11_go6uc"), ExtResource("22_eo50k"), ExtResource("24_vae3x"), ExtResource("24_vae3x"), ExtResource("14_nsdex"), ExtResource("25_h4gp5"), ExtResource("12_m6uf5")])
 metadata/_custom_type_script = "uid://baim3ol20wcky"
 
-[sub_resource type="Resource" id="Resource_q50pj"]
-script = ExtResource("16_37bn8")
-speed = 30.0
-metadata/_custom_type_script = "uid://d28puqtgo62cv"
+[sub_resource type="Resource" id="Resource_c8mgu"]
+script = ExtResource("15_gw8t2")
+new_min_angle_size = 45
+new_max_angle_size = 90
+metadata/_custom_type_script = "uid://ca71mp28ce63t"
 
 [sub_resource type="Resource" id="Resource_gw1lt"]
 script = ExtResource("12_aq0wg")
-new_wall_gen_chance = 50
+new_wall_gen_chance = 65
 metadata/_custom_type_script = "uid://dt0chq3fblt30"
-
-[sub_resource type="Resource" id="Resource_c8mgu"]
-script = ExtResource("15_gw8t2")
-new_min_angle_size = 75
-new_max_angle_size = 90
-metadata/_custom_type_script = "uid://ca71mp28ce63t"
 
 [sub_resource type="Resource" id="Resource_pmku7"]
 script = ExtResource("17_gw8t2")
 target_speed = 75.0
-duration = 55.0
+duration = 45.0
 metadata/_custom_type_script = "uid://b5ace8o0pllgp"
 
 [sub_resource type="Resource" id="Resource_ow7bd"]
 script = ExtResource("14_u244o")
-seconds = 5.0
+seconds = 15.0
 metadata/_custom_type_script = "uid://b05ipch7evaqh"
 
 [sub_resource type="Resource" id="Resource_u244o"]
@@ -197,7 +187,7 @@ script = ExtResource("10_ah3if")
 level_name = "Wave Ride"
 base_level_data = SubResource("Resource_h4gp5")
 startup_commands = SubResource("Resource_u244o")
-commands = Array[ExtResource("11_v4agm")]([SubResource("Resource_q50pj"), SubResource("Resource_gw1lt"), SubResource("Resource_c8mgu"), SubResource("Resource_pmku7"), SubResource("Resource_ow7bd")])
+commands = Array[ExtResource("11_v4agm")]([SubResource("Resource_c8mgu"), SubResource("Resource_gw1lt"), SubResource("Resource_pmku7"), SubResource("Resource_ow7bd")])
 metadata/_custom_type_script = "uid://pj0ba6ig58n6"
 
 [sub_resource type="Resource" id="Resource_fiicg"]
@@ -472,7 +462,7 @@ transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, -22.429012
 [node name="Wheel Area" parent="LevelPivot" unique_id=844042927 instance=ExtResource("8_y3v7k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1964708)
 
-[node name="Wheel" parent="LevelPivot/Wheel Area" index="2" unique_id=2030928217]
+[node name="Wheel" parent="LevelPivot/Wheel Area" index="2" unique_id=1861039474]
 visible = false
 
 [node name="Falling Object Spawn Area" type="Area3D" parent="LevelPivot" unique_id=113948750]
@@ -633,7 +623,7 @@ right_button = true
 
 [node name="Shop Mesh" parent="LevelPivot/Shop" unique_id=725113405 instance=ExtResource("1_1r6ip")]
 
-[node name="Floor" parent="LevelPivot/Shop/Shop Mesh" index="3" unique_id=1323032207]
+[node name="Floor" parent="LevelPivot/Shop/Shop Mesh" index="3" unique_id=142224917]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0005631447, 0.01571107, 0.00493598)
 
 [node name="Collision" type="StaticBody3D" parent="LevelPivot/Shop" unique_id=1433688602]
