@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dyfwa0tin2osj" path="res://Assets/3D/Shop/Shop.fbx" id="1_1r6ip"]
 [ext_resource type="Script" uid="uid://bsdanp36lgo6r" path="res://Scenes/Main/main_camera.gd" id="1_hfg1r"]
 [ext_resource type="Script" uid="uid://dpwnp7ua6dd33" path="res://Scenes/Main/main_level_manager.gd" id="1_vk4q2"]
+[ext_resource type="PackedScene" uid="uid://drho5v5k1bwpd" path="res://Scenes/Main/audio.tscn" id="2_ow7bd"]
 [ext_resource type="PackedScene" uid="uid://bg0rylw7ww1mr" path="res://Scenes/UI/ui.tscn" id="2_wliom"]
 [ext_resource type="PackedScene" uid="uid://doigq7nkfb887" path="res://Scenes/Prizes/Speed Prize/speed_prize.tscn" id="4_2a143"]
 [ext_resource type="PackedScene" uid="uid://dnp8jfq1nm1rg" path="res://Scenes/Prizes/Invincibility Frames/invincibility_frames_prize.tscn" id="4_5yls4"]
@@ -385,6 +386,8 @@ script = ExtResource("1_vk4q2")
 play_area_hologram = NodePath("LevelPivot/Shop/PlayArea/Hologram")
 play_area = NodePath("LevelPivot/Shop/PlayArea/PlayArea")
 
+[node name="Audio" parent="." unique_id=767990636 instance=ExtResource("2_ow7bd")]
+
 [node name="UI" parent="." unique_id=841098919 instance=ExtResource("2_wliom")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=533654568]
@@ -469,7 +472,7 @@ transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, -22.429012
 [node name="Wheel Area" parent="LevelPivot" unique_id=844042927 instance=ExtResource("8_y3v7k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1964708)
 
-[node name="Wheel" parent="LevelPivot/Wheel Area" index="2" unique_id=1861039474]
+[node name="Wheel" parent="LevelPivot/Wheel Area" index="2" unique_id=2030928217]
 visible = false
 
 [node name="Falling Object Spawn Area" type="Area3D" parent="LevelPivot" unique_id=113948750]
@@ -630,7 +633,7 @@ right_button = true
 
 [node name="Shop Mesh" parent="LevelPivot/Shop" unique_id=725113405 instance=ExtResource("1_1r6ip")]
 
-[node name="Floor" parent="LevelPivot/Shop/Shop Mesh" index="3" unique_id=142224917]
+[node name="Floor" parent="LevelPivot/Shop/Shop Mesh" index="3" unique_id=1323032207]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0005631447, 0.01571107, 0.00493598)
 
 [node name="Collision" type="StaticBody3D" parent="LevelPivot/Shop" unique_id=1433688602]

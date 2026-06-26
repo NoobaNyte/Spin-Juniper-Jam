@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dww0nob64fubu"
+path="res://.godot/imported/spinner_tick_8.mp3-713c34b7d7eaecf44a99ac9163ad7916.mp3str"
+
+[deps]
+
+source_file="res://Assets/SFX/Spinner Ticks/spinner_tick_8.mp3"
+dest_files=["res://.godot/imported/spinner_tick_8.mp3-713c34b7d7eaecf44a99ac9163ad7916.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
