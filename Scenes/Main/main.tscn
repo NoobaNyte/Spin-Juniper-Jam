@@ -44,7 +44,10 @@
 [ext_resource type="PackedScene" uid="uid://b7njsl3eelwrt" path="res://Scenes/Rotating Platform/Walls/Hard/Wall_Hard_3.tscn" id="21_37bn8"]
 [ext_resource type="PackedScene" uid="uid://bbli41p8cji18" path="res://Scenes/Rotating Platform/Walls/Medium/Wall_Medium_1.tscn" id="22_eo50k"]
 [ext_resource type="PackedScene" uid="uid://ctbrwu3ny5qpg" path="res://Scenes/Rotating Platform/Walls/Hard/4.tscn" id="24_vae3x"]
+[ext_resource type="PackedScene" uid="uid://bnm2ofl4uw2q2" path="res://Scenes/Rotating Platform/Walls/Medium/Wall_Medium_3.tscn" id="25_h4gp5"]
 [ext_resource type="PackedScene" uid="uid://4kuv3e5aorkk" path="res://Scenes/Rotating Platform/Falling Objects/Ball.tscn" id="27_4ohmo"]
+[ext_resource type="Script" uid="uid://3g4gl211lrua" path="res://Scenes/Main/Level Manager/Commands/set_gap_sizes.gd" id="27_c8mgu"]
+[ext_resource type="Script" uid="uid://dv3ljwheewky6" path="res://Scenes/Main/Level Manager/Commands/spawn_falling_objects.gd" id="28_bnc1s"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1r6ip"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -118,7 +121,7 @@ metadata/_custom_type_script = "uid://baim3ol20wcky"
 
 [sub_resource type="Resource" id="Resource_gw8t2"]
 script = ExtResource("12_aq0wg")
-new_wall_gen_chance = 100
+new_wall_gen_chance = 70
 metadata/_custom_type_script = "uid://dt0chq3fblt30"
 
 [sub_resource type="Resource" id="Resource_nsdex"]
@@ -153,8 +156,35 @@ metadata/_custom_type_script = "uid://pj0ba6ig58n6"
 [sub_resource type="Resource" id="Resource_h4gp5"]
 script = ExtResource("13_0uxpu")
 colors = Array[Color]([Color(0.28235295, 0.3019608, 0.98039216, 1), Color(0.24313726, 0.2627451, 0.8392157, 1), Color(0.19607843, 0.21176471, 0.6784314, 1), Color(0.14901961, 0.16470589, 0.52156866, 1), Color(0.105882354, 0.11372549, 0.36078432, 1), Color(0.14901961, 0.16470589, 0.52156866, 1), Color(0.19607843, 0.21176471, 0.6784314, 1), Color(0.24313726, 0.2627451, 0.8392157, 1)])
-walls = Array[PackedScene]([ExtResource("10_hvw5u")])
+walls = Array[PackedScene]([ExtResource("10_hvw5u"), ExtResource("24_vae3x"), ExtResource("11_go6uc"), ExtResource("22_eo50k"), ExtResource("24_vae3x"), ExtResource("24_vae3x"), ExtResource("14_nsdex"), ExtResource("25_h4gp5"), ExtResource("12_m6uf5")])
 metadata/_custom_type_script = "uid://baim3ol20wcky"
+
+[sub_resource type="Resource" id="Resource_q50pj"]
+script = ExtResource("16_37bn8")
+speed = 30.0
+metadata/_custom_type_script = "uid://d28puqtgo62cv"
+
+[sub_resource type="Resource" id="Resource_gw1lt"]
+script = ExtResource("12_aq0wg")
+new_wall_gen_chance = 50
+metadata/_custom_type_script = "uid://dt0chq3fblt30"
+
+[sub_resource type="Resource" id="Resource_c8mgu"]
+script = ExtResource("15_gw8t2")
+new_min_angle_size = 75
+new_max_angle_size = 90
+metadata/_custom_type_script = "uid://ca71mp28ce63t"
+
+[sub_resource type="Resource" id="Resource_pmku7"]
+script = ExtResource("17_gw8t2")
+target_speed = 75.0
+duration = 55.0
+metadata/_custom_type_script = "uid://b5ace8o0pllgp"
+
+[sub_resource type="Resource" id="Resource_ow7bd"]
+script = ExtResource("14_u244o")
+seconds = 5.0
+metadata/_custom_type_script = "uid://b05ipch7evaqh"
 
 [sub_resource type="Resource" id="Resource_u244o"]
 script = ExtResource("12_v4agm")
@@ -165,13 +195,69 @@ script = ExtResource("10_ah3if")
 level_name = "Wave Ride"
 base_level_data = SubResource("Resource_h4gp5")
 startup_commands = SubResource("Resource_u244o")
+commands = Array[ExtResource("11_v4agm")]([SubResource("Resource_q50pj"), SubResource("Resource_gw1lt"), SubResource("Resource_c8mgu"), SubResource("Resource_pmku7"), SubResource("Resource_ow7bd")])
 metadata/_custom_type_script = "uid://pj0ba6ig58n6"
 
-[sub_resource type="Resource" id="Resource_c8mgu"]
+[sub_resource type="Resource" id="Resource_fiicg"]
 script = ExtResource("13_0uxpu")
 colors = Array[Color]([Color(0.09803922, 0.05882353, 0.62352943, 1), Color(0.61960787, 0.5254902, 0.03137255, 1), Color(0.14117648, 0.1254902, 0.36862746, 1), Color(0.9490196, 0.83137256, 0.19607843, 1), Color(0.12156863, 0.11764706, 0.2, 1)])
-walls = Array[PackedScene]([ExtResource("24_vae3x")])
+walls = Array[PackedScene]([ExtResource("24_vae3x"), ExtResource("12_m6uf5"), ExtResource("11_go6uc"), ExtResource("10_hvw5u"), ExtResource("14_nsdex"), ExtResource("22_eo50k"), ExtResource("25_h4gp5"), ExtResource("19_go6uc"), ExtResource("22_eo50k"), ExtResource("14_nsdex")])
 metadata/_custom_type_script = "uid://baim3ol20wcky"
+
+[sub_resource type="Resource" id="Resource_dw0e8"]
+script = ExtResource("16_u244o")
+metadata/_custom_type_script = "uid://dl18y8xrw0wo"
+
+[sub_resource type="Resource" id="Resource_giosv"]
+script = ExtResource("16_37bn8")
+metadata/_custom_type_script = "uid://d28puqtgo62cv"
+
+[sub_resource type="Resource" id="Resource_v3nl7"]
+script = ExtResource("27_c8mgu")
+metadata/_custom_type_script = "uid://3g4gl211lrua"
+
+[sub_resource type="Resource" id="Resource_xhr70"]
+script = ExtResource("12_aq0wg")
+metadata/_custom_type_script = "uid://dt0chq3fblt30"
+
+[sub_resource type="Resource" id="Resource_qp3dn"]
+script = ExtResource("28_bnc1s")
+quantity = 25
+spawn_objects_over_this_many_seconds = 90.0
+objects = Array[PackedScene]([ExtResource("27_4ohmo")])
+max_spawn_velocity = 10.0
+metadata/_custom_type_script = "uid://dv3ljwheewky6"
+
+[sub_resource type="Resource" id="Resource_vnf10"]
+script = ExtResource("17_gw8t2")
+target_speed = 100.0
+duration = 15.0
+metadata/_custom_type_script = "uid://b5ace8o0pllgp"
+
+[sub_resource type="Resource" id="Resource_bq7c0"]
+script = ExtResource("14_u244o")
+seconds = 5.0
+metadata/_custom_type_script = "uid://b05ipch7evaqh"
+
+[sub_resource type="Resource" id="Resource_uklyp"]
+script = ExtResource("17_gw8t2")
+duration = 15.0
+metadata/_custom_type_script = "uid://b5ace8o0pllgp"
+
+[sub_resource type="Resource" id="Resource_ji84r"]
+script = ExtResource("14_u244o")
+seconds = 5.0
+metadata/_custom_type_script = "uid://b05ipch7evaqh"
+
+[sub_resource type="Resource" id="Resource_n806l"]
+script = ExtResource("17_gw8t2")
+target_speed = 125.0
+metadata/_custom_type_script = "uid://b5ace8o0pllgp"
+
+[sub_resource type="Resource" id="Resource_wyvfc"]
+script = ExtResource("14_u244o")
+seconds = 2.0
+metadata/_custom_type_script = "uid://b05ipch7evaqh"
 
 [sub_resource type="Resource" id="Resource_go6uc"]
 script = ExtResource("12_v4agm")
@@ -180,14 +266,15 @@ metadata/_custom_type_script = "uid://07iobwtecj2x"
 [sub_resource type="Resource" id="Resource_m6uf5"]
 script = ExtResource("10_ah3if")
 level_name = "Midnight Festival"
-base_level_data = SubResource("Resource_c8mgu")
+base_level_data = SubResource("Resource_fiicg")
 startup_commands = SubResource("Resource_go6uc")
+commands = Array[ExtResource("11_v4agm")]([SubResource("Resource_dw0e8"), SubResource("Resource_giosv"), SubResource("Resource_v3nl7"), SubResource("Resource_xhr70"), SubResource("Resource_qp3dn"), SubResource("Resource_vnf10"), SubResource("Resource_bq7c0"), SubResource("Resource_uklyp"), SubResource("Resource_ji84r"), SubResource("Resource_n806l"), SubResource("Resource_wyvfc")])
 metadata/_custom_type_script = "uid://pj0ba6ig58n6"
 
-[sub_resource type="Resource" id="Resource_gw1lt"]
+[sub_resource type="Resource" id="Resource_xbfr0"]
 script = ExtResource("13_0uxpu")
 colors = Array[Color]([Color(0.9372549, 0.003921569, 0, 1), Color(0.7411765, 0.14901961, 0.14901961, 1), Color(0.5411765, 0.21568628, 0.21568628, 1), Color(0.34117648, 0.20392157, 0.20392157, 1), Color(0.2, 0.16078432, 0.16078432, 1), Color(0.34117648, 0.20392157, 0.20392157, 1), Color(0.5411765, 0.21568628, 0.21568628, 1), Color(0.7411765, 0.14901961, 0.14901961, 1)])
-walls = Array[PackedScene]([ExtResource("19_go6uc"), ExtResource("20_m6uf5"), ExtResource("21_37bn8")])
+walls = Array[PackedScene]([ExtResource("19_go6uc"), ExtResource("20_m6uf5"), ExtResource("21_37bn8"), ExtResource("22_eo50k"), ExtResource("14_nsdex"), ExtResource("25_h4gp5"), ExtResource("19_go6uc"), ExtResource("24_vae3x"), ExtResource("24_vae3x")])
 metadata/_custom_type_script = "uid://baim3ol20wcky"
 
 [sub_resource type="Resource" id="Resource_37bn8"]
@@ -197,8 +284,9 @@ metadata/_custom_type_script = "uid://07iobwtecj2x"
 [sub_resource type="Resource" id="Resource_hvw5u"]
 script = ExtResource("10_ah3if")
 level_name = "Flammable"
-base_level_data = SubResource("Resource_gw1lt")
+base_level_data = SubResource("Resource_xbfr0")
 startup_commands = SubResource("Resource_37bn8")
+commands = Array[ExtResource("11_v4agm")]([null])
 metadata/_custom_type_script = "uid://pj0ba6ig58n6"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4a3kt"]
@@ -346,7 +434,7 @@ transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, -22.429012
 [node name="Wheel Area" parent="LevelPivot" unique_id=844042927 instance=ExtResource("8_y3v7k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1964708)
 
-[node name="Wheel" parent="LevelPivot/Wheel Area" index="2" unique_id=2030928217]
+[node name="Wheel" parent="LevelPivot/Wheel Area" index="2" unique_id=1861039474]
 visible = false
 
 [node name="Falling Object Spawn Area" type="Area3D" parent="LevelPivot" unique_id=113948750]
@@ -507,7 +595,7 @@ right_button = true
 
 [node name="Shop Mesh" parent="LevelPivot/Shop" unique_id=725113405 instance=ExtResource("1_1r6ip")]
 
-[node name="Floor" parent="LevelPivot/Shop/Shop Mesh" index="3" unique_id=1323032207]
+[node name="Floor" parent="LevelPivot/Shop/Shop Mesh" index="3" unique_id=142224917]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0005631447, 0.01571107, 0.00493598)
 
 [node name="Collision" type="StaticBody3D" parent="LevelPivot/Shop" unique_id=1433688602]
