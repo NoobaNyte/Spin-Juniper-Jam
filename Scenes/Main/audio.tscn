@@ -22,6 +22,8 @@
 [ext_resource type="AudioStream" uid="uid://k4k67vto6qwb" path="res://Assets/SFX/Footsteps/footstep_6.mp3" id="16_hlw8g"]
 [ext_resource type="AudioStream" uid="uid://bvs57ehvuweie" path="res://Assets/SFX/Footsteps/footstep_7.mp3" id="17_kcru5"]
 [ext_resource type="AudioStream" uid="uid://6fmnd5qd5u76" path="res://Assets/SFX/Footsteps/footstep_8.mp3" id="18_j014v"]
+[ext_resource type="AudioStream" uid="uid://inwi8tiwd5de" path="res://Assets/SFX/Button Press Down.mp3" id="23_pcsav"]
+[ext_resource type="AudioStream" uid="uid://mfw6kdmfjox7" path="res://Assets/SFX/Button Press Up.mp3" id="24_672nf"]
 
 [node name="Audio" type="Node" unique_id=767990636]
 script = ExtResource("1_j2pf3")
@@ -126,21 +128,35 @@ stream = ExtResource("18_j014v")
 pitch_scale = 0.4
 bus = &"Footsteps"
 
-[node name="Poof" type="Node" parent="SFX" unique_id=1607770205]
+[node name="Poofs" type="Node" parent="SFX" unique_id=1607770205]
 
-[node name="Poof1" type="AudioStreamPlayer" parent="SFX/Poof" unique_id=1251469271]
+[node name="Poof1" type="AudioStreamPlayer" parent="SFX/Poofs" unique_id=1251469271]
 stream = ExtResource("2_8l1kn")
 volume_db = -12.522
 pitch_scale = 1.2
 bus = &"SFX"
 
-[node name="Poof2" type="AudioStreamPlayer" parent="SFX/Poof" unique_id=11642676]
+[node name="Poof2" type="AudioStreamPlayer" parent="SFX/Poofs" unique_id=11642676]
 stream = ExtResource("12_yq60p")
 pitch_scale = 0.7
 bus = &"SFX"
 
-[node name="Poof3" type="AudioStreamPlayer" parent="SFX/Poof" unique_id=2094034460]
+[node name="Poof3" type="AudioStreamPlayer" parent="SFX/Poofs" unique_id=2094034460]
 stream = ExtResource("13_u53hk")
+bus = &"SFX"
+
+[node name="Button" type="Node" parent="SFX" unique_id=1175808978]
+
+[node name="ButtonPressDown" type="AudioStreamPlayer" parent="SFX/Button" unique_id=774388708]
+stream = ExtResource("23_pcsav")
+volume_db = -8.986
+pitch_scale = 0.53
+bus = &"SFX"
+
+[node name="ButtonPressUp" type="AudioStreamPlayer" parent="SFX/Button" unique_id=1476335954]
+stream = ExtResource("24_672nf")
+volume_db = -8.986
+pitch_scale = 0.53
 bus = &"SFX"
 
 [node name="Purchase" type="AudioStreamPlayer" parent="SFX" unique_id=1814047212]

@@ -472,7 +472,7 @@ transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, -22.429012
 [node name="Wheel Area" parent="LevelPivot" unique_id=844042927 instance=ExtResource("8_y3v7k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1964708)
 
-[node name="Wheel" parent="LevelPivot/Wheel Area" index="2" unique_id=1861039474]
+[node name="Wheel" parent="LevelPivot/Wheel Area" index="2" unique_id=2030928217]
 visible = false
 
 [node name="Falling Object Spawn Area" type="Area3D" parent="LevelPivot" unique_id=113948750]
@@ -633,7 +633,7 @@ right_button = true
 
 [node name="Shop Mesh" parent="LevelPivot/Shop" unique_id=725113405 instance=ExtResource("1_1r6ip")]
 
-[node name="Floor" parent="LevelPivot/Shop/Shop Mesh" index="3" unique_id=142224917]
+[node name="Floor" parent="LevelPivot/Shop/Shop Mesh" index="3" unique_id=1323032207]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0005631447, 0.01571107, 0.00493598)
 
 [node name="Collision" type="StaticBody3D" parent="LevelPivot/Shop" unique_id=1433688602]

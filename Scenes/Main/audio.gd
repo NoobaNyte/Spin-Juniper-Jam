@@ -33,3 +33,13 @@ func play_random_footstep_sfx():
 	
 	var sfx: AudioStreamPlayer = children[randi() % children.size()]
 	sfx.play()
+
+func play_button_press_down_sfx():
+	var sfx = find_child("ButtonPressDown", true, false)
+	#sfx.pitch_scale = randf_range(1.0, 1.1)
+	sfx.play()
+
+func play_button_press_up_sfx():
+	var sfx = find_child("ButtonPressUp", true, false)
+	#sfx.pitch_scale = randf_range(1.0, 1.1)
+	sfx.play()
