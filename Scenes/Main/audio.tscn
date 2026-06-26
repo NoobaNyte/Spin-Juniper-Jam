@@ -23,46 +23,55 @@ script = ExtResource("1_j2pf3")
 
 [node name="SpinnerTick1" type="AudioStreamPlayer" parent="SFX/SpinnerTicks" unique_id=1603990902]
 stream = ExtResource("1_qyspg")
+pitch_scale = 0.8
 max_polyphony = 8
 bus = &"SFX"
 
 [node name="SpinnerTick2" type="AudioStreamPlayer" parent="SFX/SpinnerTicks" unique_id=1445863177]
 stream = ExtResource("2_x3k78")
+pitch_scale = 0.8
 max_polyphony = 8
 bus = &"SFX"
 
 [node name="SpinnerTick3" type="AudioStreamPlayer" parent="SFX/SpinnerTicks" unique_id=538084622]
 stream = ExtResource("3_8l1kn")
+pitch_scale = 0.8
 max_polyphony = 8
 bus = &"SFX"
 
 [node name="SpinnerTick4" type="AudioStreamPlayer" parent="SFX/SpinnerTicks" unique_id=179906620]
 stream = ExtResource("4_7tq4l")
+pitch_scale = 0.8
 max_polyphony = 8
 bus = &"SFX"
 
 [node name="SpinnerTick5" type="AudioStreamPlayer" parent="SFX/SpinnerTicks" unique_id=1528571939]
 stream = ExtResource("5_yq60p")
+pitch_scale = 0.8
 max_polyphony = 8
 bus = &"SFX"
 
 [node name="SpinnerTick6" type="AudioStreamPlayer" parent="SFX/SpinnerTicks" unique_id=270590046]
 stream = ExtResource("6_u53hk")
+pitch_scale = 0.8
 max_polyphony = 8
 bus = &"SFX"
 
 [node name="SpinnerTick7" type="AudioStreamPlayer" parent="SFX/SpinnerTicks" unique_id=839899347]
 stream = ExtResource("7_xl65g")
+pitch_scale = 0.8
 max_polyphony = 8
 bus = &"SFX"
 
 [node name="SpinnerTick8" type="AudioStreamPlayer" parent="SFX/SpinnerTicks" unique_id=151057253]
 stream = ExtResource("8_xuk58")
+pitch_scale = 0.8
 max_polyphony = 8
 bus = &"SFX"
 
 [node name="SpinnerTick9" type="AudioStreamPlayer" parent="SFX/SpinnerTicks" unique_id=676658699]
 stream = ExtResource("9_73t1r")
+pitch_scale = 0.8
 max_polyphony = 8
 bus = &"SFX"
 

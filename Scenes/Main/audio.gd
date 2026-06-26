@@ -12,7 +12,6 @@ func play_random_wheel_tick_sfx() -> void:
 		return
 	
 	var sfx: AudioStreamPlayer = children[randi() % children.size()]
-	sfx.pitch_scale = randf_range(0.8, 1.2)
 	sfx.play()
 
 func play_poof_sfx():
