@@ -5,11 +5,15 @@ func _on_body_entered(body: Node3D) -> void:
 		if PlayerGlobals.game_ended:
 			return
 	
+		# determine how much health to lose and emit sfx
 		if is_in_group("WallArea"):
 			AudioGlobals.play_wall_hit_sfx.emit()
-			
-			
-		PlayerGlobals.playerCurrentHealth -= 1
+			PlayerGlobals.playerCurrentHealth -= 1
+				
+		else:
+			PlayerGlobals.playerCurrentHealth = 0
+		
+		# do things based on how much health
 		if PlayerGlobals.playerCurrentHealth <= 0:
 			if is_in_group("WallArea"):
 				PlayerGlobals.fell = true
@@ -18,10 +22,8 @@ func _on_body_entered(body: Node3D) -> void:
 			PlayerGlobals.playerCurrentHealth = PlayerGlobals.hp_powerup_amount
 			
 			
-		else:
-			print("giving i frames")
-			give_player_invincibility_frames()
-		PlayerGlobals.respawnPlayer()
+		elif is_in_group("WallArea"):
+				give_player_invincibility_frames()
 	
 	
 	if body.is_in_group("FallingObject"):

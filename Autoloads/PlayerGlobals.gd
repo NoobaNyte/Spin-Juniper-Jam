@@ -121,11 +121,6 @@ var bear_powerup_cost: int = 0
 func _init() -> void:
 	tickets = starting_tickets
 
-func respawnPlayer() -> void:
-	#TODO put the player back on the platform here.
-	return
-
-
 func update_preview_wheel():
 	match selected_level:
 		1: WheelGlobals.wall_gen_chance = 0

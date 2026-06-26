@@ -706,6 +706,7 @@ outline_size = 36
 script = ExtResource("18_c4b4r")
 
 [node name="GameOverArea" type="Area3D" parent="LevelPivot" unique_id=417944345]
+collision_mask = 3
 script = ExtResource("10_ifk88")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LevelPivot/GameOverArea" unique_id=1367155727]
