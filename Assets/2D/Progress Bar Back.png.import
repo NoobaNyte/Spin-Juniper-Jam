@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2boaxcwk78e6"
-path="res://.godot/imported/Ticket Black Stroke.png-9d9f785d97d3cd3ca94e6eb153f4ec7e.ctex"
+uid="uid://csg0folk7kvr2"
+path="res://.godot/imported/Progress Bar Back.png-2b059a878d3e526484f84f6c9175f5c5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/2D/Ticket Black Stroke.png"
-dest_files=["res://.godot/imported/Ticket Black Stroke.png-9d9f785d97d3cd3ca94e6eb153f4ec7e.ctex"]
+source_file="res://Assets/2D/Progress Bar Back.png"
+dest_files=["res://.godot/imported/Progress Bar Back.png-2b059a878d3e526484f84f6c9175f5c5.ctex"]
 
 [params]
 

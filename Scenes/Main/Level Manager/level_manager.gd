@@ -35,6 +35,7 @@ func assign_vars_to_global():
 			4:
 				WheelGlobals.level_5_colors = base_level_data.colors
 				WheelGlobals.level_5_walls = base_level_data.walls
+		
 
 func run_level(level_index: int) -> void:
 	# make sure there are no walls or gaps so you don't get spawn killed
@@ -55,6 +56,17 @@ func run_level(level_index: int) -> void:
 	WheelGlobals.max_piece_angle_size = s.max_piece_angle
 	WheelGlobals.min_gap_angle_size = s.min_gap_angle_size
 	WheelGlobals.max_gap_angle_size = s.max_gap_angle_size
+
+	for ticket_point in s.ticket_points:
+		ProgressBarGlobals.add_ticket_point.emit(ticket_point.point_on_progress_bar_from_0_to_1)
+	
+	# tell the progress bar how long the level is
+	var command_time_count: float = 0
+	for cmd in sequence.commands:
+		cmd.check_time()
+		command_time_count += cmd.total_command_time
+
+	ProgressBarGlobals.selected_level_length_in_seconds = command_time_count
 	
 	await prep_wheel() # make the wheel get prepped
 

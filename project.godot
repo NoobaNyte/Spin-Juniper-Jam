@@ -25,6 +25,7 @@ PlayerGlobals="*uid://dxuwc4lmkhpgw"
 UI="*uid://bg0rylw7ww1mr"
 WheelGlobals="*uid://vgc0i6y8sjh8"
 AudioGlobals="*uid://dtvaok7hs6mh2"
+ProgressBarGlobals="*uid://b8kwhiscop4hj"
 
 [display]
 

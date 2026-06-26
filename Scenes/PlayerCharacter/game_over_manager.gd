@@ -26,7 +26,7 @@ func game_over():
 	if PlayerGlobals.lost_level:
 		AudioGlobals.play_lose_sfx.emit()
 		# wait for sfx to be done
-		await get_tree().create_timer(1.95).timeout
+		await get_tree().create_timer(1.1).timeout
 
 	# if player died to a wall, disappear them
 	if PlayerGlobals.lost_level and PlayerGlobals.fell:

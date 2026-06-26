@@ -7,6 +7,11 @@
 [ext_resource type="Script" uid="uid://dwys4atdn16sd" path="res://Scenes/UI/input_prompt.gd" id="2_duuxe"]
 [ext_resource type="Script" uid="uid://u2s6anfsepqs" path="res://Scenes/UI/ticket_count.gd" id="5_alcrr"]
 [ext_resource type="Texture2D" uid="uid://bpitsyw8t55px" path="res://Assets/2D/wheel select reference.png" id="6_1c2ca"]
+[ext_resource type="Script" uid="uid://dr5ictc70nt28" path="res://Scenes/UI/progress_bar.gd" id="8_jfwrg"]
+[ext_resource type="Texture2D" uid="uid://cowq72o55fk12" path="res://Assets/2D/Progress Bar Stroke.png" id="9_mbl0m"]
+[ext_resource type="Texture2D" uid="uid://csg0folk7kvr2" path="res://Assets/2D/Progress Bar Back.png" id="10_s3gqk"]
+[ext_resource type="Texture2D" uid="uid://2boaxcwk78e6" path="res://Assets/2D/Ticket Black Stroke.png" id="11_pmm6b"]
+[ext_resource type="Texture2D" uid="uid://bywxyf6ehlx2j" path="res://Assets/2D/Progress Bar Star.png" id="12_vy225"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_de23q"]
 bg_color = Color(0.04241073, 0.02669604, 0, 0.67058825)
@@ -14,6 +19,24 @@ expand_margin_left = 20.0
 expand_margin_top = 20.0
 expand_margin_right = 20.0
 expand_margin_bottom = 20.0
+
+[sub_resource type="Gradient" id="Gradient_fy0us"]
+colors = PackedColorArray(1, 1, 1, 0.49019608, 1, 1, 1, 0.49019608)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_t7te2"]
+gradient = SubResource("Gradient_fy0us")
+
+[sub_resource type="Gradient" id="Gradient_vy225"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_h6tq4"]
+gradient = SubResource("Gradient_vy225")
+
+[sub_resource type="Curve2D" id="Curve2D_pmm6b"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 40, 0, 0, 0, 0, 1405, 40)
+}
+point_count = 2
 
 [node name="UI" type="CanvasLayer" unique_id=841098919]
 
@@ -168,3 +191,67 @@ bbcode_enabled = true
 text = "[img=90x0]res://Assets/2D/Ticket Black Stroke.png[/img] 9999"
 fit_content = true
 vertical_alignment = 2
+
+[node name="ProgressBar" type="MarginContainer" parent="." unique_id=215554322]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 70
+script = ExtResource("8_jfwrg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ProgressBar" unique_id=198713910]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ProgressBar/VBoxContainer" unique_id=1117315729]
+layout_mode = 2
+alignment = 1
+
+[node name="Bar" type="TextureRect" parent="ProgressBar/VBoxContainer/HBoxContainer" unique_id=528954491]
+layout_mode = 2
+texture = ExtResource("9_mbl0m")
+
+[node name="Back" type="TextureRect" parent="ProgressBar/VBoxContainer/HBoxContainer/Bar" unique_id=1691544493]
+show_behind_parent = true
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_s3gqk")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="ProgressBar/VBoxContainer/HBoxContainer/Bar/Back" unique_id=1988041968]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+step = 0.001
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture1D_t7te2")
+texture_progress = SubResource("GradientTexture1D_h6tq4")
+
+[node name="Path2D" type="Path2D" parent="ProgressBar/VBoxContainer/HBoxContainer/Bar" unique_id=1741700841]
+curve = SubResource("Curve2D_pmm6b")
+
+[node name="TicketPointTemplate" type="PathFollow2D" parent="ProgressBar/VBoxContainer/HBoxContainer/Bar/Path2D" unique_id=1613579618]
+position = Vector2(278.91837, 40.000004)
+progress = 278.92
+
+[node name="TicketIcon" type="Sprite2D" parent="ProgressBar/VBoxContainer/HBoxContainer/Bar/Path2D/TicketPointTemplate" unique_id=744049847]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("11_pmm6b")
+
+[node name="End" type="PathFollow2D" parent="ProgressBar/VBoxContainer/HBoxContainer/Bar/Path2D" unique_id=1612816820]
+position = Vector2(1405, 40)
+progress = 1405.0
+
+[node name="TicketIcon" type="Sprite2D" parent="ProgressBar/VBoxContainer/HBoxContainer/Bar/Path2D/End" unique_id=1753149814]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("12_vy225")

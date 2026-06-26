@@ -34,5 +34,4 @@ func give_player_invincibility_frames():
 	PlayerGlobals.invincible = true
 	await get_tree().create_timer(PlayerGlobals.playertIFrameSeconds).timeout
 	PlayerGlobals.invincible = false
-	print("setting player layers back")
 	PlayerGlobals.set_player_collision_layers.emit([1])

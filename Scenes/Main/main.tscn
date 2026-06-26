@@ -89,6 +89,7 @@
 [ext_resource type="AudioStream" uid="uid://ddn6pejjlgxri" path="res://Assets/Music/Charivari_Music/L5_Intro.mp3" id="36_vkja6"]
 [ext_resource type="AudioStream" uid="uid://dvarcw2wjpcn8" path="res://Assets/Music/Charivari_Music/L5_Loop.mp3" id="37_juxqm"]
 [ext_resource type="AudioStream" uid="uid://bflbwp5bqbgru" path="res://Assets/Music/Charivari_Music/Shop_Charivari.mp3" id="38_1mt81"]
+[ext_resource type="Script" uid="uid://c5tlt0npn6e58" path="res://Scenes/Main/Level Manager/Progress Bar/progress_bar_ticket_point.gd" id="61_4vdw8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1r6ip"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -134,11 +135,22 @@ target_speed = 45.0
 duration = 35.0
 metadata/_custom_type_script = "uid://b5ace8o0pllgp"
 
+[sub_resource type="Resource" id="Resource_vy225"]
+script = ExtResource("61_4vdw8")
+point_on_progress_bar_from_0_to_1 = 0.3
+metadata/_custom_type_script = "uid://c5tlt0npn6e58"
+
+[sub_resource type="Resource" id="Resource_4vdw8"]
+script = ExtResource("61_4vdw8")
+point_on_progress_bar_from_0_to_1 = 0.6
+metadata/_custom_type_script = "uid://c5tlt0npn6e58"
+
 [sub_resource type="Resource" id="Resource_ah3if"]
 script = ExtResource("12_v4agm")
 start_of_level_wheel_speed = 22.0
 min_piece_angle = 70
 max_piece_angle = 80
+ticket_points = Array[ExtResource("61_4vdw8")]([SubResource("Resource_vy225"), SubResource("Resource_4vdw8")])
 metadata/_custom_type_script = "uid://07iobwtecj2x"
 
 [sub_resource type="Resource" id="Resource_4ohmo"]
@@ -585,7 +597,7 @@ bus = &"SFX"
 
 [node name="WallHit" type="AudioStreamPlayer" parent="Audio/SFX" unique_id=820389931]
 stream = ExtResource("28_de47j")
-volume_db = -10.0
+volume_db = -13.0
 max_polyphony = 4
 bus = &"WallHit"
 
