@@ -16,28 +16,33 @@
 [ext_resource type="PackedScene" uid="uid://b1em8csmfsexr" path="res://Scenes/Rotating Platform/wheel_pivot.tscn" id="8_4o5wv"]
 [ext_resource type="PackedScene" uid="uid://d2bdcu8nu61s5" path="res://Assets/3D/Shop/Wheel Board.fbx" id="8_y3v7k"]
 [ext_resource type="Script" uid="uid://pj0ba6ig58n6" path="res://Scenes/Main/Level Manager/level_sequence.gd" id="10_ah3if"]
-[ext_resource type="PackedScene" uid="uid://b4fnn6bpkbu2h" path="res://Scenes/Rotating Platform/Walls/Easy/1.tscn" id="10_hvw5u"]
+[ext_resource type="PackedScene" uid="uid://b4fnn6bpkbu2h" path="res://Scenes/Rotating Platform/Walls/Easy/Wall_Easy_1.tscn" id="10_hvw5u"]
 [ext_resource type="Script" uid="uid://dertvnxrxb0pw" path="res://Scenes/Rotating Platform/game_over_area.gd" id="10_ifk88"]
-[ext_resource type="PackedScene" uid="uid://baw1uix7iyqtw" path="res://Scenes/Rotating Platform/Walls/Easy/2.tscn" id="11_go6uc"]
+[ext_resource type="PackedScene" uid="uid://baw1uix7iyqtw" path="res://Scenes/Rotating Platform/Walls/Easy/Wall_Easy_2.tscn" id="11_go6uc"]
 [ext_resource type="Script" uid="uid://de137qjy7c1dc" path="res://Scenes/Main/Level Manager/Commands/base_level_command.gd" id="11_v4agm"]
 [ext_resource type="Script" uid="uid://dt0chq3fblt30" path="res://Scenes/Main/Level Manager/Commands/set_wall_gen_chance.gd" id="12_aq0wg"]
-[ext_resource type="PackedScene" uid="uid://qbtnacx63ba5" path="res://Scenes/Rotating Platform/Walls/Easy/3.tscn" id="12_m6uf5"]
+[ext_resource type="PackedScene" uid="uid://qbtnacx63ba5" path="res://Scenes/Rotating Platform/Walls/Easy/Wall_Easy_3.tscn" id="12_m6uf5"]
 [ext_resource type="Script" uid="uid://07iobwtecj2x" path="res://Scenes/Main/Level Manager/startup_commands.gd" id="12_v4agm"]
 [ext_resource type="Script" uid="uid://baim3ol20wcky" path="res://Scenes/Main/Level Manager/base_level_data.gd" id="13_0uxpu"]
 [ext_resource type="PackedScene" uid="uid://123l2hg2k7wf" path="res://Assets/3D/Falling Object Spawn Area.fbx" id="13_8sujb"]
 [ext_resource type="Script" uid="uid://bjnnr2txdcwt8" path="res://Scenes/Main/level_label.gd" id="13_es6iu"]
 [ext_resource type="Theme" uid="uid://bafby1ck50m6g" path="res://Assets/Fonts/bold.tres" id="14_1t20g"]
 [ext_resource type="Material" uid="uid://b7g0cvi0cqule" path="res://Assets/Materials/Main/PlayAreaHologram.tres" id="14_koken"]
+[ext_resource type="PackedScene" uid="uid://svwq44ho1jom" path="res://Scenes/Rotating Platform/Walls/Medium/Wall_Medium_2.tscn" id="14_nsdex"]
 [ext_resource type="Script" uid="uid://ycww5228my2g" path="res://Scenes/Main/falling_object_spawn_area.gd" id="14_tyqxl"]
 [ext_resource type="Script" uid="uid://b05ipch7evaqh" path="res://Scenes/Main/Level Manager/Commands/wait.gd" id="14_u244o"]
+[ext_resource type="Script" uid="uid://ca71mp28ce63t" path="res://Scenes/Main/Level Manager/Commands/set_piece_angle_sizes.gd" id="15_gw8t2"]
+[ext_resource type="Script" uid="uid://d28puqtgo62cv" path="res://Scenes/Main/Level Manager/Commands/set_wheel_speed.gd" id="16_37bn8"]
 [ext_resource type="Script" uid="uid://dl18y8xrw0wo" path="res://Scenes/Main/Level Manager/Commands/set_gap_chance.gd" id="16_u244o"]
+[ext_resource type="Script" uid="uid://b5ace8o0pllgp" path="res://Scenes/Main/Level Manager/Commands/transition_wheel_speed.gd" id="17_gw8t2"]
 [ext_resource type="Script" uid="uid://snvonox4hd7s" path="res://Scenes/Rotating Platform/generate_piece.gd" id="18_1t20g"]
 [ext_resource type="Script" uid="uid://10ojd2tyhwfj" path="res://Assets/Utility Scripts/hide_on_load.gd" id="18_c4b4r"]
-[ext_resource type="PackedScene" uid="uid://du77sfvvxj5ge" path="res://Scenes/Rotating Platform/Walls/Hard/1.tscn" id="19_go6uc"]
+[ext_resource type="PackedScene" uid="uid://du77sfvvxj5ge" path="res://Scenes/Rotating Platform/Walls/Hard/Wall_Hard_1.tscn" id="19_go6uc"]
 [ext_resource type="PackedScene" uid="uid://dvmgy7jxf07fb" path="res://Scenes/Rotating Platform/piece_gen_template.tscn" id="19_tdwxr"]
 [ext_resource type="Script" uid="uid://dcvakcvd204wq" path="res://Scenes/Rotating Platform/wheel_controller.gd" id="20_4o5wv"]
-[ext_resource type="PackedScene" uid="uid://dyirvgfdkx3g8" path="res://Scenes/Rotating Platform/Walls/Hard/2.tscn" id="20_m6uf5"]
-[ext_resource type="PackedScene" uid="uid://b7njsl3eelwrt" path="res://Scenes/Rotating Platform/Walls/Hard/3.tscn" id="21_37bn8"]
+[ext_resource type="PackedScene" uid="uid://dyirvgfdkx3g8" path="res://Scenes/Rotating Platform/Walls/Hard/Wall_Hard_2.tscn" id="20_m6uf5"]
+[ext_resource type="PackedScene" uid="uid://b7njsl3eelwrt" path="res://Scenes/Rotating Platform/Walls/Hard/Wall_Hard_3.tscn" id="21_37bn8"]
+[ext_resource type="PackedScene" uid="uid://bbli41p8cji18" path="res://Scenes/Rotating Platform/Walls/Medium/Wall_Medium_1.tscn" id="22_eo50k"]
 [ext_resource type="PackedScene" uid="uid://4kuv3e5aorkk" path="res://Scenes/Rotating Platform/Falling Objects/Ball.tscn" id="27_4ohmo"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1r6ip"]
@@ -60,17 +65,33 @@ ssao_intensity = 10.1
 [sub_resource type="Resource" id="Resource_1j4pb"]
 script = ExtResource("13_0uxpu")
 colors = Array[Color]([Color(1, 0.1941964, 0.1941964, 1), Color(1, 0.9712885, 0.19607842, 1), Color(0.22186844, 0.72098213, 0.10460677, 1), Color(0.19607842, 0.20325607, 1, 1)])
-walls = Array[PackedScene]([ExtResource("10_hvw5u"), ExtResource("11_go6uc"), ExtResource("12_m6uf5")])
+walls = Array[PackedScene]([ExtResource("10_hvw5u"), ExtResource("11_go6uc"), ExtResource("12_m6uf5"), ExtResource("14_nsdex")])
 metadata/_custom_type_script = "uid://baim3ol20wcky"
+
+[sub_resource type="Resource" id="Resource_4rjtj"]
+script = ExtResource("15_gw8t2")
+new_min_angle_size = 25
+new_max_angle_size = 100
+metadata/_custom_type_script = "uid://ca71mp28ce63t"
 
 [sub_resource type="Resource" id="Resource_eo50k"]
 script = ExtResource("12_aq0wg")
 new_wall_gen_chance = 100
 metadata/_custom_type_script = "uid://dt0chq3fblt30"
 
+[sub_resource type="Resource" id="Resource_4veoy"]
+script = ExtResource("16_37bn8")
+metadata/_custom_type_script = "uid://d28puqtgo62cv"
+
+[sub_resource type="Resource" id="Resource_e4sw6"]
+script = ExtResource("17_gw8t2")
+target_speed = 45.0
+duration = 35.0
+metadata/_custom_type_script = "uid://b5ace8o0pllgp"
+
 [sub_resource type="Resource" id="Resource_wbulw"]
 script = ExtResource("14_u244o")
-seconds = 20.0
+seconds = 5.0
 metadata/_custom_type_script = "uid://b05ipch7evaqh"
 
 [sub_resource type="Resource" id="Resource_ah3if"]
@@ -82,16 +103,16 @@ metadata/_custom_type_script = "uid://07iobwtecj2x"
 
 [sub_resource type="Resource" id="Resource_4ohmo"]
 script = ExtResource("10_ah3if")
-level_name = "Level 1"
+level_name = "Carnival Fun"
 base_level_data = SubResource("Resource_1j4pb")
 startup_commands = SubResource("Resource_ah3if")
-commands = Array[ExtResource("11_v4agm")]([SubResource("Resource_eo50k"), SubResource("Resource_wbulw")])
+commands = Array[ExtResource("11_v4agm")]([SubResource("Resource_4rjtj"), SubResource("Resource_eo50k"), SubResource("Resource_4veoy"), SubResource("Resource_e4sw6"), SubResource("Resource_wbulw")])
 metadata/_custom_type_script = "uid://pj0ba6ig58n6"
 
 [sub_resource type="Resource" id="Resource_0uxpu"]
 script = ExtResource("13_0uxpu")
-colors = Array[Color]([Color(0.96651787, 0.96651787, 0.96651787, 1), Color(0.1495536, 0.1495536, 0.1495536, 1)])
-walls = Array[PackedScene]([ExtResource("10_hvw5u")])
+colors = Array[Color]([Color(0.1254902, 0.73333335, 0.14901961, 1), Color(0.7294118, 0.4, 0.1254902, 1), Color(0.25490198, 0.1254902, 0.7294118, 1), Color(0.2, 0.39607844, 0.20784314, 1), Color(0.23137255, 0.1882353, 0.15294118, 1)])
+walls = Array[PackedScene]([ExtResource("10_hvw5u"), ExtResource("22_eo50k"), ExtResource("14_nsdex"), ExtResource("12_m6uf5"), ExtResource("11_go6uc")])
 metadata/_custom_type_script = "uid://baim3ol20wcky"
 
 [sub_resource type="Resource" id="Resource_gw8t2"]
@@ -103,6 +124,11 @@ metadata/_custom_type_script = "uid://dt0chq3fblt30"
 script = ExtResource("16_u244o")
 new_gap_chance = 20
 metadata/_custom_type_script = "uid://dl18y8xrw0wo"
+
+[sub_resource type="Resource" id="Resource_bnc1s"]
+script = ExtResource("17_gw8t2")
+duration = 45.0
+metadata/_custom_type_script = "uid://b5ace8o0pllgp"
 
 [sub_resource type="Resource" id="Resource_vae3x"]
 script = ExtResource("14_u244o")
@@ -117,15 +143,15 @@ metadata/_custom_type_script = "uid://07iobwtecj2x"
 
 [sub_resource type="Resource" id="Resource_8oboy"]
 script = ExtResource("10_ah3if")
-level_name = "Level 2"
+level_name = "Carnivorous Fun"
 base_level_data = SubResource("Resource_0uxpu")
 startup_commands = SubResource("Resource_js8sm")
-commands = Array[ExtResource("11_v4agm")]([SubResource("Resource_gw8t2"), SubResource("Resource_nsdex"), SubResource("Resource_vae3x")])
+commands = Array[ExtResource("11_v4agm")]([SubResource("Resource_gw8t2"), SubResource("Resource_nsdex"), SubResource("Resource_bnc1s"), SubResource("Resource_vae3x")])
 metadata/_custom_type_script = "uid://pj0ba6ig58n6"
 
 [sub_resource type="Resource" id="Resource_h4gp5"]
 script = ExtResource("13_0uxpu")
-colors = Array[Color]([Color(0.50125563, 1, 0.2745536, 1), Color(0.79889786, 1, 0.79241073, 1)])
+colors = Array[Color]([Color(0.28235295, 0.3019608, 0.98039216, 1), Color(0.24313726, 0.2627451, 0.8392157, 1), Color(0.19607843, 0.21176471, 0.6784314, 1), Color(0.14901961, 0.16470589, 0.52156866, 1), Color(0.105882354, 0.11372549, 0.36078432, 1), Color(0.14901961, 0.16470589, 0.52156866, 1), Color(0.19607843, 0.21176471, 0.6784314, 1), Color(0.24313726, 0.2627451, 0.8392157, 1)])
 walls = Array[PackedScene]([ExtResource("10_hvw5u")])
 metadata/_custom_type_script = "uid://baim3ol20wcky"
 
@@ -135,14 +161,14 @@ metadata/_custom_type_script = "uid://07iobwtecj2x"
 
 [sub_resource type="Resource" id="Resource_fy12w"]
 script = ExtResource("10_ah3if")
-level_name = "Level 3"
+level_name = "Wave Ride"
 base_level_data = SubResource("Resource_h4gp5")
 startup_commands = SubResource("Resource_u244o")
 metadata/_custom_type_script = "uid://pj0ba6ig58n6"
 
 [sub_resource type="Resource" id="Resource_c8mgu"]
 script = ExtResource("13_0uxpu")
-colors = Array[Color]([Color(1, 0, 0.77678585, 1), Color(0, 1, 0.93303585, 1)])
+colors = Array[Color]([Color(0.09803922, 0.05882353, 0.62352943, 1), Color(0.61960787, 0.5254902, 0.03137255, 1), Color(0.14117648, 0.1254902, 0.36862746, 1), Color(0.9490196, 0.83137256, 0.19607843, 1), Color(0.12156863, 0.11764706, 0.2, 1)])
 walls = Array[PackedScene]([ExtResource("10_hvw5u")])
 metadata/_custom_type_script = "uid://baim3ol20wcky"
 
@@ -152,14 +178,14 @@ metadata/_custom_type_script = "uid://07iobwtecj2x"
 
 [sub_resource type="Resource" id="Resource_m6uf5"]
 script = ExtResource("10_ah3if")
-level_name = "Level 4"
+level_name = "Midnight Festival"
 base_level_data = SubResource("Resource_c8mgu")
 startup_commands = SubResource("Resource_go6uc")
 metadata/_custom_type_script = "uid://pj0ba6ig58n6"
 
 [sub_resource type="Resource" id="Resource_gw1lt"]
 script = ExtResource("13_0uxpu")
-colors = Array[Color]([Color(0.51785713, 0, 0, 1), Color(0.96875, 0.4670759, 0, 1), Color(0.96651787, 0.86727715, 0, 1)])
+colors = Array[Color]([Color(0.9372549, 0.003921569, 0, 1), Color(0.7411765, 0.14901961, 0.14901961, 1), Color(0.5411765, 0.21568628, 0.21568628, 1), Color(0.34117648, 0.20392157, 0.20392157, 1), Color(0.2, 0.16078432, 0.16078432, 1), Color(0.34117648, 0.20392157, 0.20392157, 1), Color(0.5411765, 0.21568628, 0.21568628, 1), Color(0.7411765, 0.14901961, 0.14901961, 1)])
 walls = Array[PackedScene]([ExtResource("19_go6uc"), ExtResource("20_m6uf5"), ExtResource("21_37bn8")])
 metadata/_custom_type_script = "uid://baim3ol20wcky"
 
@@ -169,7 +195,7 @@ metadata/_custom_type_script = "uid://07iobwtecj2x"
 
 [sub_resource type="Resource" id="Resource_hvw5u"]
 script = ExtResource("10_ah3if")
-level_name = "Level 5"
+level_name = "Flammable"
 base_level_data = SubResource("Resource_gw1lt")
 startup_commands = SubResource("Resource_37bn8")
 metadata/_custom_type_script = "uid://pj0ba6ig58n6"
@@ -319,7 +345,7 @@ transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, -22.429012
 [node name="Wheel Area" parent="LevelPivot" unique_id=844042927 instance=ExtResource("8_y3v7k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1964708)
 
-[node name="Wheel" parent="LevelPivot/Wheel Area" index="2" unique_id=2030928217]
+[node name="Wheel" parent="LevelPivot/Wheel Area" index="2" unique_id=1861039474]
 visible = false
 
 [node name="Falling Object Spawn Area" type="Area3D" parent="LevelPivot" unique_id=113948750]
@@ -480,7 +506,7 @@ right_button = true
 
 [node name="Shop Mesh" parent="LevelPivot/Shop" unique_id=725113405 instance=ExtResource("1_1r6ip")]
 
-[node name="Floor" parent="LevelPivot/Shop/Shop Mesh" index="3" unique_id=1323032207]
+[node name="Floor" parent="LevelPivot/Shop/Shop Mesh" index="3" unique_id=142224917]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0005631447, 0.01571107, 0.00493598)
 
 [node name="Collision" type="StaticBody3D" parent="LevelPivot/Shop" unique_id=1433688602]
