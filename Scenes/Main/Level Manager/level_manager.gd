@@ -58,7 +58,7 @@ func run_level(level_index: int) -> void:
 	WheelGlobals.max_gap_angle_size = s.max_gap_angle_size
 
 	for ticket_point in s.ticket_points:
-		ProgressBarGlobals.add_ticket_point.emit(ticket_point.point_on_progress_bar_from_0_to_1)
+		ProgressBarGlobals.current_level_ticket_points.append(ticket_point)
 	
 	# tell the progress bar how long the level is
 	var command_time_count: float = 0

@@ -18,6 +18,7 @@ func _ready() -> void:
 	ProgressBarGlobals.add_ticket_point.connect(add_ticket_point)
 	ProgressBarGlobals.show_progress_bar.connect(show_progress_bar)
 	ProgressBarGlobals.hide_progress_bar.connect(hide_progress_bar)
+	ProgressBarGlobals.start_progress_bar.connect(start_progress_bar)
 
 	_hidden_y = position.y - slide_distance
 	_shown_y = position.y
@@ -33,7 +34,6 @@ func add_ticket_point(progress_ratio: float = 0):
 
 func show_progress_bar():
 	_play_tween(_shown_y)
-	start_progress_bar()
 
 func hide_progress_bar():
 	_play_tween(_hidden_y)
@@ -44,11 +44,26 @@ func _play_tween(target_y: float) -> void:
 	_tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	_tween.tween_property(self, "position:y", target_y, slide_duration)
 
-
 func start_progress_bar():
+	show_progress_bar()
+	for ticket_point in ProgressBarGlobals.current_level_ticket_points:
+		add_ticket_point(ticket_point.point_on_progress_bar_from_0_to_1)
+	
 	if _progress_tween:
 		_progress_tween.kill()
 	progress_bar.value = 0
-	_progress_tween = create_tween()
+	_progress_tween = create_tween().set_parallel(true)
 	_progress_tween.set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
-	_progress_tween.tween_property(progress_bar, "value", 94.0, ProgressBarGlobals.selected_level_length_in_seconds)
+
+	var total: float = ProgressBarGlobals.selected_level_length_in_seconds
+	_progress_tween.tween_property(progress_bar, "value", 94.0, total)
+
+	for ticket_point in ProgressBarGlobals.current_level_ticket_points:
+		var ticket_reward_amount: int = ticket_point.ticket_reward_amount
+		var ratio: float = ticket_point.point_on_progress_bar_from_0_to_1
+		var delay: float = total * ratio
+		_progress_tween.tween_callback(give_reward.bind(ticket_reward_amount)).set_delay(delay)
+
+func give_reward(ticket_reward_amount) -> void:
+	print("rewarding ", ticket_reward_amount, " tickets!")
+	PlayerGlobals.tickets += ticket_reward_amount

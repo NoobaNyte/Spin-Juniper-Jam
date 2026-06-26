@@ -118,7 +118,7 @@ func start_game() -> void:
 	AudioGlobals.play_level_music.emit()
 
 	await get_tree().create_timer(0.8).timeout # wait for player to check out scene then show progress bar
-	ProgressBarGlobals.show_progress_bar.emit()
+	ProgressBarGlobals.start_progress_bar.emit()
 
 func reset_game():
 	$LevelPivot.rotation.x = deg_to_rad(0)

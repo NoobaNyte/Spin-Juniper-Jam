@@ -35,19 +35,22 @@ extends BaseLevelCommand
 @export var enable_speed_changes: bool = true
 @export var speed_min: float = 10.0
 @export var speed_max: float = 80.0
-@export var use_transition_for_speed: bool = true   # false = instant SetWheelSpeedCmd
+@export var use_transition_for_speed: bool = true # false = instant SetWheelSpeedCmd
 @export var transition_duration_min: float = 5.0
 @export var transition_duration_max: float = 20.0
 
 # --- SpawnFallingObjectsCmd ---
-@export var enable_spawning: bool = false            # off unless you wire up scenes
+@export var enable_spawning: bool = false # off unless you wire up scenes
 @export var spawn_quantity_min: int = 3
 @export var spawn_quantity_max: int = 15
 @export var spawn_over_seconds_min: float = 2.0
 @export var spawn_over_seconds_max: float = 8.0
 @export var spawn_velocity_min: float = 0.0
 @export var spawn_velocity_max: float = 5.0
-@export var spawn_objects: Array[PackedScene]        # populate in the Inspector
+@export var spawn_objects: Array[PackedScene] # populate in the Inspector
+
+func check_time():
+	total_command_time = seconds
 
 func execute(_owner: Node) -> void:
 	var rng := RandomNumberGenerator.new()
@@ -74,11 +77,11 @@ func execute(_owner: Node) -> void:
 func _fire_random_command(rng: RandomNumberGenerator) -> void:
 	# Build the pool of enabled command IDs
 	var pool: Array[int] = []
-	if enable_gap_chance:         pool.append(0)
-	if enable_gap_sizes:          pool.append(1)
-	if enable_piece_angle_sizes:  pool.append(2)
-	if enable_wall_gen_chance:    pool.append(3)
-	if enable_speed_changes:      pool.append(4)
+	if enable_gap_chance: pool.append(0)
+	if enable_gap_sizes: pool.append(1)
+	if enable_piece_angle_sizes: pool.append(2)
+	if enable_wall_gen_chance: pool.append(3)
+	if enable_speed_changes: pool.append(4)
 	if enable_spawning and spawn_objects.size() > 0:
 		pool.append(5)
 
@@ -114,7 +117,7 @@ func _fire_random_command(rng: RandomNumberGenerator) -> void:
 				WheelGlobals.rotation_speed = target
 
 		5: # SpawnFallingObjectsCmd
-			var qty  := rng.randi_range(spawn_quantity_min, spawn_quantity_max)
+			var qty := rng.randi_range(spawn_quantity_min, spawn_quantity_max)
 			var over := rng.randf_range(spawn_over_seconds_min, spawn_over_seconds_max)
 			var vmin := spawn_velocity_min
 			var vmax := spawn_velocity_max

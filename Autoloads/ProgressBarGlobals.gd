@@ -9,4 +9,10 @@ signal show_progress_bar
 @warning_ignore("unused_signal")
 signal hide_progress_bar
 
+@warning_ignore("unused_signal")
+signal start_progress_bar
+
+
 var selected_level_length_in_seconds: float = 0
+
+var current_level_ticket_points: Array[ProgressBarTicketPoint]

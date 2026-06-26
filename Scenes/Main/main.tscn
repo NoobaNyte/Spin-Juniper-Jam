@@ -137,12 +137,14 @@ metadata/_custom_type_script = "uid://b5ace8o0pllgp"
 
 [sub_resource type="Resource" id="Resource_vy225"]
 script = ExtResource("61_4vdw8")
-point_on_progress_bar_from_0_to_1 = 0.3
+point_on_progress_bar_from_0_to_1 = 0.1
+ticket_reward_amount = 30
 metadata/_custom_type_script = "uid://c5tlt0npn6e58"
 
 [sub_resource type="Resource" id="Resource_4vdw8"]
 script = ExtResource("61_4vdw8")
-point_on_progress_bar_from_0_to_1 = 0.6
+point_on_progress_bar_from_0_to_1 = 0.2
+ticket_reward_amount = 1000
 metadata/_custom_type_script = "uid://c5tlt0npn6e58"
 
 [sub_resource type="Resource" id="Resource_ah3if"]
