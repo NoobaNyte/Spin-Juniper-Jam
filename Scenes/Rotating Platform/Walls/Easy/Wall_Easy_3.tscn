@@ -17,7 +17,7 @@ data = PackedVector3Array(17.970499, 0.84999996, 0.35999998, 17.970499, 0.849999
 [node name="CollisionShape3D" type="CollisionShape3D" parent="3" index="1" unique_id=2060399504]
 shape = SubResource("ConcavePolygonShape3D_cu8ph")
 
-[node name="GameOverArea" type="Area3D" parent="3" index="2" unique_id=1325660436]
+[node name="GameOverArea" type="Area3D" parent="3" index="2" unique_id=1325660436 groups=["WallArea"]]
 script = ExtResource("3_jf7dp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="3/GameOverArea" index="0" unique_id=272904903]

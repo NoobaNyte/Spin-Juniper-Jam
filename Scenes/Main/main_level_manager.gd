@@ -133,7 +133,9 @@ func reset_game():
 	await get_tree().create_timer(0.5).timeout # wait for cam anim to be done before uhhiding player
 	PlayerGlobals.lost_level = false
 	PlayerGlobals.set_in_menu_stats.emit()
+	PlayerGlobals.fell = false
 	PlayerGlobals.reveal_player.emit()
 	PlayerGlobals.disable_movement = false
 	WheelGlobals.rotation_speed = WheelGlobals.preview_rotation_speed
 	PlayerGlobals.disable_interact = false
+	PlayerGlobals.game_ended = false

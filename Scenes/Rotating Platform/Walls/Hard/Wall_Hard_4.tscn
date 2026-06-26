@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://ctbrwu3ny5qpg"]
+
+[ext_resource type="PackedScene" uid="uid://bpdgvyt0tkr67" path="res://Scenes/Rotating Platform/Walls/Base_Wall.tscn" id="1_amspq"]
+[ext_resource type="Script" uid="uid://bo2134khdryhv" path="res://Scenes/Rotating Platform/Walls/Hard/moving_wall.gd" id="2_idydc"]
+[ext_resource type="PackedScene" uid="uid://ekgqbylv1ueh" path="res://Assets/3D/Walls/Hard/4.fbx" id="3_mgqqi"]
+[ext_resource type="Script" uid="uid://dertvnxrxb0pw" path="res://Scenes/Rotating Platform/game_over_area.gd" id="4_4gqyg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m2y60"]
+size = Vector3(5.391136, 2.85, 0.7200028)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_amspq"]
+size = Vector3(5.391136, 2.85, 0.7200028)
+
+[sub_resource type="Curve3D" id="Curve3D_m2y60"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12.602133, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="4" unique_id=1357455585 groups=["MovingWall"] instance=ExtResource("1_amspq")]
+script = ExtResource("2_idydc")
+
+[node name="4" parent="." index="1" unique_id=1273193885 instance=ExtResource("3_mgqqi")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="4" index="0" unique_id=657999864]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.695568, 1.425, -1.3411045e-06)
+shape = SubResource("BoxShape3D_m2y60")
+
+[node name="GameOverArea" type="Area3D" parent="4" index="1" unique_id=1325660436 groups=["WallArea"]]
+script = ExtResource("4_4gqyg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="4/GameOverArea" index="0" unique_id=599065554]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.695568, 1.425, 0.032040924)
+shape = SubResource("BoxShape3D_amspq")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="Path3D" type="Path3D" parent="4" index="3" unique_id=1690127401]
+curve = SubResource("Curve3D_m2y60")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="4/Path3D" index="0" unique_id=763046779]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+
+[connection signal="body_entered" from="4/GameOverArea" to="4/GameOverArea" method="_on_body_entered"]
+
+[editable path="4"]

@@ -145,7 +145,7 @@ func generate_wall(piece: Node3D):
 
 	# apply offset transforms to wall because the pieces gen at 45 degree angle and wall needs to sit on top of pieces not inside
 	for child in selectedwall.get_children():
-		if not child is CSGCylinder3D and not child is Path3D and not child is PathFollow3D:
+		if not child is CSGCylinder3D:
 			child.rotation.x = deg_to_rad(-45.0)
 			child.rotation.y = deg_to_rad(90)
 			child.rotation.z = deg_to_rad(-90)
@@ -156,6 +156,7 @@ func generate_wall(piece: Node3D):
 
 			var game_over_area: Area3D = child.get_node("GameOverArea")
 			game_over_area.reparent(selectedwall)
+
 	
 	if selectedwall.is_in_group("MovingWall"):
 		selectedwall.start_moving_wall()

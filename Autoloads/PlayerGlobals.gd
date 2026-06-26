@@ -34,6 +34,15 @@ signal game_over
 @warning_ignore("unused_signal")
 signal reset_game
 
+@warning_ignore("unused_signal")
+signal trigger_fall_down
+
+@warning_ignore("unused_signal")
+signal set_player_collision_layers(layers: Array[int])
+
+@warning_ignore("unused_signal")
+signal play_i_frames_animation()
+
 
 # player movement stat change signals
 @warning_ignore("unused_signal")
@@ -63,8 +72,19 @@ var disable_movement: bool = false
 var disable_interact: bool = false
 var won_level: bool = false
 var lost_level: bool = false # used to not emit win if you've already lost (in level_manager.gd) gets set to true in game_over_manager.gd
-
+var fell: bool = false: # if you fell to a wall (not off screen)
+	set(val):
+		fell = val
+		if fell:
+			trigger_fall_down.emit()
+var game_ended: bool = false # used to make it so the player can't trigger death a second time
+var invincible: bool = true: # used to do i frames animation in PlayerMovement.gd when the player has i frames
+	set(val):
+		invincible = val
+		if invincible:
+			play_i_frames_animation.emit()
 var playerCurrentHealth: int = 1
+var playertIFrameSeconds: float = 1
 
 # prize behavior vars
 
@@ -87,13 +107,13 @@ var selected_level: int = 1: # this number is the default selected level - ALSO 
 	   
 					
 # starting powerup amount and costs are set individually in inspector for each prize in each prize scene
-var hp_powerup_amount: int = 0
-var hp_powerup_cost: int = 10
+var hp_powerup_amount: int = 5
+var hp_powerup_cost: int = 0
 var speed_powerup_amount: int = 0
 var speed_powerup_cost: int = 0
 var jump_powerup_amount: int = 0
 var jump_powerup_cost: int = 0
-var invincibility_powerup_amount: int = 0
+var invincibility_powerup_amount: int = 5
 var invincibility_powerup_cost: int = 0
 var bear_powerup_amount: int = 0
 var bear_powerup_cost: int = 0

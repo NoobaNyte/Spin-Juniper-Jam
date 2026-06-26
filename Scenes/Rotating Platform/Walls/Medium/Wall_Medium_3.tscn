@@ -14,7 +14,7 @@ data = PackedVector3Array(17.970499, 2.55, 0.35999998, 17.970499, 2.55, -0.35999
 
 [node name="3" parent="." index="1" unique_id=158431729 instance=ExtResource("4_m5bu1")]
 
-[node name="GameOverArea" type="Area3D" parent="3" index="0" unique_id=1325660436]
+[node name="GameOverArea" type="Area3D" parent="3" index="0" unique_id=1325660436 groups=["WallArea"]]
 script = ExtResource("3_5t0i7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="3/GameOverArea" index="0" unique_id=1028536746]

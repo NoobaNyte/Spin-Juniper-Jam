@@ -3,11 +3,10 @@ extends CharacterBody3D
 # ── Animation Settings ──────────────────────────────────────────────────────────
 @export var animation_player: AnimationPlayer
 @export var anim_blend_time: float = 0.25
-
+var player_mesh: MeshInstance3D
 @export_group("Animation Speeds")
 @export var speed_idle: float = 1.0
 @export var speed_running: float = 2.0
-@export var speed_walking: float = 1.0
 @export var speed_jump: float = 1.15
 
 # ── Movement Settings ──────────────────────────────────────────────────────────
@@ -33,6 +32,11 @@ var _coyote_timer: float = 0.0
 var _was_on_floor: bool = false
 var _footstep_timer: float = 0.0
 
+# ── I-Frames Flash ───────────────────────────────────────────────────────────
+@export var iframes_flash_speed: float = 0.2 # seconds per flash half-cycle
+var _iframes_tween: Tween = null
+var _iframes_materials: Array[BaseMaterial3D] = []
+
 func _ready() -> void:
 	PlayerGlobals.set_move_speed.connect(SetPlayerMaxSpeed)
 	PlayerGlobals.increase_move_speed.connect(IncreasePlayerMaxSpeed)
@@ -43,6 +47,11 @@ func _ready() -> void:
 	PlayerGlobals.set_jump_velocity.connect(SetPlayerJumpVelocity)
 	PlayerGlobals.increase_jump_velocity.connect(IncreasePlayerJumpVelocity)
 	PlayerGlobals.set_friction.connect(SetPlayerFriction)
+	PlayerGlobals.trigger_fall_down.connect(trigger_fall)
+	PlayerGlobals.set_player_collision_layers.connect(SetPlayerCollisionLayers)
+	PlayerGlobals.play_i_frames_animation.connect(play_iframes_animation)
+
+	player_mesh = $"Main Character Animated/Armature/Skeleton3D/Character"
 
 
 func _physics_process(delta: float) -> void:
@@ -112,6 +121,7 @@ func _handle_rotation(delta: float, wish_dir: Vector3) -> void:
 
 func _handle_animations(wish_dir: Vector3) -> void:
 	if not animation_player: return
+	if PlayerGlobals.fell: return # Fall animation has exclusive control until fell is cleared
 
 	var target_anim: String = "Armature|Idle"
 	var target_speed: float = speed_idle
@@ -126,6 +136,12 @@ func _handle_animations(wish_dir: Vector3) -> void:
 	if animation_player.current_animation != target_anim:
 		animation_player.play(target_anim, anim_blend_time, target_speed)
 
+# Transitions from whatever is currently playing into the fall animation.
+# Locks out all other animations until PlayerGlobals.fell is set back to false.
+func trigger_fall() -> void:
+	if not animation_player: return
+	animation_player.play("Armature|Fall", anim_blend_time, 1.4)
+
 func _handle_footsteps(delta: float, wish_dir: Vector3) -> void:
 	# No footsteps if airborne or standing still
 	if not is_on_floor() or wish_dir == Vector3.ZERO:
@@ -137,6 +153,58 @@ func _handle_footsteps(delta: float, wish_dir: Vector3) -> void:
 	if _footstep_timer >= interval:
 		_footstep_timer = fmod(_footstep_timer, interval)
 		AudioGlobals.play_random_footstep_sfx.emit()
+
+func play_iframes_animation() -> void:
+	# Duplicate all surface materials so we don't mutate shared resources
+	_iframes_materials.clear()
+	var surface_count := player_mesh.get_surface_override_material_count()
+	if surface_count == 0:
+		surface_count = player_mesh.mesh.get_surface_count()
+	for i in surface_count:
+		var original := player_mesh.mesh.surface_get_material(i) as BaseMaterial3D
+		if original:
+			var duped := original.duplicate() as BaseMaterial3D
+			duped.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+			player_mesh.set_surface_override_material(i, duped)
+			_iframes_materials.append(duped)
+
+	# Kill any existing tween
+	if _iframes_tween:
+		_iframes_tween.kill()
+
+	# Flash loop while invincible
+	_iframes_tween = create_tween().set_loops()
+	_iframes_tween.tween_method(_set_mesh_alpha, 1.0, 0.15, iframes_flash_speed)
+	_iframes_tween.tween_method(_set_mesh_alpha, 0.15, 1.0, iframes_flash_speed)
+
+	# Watch for invincible becoming false, then restore
+	while PlayerGlobals.invincible:
+		await get_tree().process_frame
+
+	if _iframes_tween:
+		_iframes_tween.kill()
+		_iframes_tween = null
+
+	# Tween back to full opacity then clear overrides
+	var restore := create_tween()
+	restore.tween_method(_set_mesh_alpha, 0.15, 1.0, iframes_flash_speed)
+	await restore.finished
+
+	for i in _iframes_materials.size():
+		player_mesh.set_surface_override_material(i, null)
+	_iframes_materials.clear()
+
+func _set_mesh_alpha(alpha: float) -> void:
+	for mat in _iframes_materials:
+		mat.albedo_color.a = alpha
+
+func SetPlayerCollisionLayers(layers: Array) -> void:
+	collision_layer = 0
+	collision_mask = 0
+	for layer in layers:
+		var bit = 1 << (layer - 1)
+		collision_layer = collision_layer | bit
+		collision_mask = collision_mask | bit
 
 
 # ================================================================================================================

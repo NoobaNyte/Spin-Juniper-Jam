@@ -44,6 +44,7 @@ Player=""
 PrizeSelectionArea=""
 FallingObject=""
 MovingWall=""
+WallArea="to tell game over to play wall hit sfx if player hits wall instead of dying a different way"
 
 [input]
 

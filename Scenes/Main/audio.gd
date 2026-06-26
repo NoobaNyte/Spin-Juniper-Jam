@@ -23,6 +23,8 @@ func _ready() -> void:
 	AudioGlobals.play_button_press_up_sfx.connect(play_button_press_up_sfx)
 	AudioGlobals.play_jump_sfx.connect(play_jump_sfx)
 	AudioGlobals.play_jump_landing_sfx.connect(play_jump_landing_sfx)
+	AudioGlobals.play_wall_hit_sfx.connect(play_wall_hit_sfx)
+	AudioGlobals.play_lose_sfx.connect(play_lose_sfx)
 	AudioGlobals.play_shop_music.connect(play_shop_music)
 	AudioGlobals.fade_out_shop_music.connect(fade_out_shop_music)
 	AudioGlobals.play_level_music.connect(play_level_music)
@@ -77,6 +79,17 @@ func play_jump_landing_sfx():
 	sfx.pitch_scale = randf_range(0.7, 0.8)
 	sfx.play()
 
+func play_wall_hit_sfx():
+	var sfx = find_child("WallHit", true, false)
+	sfx.pitch_scale = randf_range(0.9, 1.0)
+	sfx.play()
+
+func play_lose_sfx():
+	var sfx = find_child("Lose", true, false)
+	#sfx.pitch_scale = randf_range(0.7, 0.8)
+	sfx.play()
+
+
 func play_shop_music():
 	print("playing shop music")
 	_shop_music_playing = true
@@ -101,26 +114,40 @@ func fade_out_shop_music(fade_time: float = 1.0):
 func play_level_music(fade_in_time: float = 5):
 	var intro: AudioStreamPlayer
 	var loop: AudioStreamPlayer
+	var intro_to_loop_offset: float
+	var loop_to_loop_offset: float
 
 	match PlayerGlobals.selected_level:
 		1:
 			intro = find_child("L1Intro", true, false)
 			loop = find_child("L1Loop", true, false)
+			intro_to_loop_offset = 0.05
+			loop_to_loop_offset = 0.125
 		2:
 			intro = find_child("L2Intro", true, false)
 			loop = find_child("L2Loop", true, false)
+			intro_to_loop_offset = 0.05
+			loop_to_loop_offset = 0.125
 		3:
 			intro = find_child("L3Intro", true, false)
 			loop = find_child("L3Loop", true, false)
+			intro_to_loop_offset = 0.055
+			loop_to_loop_offset = 0.1166666
 		4:
 			intro = find_child("L4Intro", true, false)
 			loop = find_child("L4Loop", true, false)
+			intro_to_loop_offset = 0.05
+			loop_to_loop_offset = 0.126666
 		5:
 			intro = find_child("L5Intro", true, false)
 			loop = find_child("L5Loop", true, false)
+			intro_to_loop_offset = 0.05
+			loop_to_loop_offset = 0.125
 		_:
 			intro = find_child("L1Intro", true, false)
 			loop = find_child("L1Loop", true, false)
+			intro_to_loop_offset = 0.0366666
+			loop_to_loop_offset = 0.1016666
 
 	if not intro or not loop:
 		push_error("play_level_music: could not find intro or loop for level ", PlayerGlobals.selected_level)
@@ -136,7 +163,7 @@ func play_level_music(fade_in_time: float = 5):
 	create_tween().tween_property(intro, "volume_db", original_intro_db, fade_in_time)
 
 	# wait for intro to finish then hand off to loop
-	await get_tree().create_timer(intro.stream.get_length()).timeout
+	await get_tree().create_timer(intro.stream.get_length() - intro_to_loop_offset).timeout
 	if not _level_music_playing:
 		return
 
@@ -144,7 +171,7 @@ func play_level_music(fade_in_time: float = 5):
 
 	# loop infinitely until stopped
 	while _level_music_playing:
-		await get_tree().create_timer(loop.stream.get_length()).timeout
+		await get_tree().create_timer(loop.stream.get_length() - loop_to_loop_offset).timeout
 		if not _level_music_playing:
 			break
 		loop.play()

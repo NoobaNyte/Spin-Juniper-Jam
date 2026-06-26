@@ -24,6 +24,12 @@ signal play_jump_sfx
 signal play_jump_landing_sfx
 
 @warning_ignore("unused_signal")
+signal play_wall_hit_sfx
+
+@warning_ignore("unused_signal")
+signal play_lose_sfx
+
+@warning_ignore("unused_signal")
 signal play_shop_music
 
 @warning_ignore("unused_signal")

@@ -15,6 +15,11 @@ size = Vector3(40, 0.25, 10)
 [node name="WheelPivot" type="Node3D" unique_id=1333064656]
 transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0)
 
+[node name="BaseWheel (for i frame collision)" parent="." unique_id=187194179 instance=ExtResource("2_5rh2c")]
+visible = false
+use_collision = true
+collision_layer = 2
+
 [node name="Previews" type="Node3D" parent="." unique_id=83548312]
 script = ExtResource("1_7kxvd")
 
@@ -25,8 +30,6 @@ outline_modulate = Color(0.78125, 0, 0, 1)
 text = "Wheel Pivot Point"
 font_size = 299
 outline_size = 127
-
-[node name="BaseWheel (for preview)" parent="Previews" unique_id=187194179 instance=ExtResource("2_5rh2c")]
 
 [node name="AllPieces" type="Node3D" parent="." unique_id=549255562]
 
