@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://6uebeo8v3l4e" path="res://Assets/SFX/Spinner Ticks/spinner_tick_9.mp3" id="9_73t1r"]
 [ext_resource type="AudioStream" uid="uid://d2longeq8nh6e" path="res://Assets/SFX/Poofs/poof_2.mp3" id="12_yq60p"]
 [ext_resource type="AudioStream" uid="uid://d4br3bq07mnr2" path="res://Assets/SFX/Poofs/poof_3.mp3" id="13_u53hk"]
+[ext_resource type="AudioStream" uid="uid://beq2l7yt4fdwb" path="res://Assets/SFX/Purchase.mp3" id="14_u53hk"]
 
 [node name="Audio" type="Node" unique_id=767990636]
 script = ExtResource("1_j2pf3")
@@ -81,10 +82,18 @@ bus = &"SFX"
 stream = ExtResource("2_8l1kn")
 volume_db = -12.522
 pitch_scale = 1.2
+bus = &"SFX"
 
 [node name="Poof2" type="AudioStreamPlayer" parent="SFX/Poof" unique_id=11642676]
 stream = ExtResource("12_yq60p")
 pitch_scale = 0.7
+bus = &"SFX"
 
 [node name="Poof3" type="AudioStreamPlayer" parent="SFX/Poof" unique_id=2094034460]
 stream = ExtResource("13_u53hk")
+bus = &"SFX"
+
+[node name="Purchase" type="AudioStreamPlayer" parent="SFX" unique_id=1814047212]
+stream = ExtResource("14_u53hk")
+volume_db = -10.0
+bus = &"SFX"
