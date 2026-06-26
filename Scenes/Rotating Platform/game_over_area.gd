@@ -5,6 +5,7 @@ func _on_body_entered(body: Node3D) -> void:
 		PlayerGlobals.playerCurrentHealth -= 1
 		if(PlayerGlobals.playerCurrentHealth <= 0):
 			PlayerGlobals.game_over.emit()
+			PlayerGlobals.playerCurrentHealth = PlayerGlobals.hp_powerup_amount
 		PlayerGlobals.respawnPlayer()
 	
 	
