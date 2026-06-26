@@ -43,3 +43,13 @@ func play_button_press_up_sfx():
 	var sfx = find_child("ButtonPressUp", true, false)
 	#sfx.pitch_scale = randf_range(1.0, 1.1)
 	sfx.play()
+
+func play_jump_sfx():
+	var sfx = find_child("StartJump", true, false)
+	sfx.pitch_scale = 0.9
+	sfx.play()
+
+func play_jump_landing_sfx():
+	var sfx = find_child("StartJump", true, false)
+	sfx.pitch_scale = randf_range(0.7, 0.8)
+	sfx.play()

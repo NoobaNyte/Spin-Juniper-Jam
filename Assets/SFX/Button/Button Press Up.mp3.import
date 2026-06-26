@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cn1r8pntpfus2"
+path="res://.godot/imported/Button Press Up.mp3-bf9ccedf4425a68336aabb93d3f7155f.mp3str"
+
+[deps]
+
+source_file="res://Assets/SFX/Button/Button Press Up.mp3"
+dest_files=["res://.godot/imported/Button Press Up.mp3-bf9ccedf4425a68336aabb93d3f7155f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

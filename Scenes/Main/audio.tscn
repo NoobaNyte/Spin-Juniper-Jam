@@ -22,8 +22,10 @@
 [ext_resource type="AudioStream" uid="uid://k4k67vto6qwb" path="res://Assets/SFX/Footsteps/footstep_6.mp3" id="16_hlw8g"]
 [ext_resource type="AudioStream" uid="uid://bvs57ehvuweie" path="res://Assets/SFX/Footsteps/footstep_7.mp3" id="17_kcru5"]
 [ext_resource type="AudioStream" uid="uid://6fmnd5qd5u76" path="res://Assets/SFX/Footsteps/footstep_8.mp3" id="18_j014v"]
-[ext_resource type="AudioStream" uid="uid://inwi8tiwd5de" path="res://Assets/SFX/Button Press Down.mp3" id="23_pcsav"]
-[ext_resource type="AudioStream" uid="uid://mfw6kdmfjox7" path="res://Assets/SFX/Button Press Up.mp3" id="24_672nf"]
+[ext_resource type="AudioStream" uid="uid://bp3mnryhoito7" path="res://Assets/SFX/Button/Button Press Down.mp3" id="23_pcsav"]
+[ext_resource type="AudioStream" uid="uid://cn1r8pntpfus2" path="res://Assets/SFX/Button/Button Press Up.mp3" id="24_672nf"]
+[ext_resource type="AudioStream" uid="uid://5fv2jqdyi7ad" path="res://Assets/SFX/Jump/Jump Landing.mp3" id="24_hlw8g"]
+[ext_resource type="AudioStream" uid="uid://dehiktwyj3ic3" path="res://Assets/SFX/Jump/Jump.mp3" id="25_kcru5"]
 
 [node name="Audio" type="Node" unique_id=767990636]
 script = ExtResource("1_j2pf3")
@@ -158,6 +160,20 @@ stream = ExtResource("24_672nf")
 volume_db = -8.986
 pitch_scale = 0.53
 bus = &"SFX"
+
+[node name="Jump" type="Node" parent="SFX" unique_id=26666208]
+
+[node name="JumpLanding" type="AudioStreamPlayer" parent="SFX/Jump" unique_id=834077863]
+stream = ExtResource("24_hlw8g")
+volume_db = 8.397
+pitch_scale = 1.04
+bus = &"Footsteps"
+
+[node name="StartJump" type="AudioStreamPlayer" parent="SFX/Jump" unique_id=265941860]
+stream = ExtResource("25_kcru5")
+volume_db = 5.0
+pitch_scale = 0.9
+bus = &"Footsteps"
 
 [node name="Purchase" type="AudioStreamPlayer" parent="SFX" unique_id=1814047212]
 stream = ExtResource("14_u53hk")
