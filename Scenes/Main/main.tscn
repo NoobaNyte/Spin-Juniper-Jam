@@ -23,6 +23,7 @@
 [ext_resource type="Script" uid="uid://dt0chq3fblt30" path="res://Scenes/Main/Level Manager/Commands/set_wall_gen_chance.gd" id="12_aq0wg"]
 [ext_resource type="PackedScene" uid="uid://qbtnacx63ba5" path="res://Scenes/Rotating Platform/Walls/Easy/3.tscn" id="12_m6uf5"]
 [ext_resource type="Script" uid="uid://07iobwtecj2x" path="res://Scenes/Main/Level Manager/startup_commands.gd" id="12_v4agm"]
+[ext_resource type="Script" uid="uid://baim3ol20wcky" path="res://Scenes/Main/Level Manager/base_level_data.gd" id="13_0uxpu"]
 [ext_resource type="PackedScene" uid="uid://123l2hg2k7wf" path="res://Assets/3D/Falling Object Spawn Area.fbx" id="13_8sujb"]
 [ext_resource type="Script" uid="uid://bjnnr2txdcwt8" path="res://Scenes/Main/level_label.gd" id="13_es6iu"]
 [ext_resource type="Theme" uid="uid://bafby1ck50m6g" path="res://Assets/Fonts/bold.tres" id="14_1t20g"]
@@ -32,8 +33,11 @@
 [ext_resource type="Script" uid="uid://dl18y8xrw0wo" path="res://Scenes/Main/Level Manager/Commands/set_gap_chance.gd" id="16_u244o"]
 [ext_resource type="Script" uid="uid://snvonox4hd7s" path="res://Scenes/Rotating Platform/generate_piece.gd" id="18_1t20g"]
 [ext_resource type="Script" uid="uid://10ojd2tyhwfj" path="res://Assets/Utility Scripts/hide_on_load.gd" id="18_c4b4r"]
+[ext_resource type="PackedScene" uid="uid://du77sfvvxj5ge" path="res://Scenes/Rotating Platform/Walls/Hard/1.tscn" id="19_go6uc"]
 [ext_resource type="PackedScene" uid="uid://dvmgy7jxf07fb" path="res://Scenes/Rotating Platform/piece_gen_template.tscn" id="19_tdwxr"]
 [ext_resource type="Script" uid="uid://dcvakcvd204wq" path="res://Scenes/Rotating Platform/wheel_controller.gd" id="20_4o5wv"]
+[ext_resource type="PackedScene" uid="uid://dyirvgfdkx3g8" path="res://Scenes/Rotating Platform/Walls/Hard/2.tscn" id="20_m6uf5"]
+[ext_resource type="PackedScene" uid="uid://b7njsl3eelwrt" path="res://Scenes/Rotating Platform/Walls/Hard/3.tscn" id="21_37bn8"]
 [ext_resource type="PackedScene" uid="uid://4kuv3e5aorkk" path="res://Scenes/Rotating Platform/Falling Objects/Ball.tscn" id="27_4ohmo"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1r6ip"]
@@ -54,6 +58,12 @@ ssao_radius = 6.04
 ssao_intensity = 10.1
 
 [sub_resource type="Resource" id="Resource_1j4pb"]
+script = ExtResource("13_0uxpu")
+colors = Array[Color]([Color(1, 0.1941964, 0.1941964, 1), Color(1, 0.9712885, 0.19607842, 1), Color(0.22186844, 0.72098213, 0.10460677, 1), Color(0.19607842, 0.20325607, 1, 1)])
+walls = Array[PackedScene]([ExtResource("10_hvw5u"), ExtResource("11_go6uc"), ExtResource("12_m6uf5")])
+metadata/_custom_type_script = "uid://baim3ol20wcky"
+
+[sub_resource type="Resource" id="Resource_eo50k"]
 script = ExtResource("12_aq0wg")
 new_wall_gen_chance = 100
 metadata/_custom_type_script = "uid://dt0chq3fblt30"
@@ -73,9 +83,16 @@ metadata/_custom_type_script = "uid://07iobwtecj2x"
 [sub_resource type="Resource" id="Resource_4ohmo"]
 script = ExtResource("10_ah3if")
 level_name = "Level 1"
+base_level_data = SubResource("Resource_1j4pb")
 startup_commands = SubResource("Resource_ah3if")
-commands = Array[ExtResource("11_v4agm")]([SubResource("Resource_1j4pb"), SubResource("Resource_wbulw")])
+commands = Array[ExtResource("11_v4agm")]([SubResource("Resource_eo50k"), SubResource("Resource_wbulw")])
 metadata/_custom_type_script = "uid://pj0ba6ig58n6"
+
+[sub_resource type="Resource" id="Resource_0uxpu"]
+script = ExtResource("13_0uxpu")
+colors = Array[Color]([Color(0.96651787, 0.96651787, 0.96651787, 1), Color(0.1495536, 0.1495536, 0.1495536, 1)])
+walls = Array[PackedScene]([ExtResource("10_hvw5u")])
+metadata/_custom_type_script = "uid://baim3ol20wcky"
 
 [sub_resource type="Resource" id="Resource_gw8t2"]
 script = ExtResource("12_aq0wg")
@@ -87,7 +104,7 @@ script = ExtResource("16_u244o")
 new_gap_chance = 20
 metadata/_custom_type_script = "uid://dl18y8xrw0wo"
 
-[sub_resource type="Resource" id="Resource_0uxpu"]
+[sub_resource type="Resource" id="Resource_vae3x"]
 script = ExtResource("14_u244o")
 seconds = 15.0
 metadata/_custom_type_script = "uid://b05ipch7evaqh"
@@ -101,9 +118,16 @@ metadata/_custom_type_script = "uid://07iobwtecj2x"
 [sub_resource type="Resource" id="Resource_8oboy"]
 script = ExtResource("10_ah3if")
 level_name = "Level 2"
+base_level_data = SubResource("Resource_0uxpu")
 startup_commands = SubResource("Resource_js8sm")
-commands = Array[ExtResource("11_v4agm")]([SubResource("Resource_gw8t2"), SubResource("Resource_nsdex"), SubResource("Resource_0uxpu")])
+commands = Array[ExtResource("11_v4agm")]([SubResource("Resource_gw8t2"), SubResource("Resource_nsdex"), SubResource("Resource_vae3x")])
 metadata/_custom_type_script = "uid://pj0ba6ig58n6"
+
+[sub_resource type="Resource" id="Resource_h4gp5"]
+script = ExtResource("13_0uxpu")
+colors = Array[Color]([Color(0.50125563, 1, 0.2745536, 1), Color(0.79889786, 1, 0.79241073, 1)])
+walls = Array[PackedScene]([ExtResource("10_hvw5u")])
+metadata/_custom_type_script = "uid://baim3ol20wcky"
 
 [sub_resource type="Resource" id="Resource_u244o"]
 script = ExtResource("12_v4agm")
@@ -112,8 +136,15 @@ metadata/_custom_type_script = "uid://07iobwtecj2x"
 [sub_resource type="Resource" id="Resource_fy12w"]
 script = ExtResource("10_ah3if")
 level_name = "Level 3"
+base_level_data = SubResource("Resource_h4gp5")
 startup_commands = SubResource("Resource_u244o")
 metadata/_custom_type_script = "uid://pj0ba6ig58n6"
+
+[sub_resource type="Resource" id="Resource_c8mgu"]
+script = ExtResource("13_0uxpu")
+colors = Array[Color]([Color(1, 0, 0.77678585, 1), Color(0, 1, 0.93303585, 1)])
+walls = Array[PackedScene]([ExtResource("10_hvw5u")])
+metadata/_custom_type_script = "uid://baim3ol20wcky"
 
 [sub_resource type="Resource" id="Resource_go6uc"]
 script = ExtResource("12_v4agm")
@@ -122,8 +153,15 @@ metadata/_custom_type_script = "uid://07iobwtecj2x"
 [sub_resource type="Resource" id="Resource_m6uf5"]
 script = ExtResource("10_ah3if")
 level_name = "Level 4"
+base_level_data = SubResource("Resource_c8mgu")
 startup_commands = SubResource("Resource_go6uc")
 metadata/_custom_type_script = "uid://pj0ba6ig58n6"
+
+[sub_resource type="Resource" id="Resource_gw1lt"]
+script = ExtResource("13_0uxpu")
+colors = Array[Color]([Color(0.51785713, 0, 0, 1), Color(0.96875, 0.4670759, 0, 1), Color(0.96651787, 0.86727715, 0, 1)])
+walls = Array[PackedScene]([ExtResource("19_go6uc"), ExtResource("20_m6uf5"), ExtResource("21_37bn8")])
+metadata/_custom_type_script = "uid://baim3ol20wcky"
 
 [sub_resource type="Resource" id="Resource_37bn8"]
 script = ExtResource("12_v4agm")
@@ -132,6 +170,7 @@ metadata/_custom_type_script = "uid://07iobwtecj2x"
 [sub_resource type="Resource" id="Resource_hvw5u"]
 script = ExtResource("10_ah3if")
 level_name = "Level 5"
+base_level_data = SubResource("Resource_gw1lt")
 startup_commands = SubResource("Resource_37bn8")
 metadata/_custom_type_script = "uid://pj0ba6ig58n6"
 
@@ -217,14 +256,6 @@ piece_gen_template_scene = ExtResource("19_tdwxr")
 
 [node name="WheelController" type="Node" parent="WheelScripts" unique_id=1587187306]
 script = ExtResource("20_4o5wv")
-level_1_colors = Array[Color]([Color(1, 0, 0, 1), Color(0, 0.008928299, 1, 1), Color(0.08996334, 0.33035713, 0, 1), Color(1, 0.9508929, 0, 1)])
-level_2_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1)])
-level_3_colors = Array[Color]([Color(0.21875, 1, 0, 1), Color(0.76075214, 1, 0.64508927, 1)])
-level_1_walls = Array[PackedScene]([ExtResource("10_hvw5u"), ExtResource("11_go6uc"), ExtResource("12_m6uf5")])
-level_2_walls = Array[PackedScene]([ExtResource("10_hvw5u"), ExtResource("11_go6uc"), ExtResource("12_m6uf5")])
-level_3_walls = Array[PackedScene]([ExtResource("10_hvw5u")])
-level_4_walls = Array[PackedScene]([ExtResource("10_hvw5u")])
-level_5_walls = Array[PackedScene]([ExtResource("10_hvw5u")])
 
 [node name="LevelManager" type="Node" parent="." unique_id=139858581]
 script = ExtResource("8_4a3kt")

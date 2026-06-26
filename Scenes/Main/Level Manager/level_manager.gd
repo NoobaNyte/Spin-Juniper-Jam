@@ -12,6 +12,29 @@ var grace_period_time: float = 1 # the time that you garunteed have no obstacles
 func _ready() -> void:
 	# when start game is signalled, start the game based on the selected level (-1 because array)
 	PlayerGlobals.start_game.connect(func(): run_level(PlayerGlobals.selected_level - 1))
+	assign_vars_to_global()
+
+func assign_vars_to_global():
+	for i in range(5):
+		var sequence = levels[i]
+		var base_level_data = sequence.base_level_data
+		
+		match i:
+			0:
+				WheelGlobals.level_1_colors = base_level_data.colors
+				WheelGlobals.level_1_walls = base_level_data.walls
+			1:
+				WheelGlobals.level_2_colors = base_level_data.colors
+				WheelGlobals.level_2_walls = base_level_data.walls
+			2:
+				WheelGlobals.level_3_colors = base_level_data.colors
+				WheelGlobals.level_3_walls = base_level_data.walls
+			3:
+				WheelGlobals.level_4_colors = base_level_data.colors
+				WheelGlobals.level_4_walls = base_level_data.walls
+			4:
+				WheelGlobals.level_5_colors = base_level_data.colors
+				WheelGlobals.level_5_walls = base_level_data.walls
 
 func run_level(level_index: int) -> void:
 	# make sure there are no walls or gaps so you don't get spawn killed
