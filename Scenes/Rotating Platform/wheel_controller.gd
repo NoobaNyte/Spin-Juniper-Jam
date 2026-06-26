@@ -39,4 +39,4 @@ func _process(delta: float) -> void:
 	tick_timer += delta
 	if tick_timer >= tick_interval + randf_range(0.0, tick_timing_randomness):
 		tick_timer = fmod(tick_timer, tick_interval)
-		AudioGlobals.play_random_wheel_tick_sfx()
+		AudioGlobals.play_random_wheel_tick_sfx.emit()

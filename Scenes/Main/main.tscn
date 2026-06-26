@@ -3,53 +3,87 @@
 [ext_resource type="PackedScene" uid="uid://dyfwa0tin2osj" path="res://Assets/3D/Shop/Shop.fbx" id="1_1r6ip"]
 [ext_resource type="Script" uid="uid://bsdanp36lgo6r" path="res://Scenes/Main/main_camera.gd" id="1_hfg1r"]
 [ext_resource type="Script" uid="uid://dpwnp7ua6dd33" path="res://Scenes/Main/main_level_manager.gd" id="1_vk4q2"]
-[ext_resource type="PackedScene" uid="uid://drho5v5k1bwpd" path="res://Scenes/Main/audio.tscn" id="2_ow7bd"]
-[ext_resource type="PackedScene" uid="uid://bg0rylw7ww1mr" path="res://Scenes/UI/ui.tscn" id="2_wliom"]
+[ext_resource type="Script" uid="uid://vfx4ojoy8phi" path="res://Scenes/Main/audio.gd" id="2_de47j"]
+[ext_resource type="AudioStream" uid="uid://birxmcds2l8mn" path="res://Assets/SFX/Spinner Ticks/spinner_tick_1.mp3" id="3_de47j"]
 [ext_resource type="PackedScene" uid="uid://doigq7nkfb887" path="res://Scenes/Prizes/Speed Prize/speed_prize.tscn" id="4_2a143"]
 [ext_resource type="PackedScene" uid="uid://dnp8jfq1nm1rg" path="res://Scenes/Prizes/Invincibility Frames/invincibility_frames_prize.tscn" id="4_5yls4"]
+[ext_resource type="AudioStream" uid="uid://cbcqkdok6kkne" path="res://Assets/SFX/Spinner Ticks/spinner_tick_2.mp3" id="4_ukqxg"]
 [ext_resource type="PackedScene" uid="uid://dqhsrngl043po" path="res://Scenes/PlayerCharacter/PlayerCharacter.tscn" id="5_2a143"]
+[ext_resource type="AudioStream" uid="uid://db84i1pf1k5i7" path="res://Assets/SFX/Spinner Ticks/spinner_tick_3.mp3" id="5_5poo1"]
 [ext_resource type="PackedScene" uid="uid://f84ucq2mqwcd" path="res://Scenes/Prizes/HP/hp_prize.tscn" id="5_p6jpk"]
 [ext_resource type="PackedScene" uid="uid://do2s7rajjiqji" path="res://Scenes/Prizes/Jump Prize/jump_prize.tscn" id="5_y3v7k"]
 [ext_resource type="PackedScene" uid="uid://bpc6exg8npidb" path="res://Scenes/Main/button.tscn" id="6_4e4y2"]
+[ext_resource type="AudioStream" uid="uid://b2480rsatrcfj" path="res://Assets/SFX/Spinner Ticks/spinner_tick_4.mp3" id="6_ff7xd"]
 [ext_resource type="Script" uid="uid://dm1qgwe8areex" path="res://Scenes/Main/prize_area.gd" id="7_2ok46"]
+[ext_resource type="AudioStream" uid="uid://51bwabodqaho" path="res://Assets/SFX/Spinner Ticks/spinner_tick_5.mp3" id="7_4vdw8"]
 [ext_resource type="PackedScene" uid="uid://b5f1b5xy70e7n" path="res://Scenes/Prizes/Bear Prize/bear_prize.tscn" id="7_6t3k2"]
 [ext_resource type="Script" uid="uid://bbj2grlpe44rp" path="res://Scenes/Main/Level Manager/level_manager.gd" id="8_4a3kt"]
 [ext_resource type="PackedScene" uid="uid://b1em8csmfsexr" path="res://Scenes/Rotating Platform/wheel_pivot.tscn" id="8_4o5wv"]
+[ext_resource type="AudioStream" uid="uid://b8m0ti2c1wwkn" path="res://Assets/SFX/Spinner Ticks/spinner_tick_6.mp3" id="8_pt420"]
 [ext_resource type="PackedScene" uid="uid://d2bdcu8nu61s5" path="res://Assets/3D/Shop/Wheel Board.fbx" id="8_y3v7k"]
+[ext_resource type="AudioStream" uid="uid://bqey5rsh77qfx" path="res://Assets/SFX/Spinner Ticks/spinner_tick_7.mp3" id="9_lgjqy"]
 [ext_resource type="Script" uid="uid://pj0ba6ig58n6" path="res://Scenes/Main/Level Manager/level_sequence.gd" id="10_ah3if"]
 [ext_resource type="PackedScene" uid="uid://b4fnn6bpkbu2h" path="res://Scenes/Rotating Platform/Walls/Easy/Wall_Easy_1.tscn" id="10_hvw5u"]
 [ext_resource type="Script" uid="uid://dertvnxrxb0pw" path="res://Scenes/Rotating Platform/game_over_area.gd" id="10_ifk88"]
+[ext_resource type="AudioStream" uid="uid://dww0nob64fubu" path="res://Assets/SFX/Spinner Ticks/spinner_tick_8.mp3" id="10_vkja6"]
 [ext_resource type="PackedScene" uid="uid://baw1uix7iyqtw" path="res://Scenes/Rotating Platform/Walls/Easy/Wall_Easy_2.tscn" id="11_go6uc"]
+[ext_resource type="AudioStream" uid="uid://6uebeo8v3l4e" path="res://Assets/SFX/Spinner Ticks/spinner_tick_9.mp3" id="11_juxqm"]
 [ext_resource type="Script" uid="uid://de137qjy7c1dc" path="res://Scenes/Main/Level Manager/Commands/base_level_command.gd" id="11_v4agm"]
+[ext_resource type="AudioStream" uid="uid://bw8encg3ohgyj" path="res://Assets/SFX/Footsteps/footstep_1.mp3" id="12_1mt81"]
 [ext_resource type="Script" uid="uid://dt0chq3fblt30" path="res://Scenes/Main/Level Manager/Commands/set_wall_gen_chance.gd" id="12_aq0wg"]
 [ext_resource type="PackedScene" uid="uid://qbtnacx63ba5" path="res://Scenes/Rotating Platform/Walls/Easy/Wall_Easy_3.tscn" id="12_m6uf5"]
 [ext_resource type="Script" uid="uid://07iobwtecj2x" path="res://Scenes/Main/Level Manager/startup_commands.gd" id="12_v4agm"]
 [ext_resource type="Script" uid="uid://baim3ol20wcky" path="res://Scenes/Main/Level Manager/base_level_data.gd" id="13_0uxpu"]
+[ext_resource type="AudioStream" uid="uid://5ybp7nc0iosv" path="res://Assets/SFX/Footsteps/footstep_2.mp3" id="13_6h4e3"]
 [ext_resource type="PackedScene" uid="uid://123l2hg2k7wf" path="res://Assets/3D/Falling Object Spawn Area.fbx" id="13_8sujb"]
 [ext_resource type="Script" uid="uid://bjnnr2txdcwt8" path="res://Scenes/Main/level_label.gd" id="13_es6iu"]
 [ext_resource type="Theme" uid="uid://bafby1ck50m6g" path="res://Assets/Fonts/bold.tres" id="14_1t20g"]
 [ext_resource type="Material" uid="uid://b7g0cvi0cqule" path="res://Assets/Materials/Main/PlayAreaHologram.tres" id="14_koken"]
+[ext_resource type="AudioStream" uid="uid://natbthqff8i" path="res://Assets/SFX/Footsteps/footstep_3.mp3" id="14_mc37m"]
 [ext_resource type="PackedScene" uid="uid://svwq44ho1jom" path="res://Scenes/Rotating Platform/Walls/Medium/Wall_Medium_2.tscn" id="14_nsdex"]
 [ext_resource type="Script" uid="uid://ycww5228my2g" path="res://Scenes/Main/falling_object_spawn_area.gd" id="14_tyqxl"]
 [ext_resource type="Script" uid="uid://b05ipch7evaqh" path="res://Scenes/Main/Level Manager/Commands/wait.gd" id="14_u244o"]
 [ext_resource type="Script" uid="uid://ca71mp28ce63t" path="res://Scenes/Main/Level Manager/Commands/set_piece_angle_sizes.gd" id="15_gw8t2"]
+[ext_resource type="AudioStream" uid="uid://c073lpe1e8pst" path="res://Assets/SFX/Footsteps/footstep_4.mp3" id="15_ksp86"]
 [ext_resource type="Script" uid="uid://d28puqtgo62cv" path="res://Scenes/Main/Level Manager/Commands/set_wheel_speed.gd" id="16_37bn8"]
+[ext_resource type="AudioStream" uid="uid://0qbmf1gxs513" path="res://Assets/SFX/Footsteps/footstep_5.mp3" id="16_gmav6"]
 [ext_resource type="Script" uid="uid://dl18y8xrw0wo" path="res://Scenes/Main/Level Manager/Commands/set_gap_chance.gd" id="16_u244o"]
+[ext_resource type="AudioStream" uid="uid://k4k67vto6qwb" path="res://Assets/SFX/Footsteps/footstep_6.mp3" id="17_cif1l"]
 [ext_resource type="Script" uid="uid://b5ace8o0pllgp" path="res://Scenes/Main/Level Manager/Commands/transition_wheel_speed.gd" id="17_gw8t2"]
 [ext_resource type="Script" uid="uid://snvonox4hd7s" path="res://Scenes/Rotating Platform/generate_piece.gd" id="18_1t20g"]
+[ext_resource type="AudioStream" uid="uid://bvs57ehvuweie" path="res://Assets/SFX/Footsteps/footstep_7.mp3" id="18_6otiq"]
 [ext_resource type="Script" uid="uid://10ojd2tyhwfj" path="res://Assets/Utility Scripts/hide_on_load.gd" id="18_c4b4r"]
+[ext_resource type="AudioStream" uid="uid://6fmnd5qd5u76" path="res://Assets/SFX/Footsteps/footstep_8.mp3" id="19_01rk5"]
 [ext_resource type="PackedScene" uid="uid://du77sfvvxj5ge" path="res://Scenes/Rotating Platform/Walls/Hard/Wall_Hard_1.tscn" id="19_go6uc"]
 [ext_resource type="PackedScene" uid="uid://dvmgy7jxf07fb" path="res://Scenes/Rotating Platform/piece_gen_template.tscn" id="19_tdwxr"]
 [ext_resource type="Script" uid="uid://dcvakcvd204wq" path="res://Scenes/Rotating Platform/wheel_controller.gd" id="20_4o5wv"]
 [ext_resource type="PackedScene" uid="uid://dyirvgfdkx3g8" path="res://Scenes/Rotating Platform/Walls/Hard/Wall_Hard_2.tscn" id="20_m6uf5"]
+[ext_resource type="AudioStream" uid="uid://dph10v5s154uu" path="res://Assets/SFX/Poofs/poof_1.mp3" id="20_trpbr"]
+[ext_resource type="AudioStream" uid="uid://d2longeq8nh6e" path="res://Assets/SFX/Poofs/poof_2.mp3" id="21_0c2tq"]
 [ext_resource type="PackedScene" uid="uid://b7njsl3eelwrt" path="res://Scenes/Rotating Platform/Walls/Hard/Wall_Hard_3.tscn" id="21_37bn8"]
 [ext_resource type="PackedScene" uid="uid://bbli41p8cji18" path="res://Scenes/Rotating Platform/Walls/Medium/Wall_Medium_1.tscn" id="22_eo50k"]
+[ext_resource type="AudioStream" uid="uid://d4br3bq07mnr2" path="res://Assets/SFX/Poofs/poof_3.mp3" id="22_jwbtt"]
+[ext_resource type="AudioStream" uid="uid://bp3mnryhoito7" path="res://Assets/SFX/Button/Button Press Down.mp3" id="23_gg4gf"]
+[ext_resource type="AudioStream" uid="uid://cn1r8pntpfus2" path="res://Assets/SFX/Button/Button Press Up.mp3" id="24_hl5wv"]
 [ext_resource type="PackedScene" uid="uid://ctbrwu3ny5qpg" path="res://Scenes/Rotating Platform/Walls/Hard/4.tscn" id="24_vae3x"]
 [ext_resource type="PackedScene" uid="uid://bnm2ofl4uw2q2" path="res://Scenes/Rotating Platform/Walls/Medium/Wall_Medium_3.tscn" id="25_h4gp5"]
+[ext_resource type="AudioStream" uid="uid://5fv2jqdyi7ad" path="res://Assets/SFX/Jump/Jump Landing.mp3" id="25_v3dpk"]
+[ext_resource type="AudioStream" uid="uid://dehiktwyj3ic3" path="res://Assets/SFX/Jump/Jump.mp3" id="26_e8ucg"]
 [ext_resource type="PackedScene" uid="uid://4kuv3e5aorkk" path="res://Scenes/Rotating Platform/Falling Objects/Ball.tscn" id="27_4ohmo"]
 [ext_resource type="Script" uid="uid://3g4gl211lrua" path="res://Scenes/Main/Level Manager/Commands/set_gap_sizes.gd" id="27_c8mgu"]
+[ext_resource type="AudioStream" uid="uid://beq2l7yt4fdwb" path="res://Assets/SFX/Purchase.mp3" id="27_koqfj"]
 [ext_resource type="Script" uid="uid://dv3ljwheewky6" path="res://Scenes/Main/Level Manager/Commands/spawn_falling_objects.gd" id="28_bnc1s"]
+[ext_resource type="AudioStream" uid="uid://codf74b87ilp" path="res://Assets/Music/Charivari_Music/L1_Intro.mp3" id="28_rkyyk"]
+[ext_resource type="AudioStream" uid="uid://xexipe3g6g5a" path="res://Assets/Music/Charivari_Music/L1_Loop.mp3" id="29_de47j"]
+[ext_resource type="AudioStream" uid="uid://m4si642urbu0" path="res://Assets/Music/Charivari_Music/L2_Loop.mp3" id="31_5poo1"]
 [ext_resource type="Script" uid="uid://bdrml4lpvd0hr" path="res://Scenes/Main/Level Manager/Commands/zen_mode.gd" id="31_bnc1s"]
+[ext_resource type="AudioStream" uid="uid://c3m825vf5p111" path="res://Assets/Music/Charivari_Music/L3_Intro.mp3" id="32_ff7xd"]
+[ext_resource type="AudioStream" uid="uid://cwg0oql8efqxu" path="res://Assets/Music/Charivari_Music/L3_Loop.mp3" id="33_4vdw8"]
+[ext_resource type="AudioStream" uid="uid://cmlkbe0j7lq6p" path="res://Assets/Music/Charivari_Music/L4_Intro.mp3" id="34_pt420"]
+[ext_resource type="AudioStream" uid="uid://cnmfehn2ixfyx" path="res://Assets/Music/Charivari_Music/L4_Loop.mp3" id="35_lgjqy"]
+[ext_resource type="AudioStream" uid="uid://ddn6pejjlgxri" path="res://Assets/Music/Charivari_Music/L5_Intro.mp3" id="36_vkja6"]
+[ext_resource type="AudioStream" uid="uid://dvarcw2wjpcn8" path="res://Assets/Music/Charivari_Music/L5_Loop.mp3" id="37_juxqm"]
+[ext_resource type="AudioStream" uid="uid://bflbwp5bqbgru" path="res://Assets/Music/Charivari_Music/Shop_Charivari.mp3" id="38_1mt81"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1r6ip"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -376,9 +410,206 @@ script = ExtResource("1_vk4q2")
 play_area_hologram = NodePath("LevelPivot/Shop/PlayArea/Hologram")
 play_area = NodePath("LevelPivot/Shop/PlayArea/PlayArea")
 
-[node name="Audio" parent="." unique_id=767990636 instance=ExtResource("2_ow7bd")]
+[node name="Audio" type="Node" parent="." unique_id=767990636]
+script = ExtResource("2_de47j")
 
-[node name="UI" parent="." unique_id=841098919 instance=ExtResource("2_wliom")]
+[node name="SFX" type="Node" parent="Audio" unique_id=155445693]
+
+[node name="SpinnerTicks" type="Node" parent="Audio/SFX" unique_id=1140848162]
+
+[node name="SpinnerTick1" type="AudioStreamPlayer" parent="Audio/SFX/SpinnerTicks" unique_id=1049328652]
+stream = ExtResource("3_de47j")
+pitch_scale = 0.8
+max_polyphony = 8
+bus = &"SFX"
+
+[node name="SpinnerTick2" type="AudioStreamPlayer" parent="Audio/SFX/SpinnerTicks" unique_id=410797673]
+stream = ExtResource("4_ukqxg")
+pitch_scale = 0.8
+max_polyphony = 8
+bus = &"SFX"
+
+[node name="SpinnerTick3" type="AudioStreamPlayer" parent="Audio/SFX/SpinnerTicks" unique_id=113348439]
+stream = ExtResource("5_5poo1")
+pitch_scale = 0.8
+max_polyphony = 8
+bus = &"SFX"
+
+[node name="SpinnerTick4" type="AudioStreamPlayer" parent="Audio/SFX/SpinnerTicks" unique_id=54504546]
+stream = ExtResource("6_ff7xd")
+pitch_scale = 0.8
+max_polyphony = 8
+bus = &"SFX"
+
+[node name="SpinnerTick5" type="AudioStreamPlayer" parent="Audio/SFX/SpinnerTicks" unique_id=375740330]
+stream = ExtResource("7_4vdw8")
+pitch_scale = 0.8
+max_polyphony = 8
+bus = &"SFX"
+
+[node name="SpinnerTick6" type="AudioStreamPlayer" parent="Audio/SFX/SpinnerTicks" unique_id=1305934834]
+stream = ExtResource("8_pt420")
+pitch_scale = 0.8
+max_polyphony = 8
+bus = &"SFX"
+
+[node name="SpinnerTick7" type="AudioStreamPlayer" parent="Audio/SFX/SpinnerTicks" unique_id=112562024]
+stream = ExtResource("9_lgjqy")
+pitch_scale = 0.8
+max_polyphony = 8
+bus = &"SFX"
+
+[node name="SpinnerTick8" type="AudioStreamPlayer" parent="Audio/SFX/SpinnerTicks" unique_id=220140518]
+stream = ExtResource("10_vkja6")
+pitch_scale = 0.8
+max_polyphony = 8
+bus = &"SFX"
+
+[node name="SpinnerTick9" type="AudioStreamPlayer" parent="Audio/SFX/SpinnerTicks" unique_id=1365059261]
+stream = ExtResource("11_juxqm")
+pitch_scale = 0.8
+max_polyphony = 8
+bus = &"SFX"
+
+[node name="Footsteps" type="Node" parent="Audio/SFX" unique_id=1425921017]
+
+[node name="Footstep1" type="AudioStreamPlayer" parent="Audio/SFX/Footsteps" unique_id=898010949]
+stream = ExtResource("12_1mt81")
+pitch_scale = 0.2
+bus = &"Footsteps"
+
+[node name="Footstep2" type="AudioStreamPlayer" parent="Audio/SFX/Footsteps" unique_id=1361387143]
+stream = ExtResource("13_6h4e3")
+pitch_scale = 0.2
+bus = &"Footsteps"
+
+[node name="Footstep3" type="AudioStreamPlayer" parent="Audio/SFX/Footsteps" unique_id=1208068592]
+stream = ExtResource("14_mc37m")
+pitch_scale = 0.2
+bus = &"Footsteps"
+
+[node name="Footstep4" type="AudioStreamPlayer" parent="Audio/SFX/Footsteps" unique_id=878752048]
+stream = ExtResource("15_ksp86")
+pitch_scale = 0.2
+bus = &"Footsteps"
+
+[node name="Footstep5" type="AudioStreamPlayer" parent="Audio/SFX/Footsteps" unique_id=1238894147]
+stream = ExtResource("16_gmav6")
+pitch_scale = 0.2
+bus = &"Footsteps"
+
+[node name="Footstep6" type="AudioStreamPlayer" parent="Audio/SFX/Footsteps" unique_id=1348100736]
+stream = ExtResource("17_cif1l")
+pitch_scale = 0.2
+bus = &"Footsteps"
+
+[node name="Footstep7" type="AudioStreamPlayer" parent="Audio/SFX/Footsteps" unique_id=2031142159]
+stream = ExtResource("18_6otiq")
+pitch_scale = 0.2
+bus = &"Footsteps"
+
+[node name="Footstep8" type="AudioStreamPlayer" parent="Audio/SFX/Footsteps" unique_id=2042038614]
+stream = ExtResource("19_01rk5")
+pitch_scale = 0.2
+bus = &"Footsteps"
+
+[node name="Poofs" type="Node" parent="Audio/SFX" unique_id=788344890]
+
+[node name="Poof1" type="AudioStreamPlayer" parent="Audio/SFX/Poofs" unique_id=623487251]
+stream = ExtResource("20_trpbr")
+volume_db = -12.522
+pitch_scale = 1.2
+bus = &"SFX"
+
+[node name="Poof2" type="AudioStreamPlayer" parent="Audio/SFX/Poofs" unique_id=1305661985]
+stream = ExtResource("21_0c2tq")
+pitch_scale = 0.7
+bus = &"SFX"
+
+[node name="Poof3" type="AudioStreamPlayer" parent="Audio/SFX/Poofs" unique_id=1247713004]
+stream = ExtResource("22_jwbtt")
+bus = &"SFX"
+
+[node name="Button" type="Node" parent="Audio/SFX" unique_id=505739390]
+
+[node name="ButtonPressDown" type="AudioStreamPlayer" parent="Audio/SFX/Button" unique_id=1920155667]
+stream = ExtResource("23_gg4gf")
+volume_db = -8.986
+pitch_scale = 0.53
+bus = &"SFX"
+
+[node name="ButtonPressUp" type="AudioStreamPlayer" parent="Audio/SFX/Button" unique_id=210121235]
+stream = ExtResource("24_hl5wv")
+volume_db = -8.986
+pitch_scale = 0.53
+bus = &"SFX"
+
+[node name="Jump" type="Node" parent="Audio/SFX" unique_id=1436670442]
+
+[node name="JumpLanding" type="AudioStreamPlayer" parent="Audio/SFX/Jump" unique_id=2136203158]
+stream = ExtResource("25_v3dpk")
+volume_db = 8.397
+pitch_scale = 1.04
+bus = &"Footsteps"
+
+[node name="StartJump" type="AudioStreamPlayer" parent="Audio/SFX/Jump" unique_id=301477140]
+stream = ExtResource("26_e8ucg")
+volume_db = 5.0
+pitch_scale = 0.9
+bus = &"Footsteps"
+
+[node name="Purchase" type="AudioStreamPlayer" parent="Audio/SFX" unique_id=1375403643]
+stream = ExtResource("27_koqfj")
+volume_db = -16.924
+bus = &"SFX"
+
+[node name="Music" type="Node" parent="Audio" unique_id=41645939]
+
+[node name="Charivari Music" type="Node" parent="Audio/Music" unique_id=1847206937]
+
+[node name="L1Intro" type="AudioStreamPlayer" parent="Audio/Music/Charivari Music" unique_id=909165290]
+stream = ExtResource("28_rkyyk")
+bus = &"Music"
+
+[node name="L1Loop" type="AudioStreamPlayer" parent="Audio/Music/Charivari Music" unique_id=1576231652]
+stream = ExtResource("29_de47j")
+bus = &"Music"
+
+[node name="L2Intro" type="AudioStreamPlayer" parent="Audio/Music/Charivari Music" unique_id=1405404241]
+stream = ExtResource("29_de47j")
+bus = &"Music"
+
+[node name="L2Loop" type="AudioStreamPlayer" parent="Audio/Music/Charivari Music" unique_id=1790102714]
+stream = ExtResource("31_5poo1")
+bus = &"Music"
+
+[node name="L3Intro" type="AudioStreamPlayer" parent="Audio/Music/Charivari Music" unique_id=694008103]
+stream = ExtResource("32_ff7xd")
+bus = &"Music"
+
+[node name="L3Loop" type="AudioStreamPlayer" parent="Audio/Music/Charivari Music" unique_id=1079399734]
+stream = ExtResource("33_4vdw8")
+bus = &"Music"
+
+[node name="L4Intro" type="AudioStreamPlayer" parent="Audio/Music/Charivari Music" unique_id=2097538318]
+stream = ExtResource("34_pt420")
+bus = &"Music"
+
+[node name="L4Loop" type="AudioStreamPlayer" parent="Audio/Music/Charivari Music" unique_id=179859892]
+stream = ExtResource("35_lgjqy")
+bus = &"Music"
+
+[node name="L5Intro" type="AudioStreamPlayer" parent="Audio/Music/Charivari Music" unique_id=266207981]
+stream = ExtResource("36_vkja6")
+bus = &"Music"
+
+[node name="L5Loop" type="AudioStreamPlayer" parent="Audio/Music/Charivari Music" unique_id=209282259]
+stream = ExtResource("37_juxqm")
+bus = &"Music"
+
+[node name="ShopCharivari" type="AudioStreamPlayer" parent="Audio/Music/Charivari Music" unique_id=1390490565]
+stream = ExtResource("38_1mt81")
+bus = &"Music"
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=533654568]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
@@ -462,7 +693,7 @@ transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, -22.429012
 [node name="Wheel Area" parent="LevelPivot" unique_id=844042927 instance=ExtResource("8_y3v7k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1964708)
 
-[node name="Wheel" parent="LevelPivot/Wheel Area" index="2" unique_id=1861039474]
+[node name="Wheel" parent="LevelPivot/Wheel Area" index="2" unique_id=2030928217]
 visible = false
 
 [node name="Falling Object Spawn Area" type="Area3D" parent="LevelPivot" unique_id=113948750]
@@ -623,7 +854,7 @@ right_button = true
 
 [node name="Shop Mesh" parent="LevelPivot/Shop" unique_id=725113405 instance=ExtResource("1_1r6ip")]
 
-[node name="Floor" parent="LevelPivot/Shop/Shop Mesh" index="3" unique_id=142224917]
+[node name="Floor" parent="LevelPivot/Shop/Shop Mesh" index="3" unique_id=1323032207]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0005631447, 0.01571107, 0.00493598)
 
 [node name="Collision" type="StaticBody3D" parent="LevelPivot/Shop" unique_id=1433688602]

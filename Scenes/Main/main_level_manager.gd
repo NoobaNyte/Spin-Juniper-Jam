@@ -98,6 +98,7 @@ func start_game() -> void:
 	PlayerGlobals.disable_movement = true
 	await get_tree().create_timer(0.5).timeout # wait for poof to be done
 
+	AudioGlobals.fade_out_shop_music.emit(8)
 	PlayerGlobals.start_game.emit()
 
 	# detach camera from player and toggle the gameplay cam
@@ -114,6 +115,7 @@ func start_game() -> void:
 	PlayerGlobals.disable_movement = false
 	PlayerGlobals.reveal_player.emit()
 	PlayerGlobals.set_in_game_stats.emit()
+	AudioGlobals.play_level_music.emit()
 
 func reset_game():
 	$LevelPivot.rotation.x = deg_to_rad(0)
@@ -126,6 +128,8 @@ func reset_game():
 	$LevelPivot/MainCamera.detached_from_player = false
 	$LevelPivot/MainCamera.toggle_playing_camera(false)
 	await WheelGlobals.speed_transition(WheelGlobals.preview_rotation_speed, 1)
+	AudioGlobals.play_shop_music.emit()
+
 	await get_tree().create_timer(0.5).timeout # wait for cam anim to be done before uhhiding player
 	PlayerGlobals.lost_level = false
 	PlayerGlobals.set_in_menu_stats.emit()

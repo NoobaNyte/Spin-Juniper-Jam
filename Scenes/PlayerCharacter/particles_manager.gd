@@ -28,13 +28,13 @@ func spawn_particles() -> void:
 	dupe.queue_free()
 
 func disappear_player():
-	AudioGlobals.play_poof_sfx()
+	AudioGlobals.play_poof_sfx.emit()
 	spawn_particles()
 	await get_tree().create_timer(0.2).timeout
 	player_mesh.visible = false
 
 func reveal_player():
-	AudioGlobals.play_poof_sfx()
+	AudioGlobals.play_poof_sfx.emit()
 	spawn_particles()
 	await get_tree().create_timer(0.2).timeout
 	player_mesh.visible = true

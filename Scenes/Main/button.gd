@@ -40,7 +40,7 @@ func _on_trigger_area_body_entered(body: Node3D) -> void:
 		return
 
 	if not is_pressed:
-		AudioGlobals.play_button_press_down_sfx()
+		AudioGlobals.play_button_press_down_sfx.emit()
 		is_pressed = true
 		is_on_cooldown = true
 		original_speed = WheelGlobals.rotation_speed
@@ -92,7 +92,7 @@ func trigger_speed_boost() -> void:
 		if not body_on_button:
 			animate_button(base_y, return_delay)
 		await get_tree().create_timer(0.1).timeout
-		AudioGlobals.play_button_press_up_sfx()
+		AudioGlobals.play_button_press_up_sfx.emit()
 	)
 
 func animate_button(target_y: float, delay: float = 0.0) -> void:

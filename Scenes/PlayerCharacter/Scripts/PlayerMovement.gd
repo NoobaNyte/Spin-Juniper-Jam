@@ -67,7 +67,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 	if not _was_on_floor and is_on_floor():
-		AudioGlobals.play_jump_landing_sfx()
+		AudioGlobals.play_jump_landing_sfx.emit()
 
 	_was_on_floor = is_on_floor()
 
@@ -92,7 +92,7 @@ func _handle_jump_buffer(delta: float) -> void:
 func _handle_jump() -> void:
 	var can_jump: bool = is_on_floor() or _coyote_timer > 0.0
 	if _jump_buffer > 0.0 and can_jump:
-		AudioGlobals.play_jump_sfx()
+		AudioGlobals.play_jump_sfx.emit()
 		velocity.y = jump_velocity
 		_jump_buffer = 0.0
 		_coyote_timer = 0.0
@@ -136,7 +136,7 @@ func _handle_footsteps(delta: float, wish_dir: Vector3) -> void:
 	var interval := footstep_rate
 	if _footstep_timer >= interval:
 		_footstep_timer = fmod(_footstep_timer, interval)
-		AudioGlobals.play_random_footstep_sfx()
+		AudioGlobals.play_random_footstep_sfx.emit()
 
 
 # ================================================================================================================

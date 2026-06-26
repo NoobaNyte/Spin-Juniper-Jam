@@ -61,7 +61,7 @@ func buy_prize():
 	if on_buy_cooldown: return
 	
 	if PlayerGlobals.tickets >= price:
-		AudioGlobals.play_purchase_sfx()
+		AudioGlobals.play_purchase_sfx.emit()
 		bought = true
 		on_buy_cooldown = true
 		PlayerGlobals.tickets -= price
