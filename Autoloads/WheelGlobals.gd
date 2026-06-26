@@ -43,7 +43,7 @@ var start_of_level_wheel_speed: float = 20 # assigned and used in level_manager.
 
 ## falling objects
 @warning_ignore("unused_signal")
-signal spawn_falling_objects(quantity: int, time_in_seconds: float, objects: Variant)
+signal spawn_falling_objects(quantity: int, time_in_seconds: float, objects: Variant, min_velocity: float, max_velocity: float)
 
 ## util functions
 var speed_tween: Tween

@@ -6,7 +6,7 @@ func _ready() -> void:
 	WheelGlobals.spawn_falling_objects.connect(spawn_falling_objects)
 
 
-func spawn_falling_objects(quantity: int, time_in_seconds: float, objects: Variant) -> void:
+func spawn_falling_objects(quantity: int, time_in_seconds: float, objects: Variant, min_velocity: float = 0.0, max_velocity: float = 0.0) -> void:
 	# Normalize input: accept a single PackedScene or an Array of them
 	var scene_list: Array[PackedScene] = []
 	if objects is PackedScene:
@@ -29,6 +29,15 @@ func spawn_falling_objects(quantity: int, time_in_seconds: float, objects: Varia
 		var parent = default_spawn_parent if default_spawn_parent else self
 		parent.add_child(instance)
 		instance.global_position = _get_random_position_in_trimesh()
+
+		if max_velocity > 0.0:
+			var velocity := Vector3(0.0, -randf_range(min_velocity, max_velocity), 0.0)
+			if instance is RigidBody3D:
+				instance.linear_velocity = velocity
+			elif instance.has_method("set_velocity"):
+				instance.set_velocity(velocity)
+			elif "velocity" in instance:
+				instance.velocity = velocity
 
 
 func _get_random_position_in_trimesh() -> Vector3:
