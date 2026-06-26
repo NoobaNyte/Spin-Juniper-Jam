@@ -3,18 +3,29 @@
 [ext_resource type="PackedScene" uid="uid://dyfwa0tin2osj" path="res://Assets/3D/Shop/Shop.fbx" id="1_1r6ip"]
 [ext_resource type="Script" uid="uid://bsdanp36lgo6r" path="res://Scenes/Main/main_camera.gd" id="1_hfg1r"]
 [ext_resource type="Script" uid="uid://dpwnp7ua6dd33" path="res://Scenes/Main/main_level_manager.gd" id="1_vk4q2"]
+[ext_resource type="AudioStream" uid="uid://birxmcds2l8mn" path="res://Assets/SFX/Spinner Ticks/spinner_tick_1.mp3" id="2_giosv"]
+[ext_resource type="PackedScene" uid="uid://drho5v5k1bwpd" path="res://Scenes/Main/audio.tscn" id="2_ow7bd"]
 [ext_resource type="PackedScene" uid="uid://bg0rylw7ww1mr" path="res://Scenes/UI/ui.tscn" id="2_wliom"]
+[ext_resource type="Script" uid="uid://vfx4ojoy8phi" path="res://Scenes/Main/audio.gd" id="3_q50pj"]
+[ext_resource type="AudioStream" uid="uid://cbcqkdok6kkne" path="res://Assets/SFX/Spinner Ticks/spinner_tick_2.mp3" id="3_v3nl7"]
 [ext_resource type="PackedScene" uid="uid://doigq7nkfb887" path="res://Scenes/Prizes/Speed Prize/speed_prize.tscn" id="4_2a143"]
 [ext_resource type="PackedScene" uid="uid://dnp8jfq1nm1rg" path="res://Scenes/Prizes/Invincibility Frames/invincibility_frames_prize.tscn" id="4_5yls4"]
+[ext_resource type="AudioStream" uid="uid://db84i1pf1k5i7" path="res://Assets/SFX/Spinner Ticks/spinner_tick_3.mp3" id="4_xhr70"]
 [ext_resource type="PackedScene" uid="uid://dqhsrngl043po" path="res://Scenes/PlayerCharacter/PlayerCharacter.tscn" id="5_2a143"]
 [ext_resource type="PackedScene" uid="uid://f84ucq2mqwcd" path="res://Scenes/Prizes/HP/hp_prize.tscn" id="5_p6jpk"]
+[ext_resource type="AudioStream" uid="uid://b2480rsatrcfj" path="res://Assets/SFX/Spinner Ticks/spinner_tick_4.mp3" id="5_vnf10"]
 [ext_resource type="PackedScene" uid="uid://do2s7rajjiqji" path="res://Scenes/Prizes/Jump Prize/jump_prize.tscn" id="5_y3v7k"]
 [ext_resource type="PackedScene" uid="uid://bpc6exg8npidb" path="res://Scenes/Main/button.tscn" id="6_4e4y2"]
+[ext_resource type="AudioStream" uid="uid://51bwabodqaho" path="res://Assets/SFX/Spinner Ticks/spinner_tick_5.mp3" id="6_bq7c0"]
 [ext_resource type="Script" uid="uid://dm1qgwe8areex" path="res://Scenes/Main/prize_area.gd" id="7_2ok46"]
 [ext_resource type="PackedScene" uid="uid://b5f1b5xy70e7n" path="res://Scenes/Prizes/Bear Prize/bear_prize.tscn" id="7_6t3k2"]
+[ext_resource type="AudioStream" uid="uid://b8m0ti2c1wwkn" path="res://Assets/SFX/Spinner Ticks/spinner_tick_6.mp3" id="7_uklyp"]
 [ext_resource type="Script" uid="uid://bbj2grlpe44rp" path="res://Scenes/Main/Level Manager/level_manager.gd" id="8_4a3kt"]
 [ext_resource type="PackedScene" uid="uid://b1em8csmfsexr" path="res://Scenes/Rotating Platform/wheel_pivot.tscn" id="8_4o5wv"]
+[ext_resource type="AudioStream" uid="uid://bqey5rsh77qfx" path="res://Assets/SFX/Spinner Ticks/spinner_tick_7.mp3" id="8_xbfr0"]
 [ext_resource type="PackedScene" uid="uid://d2bdcu8nu61s5" path="res://Assets/3D/Shop/Wheel Board.fbx" id="8_y3v7k"]
+[ext_resource type="AudioStream" uid="uid://dww0nob64fubu" path="res://Assets/SFX/Spinner Ticks/spinner_tick_8.mp3" id="9_wyvfc"]
+[ext_resource type="AudioStream" uid="uid://6uebeo8v3l4e" path="res://Assets/SFX/Spinner Ticks/spinner_tick_9.mp3" id="10_5dnw0"]
 [ext_resource type="Script" uid="uid://pj0ba6ig58n6" path="res://Scenes/Main/Level Manager/level_sequence.gd" id="10_ah3if"]
 [ext_resource type="PackedScene" uid="uid://b4fnn6bpkbu2h" path="res://Scenes/Rotating Platform/Walls/Easy/Wall_Easy_1.tscn" id="10_hvw5u"]
 [ext_resource type="Script" uid="uid://dertvnxrxb0pw" path="res://Scenes/Rotating Platform/game_over_area.gd" id="10_ifk88"]
@@ -385,6 +396,40 @@ script = ExtResource("1_vk4q2")
 play_area_hologram = NodePath("LevelPivot/Shop/PlayArea/Hologram")
 play_area = NodePath("LevelPivot/Shop/PlayArea/PlayArea")
 
+[node name="Audio" parent="." unique_id=767990636 instance=ExtResource("2_ow7bd")]
+script = ExtResource("3_q50pj")
+
+[node name="SFX" type="Node" parent="Audio" unique_id=316765161]
+
+[node name="SpinnerTicks" type="Node" parent="Audio/SFX" unique_id=187065634]
+
+[node name="SpinnerTick1" type="AudioStreamPlayer" parent="Audio/SFX/SpinnerTicks" unique_id=381177314]
+stream = ExtResource("2_giosv")
+
+[node name="SpinnerTick2" type="AudioStreamPlayer" parent="Audio/SFX/SpinnerTicks" unique_id=2004354854]
+stream = ExtResource("3_v3nl7")
+
+[node name="SpinnerTick3" type="AudioStreamPlayer" parent="Audio/SFX/SpinnerTicks" unique_id=2137919254]
+stream = ExtResource("4_xhr70")
+
+[node name="SpinnerTick4" type="AudioStreamPlayer" parent="Audio/SFX/SpinnerTicks" unique_id=1363300160]
+stream = ExtResource("5_vnf10")
+
+[node name="SpinnerTick5" type="AudioStreamPlayer" parent="Audio/SFX/SpinnerTicks" unique_id=1259158046]
+stream = ExtResource("6_bq7c0")
+
+[node name="SpinnerTick6" type="AudioStreamPlayer" parent="Audio/SFX/SpinnerTicks" unique_id=1130742817]
+stream = ExtResource("7_uklyp")
+
+[node name="SpinnerTick7" type="AudioStreamPlayer" parent="Audio/SFX/SpinnerTicks" unique_id=1640241280]
+stream = ExtResource("8_xbfr0")
+
+[node name="SpinnerTick8" type="AudioStreamPlayer" parent="Audio/SFX/SpinnerTicks" unique_id=308716385]
+stream = ExtResource("9_wyvfc")
+
+[node name="SpinnerTick9" type="AudioStreamPlayer" parent="Audio/SFX/SpinnerTicks" unique_id=23979869]
+stream = ExtResource("10_5dnw0")
+
 [node name="UI" parent="." unique_id=841098919 instance=ExtResource("2_wliom")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=533654568]
@@ -469,7 +514,7 @@ transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, -22.429012
 [node name="Wheel Area" parent="LevelPivot" unique_id=844042927 instance=ExtResource("8_y3v7k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1964708)
 
-[node name="Wheel" parent="LevelPivot/Wheel Area" index="2" unique_id=1861039474]
+[node name="Wheel" parent="LevelPivot/Wheel Area" index="2" unique_id=2030928217]
 visible = false
 
 [node name="Falling Object Spawn Area" type="Area3D" parent="LevelPivot" unique_id=113948750]
@@ -630,7 +675,7 @@ right_button = true
 
 [node name="Shop Mesh" parent="LevelPivot/Shop" unique_id=725113405 instance=ExtResource("1_1r6ip")]
 
-[node name="Floor" parent="LevelPivot/Shop/Shop Mesh" index="3" unique_id=142224917]
+[node name="Floor" parent="LevelPivot/Shop/Shop Mesh" index="3" unique_id=1323032207]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0005631447, 0.01571107, 0.00493598)
 
 [node name="Collision" type="StaticBody3D" parent="LevelPivot/Shop" unique_id=1433688602]
