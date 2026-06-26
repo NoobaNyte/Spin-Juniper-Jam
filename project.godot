@@ -38,6 +38,7 @@ project/assembly_name="Project"
 Player=""
 PrizeSelectionArea=""
 FallingObject=""
+MovingWall=""
 
 [input]
 
