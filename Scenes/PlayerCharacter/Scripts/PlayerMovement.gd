@@ -23,10 +23,15 @@ extends CharacterBody3D
 @export var jump_buffer_time: float = 0.12
 @export var coyote_time: float = 0.07
 
+# ── Footstep Settings ──────────────────────────────────────────────────────────
+@export_group("Footsteps")
+@export var footstep_rate: float = 0.16 # seconds between footsteps at full speed
+
 var _gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var _jump_buffer: float = 0.0
 var _coyote_timer: float = 0.0
 var _was_on_floor: bool = false
+var _footstep_timer: float = 0.0
 
 func _ready() -> void:
 	PlayerGlobals.set_move_speed.connect(SetPlayerMaxSpeed)
@@ -57,6 +62,7 @@ func _physics_process(delta: float) -> void:
 	_handle_movement(delta, wish_dir)
 	_handle_rotation(delta, wish_dir)
 	_handle_animations(wish_dir)
+	_handle_footsteps(delta, wish_dir)
 
 	move_and_slide()
 
@@ -115,9 +121,20 @@ func _handle_animations(wish_dir: Vector3) -> void:
 
 	if animation_player.current_animation != target_anim:
 		animation_player.play(target_anim, anim_blend_time, target_speed)
-		
-		
-		
+
+func _handle_footsteps(delta: float, wish_dir: Vector3) -> void:
+	# No footsteps if airborne or standing still
+	if not is_on_floor() or wish_dir == Vector3.ZERO:
+		_footstep_timer = 0.0
+		return
+
+	_footstep_timer += delta
+	var interval := footstep_rate
+	if _footstep_timer >= interval:
+		_footstep_timer = fmod(_footstep_timer, interval)
+		AudioGlobals.play_random_footstep_sfx()
+
+
 # ================================================================================================================
 # ------------------------------------- GLOBAL API FUNCTIONS BELOW HERE ------------------------------------------
 # ================================================================================================================
