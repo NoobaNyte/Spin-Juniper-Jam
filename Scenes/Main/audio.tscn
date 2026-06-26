@@ -88,35 +88,43 @@ bus = &"SFX"
 
 [node name="Footstep1" type="AudioStreamPlayer" parent="SFX/Footsteps" unique_id=1316331890]
 stream = ExtResource("11_lb0ed")
-bus = &"SFX"
+pitch_scale = 0.4
+bus = &"Footsteps"
 
 [node name="Footstep2" type="AudioStreamPlayer" parent="SFX/Footsteps" unique_id=217603893]
 stream = ExtResource("12_87kt0")
-bus = &"SFX"
+pitch_scale = 0.4
+bus = &"Footsteps"
 
 [node name="Footstep3" type="AudioStreamPlayer" parent="SFX/Footsteps" unique_id=421736225]
 stream = ExtResource("13_bxld3")
-bus = &"SFX"
+pitch_scale = 0.4
+bus = &"Footsteps"
 
 [node name="Footstep4" type="AudioStreamPlayer" parent="SFX/Footsteps" unique_id=833544303]
 stream = ExtResource("14_pcsav")
-bus = &"SFX"
+pitch_scale = 0.4
+bus = &"Footsteps"
 
 [node name="Footstep5" type="AudioStreamPlayer" parent="SFX/Footsteps" unique_id=768977262]
 stream = ExtResource("15_672nf")
-bus = &"SFX"
+pitch_scale = 0.4
+bus = &"Footsteps"
 
 [node name="Footstep6" type="AudioStreamPlayer" parent="SFX/Footsteps" unique_id=1762088310]
 stream = ExtResource("16_hlw8g")
-bus = &"SFX"
+pitch_scale = 0.4
+bus = &"Footsteps"
 
 [node name="Footstep7" type="AudioStreamPlayer" parent="SFX/Footsteps" unique_id=1117957230]
 stream = ExtResource("17_kcru5")
-bus = &"SFX"
+pitch_scale = 0.4
+bus = &"Footsteps"
 
 [node name="Footstep8" type="AudioStreamPlayer" parent="SFX/Footsteps" unique_id=1712733024]
 stream = ExtResource("18_j014v")
-bus = &"SFX"
+pitch_scale = 0.4
+bus = &"Footsteps"
 
 [node name="Poof" type="Node" parent="SFX" unique_id=1607770205]
 
@@ -137,5 +145,5 @@ bus = &"SFX"
 
 [node name="Purchase" type="AudioStreamPlayer" parent="SFX" unique_id=1814047212]
 stream = ExtResource("14_u53hk")
-volume_db = -10.0
+volume_db = -16.924
 bus = &"SFX"
