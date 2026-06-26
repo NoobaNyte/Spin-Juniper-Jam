@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://ctbrwu3ny5qpg"]
+
+[ext_resource type="PackedScene" uid="uid://bpdgvyt0tkr67" path="res://Scenes/Rotating Platform/Walls/Base_Wall.tscn" id="1_m2y60"]
+[ext_resource type="Script" uid="uid://bo2134khdryhv" path="res://Scenes/Rotating Platform/Walls/Hard/moving_wall.gd" id="2_5ac4g"]
+[ext_resource type="PackedScene" uid="uid://ekgqbylv1ueh" path="res://Assets/3D/Walls/Hard/4.fbx" id="2_6pvdj"]
+[ext_resource type="Script" uid="uid://dertvnxrxb0pw" path="res://Scenes/Rotating Platform/game_over_area.gd" id="3_6pvdj"]
+
+[sub_resource type="Curve3D" id="Curve3D_m2y60"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12.577773, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m2y60"]
+size = Vector3(5.391136, 2.85, 0.7200028)
+
+[node name="4" unique_id=1357455585 groups=["MovingWall"] instance=ExtResource("1_m2y60")]
+script = ExtResource("2_5ac4g")
+
+[node name="Path3D" type="Path3D" parent="." index="0" unique_id=1690127401]
+curve = SubResource("Curve3D_m2y60")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D" index="0" unique_id=763046779]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="4" parent="." index="2" unique_id=1273193885 instance=ExtResource("2_6pvdj")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="4" index="0" unique_id=657999864]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.695568, 1.425, -1.3411045e-06)
+shape = SubResource("BoxShape3D_m2y60")
+
+[node name="GameOverArea" type="Area3D" parent="4" index="1" unique_id=1325660436]
+script = ExtResource("3_6pvdj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="4/GameOverArea" index="0" unique_id=599065554]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.695568, 1.425, -1.3411045e-06)
+shape = SubResource("BoxShape3D_m2y60")
+
+[connection signal="body_entered" from="4/GameOverArea" to="4/GameOverArea" method="_on_body_entered"]
+
+[editable path="4"]

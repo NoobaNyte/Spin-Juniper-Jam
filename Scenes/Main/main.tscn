@@ -85,7 +85,7 @@ script = ExtResource("10_ah3if")
 level_name = "Level 1"
 base_level_data = SubResource("Resource_1j4pb")
 startup_commands = SubResource("Resource_ah3if")
-commands = Array[ExtResource("11_v4agm")]([SubResource("Resource_eo50k"), SubResource("Resource_wbulw")])
+commands = Array[ExtResource("11_v4agm")]([SubResource("Resource_eo50k"), SubResource("Resource_wbulw"), null])
 metadata/_custom_type_script = "uid://pj0ba6ig58n6"
 
 [sub_resource type="Resource" id="Resource_0uxpu"]

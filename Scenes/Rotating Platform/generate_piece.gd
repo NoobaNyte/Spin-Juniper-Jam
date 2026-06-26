@@ -141,7 +141,9 @@ func generate_wall(piece: Node3D):
 
 	piece.add_child(selectedwall)
 
-	
+	if selectedwall.is_in_group("MovingWall"):
+		selectedwall.start_moving_wall()
+
 	selectedwall.get_node("BaseWheel").queue_free()
 
 	# apply offset transforms to wall because the pieces gen at 45 degree angle and wall needs to sit on top of pieces not inside

@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://snvonox4hd7s" path="res://Scenes/Rotating Platform/generate_piece.gd" id="1_i4vcc"]
 [ext_resource type="PackedScene" uid="uid://dvmgy7jxf07fb" path="res://Scenes/Rotating Platform/piece_gen_template.tscn" id="2_iem3o"]
 [ext_resource type="Script" uid="uid://dcvakcvd204wq" path="res://Scenes/Rotating Platform/wheel_controller.gd" id="3_0ea77"]
-[ext_resource type="PackedScene" uid="uid://b4fnn6bpkbu2h" path="res://Scenes/Rotating Platform/Walls/Easy/1.tscn" id="4_eudrv"]
 [ext_resource type="PackedScene" uid="uid://b1em8csmfsexr" path="res://Scenes/Rotating Platform/wheel_pivot.tscn" id="4_wno85"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iem3o"]
@@ -44,13 +43,5 @@ piece_gen_template_scene = ExtResource("2_iem3o")
 
 [node name="WheelController" type="Node" parent="WheelScripts" unique_id=1533346029]
 script = ExtResource("3_0ea77")
-level_1_colors = Array[Color]([Color(1, 0, 0, 1), Color(0, 0.008928299, 1, 1), Color(0.08996334, 0.33035713, 0, 1), Color(1, 0.9508929, 0, 1)])
-level_2_colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1)])
-level_3_colors = Array[Color]([Color(0.21875, 1, 0, 1), Color(0.76075214, 1, 0.64508927, 1)])
-level_1_walls = Array[PackedScene]([ExtResource("4_eudrv")])
-level_2_walls = Array[PackedScene]([ExtResource("4_eudrv")])
-level_3_walls = Array[PackedScene]([ExtResource("4_eudrv")])
-level_4_walls = Array[PackedScene]([ExtResource("4_eudrv")])
-level_5_walls = Array[PackedScene]([ExtResource("4_eudrv")])
 
 [node name="WheelPivot" parent="." unique_id=1333064656 instance=ExtResource("4_wno85")]
