@@ -16,7 +16,11 @@ radius = 2.5
 
 [node name="HP_Prize" unique_id=2124177430 instance=ExtResource("1_vot0h")]
 script = ExtResource("2_4tuay")
-price = 10
+quantity_in_stock = 4
+price = 100
+price_2 = 250
+price_3 = 650
+price_4 = 1500
 item_name = "Health Boost"
 item_description = "Makes it harder to kill you by augmenting your life."
 

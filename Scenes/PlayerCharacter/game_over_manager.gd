@@ -41,7 +41,7 @@ func game_over():
 		PlayerGlobals.disappear_player.emit()
 		await get_tree().create_timer(0.5).timeout
 
-		PlayerGlobals.reset_game.emit()
+	PlayerGlobals.reset_game.emit()
 
 	
 func stop_music_after_wait():

@@ -59,11 +59,11 @@ func _start_earnings_sequence() -> void:
 
 	var earnings: int
 	match PlayerGlobals.selected_level:
-		1: earnings = 100
-		2: earnings = 250
-		3: earnings = 500
-		4: earnings = 1000
-		5: earnings = 10000
+		1: earnings = 150
+		2: earnings = 350
+		3: earnings = 700
+		4: earnings = 1200
+		5: earnings = 9999
 
 	earnings_label.pivot_offset = earnings_label.size / 2.0
 	earnings_label.modulate.a = 0.0

@@ -137,14 +137,20 @@ metadata/_custom_type_script = "uid://b5ace8o0pllgp"
 
 [sub_resource type="Resource" id="Resource_4vdw8"]
 script = ExtResource("61_4vdw8")
-point_on_progress_bar_from_0_to_1 = 0.25
+point_on_progress_bar_from_0_to_1 = 0.15
 ticket_reward_amount = 10
 metadata/_custom_type_script = "uid://c5tlt0npn6e58"
 
 [sub_resource type="Resource" id="Resource_pt420"]
 script = ExtResource("61_4vdw8")
-point_on_progress_bar_from_0_to_1 = 0.6
+point_on_progress_bar_from_0_to_1 = 0.35
 ticket_reward_amount = 20
+metadata/_custom_type_script = "uid://c5tlt0npn6e58"
+
+[sub_resource type="Resource" id="Resource_8d66t"]
+script = ExtResource("61_4vdw8")
+point_on_progress_bar_from_0_to_1 = 0.75
+ticket_reward_amount = 30
 metadata/_custom_type_script = "uid://c5tlt0npn6e58"
 
 [sub_resource type="Resource" id="Resource_ah3if"]
@@ -152,7 +158,7 @@ script = ExtResource("12_v4agm")
 start_of_level_wheel_speed = 22.0
 min_piece_angle = 70
 max_piece_angle = 80
-ticket_points = Array[ExtResource("61_4vdw8")]([SubResource("Resource_4vdw8"), SubResource("Resource_pt420")])
+ticket_points = Array[ExtResource("61_4vdw8")]([SubResource("Resource_4vdw8"), SubResource("Resource_pt420"), SubResource("Resource_8d66t")])
 metadata/_custom_type_script = "uid://07iobwtecj2x"
 
 [sub_resource type="Resource" id="Resource_4ohmo"]
@@ -189,10 +195,23 @@ script = ExtResource("14_u244o")
 seconds = 5.0
 metadata/_custom_type_script = "uid://b05ipch7evaqh"
 
+[sub_resource type="Resource" id="Resource_juxqm"]
+script = ExtResource("61_4vdw8")
+point_on_progress_bar_from_0_to_1 = 0.3
+ticket_reward_amount = 30
+metadata/_custom_type_script = "uid://c5tlt0npn6e58"
+
+[sub_resource type="Resource" id="Resource_vkja6"]
+script = ExtResource("61_4vdw8")
+point_on_progress_bar_from_0_to_1 = 0.7
+ticket_reward_amount = 80
+metadata/_custom_type_script = "uid://c5tlt0npn6e58"
+
 [sub_resource type="Resource" id="Resource_js8sm"]
 script = ExtResource("12_v4agm")
 start_of_level_wheel_speed = 30.0
 min_piece_angle = 40
+ticket_points = Array[ExtResource("61_4vdw8")]([SubResource("Resource_juxqm"), SubResource("Resource_vkja6")])
 metadata/_custom_type_script = "uid://07iobwtecj2x"
 
 [sub_resource type="Resource" id="Resource_8oboy"]
@@ -231,8 +250,27 @@ script = ExtResource("14_u244o")
 seconds = 15.0
 metadata/_custom_type_script = "uid://b05ipch7evaqh"
 
+[sub_resource type="Resource" id="Resource_1mt81"]
+script = ExtResource("61_4vdw8")
+point_on_progress_bar_from_0_to_1 = 0.35
+ticket_reward_amount = 50
+metadata/_custom_type_script = "uid://c5tlt0npn6e58"
+
+[sub_resource type="Resource" id="Resource_6h4e3"]
+script = ExtResource("61_4vdw8")
+point_on_progress_bar_from_0_to_1 = 0.55
+ticket_reward_amount = 60
+metadata/_custom_type_script = "uid://c5tlt0npn6e58"
+
+[sub_resource type="Resource" id="Resource_lgjqy"]
+script = ExtResource("61_4vdw8")
+point_on_progress_bar_from_0_to_1 = 0.85
+ticket_reward_amount = 100
+metadata/_custom_type_script = "uid://c5tlt0npn6e58"
+
 [sub_resource type="Resource" id="Resource_u244o"]
 script = ExtResource("12_v4agm")
+ticket_points = Array[ExtResource("61_4vdw8")]([SubResource("Resource_1mt81"), SubResource("Resource_6h4e3"), SubResource("Resource_lgjqy")])
 metadata/_custom_type_script = "uid://07iobwtecj2x"
 
 [sub_resource type="Resource" id="Resource_fy12w"]
@@ -308,8 +346,21 @@ script = ExtResource("14_u244o")
 seconds = 2.0
 metadata/_custom_type_script = "uid://b05ipch7evaqh"
 
+[sub_resource type="Resource" id="Resource_mc37m"]
+script = ExtResource("61_4vdw8")
+point_on_progress_bar_from_0_to_1 = 0.5
+ticket_reward_amount = 150
+metadata/_custom_type_script = "uid://c5tlt0npn6e58"
+
+[sub_resource type="Resource" id="Resource_ksp86"]
+script = ExtResource("61_4vdw8")
+point_on_progress_bar_from_0_to_1 = 0.8
+ticket_reward_amount = 300
+metadata/_custom_type_script = "uid://c5tlt0npn6e58"
+
 [sub_resource type="Resource" id="Resource_go6uc"]
 script = ExtResource("12_v4agm")
+ticket_points = Array[ExtResource("61_4vdw8")]([SubResource("Resource_mc37m"), SubResource("Resource_ksp86")])
 metadata/_custom_type_script = "uid://07iobwtecj2x"
 
 [sub_resource type="Resource" id="Resource_m6uf5"]
@@ -355,9 +406,16 @@ spawn_velocity_max = 11.0
 spawn_objects = Array[PackedScene]([ExtResource("27_4ohmo")])
 metadata/_custom_type_script = "uid://bdrml4lpvd0hr"
 
+[sub_resource type="Resource" id="Resource_gmav6"]
+script = ExtResource("61_4vdw8")
+point_on_progress_bar_from_0_to_1 = 0.4
+ticket_reward_amount = 1000
+metadata/_custom_type_script = "uid://c5tlt0npn6e58"
+
 [sub_resource type="Resource" id="Resource_37bn8"]
 script = ExtResource("12_v4agm")
 start_of_level_wheel_speed = 50.0
+ticket_points = Array[ExtResource("61_4vdw8")]([SubResource("Resource_gmav6")])
 metadata/_custom_type_script = "uid://07iobwtecj2x"
 
 [sub_resource type="Resource" id="Resource_hvw5u"]

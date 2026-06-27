@@ -12,6 +12,8 @@ var progress_bar: TextureProgressBar
 var _progress_tween: Tween = null
 var _active_ticket_points: Array = []
 
+var _stopped: bool = false
+
 func _ready() -> void:
 	ticket_point_template = find_child("TicketPointTemplate", true, false)
 	ticket_point_template.hide()
@@ -20,7 +22,7 @@ func _ready() -> void:
 	ProgressBarGlobals.show_progress_bar.connect(show_progress_bar)
 	ProgressBarGlobals.hide_progress_bar.connect(hide_progress_bar)
 	ProgressBarGlobals.start_progress_bar.connect(start_progress_bar)
-
+	PlayerGlobals.game_over.connect(stop_progress_bar)
 	_hidden_y = position.y - slide_distance
 	_shown_y = position.y
 	hide_progress_bar()
@@ -46,13 +48,14 @@ func _play_tween(target_y: float) -> void:
 	_tween.tween_property(self, "position:y", target_y, slide_duration)
 
 func start_progress_bar():
+	_stopped = false
 	for point in _active_ticket_points:
 		var sprite: Node = point.get_child(0)
 		if sprite and sprite.has_method("remove"):
 			sprite.remove()
 		else:
 			point.queue_free()
-		_active_ticket_points.clear()
+	_active_ticket_points.clear()
 
 	show_progress_bar()
 	for ticket_point in ProgressBarGlobals.current_level_ticket_points:
@@ -73,11 +76,18 @@ func start_progress_bar():
 		var delay: float = total * ratio
 		_progress_tween.tween_callback(give_reward.bind(ticket_reward_amount)).set_delay(delay)
 
+func stop_progress_bar() -> void:
+	_stopped = true
+	if _progress_tween:
+		_progress_tween.kill()
+		_progress_tween = null
+
+
 func give_reward(ticket_reward_amount) -> void:
+	if _stopped: return
 	print("rewarding ", ticket_reward_amount, " tickets!")
 	PlayerGlobals.tickets += ticket_reward_amount
 
-	# Find the ticket point at this reward's progress ratio and remove its sprite
 	for point in _active_ticket_points:
 		var sprite: Node = point.get_child(0)
 		if sprite and sprite.has_method("remove"):
