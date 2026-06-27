@@ -46,6 +46,9 @@ signal set_player_collision_layers(layers: Array[int])
 @warning_ignore("unused_signal")
 signal play_i_frames_animation()
 
+@warning_ignore("unused_signal")
+signal transition_to_wheel_view
+
 
 # player movement stat change signals
 @warning_ignore("unused_signal")

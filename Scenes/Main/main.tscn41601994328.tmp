@@ -1,0 +1,1042 @@
+[gd_scene format=3 uid="uid://pcyvfvyj4lhu"]
+
+[ext_resource type="PackedScene" uid="uid://dyfwa0tin2osj" path="res://Assets/3D/Shop/Shop.fbx" id="1_1r6ip"]
+[ext_resource type="Script" uid="uid://bsdanp36lgo6r" path="res://Scenes/Main/main_camera.gd" id="1_hfg1r"]
+[ext_resource type="Script" uid="uid://dpwnp7ua6dd33" path="res://Scenes/Main/main_level_manager.gd" id="1_vk4q2"]
+[ext_resource type="Script" uid="uid://vfx4ojoy8phi" path="res://Scenes/Main/audio.gd" id="2_de47j"]
+[ext_resource type="AudioStream" uid="uid://birxmcds2l8mn" path="res://Assets/SFX/Spinner Ticks/spinner_tick_1.mp3" id="3_de47j"]
+[ext_resource type="PackedScene" uid="uid://doigq7nkfb887" path="res://Scenes/Prizes/Speed Prize/speed_prize.tscn" id="4_2a143"]
+[ext_resource type="PackedScene" uid="uid://dnp8jfq1nm1rg" path="res://Scenes/Prizes/Invincibility Frames/invincibility_frames_prize.tscn" id="4_5yls4"]
+[ext_resource type="AudioStream" uid="uid://cbcqkdok6kkne" path="res://Assets/SFX/Spinner Ticks/spinner_tick_2.mp3" id="4_ukqxg"]
+[ext_resource type="PackedScene" uid="uid://dqhsrngl043po" path="res://Scenes/PlayerCharacter/PlayerCharacter.tscn" id="5_2a143"]
+[ext_resource type="AudioStream" uid="uid://db84i1pf1k5i7" path="res://Assets/SFX/Spinner Ticks/spinner_tick_3.mp3" id="5_5poo1"]
+[ext_resource type="PackedScene" uid="uid://f84ucq2mqwcd" path="res://Scenes/Prizes/HP/hp_prize.tscn" id="5_p6jpk"]
+[ext_resource type="PackedScene" uid="uid://do2s7rajjiqji" path="res://Scenes/Prizes/Jump Prize/jump_prize.tscn" id="5_y3v7k"]
+[ext_resource type="PackedScene" uid="uid://bpc6exg8npidb" path="res://Scenes/Main/button.tscn" id="6_4e4y2"]
+[ext_resource type="AudioStream" uid="uid://b2480rsatrcfj" path="res://Assets/SFX/Spinner Ticks/spinner_tick_4.mp3" id="6_ff7xd"]
+[ext_resource type="Script" uid="uid://dm1qgwe8areex" path="res://Scenes/Main/prize_area.gd" id="7_2ok46"]
+[ext_resource type="AudioStream" uid="uid://51bwabodqaho" path="res://Assets/SFX/Spinner Ticks/spinner_tick_5.mp3" id="7_4vdw8"]
+[ext_resource type="PackedScene" uid="uid://b5f1b5xy70e7n" path="res://Scenes/Prizes/Bear Prize/bear_prize.tscn" id="7_6t3k2"]
+[ext_resource type="Script" uid="uid://bbj2grlpe44rp" path="res://Scenes/Main/Level Manager/level_manager.gd" id="8_4a3kt"]
+[ext_resource type="PackedScene" uid="uid://b1em8csmfsexr" path="res://Scenes/Rotating Platform/wheel_pivot.tscn" id="8_4o5wv"]
+[ext_resource type="AudioStream" uid="uid://b8m0ti2c1wwkn" path="res://Assets/SFX/Spinner Ticks/spinner_tick_6.mp3" id="8_pt420"]
+[ext_resource type="PackedScene" uid="uid://d2bdcu8nu61s5" path="res://Assets/3D/Shop/Wheel Board.fbx" id="8_y3v7k"]
+[ext_resource type="AudioStream" uid="uid://bqey5rsh77qfx" path="res://Assets/SFX/Spinner Ticks/spinner_tick_7.mp3" id="9_lgjqy"]
+[ext_resource type="Script" uid="uid://pj0ba6ig58n6" path="res://Scenes/Main/Level Manager/level_sequence.gd" id="10_ah3if"]
+[ext_resource type="PackedScene" uid="uid://b4fnn6bpkbu2h" path="res://Scenes/Rotating Platform/Walls/Easy/Wall_Easy_1.tscn" id="10_hvw5u"]
+[ext_resource type="Script" uid="uid://dertvnxrxb0pw" path="res://Scenes/Rotating Platform/game_over_area.gd" id="10_ifk88"]
+[ext_resource type="AudioStream" uid="uid://dww0nob64fubu" path="res://Assets/SFX/Spinner Ticks/spinner_tick_8.mp3" id="10_vkja6"]
+[ext_resource type="PackedScene" uid="uid://baw1uix7iyqtw" path="res://Scenes/Rotating Platform/Walls/Easy/Wall_Easy_2.tscn" id="11_go6uc"]
+[ext_resource type="AudioStream" uid="uid://6uebeo8v3l4e" path="res://Assets/SFX/Spinner Ticks/spinner_tick_9.mp3" id="11_juxqm"]
+[ext_resource type="Script" uid="uid://de137qjy7c1dc" path="res://Scenes/Main/Level Manager/Commands/base_level_command.gd" id="11_v4agm"]
+[ext_resource type="AudioStream" uid="uid://bw8encg3ohgyj" path="res://Assets/SFX/Footsteps/footstep_1.mp3" id="12_1mt81"]
+[ext_resource type="Script" uid="uid://dt0chq3fblt30" path="res://Scenes/Main/Level Manager/Commands/set_wall_gen_chance.gd" id="12_aq0wg"]
+[ext_resource type="PackedScene" uid="uid://qbtnacx63ba5" path="res://Scenes/Rotating Platform/Walls/Easy/Wall_Easy_3.tscn" id="12_m6uf5"]
+[ext_resource type="Script" uid="uid://07iobwtecj2x" path="res://Scenes/Main/Level Manager/startup_commands.gd" id="12_v4agm"]
+[ext_resource type="Script" uid="uid://baim3ol20wcky" path="res://Scenes/Main/Level Manager/base_level_data.gd" id="13_0uxpu"]
+[ext_resource type="AudioStream" uid="uid://5ybp7nc0iosv" path="res://Assets/SFX/Footsteps/footstep_2.mp3" id="13_6h4e3"]
+[ext_resource type="PackedScene" uid="uid://123l2hg2k7wf" path="res://Assets/3D/Falling Object Spawn Area.fbx" id="13_8sujb"]
+[ext_resource type="Script" uid="uid://bjnnr2txdcwt8" path="res://Scenes/Main/level_label.gd" id="13_es6iu"]
+[ext_resource type="Theme" uid="uid://bafby1ck50m6g" path="res://Assets/Fonts/bold.tres" id="14_1t20g"]
+[ext_resource type="Material" uid="uid://b7g0cvi0cqule" path="res://Assets/Materials/Main/PlayAreaHologram.tres" id="14_koken"]
+[ext_resource type="AudioStream" uid="uid://natbthqff8i" path="res://Assets/SFX/Footsteps/footstep_3.mp3" id="14_mc37m"]
+[ext_resource type="PackedScene" uid="uid://svwq44ho1jom" path="res://Scenes/Rotating Platform/Walls/Medium/Wall_Medium_2.tscn" id="14_nsdex"]
+[ext_resource type="Script" uid="uid://ycww5228my2g" path="res://Scenes/Main/falling_object_spawn_area.gd" id="14_tyqxl"]
+[ext_resource type="Script" uid="uid://b05ipch7evaqh" path="res://Scenes/Main/Level Manager/Commands/wait.gd" id="14_u244o"]
+[ext_resource type="Script" uid="uid://ca71mp28ce63t" path="res://Scenes/Main/Level Manager/Commands/set_piece_angle_sizes.gd" id="15_gw8t2"]
+[ext_resource type="AudioStream" uid="uid://c073lpe1e8pst" path="res://Assets/SFX/Footsteps/footstep_4.mp3" id="15_ksp86"]
+[ext_resource type="Script" uid="uid://d28puqtgo62cv" path="res://Scenes/Main/Level Manager/Commands/set_wheel_speed.gd" id="16_37bn8"]
+[ext_resource type="AudioStream" uid="uid://0qbmf1gxs513" path="res://Assets/SFX/Footsteps/footstep_5.mp3" id="16_gmav6"]
+[ext_resource type="Script" uid="uid://dl18y8xrw0wo" path="res://Scenes/Main/Level Manager/Commands/set_gap_chance.gd" id="16_u244o"]
+[ext_resource type="AudioStream" uid="uid://k4k67vto6qwb" path="res://Assets/SFX/Footsteps/footstep_6.mp3" id="17_cif1l"]
+[ext_resource type="Script" uid="uid://b5ace8o0pllgp" path="res://Scenes/Main/Level Manager/Commands/transition_wheel_speed.gd" id="17_gw8t2"]
+[ext_resource type="Script" uid="uid://snvonox4hd7s" path="res://Scenes/Rotating Platform/generate_piece.gd" id="18_1t20g"]
+[ext_resource type="AudioStream" uid="uid://bvs57ehvuweie" path="res://Assets/SFX/Footsteps/footstep_7.mp3" id="18_6otiq"]
+[ext_resource type="Script" uid="uid://10ojd2tyhwfj" path="res://Assets/Utility Scripts/hide_on_load.gd" id="18_c4b4r"]
+[ext_resource type="AudioStream" uid="uid://6fmnd5qd5u76" path="res://Assets/SFX/Footsteps/footstep_8.mp3" id="19_01rk5"]
+[ext_resource type="PackedScene" uid="uid://du77sfvvxj5ge" path="res://Scenes/Rotating Platform/Walls/Hard/Wall_Hard_1.tscn" id="19_go6uc"]
+[ext_resource type="PackedScene" uid="uid://dvmgy7jxf07fb" path="res://Scenes/Rotating Platform/piece_gen_template.tscn" id="19_tdwxr"]
+[ext_resource type="Script" uid="uid://dcvakcvd204wq" path="res://Scenes/Rotating Platform/wheel_controller.gd" id="20_4o5wv"]
+[ext_resource type="PackedScene" uid="uid://dyirvgfdkx3g8" path="res://Scenes/Rotating Platform/Walls/Hard/Wall_Hard_2.tscn" id="20_m6uf5"]
+[ext_resource type="AudioStream" uid="uid://dph10v5s154uu" path="res://Assets/SFX/Poofs/poof_1.mp3" id="20_trpbr"]
+[ext_resource type="AudioStream" uid="uid://d2longeq8nh6e" path="res://Assets/SFX/Poofs/poof_2.mp3" id="21_0c2tq"]
+[ext_resource type="PackedScene" uid="uid://b7njsl3eelwrt" path="res://Scenes/Rotating Platform/Walls/Hard/Wall_Hard_3.tscn" id="21_37bn8"]
+[ext_resource type="PackedScene" uid="uid://bbli41p8cji18" path="res://Scenes/Rotating Platform/Walls/Medium/Wall_Medium_1.tscn" id="22_eo50k"]
+[ext_resource type="AudioStream" uid="uid://d4br3bq07mnr2" path="res://Assets/SFX/Poofs/poof_3.mp3" id="22_jwbtt"]
+[ext_resource type="AudioStream" uid="uid://bp3mnryhoito7" path="res://Assets/SFX/Button/Button Press Down.mp3" id="23_gg4gf"]
+[ext_resource type="AudioStream" uid="uid://cn1r8pntpfus2" path="res://Assets/SFX/Button/Button Press Up.mp3" id="24_hl5wv"]
+[ext_resource type="PackedScene" uid="uid://ctbrwu3ny5qpg" path="res://Scenes/Rotating Platform/Walls/Hard/Wall_Hard_4.tscn" id="24_vae3x"]
+[ext_resource type="AudioStream" uid="uid://ruxigojqnrem" path="res://Assets/SFX/Results/Lose.mp3" id="25_ff7xd"]
+[ext_resource type="PackedScene" uid="uid://bnm2ofl4uw2q2" path="res://Scenes/Rotating Platform/Walls/Medium/Wall_Medium_3.tscn" id="25_h4gp5"]
+[ext_resource type="AudioStream" uid="uid://5fv2jqdyi7ad" path="res://Assets/SFX/Jump/Jump Landing.mp3" id="25_v3dpk"]
+[ext_resource type="AudioStream" uid="uid://cr7qkmfyoo0hc" path="res://Assets/SFX/Results/Win1.mp3" id="26_4vdw8"]
+[ext_resource type="AudioStream" uid="uid://dehiktwyj3ic3" path="res://Assets/SFX/Jump/Jump.mp3" id="26_e8ucg"]
+[ext_resource type="PackedScene" uid="uid://4kuv3e5aorkk" path="res://Scenes/Rotating Platform/Falling Objects/Ball.tscn" id="27_4ohmo"]
+[ext_resource type="Script" uid="uid://3g4gl211lrua" path="res://Scenes/Main/Level Manager/Commands/set_gap_sizes.gd" id="27_c8mgu"]
+[ext_resource type="AudioStream" uid="uid://beq2l7yt4fdwb" path="res://Assets/SFX/Purchase.mp3" id="27_koqfj"]
+[ext_resource type="AudioStream" uid="uid://c678wuybr35tn" path="res://Assets/SFX/Results/Win2.mp3" id="27_pt420"]
+[ext_resource type="Script" uid="uid://dv3ljwheewky6" path="res://Scenes/Main/Level Manager/Commands/spawn_falling_objects.gd" id="28_bnc1s"]
+[ext_resource type="AudioStream" uid="uid://bjink4wh5gbtb" path="res://Assets/SFX/Wall Hit.mp3" id="28_de47j"]
+[ext_resource type="AudioStream" uid="uid://codf74b87ilp" path="res://Assets/Music/Charivari_Music/L1_Intro.mp3" id="28_rkyyk"]
+[ext_resource type="AudioStream" uid="uid://xexipe3g6g5a" path="res://Assets/Music/Charivari_Music/L1_Loop.mp3" id="29_de47j"]
+[ext_resource type="AudioStream" uid="uid://s3xchhdedvbd" path="res://Assets/Music/Charivari_Music/L2_Intro.mp3" id="30_rkyyk"]
+[ext_resource type="AudioStream" uid="uid://m4si642urbu0" path="res://Assets/Music/Charivari_Music/L2_Loop.mp3" id="31_5poo1"]
+[ext_resource type="Script" uid="uid://bdrml4lpvd0hr" path="res://Scenes/Main/Level Manager/Commands/zen_mode.gd" id="31_bnc1s"]
+[ext_resource type="AudioStream" uid="uid://c3m825vf5p111" path="res://Assets/Music/Charivari_Music/L3_Intro.mp3" id="32_ff7xd"]
+[ext_resource type="AudioStream" uid="uid://cwg0oql8efqxu" path="res://Assets/Music/Charivari_Music/L3_Loop.mp3" id="33_4vdw8"]
+[ext_resource type="AudioStream" uid="uid://cmlkbe0j7lq6p" path="res://Assets/Music/Charivari_Music/L4_Intro.mp3" id="34_pt420"]
+[ext_resource type="AudioStream" uid="uid://cnmfehn2ixfyx" path="res://Assets/Music/Charivari_Music/L4_Loop.mp3" id="35_lgjqy"]
+[ext_resource type="AudioStream" uid="uid://ddn6pejjlgxri" path="res://Assets/Music/Charivari_Music/L5_Intro.mp3" id="36_vkja6"]
+[ext_resource type="AudioStream" uid="uid://dvarcw2wjpcn8" path="res://Assets/Music/Charivari_Music/L5_Loop.mp3" id="37_juxqm"]
+[ext_resource type="AudioStream" uid="uid://bflbwp5bqbgru" path="res://Assets/Music/Charivari_Music/Shop_Charivari.mp3" id="38_1mt81"]
+[ext_resource type="Script" uid="uid://c5tlt0npn6e58" path="res://Scenes/Main/Level Manager/Progress Bar/progress_bar_ticket_point.gd" id="61_4vdw8"]
+[ext_resource type="Script" uid="uid://chtjedoiw7kk0" path="res://Scenes/Main/fall_off_shop_area.gd" id="75_pt420"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1r6ip"]
+sky_top_color = Color(0.41741073, 0.7425163, 1, 1)
+sky_horizon_color = Color(0.66964287, 0.77976197, 1, 1)
+sky_curve = 0.11768766
+ground_bottom_color = Color(0.77455354, 0.98188376, 1, 1)
+ground_horizon_color = Color(0.70089287, 0.7993332, 1, 1)
+
+[sub_resource type="Sky" id="Sky_lixft"]
+sky_material = SubResource("ProceduralSkyMaterial_1r6ip")
+
+[sub_resource type="Environment" id="Environment_qw60k"]
+background_mode = 1
+background_color = Color(0.31026787, 0.7044003, 1, 1)
+sky = SubResource("Sky_lixft")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.9
+ssao_enabled = true
+ssao_radius = 6.57
+ssao_intensity = 12.2
+glow_intensity = 0.25
+glow_bloom = 1.0
+adjustment_contrast = 1.1
+
+[sub_resource type="Resource" id="Resource_1j4pb"]
+script = ExtResource("13_0uxpu")
+colors = Array[Color]([Color(1, 0.1941964, 0.1941964, 1), Color(1, 0.9712885, 0.19607842, 1), Color(0.22186844, 0.72098213, 0.10460677, 1), Color(0.19607842, 0.20325607, 1, 1)])
+walls = Array[PackedScene]([ExtResource("10_hvw5u"), ExtResource("11_go6uc"), ExtResource("12_m6uf5"), ExtResource("14_nsdex")])
+metadata/_custom_type_script = "uid://baim3ol20wcky"
+
+[sub_resource type="Resource" id="Resource_4rjtj"]
+script = ExtResource("15_gw8t2")
+new_min_angle_size = 25
+new_max_angle_size = 100
+metadata/_custom_type_script = "uid://ca71mp28ce63t"
+
+[sub_resource type="Resource" id="Resource_eo50k"]
+script = ExtResource("12_aq0wg")
+new_wall_gen_chance = 100
+metadata/_custom_type_script = "uid://dt0chq3fblt30"
+
+[sub_resource type="Resource" id="Resource_4veoy"]
+script = ExtResource("16_37bn8")
+metadata/_custom_type_script = "uid://d28puqtgo62cv"
+
+[sub_resource type="Resource" id="Resource_e4sw6"]
+script = ExtResource("17_gw8t2")
+target_speed = 45.0
+duration = 35.0
+metadata/_custom_type_script = "uid://b5ace8o0pllgp"
+
+[sub_resource type="Resource" id="Resource_4vdw8"]
+script = ExtResource("61_4vdw8")
+point_on_progress_bar_from_0_to_1 = 0.15
+ticket_reward_amount = 10
+metadata/_custom_type_script = "uid://c5tlt0npn6e58"
+
+[sub_resource type="Resource" id="Resource_pt420"]
+script = ExtResource("61_4vdw8")
+point_on_progress_bar_from_0_to_1 = 0.35
+ticket_reward_amount = 20
+metadata/_custom_type_script = "uid://c5tlt0npn6e58"
+
+[sub_resource type="Resource" id="Resource_8d66t"]
+script = ExtResource("61_4vdw8")
+point_on_progress_bar_from_0_to_1 = 0.75
+ticket_reward_amount = 30
+metadata/_custom_type_script = "uid://c5tlt0npn6e58"
+
+[sub_resource type="Resource" id="Resource_ah3if"]
+script = ExtResource("12_v4agm")
+start_of_level_wheel_speed = 22.0
+min_piece_angle = 70
+max_piece_angle = 80
+ticket_points = Array[ExtResource("61_4vdw8")]([SubResource("Resource_4vdw8"), SubResource("Resource_pt420"), SubResource("Resource_8d66t")])
+metadata/_custom_type_script = "uid://07iobwtecj2x"
+
+[sub_resource type="Resource" id="Resource_4ohmo"]
+script = ExtResource("10_ah3if")
+level_name = "Carnival Fun"
+base_level_data = SubResource("Resource_1j4pb")
+startup_commands = SubResource("Resource_ah3if")
+commands = Array[ExtResource("11_v4agm")]([SubResource("Resource_4rjtj"), SubResource("Resource_eo50k"), SubResource("Resource_4veoy"), SubResource("Resource_e4sw6")])
+metadata/_custom_type_script = "uid://pj0ba6ig58n6"
+
+[sub_resource type="Resource" id="Resource_0uxpu"]
+script = ExtResource("13_0uxpu")
+colors = Array[Color]([Color(0.1254902, 0.73333335, 0.14901961, 1), Color(0.91, 0.40950006, 0, 1), Color(0.25490198, 0.1254902, 0.7294118, 1), Color(0.2, 0.39607844, 0.20784314, 1), Color(0.23137255, 0.1882353, 0.15294118, 1)])
+walls = Array[PackedScene]([ExtResource("10_hvw5u"), ExtResource("22_eo50k"), ExtResource("14_nsdex"), ExtResource("12_m6uf5"), ExtResource("11_go6uc")])
+metadata/_custom_type_script = "uid://baim3ol20wcky"
+
+[sub_resource type="Resource" id="Resource_gw8t2"]
+script = ExtResource("12_aq0wg")
+new_wall_gen_chance = 70
+metadata/_custom_type_script = "uid://dt0chq3fblt30"
+
+[sub_resource type="Resource" id="Resource_nsdex"]
+script = ExtResource("16_u244o")
+new_gap_chance = 20
+metadata/_custom_type_script = "uid://dl18y8xrw0wo"
+
+[sub_resource type="Resource" id="Resource_bnc1s"]
+script = ExtResource("17_gw8t2")
+duration = 45.0
+metadata/_custom_type_script = "uid://b5ace8o0pllgp"
+
+[sub_resource type="Resource" id="Resource_vae3x"]
+script = ExtResource("14_u244o")
+seconds = 5.0
+metadata/_custom_type_script = "uid://b05ipch7evaqh"
+
+[sub_resource type="Resource" id="Resource_juxqm"]
+script = ExtResource("61_4vdw8")
+point_on_progress_bar_from_0_to_1 = 0.3
+ticket_reward_amount = 30
+metadata/_custom_type_script = "uid://c5tlt0npn6e58"
+
+[sub_resource type="Resource" id="Resource_vkja6"]
+script = ExtResource("61_4vdw8")
+point_on_progress_bar_from_0_to_1 = 0.7
+ticket_reward_amount = 80
+metadata/_custom_type_script = "uid://c5tlt0npn6e58"
+
+[sub_resource type="Resource" id="Resource_js8sm"]
+script = ExtResource("12_v4agm")
+start_of_level_wheel_speed = 30.0
+min_piece_angle = 40
+ticket_points = Array[ExtResource("61_4vdw8")]([SubResource("Resource_juxqm"), SubResource("Resource_vkja6")])
+metadata/_custom_type_script = "uid://07iobwtecj2x"
+
+[sub_resource type="Resource" id="Resource_8oboy"]
+script = ExtResource("10_ah3if")
+level_name = "Carnivorous Fun"
+base_level_data = SubResource("Resource_0uxpu")
+startup_commands = SubResource("Resource_js8sm")
+commands = Array[ExtResource("11_v4agm")]([SubResource("Resource_gw8t2"), SubResource("Resource_nsdex"), SubResource("Resource_bnc1s"), SubResource("Resource_vae3x")])
+metadata/_custom_type_script = "uid://pj0ba6ig58n6"
+
+[sub_resource type="Resource" id="Resource_h4gp5"]
+script = ExtResource("13_0uxpu")
+colors = Array[Color]([Color(0.28235295, 0.3019608, 0.98039216, 1), Color(0.24313726, 0.2627451, 0.8392157, 1), Color(0.19607843, 0.21176471, 0.6784314, 1), Color(0.14901961, 0.16470589, 0.52156866, 1), Color(0.105882354, 0.11372549, 0.36078432, 1), Color(0.14901961, 0.16470589, 0.52156866, 1), Color(0.19607843, 0.21176471, 0.6784314, 1), Color(0.24313726, 0.2627451, 0.8392157, 1)])
+walls = Array[PackedScene]([ExtResource("10_hvw5u"), ExtResource("24_vae3x"), ExtResource("11_go6uc"), ExtResource("22_eo50k"), ExtResource("24_vae3x"), ExtResource("24_vae3x"), ExtResource("14_nsdex"), ExtResource("25_h4gp5"), ExtResource("12_m6uf5")])
+metadata/_custom_type_script = "uid://baim3ol20wcky"
+
+[sub_resource type="Resource" id="Resource_c8mgu"]
+script = ExtResource("15_gw8t2")
+new_min_angle_size = 45
+new_max_angle_size = 90
+metadata/_custom_type_script = "uid://ca71mp28ce63t"
+
+[sub_resource type="Resource" id="Resource_gw1lt"]
+script = ExtResource("12_aq0wg")
+new_wall_gen_chance = 65
+metadata/_custom_type_script = "uid://dt0chq3fblt30"
+
+[sub_resource type="Resource" id="Resource_pmku7"]
+script = ExtResource("17_gw8t2")
+target_speed = 75.0
+duration = 45.0
+metadata/_custom_type_script = "uid://b5ace8o0pllgp"
+
+[sub_resource type="Resource" id="Resource_ow7bd"]
+script = ExtResource("14_u244o")
+seconds = 15.0
+metadata/_custom_type_script = "uid://b05ipch7evaqh"
+
+[sub_resource type="Resource" id="Resource_1mt81"]
+script = ExtResource("61_4vdw8")
+point_on_progress_bar_from_0_to_1 = 0.35
+ticket_reward_amount = 50
+metadata/_custom_type_script = "uid://c5tlt0npn6e58"
+
+[sub_resource type="Resource" id="Resource_6h4e3"]
+script = ExtResource("61_4vdw8")
+point_on_progress_bar_from_0_to_1 = 0.55
+ticket_reward_amount = 60
+metadata/_custom_type_script = "uid://c5tlt0npn6e58"
+
+[sub_resource type="Resource" id="Resource_lgjqy"]
+script = ExtResource("61_4vdw8")
+point_on_progress_bar_from_0_to_1 = 0.85
+ticket_reward_amount = 100
+metadata/_custom_type_script = "uid://c5tlt0npn6e58"
+
+[sub_resource type="Resource" id="Resource_u244o"]
+script = ExtResource("12_v4agm")
+ticket_points = Array[ExtResource("61_4vdw8")]([SubResource("Resource_1mt81"), SubResource("Resource_6h4e3"), SubResource("Resource_lgjqy")])
+metadata/_custom_type_script = "uid://07iobwtecj2x"
+
+[sub_resource type="Resource" id="Resource_fy12w"]
+script = ExtResource("10_ah3if")
+level_name = "Wave Ride"
+base_level_data = SubResource("Resource_h4gp5")
+startup_commands = SubResource("Resource_u244o")
+commands = Array[ExtResource("11_v4agm")]([SubResource("Resource_c8mgu"), SubResource("Resource_gw1lt"), SubResource("Resource_pmku7"), SubResource("Resource_ow7bd")])
+metadata/_custom_type_script = "uid://pj0ba6ig58n6"
+
+[sub_resource type="Resource" id="Resource_fiicg"]
+script = ExtResource("13_0uxpu")
+colors = Array[Color]([Color(0.09803922, 0.05882353, 0.62352943, 1), Color(0.61960787, 0.5254902, 0.03137255, 1), Color(0.14117648, 0.1254902, 0.36862746, 1), Color(0.9490196, 0.83137256, 0.19607843, 1), Color(0.12156863, 0.11764706, 0.2, 1)])
+walls = Array[PackedScene]([ExtResource("24_vae3x"), ExtResource("12_m6uf5"), ExtResource("11_go6uc"), ExtResource("10_hvw5u"), ExtResource("14_nsdex"), ExtResource("22_eo50k"), ExtResource("25_h4gp5"), ExtResource("19_go6uc"), ExtResource("22_eo50k"), ExtResource("14_nsdex")])
+metadata/_custom_type_script = "uid://baim3ol20wcky"
+
+[sub_resource type="Resource" id="Resource_dw0e8"]
+script = ExtResource("16_u244o")
+new_gap_chance = 15
+metadata/_custom_type_script = "uid://dl18y8xrw0wo"
+
+[sub_resource type="Resource" id="Resource_giosv"]
+script = ExtResource("16_37bn8")
+metadata/_custom_type_script = "uid://d28puqtgo62cv"
+
+[sub_resource type="Resource" id="Resource_v3nl7"]
+script = ExtResource("27_c8mgu")
+new_min_gap_angle_size = 15
+new_max_gap_angle_size = 35
+metadata/_custom_type_script = "uid://3g4gl211lrua"
+
+[sub_resource type="Resource" id="Resource_xhr70"]
+script = ExtResource("12_aq0wg")
+new_wall_gen_chance = 55
+metadata/_custom_type_script = "uid://dt0chq3fblt30"
+
+[sub_resource type="Resource" id="Resource_qp3dn"]
+script = ExtResource("28_bnc1s")
+quantity = 25
+spawn_objects_over_this_many_seconds = 90.0
+objects = Array[PackedScene]([ExtResource("27_4ohmo")])
+max_spawn_velocity = 10.0
+metadata/_custom_type_script = "uid://dv3ljwheewky6"
+
+[sub_resource type="Resource" id="Resource_vnf10"]
+script = ExtResource("17_gw8t2")
+target_speed = 100.0
+duration = 15.0
+metadata/_custom_type_script = "uid://b5ace8o0pllgp"
+
+[sub_resource type="Resource" id="Resource_bq7c0"]
+script = ExtResource("14_u244o")
+seconds = 5.0
+metadata/_custom_type_script = "uid://b05ipch7evaqh"
+
+[sub_resource type="Resource" id="Resource_uklyp"]
+script = ExtResource("17_gw8t2")
+duration = 15.0
+metadata/_custom_type_script = "uid://b5ace8o0pllgp"
+
+[sub_resource type="Resource" id="Resource_ji84r"]
+script = ExtResource("14_u244o")
+seconds = 5.0
+metadata/_custom_type_script = "uid://b05ipch7evaqh"
+
+[sub_resource type="Resource" id="Resource_n806l"]
+script = ExtResource("17_gw8t2")
+target_speed = 125.0
+metadata/_custom_type_script = "uid://b5ace8o0pllgp"
+
+[sub_resource type="Resource" id="Resource_wyvfc"]
+script = ExtResource("14_u244o")
+seconds = 2.0
+metadata/_custom_type_script = "uid://b05ipch7evaqh"
+
+[sub_resource type="Resource" id="Resource_mc37m"]
+script = ExtResource("61_4vdw8")
+point_on_progress_bar_from_0_to_1 = 0.5
+ticket_reward_amount = 150
+metadata/_custom_type_script = "uid://c5tlt0npn6e58"
+
+[sub_resource type="Resource" id="Resource_ksp86"]
+script = ExtResource("61_4vdw8")
+point_on_progress_bar_from_0_to_1 = 0.8
+ticket_reward_amount = 300
+metadata/_custom_type_script = "uid://c5tlt0npn6e58"
+
+[sub_resource type="Resource" id="Resource_go6uc"]
+script = ExtResource("12_v4agm")
+ticket_points = Array[ExtResource("61_4vdw8")]([SubResource("Resource_mc37m"), SubResource("Resource_ksp86")])
+metadata/_custom_type_script = "uid://07iobwtecj2x"
+
+[sub_resource type="Resource" id="Resource_m6uf5"]
+script = ExtResource("10_ah3if")
+level_name = "Midnight Festival"
+base_level_data = SubResource("Resource_fiicg")
+startup_commands = SubResource("Resource_go6uc")
+commands = Array[ExtResource("11_v4agm")]([SubResource("Resource_dw0e8"), SubResource("Resource_giosv"), SubResource("Resource_v3nl7"), SubResource("Resource_xhr70"), SubResource("Resource_qp3dn"), SubResource("Resource_vnf10"), SubResource("Resource_bq7c0"), SubResource("Resource_uklyp"), SubResource("Resource_ji84r"), SubResource("Resource_n806l"), SubResource("Resource_wyvfc")])
+metadata/_custom_type_script = "uid://pj0ba6ig58n6"
+
+[sub_resource type="Resource" id="Resource_xbfr0"]
+script = ExtResource("13_0uxpu")
+colors = Array[Color]([Color(0.9372549, 0.003921569, 0, 1), Color(0.7411765, 0.14901961, 0.14901961, 1), Color(0.5411765, 0.21568628, 0.21568628, 1), Color(0.34117648, 0.20392157, 0.20392157, 1), Color(0.2, 0.16078432, 0.16078432, 1), Color(0.34117648, 0.20392157, 0.20392157, 1), Color(0.5411765, 0.21568628, 0.21568628, 1), Color(0.7411765, 0.14901961, 0.14901961, 1)])
+walls = Array[PackedScene]([ExtResource("19_go6uc"), ExtResource("20_m6uf5"), ExtResource("21_37bn8"), ExtResource("22_eo50k"), ExtResource("14_nsdex"), ExtResource("25_h4gp5"), ExtResource("19_go6uc"), ExtResource("24_vae3x"), ExtResource("24_vae3x")])
+metadata/_custom_type_script = "uid://baim3ol20wcky"
+
+[sub_resource type="Resource" id="Resource_7bsre"]
+script = ExtResource("12_aq0wg")
+new_wall_gen_chance = 20
+metadata/_custom_type_script = "uid://dt0chq3fblt30"
+
+[sub_resource type="Resource" id="Resource_5dnw0"]
+script = ExtResource("31_bnc1s")
+min_interval = 2.0
+max_interval = 10.0
+min_gap_angle_size_max = 20
+max_gap_angle_size_min = 25
+max_gap_angle_size_max = 50
+min_piece_angle_min = 20
+max_piece_angle_max = 120
+wall_gen_chance_min = 25
+wall_gen_chance_max = 95
+speed_min = 30.0
+speed_max = 150.0
+transition_duration_max = 35.0
+enable_spawning = true
+spawn_quantity_min = 5
+spawn_quantity_max = 25
+spawn_over_seconds_min = 30.0
+spawn_over_seconds_max = 61.0
+spawn_velocity_min = 2.0
+spawn_velocity_max = 11.0
+spawn_objects = Array[PackedScene]([ExtResource("27_4ohmo")])
+metadata/_custom_type_script = "uid://bdrml4lpvd0hr"
+
+[sub_resource type="Resource" id="Resource_gmav6"]
+script = ExtResource("61_4vdw8")
+point_on_progress_bar_from_0_to_1 = 0.4
+ticket_reward_amount = 1000
+metadata/_custom_type_script = "uid://c5tlt0npn6e58"
+
+[sub_resource type="Resource" id="Resource_37bn8"]
+script = ExtResource("12_v4agm")
+start_of_level_wheel_speed = 50.0
+ticket_points = Array[ExtResource("61_4vdw8")]([SubResource("Resource_gmav6")])
+metadata/_custom_type_script = "uid://07iobwtecj2x"
+
+[sub_resource type="Resource" id="Resource_hvw5u"]
+script = ExtResource("10_ah3if")
+level_name = "Flammable"
+base_level_data = SubResource("Resource_xbfr0")
+startup_commands = SubResource("Resource_37bn8")
+commands = Array[ExtResource("11_v4agm")]([SubResource("Resource_7bsre"), SubResource("Resource_5dnw0")])
+metadata/_custom_type_script = "uid://pj0ba6ig58n6"
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_4vdw8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4a3kt"]
+size = Vector3(51.099854, 82.620514, 13.621078)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_8sujb"]
+data = PackedVector3Array(0, 0, 0, 11.4191, 0, 13.9142, 10.3158, 0, 14.7325, 0, 0, 0, 0, 0, -18, 11.4191, 0, 13.9142, 0, 0, -18, 1.7643, 0, -17.9133, 11.4191, 0, 13.9142, 1.7643, 0, -17.9133, 3.5116, 0, -17.6541, 11.4191, 0, 13.9142, 3.5116, 0, -17.6541, 5.2251, 0, -17.2249, 11.4191, 0, 13.9142, 5.2251, 0, -17.2249, 6.8883, 0, -16.629799, 11.4191, 0, 13.9142, 6.8883, 0, -16.629799, 8.4851, 0, -15.874599, 11.4191, 0, 13.9142, 8.4851, 0, -15.874599, 10.000299, 0, -14.966499, 11.4191, 0, 13.9142, 10.000299, 0, -14.966499, 11.4191, 0, -13.9142, 11.4191, 0, 13.9142, 11.4191, 0, -13.9142, 12.7279, 0, -12.7279, 11.4191, 0, 13.9142, 12.7279, 0, -12.7279, 13.9142, 0, -11.4191, 11.4191, 0, 13.9142, 13.9142, 0, -11.4191, 14.966499, 0, -10.000299, 11.4191, 0, 13.9142, 14.966499, 0, -10.000299, 15.874599, 0, -8.4851, 11.4191, 0, 13.9142, 15.874599, 0, -8.4851, 16.629799, 0, -6.8883, 11.4191, 0, 13.9142, 16.629799, 0, -6.8883, 17.2249, 0, -5.2251, 11.4191, 0, 13.9142, 17.2249, 0, -5.2251, 17.6541, 0, -3.5116, 11.4191, 0, 13.9142, 17.6541, 0, -3.5116, 17.9133, 0, -1.7643, 11.4191, 0, 13.9142, 17.9133, 0, -1.7643, 18, 0, 0, 11.4191, 0, 13.9142, 18, 0, 0, 17.9133, 0, 1.7643, 11.4191, 0, 13.9142, 17.9133, 0, 1.7643, 17.6541, 0, 3.5116, 11.4191, 0, 13.9142, 17.6541, 0, 3.5116, 17.2249, 0, 5.2251, 11.4191, 0, 13.9142, 17.2249, 0, 5.2251, 16.629799, 0, 6.8883, 11.4191, 0, 13.9142, 16.629799, 0, 6.8883, 15.874599, 0, 8.4851, 11.4191, 0, 13.9142, 15.874599, 0, 8.4851, 14.966499, 0, 10.000299, 11.4191, 0, 13.9142, 14.966499, 0, 10.000299, 13.9142, 0, 11.4191, 11.4191, 0, 13.9142, 13.9142, 0, 11.4191, 12.7279, 0, 12.7279, 11.4191, 0, 13.9142)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wliom"]
+size = Vector3(66.72644, 3.8933697, 8.959991)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2ok46"]
+size = Vector3(22.446716, 3.8933697, 17.211678)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6t3k2"]
+size = Vector3(22.552734, 3.8933697, 8.776489)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_tdwxr"]
+viewport_path = NodePath("LevelPivot/Shop/PlayArea/LevelLabel/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c4b4r"]
+
+[sub_resource type="Gradient" id="Gradient_es6iu"]
+offsets = PackedFloat32Array(0.0027173914, 1)
+colors = PackedColorArray(1, 1, 1, 0.078431375, 1, 1, 1, 0.078431375)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_c4b4r"]
+gradient = SubResource("Gradient_es6iu")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_es6iu"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+albedo_texture = SubResource("GradientTexture1D_c4b4r")
+
+[sub_resource type="QuadMesh" id="QuadMesh_vvcby"]
+material = SubResource("StandardMaterial3D_es6iu")
+size = Vector2(9.55, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_es6iu"]
+material = ExtResource("14_koken")
+size = Vector2(10.738, 18)
+
+[sub_resource type="QuadMesh" id="QuadMesh_koken"]
+material = ExtResource("14_koken")
+size = Vector2(6.2, 18)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_koken"]
+size = Vector3(10.738281, 3.9669342, 6.2000003)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hfg1r"]
+size = Vector3(79.72221, 1.5944442, 21.256598)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_imbg2"]
+size = Vector3(79.72221, 65.372215, 2.8250542)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_imbg2"]
+data = PackedVector3Array(36.0503, 81.545296, 6.9996996, 36.0503, 1.7803999, 6.9996996, 32.85, 1.7803999, 6.9996996, 32.85, 1.7803999, 6.9996996, 32.85, 81.545296, 6.9996996, 36.0503, 81.545296, 6.9996996, 32.85, 81.545296, 6.9996996, 32.85, 81.545296, 3.7993999, 36.0503, 81.545296, 3.7993999, 36.0503, 81.545296, 3.7993999, 36.0503, 81.545296, 6.9996996, 32.85, 81.545296, 6.9996996, 32.85, 81.545296, 3.7993999, 32.85, 1.7803999, 3.7993999, 36.0503, 1.7803999, 3.7993999, 36.0503, 1.7803999, 3.7993999, 36.0503, 81.545296, 3.7993999, 32.85, 81.545296, 3.7993999, 36.0503, 81.545296, 3.7993999, 36.0503, 1.7803999, 3.7993999, 36.0503, 1.7803999, 6.9996996, 36.0503, 1.7803999, 6.9996996, 36.0503, 81.545296, 6.9996996, 36.0503, 81.545296, 3.7993999, 32.85, 81.545296, 6.9996996, 32.85, 1.7803999, 6.9996996, 32.85, 1.7803999, 3.7993999, 32.85, 1.7803999, 3.7993999, 32.85, 81.545296, 3.7993999, 32.85, 81.545296, 6.9996996, -36.0503, 81.545296, 6.9996996, -32.85, 81.545296, 6.9996996, -32.85, 1.7803999, 6.9996996, -32.85, 1.7803999, 6.9996996, -36.0503, 1.7803999, 6.9996996, -36.0503, 81.545296, 6.9996996, -32.85, 81.545296, 6.9996996, -36.0503, 81.545296, 6.9996996, -36.0503, 81.545296, 3.7993999, -36.0503, 81.545296, 3.7993999, -32.85, 81.545296, 3.7993999, -32.85, 81.545296, 6.9996996, -32.85, 81.545296, 3.7993999, -36.0503, 81.545296, 3.7993999, -36.0503, 1.7803999, 3.7993999, -36.0503, 1.7803999, 3.7993999, -32.85, 1.7803999, 3.7993999, -32.85, 81.545296, 3.7993999, -36.0503, 81.545296, 3.7993999, -36.0503, 81.545296, 6.9996996, -36.0503, 1.7803999, 6.9996996, -36.0503, 1.7803999, 6.9996996, -36.0503, 1.7803999, 3.7993999, -36.0503, 81.545296, 3.7993999, -32.85, 81.545296, 6.9996996, -32.85, 81.545296, 3.7993999, -32.85, 1.7803999, 3.7993999, -32.85, 1.7803999, 3.7993999, -32.85, 1.7803999, 6.9996996, -32.85, 81.545296, 6.9996996, 31.898998, 1.7803999, 2.8485, 31.898998, 1.7803999, 7.9507, 31.2612, 0, 8.5885, 31.2612, 0, 8.5885, 31.2612, 0, 2.2107, 31.898998, 1.7803999, 2.8485, 37.001198, 1.7803999, 2.8485, 31.898998, 1.7803999, 2.8485, 31.2612, 0, 2.2107, 31.2612, 0, 2.2107, 37.639, 0, 2.2107, 37.001198, 1.7803999, 2.8485, 37.639, 0, 8.5885, 37.001198, 1.7803999, 7.9507, 37.001198, 1.7803999, 2.8485, 37.001198, 1.7803999, 2.8485, 37.639, 0, 2.2107, 37.639, 0, 8.5885, 31.2612, 0, 8.5885, 31.898998, 1.7803999, 7.9507, 37.001198, 1.7803999, 7.9507, 37.001198, 1.7803999, 7.9507, 37.639, 0, 8.5885, 31.2612, 0, 8.5885, 37.639, 0, 8.5885, 37.639, 0, 2.2107, 31.2612, 0, 2.2107, 31.2612, 0, 2.2107, 31.2612, 0, 8.5885, 37.639, 0, 8.5885, 31.898998, 1.7803999, 2.8485, 32.85, 1.7803999, 3.7993999, 32.85, 1.7803999, 6.9996996, 32.85, 1.7803999, 6.9996996, 31.898998, 1.7803999, 7.9507, 31.898998, 1.7803999, 2.8485, 31.898998, 1.7803999, 7.9507, 32.85, 1.7803999, 6.9996996, 36.0503, 1.7803999, 6.9996996, 36.0503, 1.7803999, 6.9996996, 37.001198, 1.7803999, 7.9507, 31.898998, 1.7803999, 7.9507, 37.001198, 1.7803999, 7.9507, 36.0503, 1.7803999, 6.9996996, 36.0503, 1.7803999, 3.7993999, 36.0503, 1.7803999, 3.7993999, 37.001198, 1.7803999, 2.8485, 37.001198, 1.7803999, 7.9507, 37.001198, 1.7803999, 2.8485, 36.0503, 1.7803999, 3.7993999, 32.85, 1.7803999, 3.7993999, 32.85, 1.7803999, 3.7993999, 31.898998, 1.7803999, 2.8485, 37.001198, 1.7803999, 2.8485, -31.898998, 1.7803999, 2.8485, -31.2612, 0, 2.2107, -31.2612, 0, 8.5885, -31.2612, 0, 8.5885, -31.898998, 1.7803999, 7.9507, -31.898998, 1.7803999, 2.8485, -37.001198, 1.7803999, 2.8485, -37.639, 0, 2.2107, -31.2612, 0, 2.2107, -31.2612, 0, 2.2107, -31.898998, 1.7803999, 2.8485, -37.001198, 1.7803999, 2.8485, -37.001198, 1.7803999, 2.8485, -37.001198, 1.7803999, 7.9507, -37.639, 0, 8.5885, -37.639, 0, 8.5885, -37.639, 0, 2.2107, -37.001198, 1.7803999, 2.8485, -37.001198, 1.7803999, 7.9507, -31.898998, 1.7803999, 7.9507, -31.2612, 0, 8.5885, -31.2612, 0, 8.5885, -37.639, 0, 8.5885, -37.001198, 1.7803999, 7.9507, -37.639, 0, 8.5885, -31.2612, 0, 8.5885, -31.2612, 0, 2.2107, -31.2612, 0, 2.2107, -37.639, 0, 2.2107, -37.639, 0, 8.5885, -31.898998, 1.7803999, 2.8485, -31.898998, 1.7803999, 7.9507, -32.85, 1.7803999, 6.9996996, -32.85, 1.7803999, 6.9996996, -32.85, 1.7803999, 3.7993999, -31.898998, 1.7803999, 2.8485, -37.001198, 1.7803999, 2.8485, -31.898998, 1.7803999, 2.8485, -32.85, 1.7803999, 3.7993999, -32.85, 1.7803999, 3.7993999, -36.0503, 1.7803999, 3.7993999, -37.001198, 1.7803999, 2.8485, -37.001198, 1.7803999, 7.9507, -37.001198, 1.7803999, 2.8485, -36.0503, 1.7803999, 3.7993999, -36.0503, 1.7803999, 3.7993999, -36.0503, 1.7803999, 6.9996996, -37.001198, 1.7803999, 7.9507, -31.898998, 1.7803999, 7.9507, -37.001198, 1.7803999, 7.9507, -36.0503, 1.7803999, 6.9996996, -36.0503, 1.7803999, 6.9996996, -32.85, 1.7803999, 6.9996996, -31.898998, 1.7803999, 7.9507)
+
+[node name="Main" type="Node3D" unique_id=224682750 node_paths=PackedStringArray("play_area_hologram", "play_area")]
+script = ExtResource("1_vk4q2")
+play_area_hologram = NodePath("LevelPivot/Shop/PlayArea/Hologram")
+play_area = NodePath("LevelPivot/Shop/PlayArea/PlayArea")
+
+[node name="Audio" type="Node" parent="." unique_id=767990636]
+script = ExtResource("2_de47j")
+
+[node name="SFX" type="Node" parent="Audio" unique_id=155445693]
+
+[node name="SpinnerTicks" type="Node" parent="Audio/SFX" unique_id=1140848162]
+
+[node name="SpinnerTick1" type="AudioStreamPlayer" parent="Audio/SFX/SpinnerTicks" unique_id=1049328652]
+stream = ExtResource("3_de47j")
+volume_db = -3.0
+pitch_scale = 0.8
+max_polyphony = 8
+bus = &"SFX"
+
+[node name="SpinnerTick2" type="AudioStreamPlayer" parent="Audio/SFX/SpinnerTicks" unique_id=410797673]
+stream = ExtResource("4_ukqxg")
+volume_db = -3.0
+pitch_scale = 0.8
+max_polyphony = 8
+bus = &"SFX"
+
+[node name="SpinnerTick3" type="AudioStreamPlayer" parent="Audio/SFX/SpinnerTicks" unique_id=113348439]
+stream = ExtResource("5_5poo1")
+volume_db = -3.0
+pitch_scale = 0.8
+max_polyphony = 8
+bus = &"SFX"
+
+[node name="SpinnerTick4" type="AudioStreamPlayer" parent="Audio/SFX/SpinnerTicks" unique_id=54504546]
+stream = ExtResource("6_ff7xd")
+volume_db = -3.0
+pitch_scale = 0.8
+max_polyphony = 8
+bus = &"SFX"
+
+[node name="SpinnerTick5" type="AudioStreamPlayer" parent="Audio/SFX/SpinnerTicks" unique_id=375740330]
+stream = ExtResource("7_4vdw8")
+volume_db = -3.0
+pitch_scale = 0.8
+max_polyphony = 8
+bus = &"SFX"
+
+[node name="SpinnerTick6" type="AudioStreamPlayer" parent="Audio/SFX/SpinnerTicks" unique_id=1305934834]
+stream = ExtResource("8_pt420")
+volume_db = -3.0
+pitch_scale = 0.8
+max_polyphony = 8
+bus = &"SFX"
+
+[node name="SpinnerTick7" type="AudioStreamPlayer" parent="Audio/SFX/SpinnerTicks" unique_id=112562024]
+stream = ExtResource("9_lgjqy")
+volume_db = -3.0
+pitch_scale = 0.8
+max_polyphony = 8
+bus = &"SFX"
+
+[node name="SpinnerTick8" type="AudioStreamPlayer" parent="Audio/SFX/SpinnerTicks" unique_id=220140518]
+stream = ExtResource("10_vkja6")
+volume_db = -3.0
+pitch_scale = 0.8
+max_polyphony = 8
+bus = &"SFX"
+
+[node name="SpinnerTick9" type="AudioStreamPlayer" parent="Audio/SFX/SpinnerTicks" unique_id=1365059261]
+stream = ExtResource("11_juxqm")
+volume_db = -3.0
+pitch_scale = 0.8
+max_polyphony = 8
+bus = &"SFX"
+
+[node name="Footsteps" type="Node" parent="Audio/SFX" unique_id=1425921017]
+
+[node name="Footstep1" type="AudioStreamPlayer" parent="Audio/SFX/Footsteps" unique_id=898010949]
+stream = ExtResource("12_1mt81")
+pitch_scale = 0.2
+bus = &"Footsteps"
+
+[node name="Footstep2" type="AudioStreamPlayer" parent="Audio/SFX/Footsteps" unique_id=1361387143]
+stream = ExtResource("13_6h4e3")
+pitch_scale = 0.2
+bus = &"Footsteps"
+
+[node name="Footstep3" type="AudioStreamPlayer" parent="Audio/SFX/Footsteps" unique_id=1208068592]
+stream = ExtResource("14_mc37m")
+pitch_scale = 0.2
+bus = &"Footsteps"
+
+[node name="Footstep4" type="AudioStreamPlayer" parent="Audio/SFX/Footsteps" unique_id=878752048]
+stream = ExtResource("15_ksp86")
+pitch_scale = 0.2
+bus = &"Footsteps"
+
+[node name="Footstep5" type="AudioStreamPlayer" parent="Audio/SFX/Footsteps" unique_id=1238894147]
+stream = ExtResource("16_gmav6")
+pitch_scale = 0.2
+bus = &"Footsteps"
+
+[node name="Footstep6" type="AudioStreamPlayer" parent="Audio/SFX/Footsteps" unique_id=1348100736]
+stream = ExtResource("17_cif1l")
+pitch_scale = 0.2
+bus = &"Footsteps"
+
+[node name="Footstep7" type="AudioStreamPlayer" parent="Audio/SFX/Footsteps" unique_id=2031142159]
+stream = ExtResource("18_6otiq")
+pitch_scale = 0.2
+bus = &"Footsteps"
+
+[node name="Footstep8" type="AudioStreamPlayer" parent="Audio/SFX/Footsteps" unique_id=2042038614]
+stream = ExtResource("19_01rk5")
+pitch_scale = 0.2
+bus = &"Footsteps"
+
+[node name="Poofs" type="Node" parent="Audio/SFX" unique_id=788344890]
+
+[node name="Poof1" type="AudioStreamPlayer" parent="Audio/SFX/Poofs" unique_id=623487251]
+stream = ExtResource("20_trpbr")
+volume_db = -12.522
+pitch_scale = 1.2
+bus = &"SFX"
+
+[node name="Poof2" type="AudioStreamPlayer" parent="Audio/SFX/Poofs" unique_id=1305661985]
+stream = ExtResource("21_0c2tq")
+pitch_scale = 0.7
+bus = &"SFX"
+
+[node name="Poof3" type="AudioStreamPlayer" parent="Audio/SFX/Poofs" unique_id=1247713004]
+stream = ExtResource("22_jwbtt")
+bus = &"SFX"
+
+[node name="Button" type="Node" parent="Audio/SFX" unique_id=505739390]
+
+[node name="ButtonPressDown" type="AudioStreamPlayer" parent="Audio/SFX/Button" unique_id=1920155667]
+stream = ExtResource("23_gg4gf")
+volume_db = -8.986
+pitch_scale = 0.53
+bus = &"SFX"
+
+[node name="ButtonPressUp" type="AudioStreamPlayer" parent="Audio/SFX/Button" unique_id=210121235]
+stream = ExtResource("24_hl5wv")
+volume_db = -8.986
+pitch_scale = 0.53
+bus = &"SFX"
+
+[node name="Jump" type="Node" parent="Audio/SFX" unique_id=1436670442]
+
+[node name="JumpLanding" type="AudioStreamPlayer" parent="Audio/SFX/Jump" unique_id=2136203158]
+stream = ExtResource("25_v3dpk")
+volume_db = 8.397
+pitch_scale = 1.04
+bus = &"Footsteps"
+
+[node name="StartJump" type="AudioStreamPlayer" parent="Audio/SFX/Jump" unique_id=301477140]
+stream = ExtResource("26_e8ucg")
+volume_db = 5.0
+pitch_scale = 0.9
+bus = &"Footsteps"
+
+[node name="Results" type="Node" parent="Audio/SFX" unique_id=1538597388]
+
+[node name="Lose" type="AudioStreamPlayer" parent="Audio/SFX/Results" unique_id=364384077]
+stream = ExtResource("25_ff7xd")
+volume_db = -3.5
+bus = &"SFX"
+
+[node name="Win1" type="AudioStreamPlayer" parent="Audio/SFX/Results" unique_id=566158007]
+stream = ExtResource("26_4vdw8")
+bus = &"SFX"
+
+[node name="Win2" type="AudioStreamPlayer" parent="Audio/SFX/Results" unique_id=1754758563]
+stream = ExtResource("27_pt420")
+volume_db = -14.0
+bus = &"SFX"
+
+[node name="Purchase" type="AudioStreamPlayer" parent="Audio/SFX" unique_id=1375403643]
+stream = ExtResource("27_koqfj")
+volume_db = -16.924
+bus = &"SFX"
+
+[node name="WallHit" type="AudioStreamPlayer" parent="Audio/SFX" unique_id=820389931]
+stream = ExtResource("28_de47j")
+volume_db = -13.0
+max_polyphony = 4
+bus = &"WallHit"
+
+[node name="Music" type="Node" parent="Audio" unique_id=41645939]
+
+[node name="Charivari Music" type="Node" parent="Audio/Music" unique_id=1847206937]
+
+[node name="L1Intro" type="AudioStreamPlayer" parent="Audio/Music/Charivari Music" unique_id=909165290]
+stream = ExtResource("28_rkyyk")
+bus = &"Music"
+
+[node name="L1Loop" type="AudioStreamPlayer" parent="Audio/Music/Charivari Music" unique_id=1576231652]
+stream = ExtResource("29_de47j")
+bus = &"Music"
+
+[node name="L2Intro" type="AudioStreamPlayer" parent="Audio/Music/Charivari Music" unique_id=1405404241]
+stream = ExtResource("30_rkyyk")
+bus = &"Music"
+
+[node name="L2Loop" type="AudioStreamPlayer" parent="Audio/Music/Charivari Music" unique_id=1790102714]
+stream = ExtResource("31_5poo1")
+bus = &"Music"
+
+[node name="L3Intro" type="AudioStreamPlayer" parent="Audio/Music/Charivari Music" unique_id=694008103]
+stream = ExtResource("32_ff7xd")
+bus = &"Music"
+
+[node name="L3Loop" type="AudioStreamPlayer" parent="Audio/Music/Charivari Music" unique_id=1079399734]
+stream = ExtResource("33_4vdw8")
+bus = &"Music"
+
+[node name="L4Intro" type="AudioStreamPlayer" parent="Audio/Music/Charivari Music" unique_id=2097538318]
+stream = ExtResource("34_pt420")
+bus = &"Music"
+
+[node name="L4Loop" type="AudioStreamPlayer" parent="Audio/Music/Charivari Music" unique_id=179859892]
+stream = ExtResource("35_lgjqy")
+bus = &"Music"
+
+[node name="L5Intro" type="AudioStreamPlayer" parent="Audio/Music/Charivari Music" unique_id=266207981]
+stream = ExtResource("36_vkja6")
+bus = &"Music"
+
+[node name="L5Loop" type="AudioStreamPlayer" parent="Audio/Music/Charivari Music" unique_id=209282259]
+stream = ExtResource("37_juxqm")
+bus = &"Music"
+
+[node name="ShopCharivari" type="AudioStreamPlayer" parent="Audio/Music/Charivari Music" unique_id=1390490565]
+stream = ExtResource("38_1mt81")
+bus = &"Music"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=643451075]
+environment = SubResource("Environment_qw60k")
+
+[node name="PlayerCharacter" parent="." unique_id=1881213073 groups=["Player"] instance=ExtResource("5_2a143")]
+transform = Transform3D(-1.5, 0, -1.3113416e-07, 0, 1.5, 0, 1.3113416e-07, 0, -1.5, -0.06946415, 0, 8.476346)
+
+[node name="WheelScripts" type="Node" parent="." unique_id=1601265247]
+
+[node name="GeneratePiece" type="Node" parent="WheelScripts" unique_id=368381978]
+script = ExtResource("18_1t20g")
+piece_gen_template_scene = ExtResource("19_tdwxr")
+
+[node name="WheelController" type="Node" parent="WheelScripts" unique_id=1587187306]
+script = ExtResource("20_4o5wv")
+
+[node name="LevelManager" type="Node" parent="." unique_id=139858581]
+script = ExtResource("8_4a3kt")
+ball = ExtResource("27_4ohmo")
+levels = Array[ExtResource("10_ah3if")]([SubResource("Resource_4ohmo"), SubResource("Resource_8oboy"), SubResource("Resource_fy12w"), SubResource("Resource_m6uf5"), SubResource("Resource_hvw5u")])
+
+[node name="LevelPivot" type="Node3D" parent="." unique_id=1949748406]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="LevelPivot" unique_id=533654568]
+transform = Transform3D(-0.81648403, -0.43541235, 0.3791701, -0.28319916, 0.8743137, 0.39417493, -0.50314224, 0.21445686, -0.83717155, 0, 0, 0)
+light_energy = 0.02
+shadow_enabled = true
+shadow_bias = 0.0
+shadow_normal_bias = 1.447
+
+[node name="MainCamera" type="Camera3D" parent="LevelPivot" unique_id=1331169492 node_paths=PackedStringArray("player", "zoom_pos", "playing_pos")]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 2.489, -7.052)
+current = true
+fov = 65.0
+script = ExtResource("1_hfg1r")
+player = NodePath("../../PlayerCharacter")
+zoom_pos = NodePath("../WheelViewCamera")
+playing_pos = NodePath("../PlayingViewCamera")
+max_smooth_speed_x = null
+max_smooth_speed_z = null
+max_transition_speed = null
+acceleration = null
+base_z_offset = -15.0
+z_breach_threshold = null
+zoomed_in_z_offset = null
+
+[node name="Label3D" type="Label3D" parent="LevelPivot/MainCamera" unique_id=1930640292]
+billboard = 1
+no_depth_test = true
+outline_modulate = Color(0.80133927, 0.0053660907, 0.0053660907, 1)
+text = "MainCamera"
+font_size = 70
+outline_size = 36
+script = ExtResource("18_c4b4r")
+
+[node name="WheelViewCamera" type="Camera3D" parent="LevelPivot" unique_id=582228753]
+transform = Transform3D(-1, 2.990035e-08, -8.215054e-08, 0, 0.9396926, 0.34202015, 8.742278e-08, 0.34202012, -0.9396927, 0, 8.025671, -15.005909)
+fov = 65.0
+
+[node name="PlayingViewCamera" type="Camera3D" parent="LevelPivot" unique_id=903720488]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -10.780413, -16.434547)
+fov = 65.0
+
+[node name="Label3D" type="Label3D" parent="LevelPivot/PlayingViewCamera" unique_id=2106373984]
+transform = Transform3D(1, 0, 6.3573026e-08, 0, 1, 0, -6.3573026e-08, 0, 1, 0, 0, 0)
+billboard = 1
+no_depth_test = true
+outline_modulate = Color(0.80133927, 0.0053660907, 0.0053660907, 1)
+text = "PlayingViewCamera
+"
+font_size = 70
+outline_size = 36
+script = ExtResource("18_c4b4r")
+
+[node name="FallOffShopArea" type="Area3D" parent="LevelPivot" unique_id=22343349]
+script = ExtResource("75_pt420")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelPivot/FallOffShopArea" unique_id=103726467]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5800496, 0)
+shape = SubResource("WorldBoundaryShape3D_4vdw8")
+debug_color = Color(1, 0.75, 0, 0.41960785)
+
+[node name="GameOverArea" type="Area3D" parent="LevelPivot" unique_id=417944345]
+collision_mask = 3
+script = ExtResource("10_ifk88")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelPivot/GameOverArea" unique_id=1367155727]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2412109, -43.329216, 9.83996)
+shape = SubResource("BoxShape3D_4a3kt")
+debug_color = Color(1, 0, 0, 1)
+
+[node name="WheelPivot" parent="LevelPivot" unique_id=1333064656 instance=ExtResource("8_4o5wv")]
+transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, -22.429012, 2.3)
+
+[node name="Wheel Area" parent="LevelPivot" unique_id=844042927 instance=ExtResource("8_y3v7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1964708)
+
+[node name="Wheel" parent="LevelPivot/Wheel Area" index="2" unique_id=2030928217]
+visible = false
+
+[node name="Falling Object Spawn Area" type="Area3D" parent="LevelPivot" unique_id=113948750]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -22.429012, -19.880497)
+script = ExtResource("14_tyqxl")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="LevelPivot/Falling Object Spawn Area" unique_id=1224576926]
+transform = Transform3D(-4.371139e-08, 4.371139e-08, -1, 1, 1.9106855e-15, -4.371139e-08, 0, -1, -4.371139e-08, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_8sujb")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="Falling Object Spawn Area" parent="LevelPivot/Falling Object Spawn Area" unique_id=998989406 instance=ExtResource("13_8sujb")]
+transform = Transform3D(-4.371139e-08, 4.371139e-08, -1, 1, 1.9106855e-15, -4.371139e-08, 0, -1, -4.371139e-08, 0, 0, 0)
+visible = false
+
+[node name="Shop" type="Node3D" parent="LevelPivot" unique_id=407977296]
+
+[node name="PrizeArea" type="Area3D" parent="LevelPivot/Shop" unique_id=1926756228]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5889311)
+script = ExtResource("7_2ok46")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelPivot/Shop/PrizeArea" unique_id=346782699]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7588501, 1.8187246, 15.370141)
+shape = SubResource("BoxShape3D_wliom")
+debug_color = Color(1, 0.87053573, 0, 0.41960785)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="LevelPivot/Shop/PrizeArea" unique_id=857644521]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.898712, 1.8187246, 11.244298)
+shape = SubResource("BoxShape3D_2ok46")
+debug_color = Color(1, 0.87053573, 0, 0.41960785)
+
+[node name="ZoomArea" type="Area3D" parent="LevelPivot/Shop" unique_id=1632722335]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5889311)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelPivot/Shop/ZoomArea" unique_id=2063383922]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8187246, 4.135155)
+shape = SubResource("BoxShape3D_6t3k2")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="Prizes" type="Node3D" parent="LevelPivot/Shop" unique_id=242406510]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.065692425, 0)
+
+[node name="HP_Prize" parent="LevelPivot/Shop/Prizes" unique_id=1220233561 instance=ExtResource("5_p6jpk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.028084, 0.065692425, 13.813984)
+
+[node name="Speed_Prize" parent="LevelPivot/Shop/Prizes" unique_id=1849157300 instance=ExtResource("4_2a143")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.575, 0.06569219, 13.974)
+
+[node name="Jump_Prize" parent="LevelPivot/Shop/Prizes" unique_id=1661532089 instance=ExtResource("5_y3v7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.792, 0.0656929, 13.224)
+
+[node name="Invincibility Frames Prize" parent="LevelPivot/Shop/Prizes" unique_id=715589344 instance=ExtResource("4_5yls4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.009, 0.06569147, 13.807)
+
+[node name="Bear_Prize" parent="LevelPivot/Shop/Prizes" unique_id=2124177430 instance=ExtResource("7_6t3k2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.157011, 0.06569052, 12.855449)
+
+[node name="PlayArea" type="Node3D" parent="LevelPivot/Shop" unique_id=1770834204]
+
+[node name="LevelLabel" type="Sprite3D" parent="LevelPivot/Shop/PlayArea" unique_id=913388059]
+transform = Transform3D(-1, -8.742278e-08, -3.821371e-15, 0, -4.371139e-08, 1, -8.742278e-08, 1, 4.371139e-08, 0, 0.017, 4.642288)
+texture = SubResource("ViewportTexture_tdwxr")
+script = ExtResource("13_es6iu")
+
+[node name="SubViewport" type="SubViewport" parent="LevelPivot/Shop/PlayArea/LevelLabel" unique_id=1280651029]
+transparent_bg = true
+size = Vector2i(948, 512)
+render_target_update_mode = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LevelPivot/Shop/PlayArea/LevelLabel/SubViewport" unique_id=899687854]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelPivot/Shop/PlayArea/LevelLabel/SubViewport/HBoxContainer" unique_id=1047248915]
+layout_mode = 2
+theme_override_constants/separation = -105
+alignment = 1
+
+[node name="LevelText" type="RichTextLabel" parent="LevelPivot/Shop/PlayArea/LevelLabel/SubViewport/HBoxContainer/VBoxContainer" unique_id=992163410]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("14_1t20g")
+theme_override_font_sizes/normal_font_size = 193
+bbcode_enabled = true
+text = "LEVEL 1"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RewardText" type="RichTextLabel" parent="LevelPivot/Shop/PlayArea/LevelLabel/SubViewport/HBoxContainer/VBoxContainer" unique_id=1797996583]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("14_1t20g")
+theme_override_font_sizes/normal_font_size = 150
+bbcode_enabled = true
+text = "[img=150x0]res://Assets/2D/Ticket Black Stroke.png[/img] 100"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Outline" type="CSGCombiner3D" parent="LevelPivot/Shop/PlayArea" unique_id=1468410776]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.007, 4.640184)
+
+[node name="Box" type="CSGBox3D" parent="LevelPivot/Shop/PlayArea/Outline" unique_id=2006158604]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0015258789, 0)
+size = Vector3(10.738281, 0.020629883, 6.2000003)
+material = SubResource("StandardMaterial3D_c4b4r")
+
+[node name="Cutout" type="CSGBox3D" parent="LevelPivot/Shop/PlayArea/Outline" unique_id=858462903]
+operation = 2
+size = Vector3(9.439697, 0.25402832, 5)
+
+[node name="Hologram" type="Node3D" parent="LevelPivot/Shop/PlayArea" unique_id=1559618590]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, -0.005399704, 0.0038264897, 3.7601845)
+
+[node name="Floor" type="MeshInstance3D" parent="LevelPivot/Shop/PlayArea/Hologram" unique_id=544222071]
+transform = Transform3D(1, 0, 0, 0, -7.5916404e-08, 0.33333334, 0, -5.2102947, -4.371139e-08, -0.008743763, 0.0053333337, 0.89042306)
+mesh = SubResource("QuadMesh_vvcby")
+
+[node name="FrontWall" type="MeshInstance3D" parent="LevelPivot/Shop/PlayArea/Hologram" unique_id=541683669]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.00549984, 9.005, -2.22)
+mesh = SubResource("QuadMesh_es6iu")
+
+[node name="BackWall" type="MeshInstance3D" parent="LevelPivot/Shop/PlayArea/Hologram" unique_id=582679071]
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 0.0052996785, 9.005, 3.9799984)
+mesh = SubResource("QuadMesh_es6iu")
+
+[node name="LeftWall" type="MeshInstance3D" parent="LevelPivot/Shop/PlayArea/Hologram" unique_id=1934099075]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5.3745, 9.005, 0.8799994)
+mesh = SubResource("QuadMesh_koken")
+
+[node name="RightWall" type="MeshInstance3D" parent="LevelPivot/Shop/PlayArea/Hologram" unique_id=544922854]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.3637004, 9.005, 0.8799994)
+mesh = SubResource("QuadMesh_koken")
+
+[node name="PlayArea" type="Area3D" parent="LevelPivot/Shop/PlayArea" unique_id=180217539]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8808527)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelPivot/Shop/PlayArea/PlayArea" unique_id=576144320]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.981678, 3.7593312)
+shape = SubResource("BoxShape3D_koken")
+
+[node name="Previous Button" parent="LevelPivot/Shop/PlayArea" unique_id=1282772521 instance=ExtResource("6_4e4y2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.086308, 0, 4.604212)
+left_button = true
+
+[node name="Next Button" parent="LevelPivot/Shop/PlayArea" unique_id=2050255989 instance=ExtResource("6_4e4y2")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -7.9810905, 0, 4.604212)
+right_button = true
+
+[node name="Shop Mesh" parent="LevelPivot/Shop" unique_id=725113405 instance=ExtResource("1_1r6ip")]
+
+[node name="Floor" parent="LevelPivot/Shop/Shop Mesh" index="3" unique_id=1323032207]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0005631447, 0.01571107, 0.00493598)
+
+[node name="Collision" type="StaticBody3D" parent="LevelPivot/Shop" unique_id=1433688602]
+
+[node name="FloorCollision" type="CollisionShape3D" parent="LevelPivot/Shop/Collision" unique_id=1804849550]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7972222, 10.628299)
+shape = SubResource("BoxShape3D_hfg1r")
+
+[node name="BackWallCollision" type="CollisionShape3D" parent="LevelPivot/Shop/Collision" unique_id=806549317]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32.686108, 19.856825)
+shape = SubResource("BoxShape3D_imbg2")
+
+[node name="PillarsCollision" type="CollisionShape3D" parent="LevelPivot/Shop/Collision" unique_id=1530746489]
+shape = SubResource("ConcavePolygonShape3D_imbg2")
+
+[node name="StartGameSpawnPoint" type="Marker3D" parent="LevelPivot" unique_id=1298321872]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.879338, -10.597897, -1.6179976)
+
+[node name="Label3D" type="Label3D" parent="LevelPivot/StartGameSpawnPoint" unique_id=1046203512]
+billboard = 1
+no_depth_test = true
+outline_modulate = Color(0.80133927, 0.0053660907, 0.0053660907, 1)
+text = "StartGameSpawnPoint
+"
+font_size = 70
+outline_size = 36
+script = ExtResource("18_c4b4r")
+
+[node name="ShopSpawnPoint" type="Marker3D" parent="LevelPivot" unique_id=597088145]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.06946415, 0, 8.476346)
+
+[node name="Label3D" type="Label3D" parent="LevelPivot/ShopSpawnPoint" unique_id=2020855105]
+billboard = 1
+no_depth_test = true
+outline_modulate = Color(0.80133927, 0.0053660907, 0.0053660907, 1)
+text = "ShopSpawnPoint
+"
+font_size = 70
+outline_size = 36
+script = ExtResource("18_c4b4r")
+
+[connection signal="body_entered" from="LevelPivot/FallOffShopArea" to="LevelPivot/FallOffShopArea" method="_on_body_entered"]
+[connection signal="body_entered" from="LevelPivot/GameOverArea" to="LevelPivot/GameOverArea" method="_on_body_entered"]
+[connection signal="body_entered" from="LevelPivot/Shop/PrizeArea" to="LevelPivot/Shop/PrizeArea" method="_on_body_entered"]
+[connection signal="body_exited" from="LevelPivot/Shop/PrizeArea" to="LevelPivot/Shop/PrizeArea" method="_on_body_exited"]
+[connection signal="body_entered" from="LevelPivot/Shop/ZoomArea" to="LevelPivot/MainCamera" method="_on_zoom_area_body_entered"]
+[connection signal="body_exited" from="LevelPivot/Shop/ZoomArea" to="LevelPivot/MainCamera" method="_on_zoom_area_body_exited"]
+[connection signal="body_entered" from="LevelPivot/Shop/PlayArea/PlayArea" to="." method="_on_play_area_body_entered"]
+[connection signal="body_exited" from="LevelPivot/Shop/PlayArea/PlayArea" to="." method="_on_play_area_body_exited"]
+
+[editable path="LevelPivot/Wheel Area"]
+[editable path="LevelPivot/Falling Object Spawn Area/Falling Object Spawn Area"]
+[editable path="LevelPivot/Shop/Shop Mesh"]

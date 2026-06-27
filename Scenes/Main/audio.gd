@@ -194,7 +194,7 @@ func play_level_music(fade_in_time: float = 3):
 	_current_loop = loop
 
 	var original_intro_db = intro.volume_db
-	intro.volume_db -= 5
+	intro.volume_db -= 2
 	intro.play()
 	create_tween().tween_property(intro, "volume_db", original_intro_db, fade_in_time)
 

@@ -132,6 +132,7 @@ func reset_game():
 
 	$LevelPivot/MainCamera.detached_from_player = false
 	$LevelPivot/MainCamera.toggle_playing_camera(false)
+	PlayerGlobals.transition_to_wheel_view.emit()
 	await WheelGlobals.speed_transition(WheelGlobals.preview_rotation_speed, 1)
 	AudioGlobals.play_shop_music.emit()
 
