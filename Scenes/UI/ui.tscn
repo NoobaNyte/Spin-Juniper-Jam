@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://d1bijfxlordby" path="res://Scenes/UI/ticket_icon.gd" id="12_fy0us"]
 [ext_resource type="Texture2D" uid="uid://bywxyf6ehlx2j" path="res://Assets/2D/Progress Bar Star.png" id="12_vy225"]
 [ext_resource type="Script" uid="uid://dt54fr7184b5t" path="res://Scenes/UI/win_screen.gd" id="14_h6tq4"]
+[ext_resource type="Script" uid="uid://c7jbw86hjym88" path="res://Scenes/UI/play_button.gd" id="15_t7te2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_de23q"]
 bg_color = Color(0.04241073, 0.02669604, 0, 0.67058825)
@@ -39,6 +40,14 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 40, 0, 0, 0, 0, 1405, 40)
 }
 point_count = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h6tq4"]
+bg_color = Color(0, 0, 0, 0.54509807)
+border_width_left = 30
+border_width_top = 30
+border_width_right = 30
+border_width_bottom = 30
+border_color = Color(0, 0, 0, 0.54509807)
 
 [node name="UI" type="CanvasLayer" unique_id=841098919]
 
@@ -235,6 +244,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 step = 0.001
+value = 100.0
 nine_patch_stretch = true
 texture_under = SubResource("GradientTexture1D_t7te2")
 texture_progress = SubResource("GradientTexture1D_h6tq4")
@@ -253,8 +263,8 @@ texture = ExtResource("11_pmm6b")
 script = ExtResource("12_fy0us")
 
 [node name="End" type="PathFollow2D" parent="ProgressBar/VBoxContainer/HBoxContainer/Bar/Path2D" unique_id=1612816820]
-position = Vector2(1405, 40)
-progress = 1405.0
+position = Vector2(1403.3463, 40)
+progress = 1403.033
 
 [node name="TicketIcon" type="Sprite2D" parent="ProgressBar/VBoxContainer/HBoxContainer/Bar/Path2D/End" unique_id=1753149814]
 scale = Vector2(0.25, 0.25)
@@ -319,3 +329,20 @@ text = " 9999"
 fit_content = true
 autowrap_mode = 0
 vertical_alignment = 1
+
+[node name="PlayButton" type="CenterContainer" parent="." unique_id=1650841530]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ahcct")
+script = ExtResource("15_t7te2")
+
+[node name="RecaptureButton" type="Button" parent="PlayButton" unique_id=1420759472]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_h6tq4")
+text = "PLAY"
+
+[connection signal="pressed" from="PlayButton/RecaptureButton" to="PlayButton" method="_on_recapture_button_pressed"]

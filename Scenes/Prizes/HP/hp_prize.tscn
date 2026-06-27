@@ -20,7 +20,7 @@ quantity_in_stock = 4
 price = 100
 price_2 = 250
 price_3 = 650
-price_4 = 1500
+price_4 = 1400
 item_name = "Health Boost"
 item_description = "Makes it harder to kill you by augmenting your life."
 

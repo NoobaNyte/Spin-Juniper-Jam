@@ -16,12 +16,12 @@ radius = 4.0
 [node name="Jump_Prize" unique_id=2124177430 instance=ExtResource("1_2gxeh")]
 script = ExtResource("2_qiirr")
 price = 50
-price_2 = 180
-price_3 = 350
+price_2 = 110
+price_3 = 200
 price_4 = 500
-price_5 = 800
+price_5 = 700
 item_name = "Jump Boost"
-item_description = "Increases your max jump height"
+item_description = "Increases your max jump height."
 
 [node name="PriceLabel" parent="Overlays" parent_id_path=PackedInt32Array(998585642) index="0" unique_id=1926436885]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.2763696, 0)

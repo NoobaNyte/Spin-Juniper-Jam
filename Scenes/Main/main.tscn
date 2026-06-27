@@ -325,7 +325,7 @@ metadata/_custom_type_script = "uid://dv3ljwheewky6"
 
 [sub_resource type="Resource" id="Resource_vnf10"]
 script = ExtResource("17_gw8t2")
-target_speed = 100.0
+target_speed = 85.0
 duration = 15.0
 metadata/_custom_type_script = "uid://b5ace8o0pllgp"
 
@@ -336,6 +336,7 @@ metadata/_custom_type_script = "uid://b05ipch7evaqh"
 
 [sub_resource type="Resource" id="Resource_uklyp"]
 script = ExtResource("17_gw8t2")
+target_speed = 65.0
 duration = 15.0
 metadata/_custom_type_script = "uid://b5ace8o0pllgp"
 
@@ -346,12 +347,12 @@ metadata/_custom_type_script = "uid://b05ipch7evaqh"
 
 [sub_resource type="Resource" id="Resource_n806l"]
 script = ExtResource("17_gw8t2")
-target_speed = 125.0
+target_speed = 100.0
 metadata/_custom_type_script = "uid://b5ace8o0pllgp"
 
 [sub_resource type="Resource" id="Resource_wyvfc"]
 script = ExtResource("14_u244o")
-seconds = 2.0
+seconds = 0.3
 metadata/_custom_type_script = "uid://b05ipch7evaqh"
 
 [sub_resource type="Resource" id="Resource_mc37m"]
@@ -667,7 +668,7 @@ bus = &"SFX"
 
 [node name="Win2" type="AudioStreamPlayer" parent="Audio/SFX/Results" unique_id=1754758563]
 stream = ExtResource("27_pt420")
-volume_db = -14.0
+volume_db = -13.0
 bus = &"SFX"
 
 [node name="Purchase" type="AudioStreamPlayer" parent="Audio/SFX" unique_id=1375403643]

@@ -17,9 +17,9 @@ radius = 4.5
 script = ExtResource("2_yxrll")
 quantity_in_stock = 4
 price = 180
-price_2 = 450
-price_3 = 1000
-price_4 = 1500
+price_2 = 380
+price_3 = 700
+price_4 = 1200
 item_name = "Immunity Boost"
 item_description = "Gives you a greater window of time after getting hurt before you can take damage."
 

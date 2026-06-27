@@ -166,7 +166,7 @@ func play_level_music(fade_in_time: float = 3):
 			intro = find_child("L5Intro", true, false)
 			loop = find_child("L5Loop", true, false)
 			intro_to_loop_offset = 0.05
-			loop_to_loop_offset = 0.125
+			loop_to_loop_offset = 0.16
 		_:
 			intro = find_child("L1Intro", true, false)
 			loop = find_child("L1Loop", true, false)

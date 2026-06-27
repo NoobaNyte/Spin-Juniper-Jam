@@ -16,10 +16,10 @@ radius = 3.25
 [node name="Speed_Prize" unique_id=2124177430 instance=ExtResource("1_2gxeh")]
 script = ExtResource("2_lbh1i")
 price = 60
-price_2 = 150
-price_3 = 430
-price_4 = 800
-price_5 = 1200
+price_2 = 130
+price_3 = 230
+price_4 = 370
+price_5 = 550
 item_name = "Speed Boost"
 item_description = "Increases your max speed and acceleration."
 

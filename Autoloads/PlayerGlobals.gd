@@ -102,7 +102,7 @@ var tickets: int = 0:
 	set(value):
 		tickets = value
 		update_tickets.emit(tickets)
-var starting_tickets: int = 10000 # set higher to start with more for dev testing
+var starting_tickets: int = 0 # set higher to start with more for dev testing
 
 var total_levels: int = 5
 var selected_level: int = 1: # this number is the default selected level - ALSO SETS PREVIEW STATS
