@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://2boaxcwk78e6" path="res://Assets/2D/Ticket Black Stroke.png" id="11_pmm6b"]
 [ext_resource type="Script" uid="uid://d1bijfxlordby" path="res://Scenes/UI/ticket_icon.gd" id="12_fy0us"]
 [ext_resource type="Texture2D" uid="uid://bywxyf6ehlx2j" path="res://Assets/2D/Progress Bar Star.png" id="12_vy225"]
+[ext_resource type="Script" uid="uid://dt54fr7184b5t" path="res://Scenes/UI/win_screen.gd" id="14_h6tq4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_de23q"]
 bg_color = Color(0.04241073, 0.02669604, 0, 0.67058825)
@@ -258,3 +259,63 @@ progress = 1405.0
 [node name="TicketIcon" type="Sprite2D" parent="ProgressBar/VBoxContainer/HBoxContainer/Bar/Path2D/End" unique_id=1753149814]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("12_vy225")
+
+[node name="WinScreen" type="MarginContainer" parent="." unique_id=1199140620]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ahcct")
+script = ExtResource("14_h6tq4")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="WinScreen" unique_id=1274050974]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WinScreen/HBoxContainer" unique_id=147619561]
+layout_mode = 2
+theme_override_constants/separation = -3
+alignment = 1
+
+[node name="LevelCompleteLabel" type="RichTextLabel" parent="WinScreen/HBoxContainer/VBoxContainer" unique_id=74914177]
+custom_minimum_size = Vector2(1920, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/outline_size = 45
+theme_override_font_sizes/normal_font_size = 125
+text = "LEVEL COMPLETE!"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EarningsLabel" type="HBoxContainer" parent="WinScreen/HBoxContainer/VBoxContainer" unique_id=858381516]
+layout_mode = 2
+offset_transform_enabled = true
+theme_override_constants/separation = -75
+alignment = 1
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="WinScreen/HBoxContainer/VBoxContainer/EarningsLabel" unique_id=1810057991]
+custom_minimum_size = Vector2(308.1, 0)
+layout_mode = 2
+theme_override_constants/outline_size = 45
+theme_override_font_sizes/normal_font_size = 115
+bbcode_enabled = true
+text = "+[img=130x0]res://Assets/2D/Ticket Black Stroke.png[/img]"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EarningsText" type="RichTextLabel" parent="WinScreen/HBoxContainer/VBoxContainer/EarningsLabel" unique_id=1423649652]
+custom_minimum_size = Vector2(341.6, 0)
+layout_mode = 2
+theme_override_constants/outline_size = 45
+theme_override_font_sizes/normal_font_size = 115
+bbcode_enabled = true
+text = " 9999"
+fit_content = true
+autowrap_mode = 0
+vertical_alignment = 1

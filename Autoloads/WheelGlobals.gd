@@ -62,3 +62,6 @@ func speed_transition(new_speed: float, transition_time: float = 1) -> void:
     ).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
     await speed_tween.finished
+
+## win screen
+signal start_win_screen

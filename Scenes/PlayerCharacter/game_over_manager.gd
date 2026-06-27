@@ -34,7 +34,7 @@ func game_over():
 	await get_tree().create_timer(0.5).timeout
 	
 	if PlayerGlobals.won_level:
-		print("emitting win level sfx")
+		WheelGlobals.start_win_screen.emit()
 		AudioGlobals.play_win_level_sfx.emit()
 		# trigger win effects and wait for them to be done
 		await get_tree().create_timer(5.5).timeout
