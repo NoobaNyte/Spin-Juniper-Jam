@@ -30,6 +30,9 @@ texture = SubResource("ViewportTexture_lbh1i")
 [node name="Prize" parent="." index="1" unique_id=2110599126]
 transform = Transform3D(0.99929893, 0, -0.037442036, 0, 1, 0, 0.037442036, 0, 0.99929893, 0, 6.6111107, 0)
 
+[node name="StringTop" parent="Prize" index="0" unique_id=701341643]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18, 0)
+
 [node name="StringBottom" parent="Prize" index="1" unique_id=1526911761]
 transform = Transform3D(1, 0, 2.2351742e-08, 0, 1, 0, -2.2351742e-08, 0, 1, 0, 1.2038674, 0)
 

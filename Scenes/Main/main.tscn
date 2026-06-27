@@ -90,6 +90,7 @@
 [ext_resource type="AudioStream" uid="uid://dvarcw2wjpcn8" path="res://Assets/Music/Charivari_Music/L5_Loop.mp3" id="37_juxqm"]
 [ext_resource type="AudioStream" uid="uid://bflbwp5bqbgru" path="res://Assets/Music/Charivari_Music/Shop_Charivari.mp3" id="38_1mt81"]
 [ext_resource type="Script" uid="uid://c5tlt0npn6e58" path="res://Scenes/Main/Level Manager/Progress Bar/progress_bar_ticket_point.gd" id="61_4vdw8"]
+[ext_resource type="Script" uid="uid://chtjedoiw7kk0" path="res://Scenes/Main/fall_off_shop_area.gd" id="75_pt420"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1r6ip"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -426,6 +427,8 @@ startup_commands = SubResource("Resource_37bn8")
 commands = Array[ExtResource("11_v4agm")]([SubResource("Resource_7bsre"), SubResource("Resource_5dnw0")])
 metadata/_custom_type_script = "uid://pj0ba6ig58n6"
 
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_4vdw8"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_4a3kt"]
 size = Vector3(51.099854, 82.620514, 13.621078)
 
@@ -496,54 +499,63 @@ script = ExtResource("2_de47j")
 
 [node name="SpinnerTick1" type="AudioStreamPlayer" parent="Audio/SFX/SpinnerTicks" unique_id=1049328652]
 stream = ExtResource("3_de47j")
+volume_db = -3.0
 pitch_scale = 0.8
 max_polyphony = 8
 bus = &"SFX"
 
 [node name="SpinnerTick2" type="AudioStreamPlayer" parent="Audio/SFX/SpinnerTicks" unique_id=410797673]
 stream = ExtResource("4_ukqxg")
+volume_db = -3.0
 pitch_scale = 0.8
 max_polyphony = 8
 bus = &"SFX"
 
 [node name="SpinnerTick3" type="AudioStreamPlayer" parent="Audio/SFX/SpinnerTicks" unique_id=113348439]
 stream = ExtResource("5_5poo1")
+volume_db = -3.0
 pitch_scale = 0.8
 max_polyphony = 8
 bus = &"SFX"
 
 [node name="SpinnerTick4" type="AudioStreamPlayer" parent="Audio/SFX/SpinnerTicks" unique_id=54504546]
 stream = ExtResource("6_ff7xd")
+volume_db = -3.0
 pitch_scale = 0.8
 max_polyphony = 8
 bus = &"SFX"
 
 [node name="SpinnerTick5" type="AudioStreamPlayer" parent="Audio/SFX/SpinnerTicks" unique_id=375740330]
 stream = ExtResource("7_4vdw8")
+volume_db = -3.0
 pitch_scale = 0.8
 max_polyphony = 8
 bus = &"SFX"
 
 [node name="SpinnerTick6" type="AudioStreamPlayer" parent="Audio/SFX/SpinnerTicks" unique_id=1305934834]
 stream = ExtResource("8_pt420")
+volume_db = -3.0
 pitch_scale = 0.8
 max_polyphony = 8
 bus = &"SFX"
 
 [node name="SpinnerTick7" type="AudioStreamPlayer" parent="Audio/SFX/SpinnerTicks" unique_id=112562024]
 stream = ExtResource("9_lgjqy")
+volume_db = -3.0
 pitch_scale = 0.8
 max_polyphony = 8
 bus = &"SFX"
 
 [node name="SpinnerTick8" type="AudioStreamPlayer" parent="Audio/SFX/SpinnerTicks" unique_id=220140518]
 stream = ExtResource("10_vkja6")
+volume_db = -3.0
 pitch_scale = 0.8
 max_polyphony = 8
 bus = &"SFX"
 
 [node name="SpinnerTick9" type="AudioStreamPlayer" parent="Audio/SFX/SpinnerTicks" unique_id=1365059261]
 stream = ExtResource("11_juxqm")
+volume_db = -3.0
 pitch_scale = 0.8
 max_polyphony = 8
 bus = &"SFX"
@@ -648,7 +660,7 @@ bus = &"SFX"
 
 [node name="Win2" type="AudioStreamPlayer" parent="Audio/SFX/Results" unique_id=1754758563]
 stream = ExtResource("27_pt420")
-volume_db = -8.544
+volume_db = -14.0
 bus = &"SFX"
 
 [node name="Purchase" type="AudioStreamPlayer" parent="Audio/SFX" unique_id=1375403643]
@@ -775,6 +787,14 @@ text = "PlayingViewCamera
 font_size = 70
 outline_size = 36
 script = ExtResource("18_c4b4r")
+
+[node name="FallOffShopArea" type="Area3D" parent="LevelPivot" unique_id=22343349]
+script = ExtResource("75_pt420")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelPivot/FallOffShopArea" unique_id=103726467]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5800496, 0)
+shape = SubResource("WorldBoundaryShape3D_4vdw8")
+debug_color = Color(1, 0.75, 0, 0.41960785)
 
 [node name="GameOverArea" type="Area3D" parent="LevelPivot" unique_id=417944345]
 collision_mask = 3
@@ -982,7 +1002,7 @@ outline_size = 36
 script = ExtResource("18_c4b4r")
 
 [node name="ShopSpawnPoint" type="Marker3D" parent="LevelPivot" unique_id=597088145]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06946415, 0, 4.2219563)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.06946415, 0, 4.2219563)
 
 [node name="Label3D" type="Label3D" parent="LevelPivot/ShopSpawnPoint" unique_id=2020855105]
 billboard = 1
@@ -994,6 +1014,7 @@ font_size = 70
 outline_size = 36
 script = ExtResource("18_c4b4r")
 
+[connection signal="body_entered" from="LevelPivot/FallOffShopArea" to="LevelPivot/FallOffShopArea" method="_on_body_entered"]
 [connection signal="body_entered" from="LevelPivot/GameOverArea" to="LevelPivot/GameOverArea" method="_on_body_entered"]
 [connection signal="body_entered" from="LevelPivot/Shop/PrizeArea" to="LevelPivot/Shop/PrizeArea" method="_on_body_entered"]
 [connection signal="body_exited" from="LevelPivot/Shop/PrizeArea" to="LevelPivot/Shop/PrizeArea" method="_on_body_exited"]

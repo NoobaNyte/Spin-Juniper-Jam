@@ -29,6 +29,9 @@ signal update_selected_level
 signal start_game
 
 @warning_ignore("unused_signal")
+signal after_game_reset
+
+@warning_ignore("unused_signal")
 signal game_over
 
 @warning_ignore("unused_signal")
@@ -107,7 +110,7 @@ var selected_level: int = 1: # this number is the default selected level - ALSO 
 	   
 					
 # starting powerup amount and costs are set individually in inspector for each prize in each prize scene
-var hp_powerup_amount: int = 5
+var hp_powerup_amount: int = 0
 var hp_powerup_cost: int = 0
 var speed_powerup_amount: int = 0
 var speed_powerup_cost: int = 0

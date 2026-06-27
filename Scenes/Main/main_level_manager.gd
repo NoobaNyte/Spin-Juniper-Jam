@@ -128,6 +128,7 @@ func reset_game():
 	var shop_spawnpoint: Marker3D = find_child("ShopSpawnPoint", true, false)
 	var player: CharacterBody3D = find_child("PlayerCharacter", true, false)
 	player.global_position = shop_spawnpoint.global_position
+	player.global_rotation = shop_spawnpoint.global_rotation
 
 	$LevelPivot/MainCamera.detached_from_player = false
 	$LevelPivot/MainCamera.toggle_playing_camera(false)
@@ -143,3 +144,4 @@ func reset_game():
 	WheelGlobals.rotation_speed = WheelGlobals.preview_rotation_speed
 	PlayerGlobals.disable_interact = false
 	PlayerGlobals.game_ended = false
+	PlayerGlobals.after_game_reset.emit()

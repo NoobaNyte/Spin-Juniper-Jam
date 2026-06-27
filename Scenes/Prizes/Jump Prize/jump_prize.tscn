@@ -33,6 +33,9 @@ text = "OUT OF STOCK"
 [node name="Prize" parent="." index="1" unique_id=2110599126]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 7.835952, 0)
 
+[node name="StringTop" parent="Prize" index="0" unique_id=701341643]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18, 0)
+
 [node name="StringBottom" parent="Prize" index="1" unique_id=1526911761]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2073555, 0)
 

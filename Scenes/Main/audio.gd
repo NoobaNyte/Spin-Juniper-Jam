@@ -135,7 +135,7 @@ func fade_out_shop_music(fade_time: float = 1.0):
 			music.volume_db = 0.0
 	)
 
-func play_level_music(fade_in_time: float = 5):
+func play_level_music(fade_in_time: float = 3):
 	var intro: AudioStreamPlayer
 	var loop: AudioStreamPlayer
 	var intro_to_loop_offset: float

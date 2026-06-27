@@ -32,6 +32,7 @@ texture = SubResource("ViewportTexture_8d66t")
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 6.2127304, 0)
 
 [node name="StringTop" parent="Prize" index="0" unique_id=701341643]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18, 0)
 script = null
 
 [node name="Mesh" parent="Prize/StringTop" index="0" unique_id=1110656561]
