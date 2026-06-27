@@ -136,6 +136,7 @@ collision_mask = 8
 
 [node name="Bear" type="MeshInstance3D" parent="Prize/Prize" index="0" unique_id=276183385]
 transform = Transform3D(-4.808253e-07, 0, 11, 0, 11, 0, -11, 0, -4.808253e-07, 0, -14.655189, 0)
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_ok6xs")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Prize/Prize" index="1" unique_id=1788856777]

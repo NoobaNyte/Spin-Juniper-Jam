@@ -16,9 +16,9 @@ size = Vector3(40, 0.25, 10)
 transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0)
 
 [node name="BaseWheel (for i frame collision)" parent="." unique_id=187194179 instance=ExtResource("2_5rh2c")]
-visible = false
 use_collision = true
 collision_layer = 2
+script = ExtResource("1_7kxvd")
 
 [node name="Previews" type="Node3D" parent="." unique_id=83548312]
 script = ExtResource("1_7kxvd")

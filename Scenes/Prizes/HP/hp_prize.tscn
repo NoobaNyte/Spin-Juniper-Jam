@@ -58,8 +58,13 @@ shape = SubResource("ConvexPolygonShape3D_abeok")
 [node name="HP" parent="Prize/Prize" parent_id_path=PackedInt32Array(1583447403) index="1" unique_id=812234728 instance=ExtResource("2_kivwe")]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
 
+[node name="Heart" parent="Prize/Prize/HP" index="0" unique_id=2066914302]
+cast_shadow = 0
+
 [node name="CollisionShape3D" parent="SelectionArea" parent_id_path=PackedInt32Array(664817428) index="1" unique_id=1064057567]
 shape = SubResource("CylinderShape3D_8d66t")
 
 [connection signal="body_entered" from="SelectionArea" to="." method="_on_selection_area_body_entered"]
 [connection signal="body_exited" from="SelectionArea" to="." method="_on_selection_area_body_exited"]
+
+[editable path="Prize/Prize/HP"]

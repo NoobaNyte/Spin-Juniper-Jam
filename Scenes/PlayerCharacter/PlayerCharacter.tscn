@@ -213,6 +213,9 @@ bones/33/rotation = Quaternion(0.4012261, 0.38855252, -0.59123343, 0.5817969)
 bones/34/rotation = Quaternion(0.2533417, -0.4733126, 0.8348345, 0.12183775)
 bones/35/rotation = Quaternion(0.113860026, -0.006431766, -0.0396551, 0.9926843)
 
+[node name="Character" parent="Main Character Animated/Armature/Skeleton3D" index="0" unique_id=1132124536]
+cast_shadow = 0
+
 [node name="Collider" type="CollisionShape3D" parent="." unique_id=1214091686]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("CapsuleShape3D_iof21")

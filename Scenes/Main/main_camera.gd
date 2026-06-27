@@ -53,9 +53,10 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if not player or detached_from_player:
+		_last_player_pos = player.global_position if player else Vector3.ZERO
 		return
 
-	# Detect teleport — if player moved more than threshold in one frame, smooth over it
+	# Teleport detection only runs when we're actively following
 	var player_delta := player.global_position.distance_to(_last_player_pos)
 	if _last_player_pos != Vector3.ZERO and player_delta > teleport_threshold:
 		_on_player_teleported()

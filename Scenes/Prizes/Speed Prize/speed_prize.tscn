@@ -46,6 +46,9 @@ shape = SubResource("ConvexPolygonShape3D_yxeu0")
 [node name="RabbitPlushie" parent="Prize/Prize" index="1" unique_id=586595942 instance=ExtResource("2_us7j5")]
 transform = Transform3D(0.825, 0, 3.7252903e-09, 0, 0.825, 0, -3.7252903e-09, 0, 0.825, 0, 0, 0)
 
+[node name="Bunny" parent="Prize/Prize/RabbitPlushie" index="0" unique_id=349018054]
+cast_shadow = 0
+
 [node name="CollisionShape3D" parent="SelectionArea" parent_id_path=PackedInt32Array(664817428) index="1" unique_id=1064057567]
 shape = SubResource("CylinderShape3D_lbh1i")
 

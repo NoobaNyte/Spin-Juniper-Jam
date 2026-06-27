@@ -22,6 +22,7 @@ script = ExtResource("1_gsje7")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=655469322]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+cast_shadow = 0
 mesh = SubResource("CylinderMesh_vvcby")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1762043339]

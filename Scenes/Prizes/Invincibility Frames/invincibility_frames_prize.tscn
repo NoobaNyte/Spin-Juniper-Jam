@@ -43,8 +43,13 @@ shape = SubResource("ConvexPolygonShape3D_gpt26")
 [node name="Invincibility Frames" parent="Prize/Prize" parent_id_path=PackedInt32Array(1583447403) index="1" unique_id=49285525 instance=ExtResource("2_gpt26")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
+[node name="Star" parent="Prize/Prize/Invincibility Frames" index="0" unique_id=748662673]
+cast_shadow = 0
+
 [node name="CollisionShape3D" parent="SelectionArea" parent_id_path=PackedInt32Array(664817428) index="1" unique_id=1064057567]
 shape = SubResource("CylinderShape3D_yxrll")
 
 [connection signal="body_entered" from="SelectionArea" to="." method="_on_selection_area_body_entered"]
 [connection signal="body_exited" from="SelectionArea" to="." method="_on_selection_area_body_exited"]
+
+[editable path="Prize/Prize/Invincibility Frames"]

@@ -93,21 +93,28 @@
 [ext_resource type="Script" uid="uid://chtjedoiw7kk0" path="res://Scenes/Main/fall_off_shop_area.gd" id="75_pt420"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1r6ip"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+sky_top_color = Color(0.41741073, 0.7425163, 1, 1)
+sky_horizon_color = Color(0.66964287, 0.77976197, 1, 1)
+sky_curve = 0.11768766
+ground_bottom_color = Color(0.77455354, 0.98188376, 1, 1)
+ground_horizon_color = Color(0.70089287, 0.7993332, 1, 1)
 
 [sub_resource type="Sky" id="Sky_lixft"]
 sky_material = SubResource("ProceduralSkyMaterial_1r6ip")
 
 [sub_resource type="Environment" id="Environment_qw60k"]
 background_mode = 1
-background_color = Color(0.45089287, 0.82342446, 1, 1)
+background_color = Color(0.31026787, 0.7044003, 1, 1)
 sky = SubResource("Sky_lixft")
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.9
 ssao_enabled = true
-ssao_radius = 6.04
-ssao_intensity = 10.1
+ssao_radius = 6.57
+ssao_intensity = 12.2
+glow_intensity = 0.25
+glow_bloom = 1.0
+adjustment_contrast = 1.1
 
 [sub_resource type="Resource" id="Resource_1j4pb"]
 script = ExtResource("13_0uxpu")
@@ -722,11 +729,6 @@ bus = &"Music"
 stream = ExtResource("38_1mt81")
 bus = &"Music"
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=533654568]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
-visible = false
-shadow_enabled = true
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=643451075]
 environment = SubResource("Environment_qw60k")
 
@@ -749,6 +751,13 @@ levels = Array[ExtResource("10_ah3if")]([SubResource("Resource_4ohmo"), SubResou
 
 [node name="LevelPivot" type="Node3D" parent="." unique_id=1949748406]
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="LevelPivot" unique_id=533654568]
+transform = Transform3D(-0.81648403, -0.43541235, 0.3791701, -0.28319916, 0.8743137, 0.39417493, -0.50314224, 0.21445686, -0.83717155, 0, 0, 0)
+light_energy = 0.02
+shadow_enabled = true
+shadow_bias = 0.0
+shadow_normal_bias = 1.447
+
 [node name="MainCamera" type="Camera3D" parent="LevelPivot" unique_id=1331169492 node_paths=PackedStringArray("player", "zoom_pos", "playing_pos")]
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 2.489, -7.052)
 current = true
@@ -770,7 +779,6 @@ script = ExtResource("18_c4b4r")
 
 [node name="WheelViewCamera" type="Camera3D" parent="LevelPivot" unique_id=582228753]
 transform = Transform3D(-1, 2.990035e-08, -8.215054e-08, 0, 0.9396926, 0.34202015, 8.742278e-08, 0.34202012, -0.9396927, 0, 8.025671, -15.005909)
-visible = false
 fov = 65.0
 
 [node name="PlayingViewCamera" type="Camera3D" parent="LevelPivot" unique_id=903720488]
