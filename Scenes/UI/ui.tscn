@@ -336,11 +336,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = ExtResource("1_ahcct")
 script = ExtResource("15_t7te2")
 
 [node name="RecaptureButton" type="Button" parent="PlayButton" unique_id=1420759472]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 100
 theme_override_styles/normal = SubResource("StyleBoxFlat_h6tq4")
 text = "PLAY"

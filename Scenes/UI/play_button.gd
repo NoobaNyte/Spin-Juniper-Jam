@@ -1,5 +1,6 @@
 extends BaseUIElement
 
+@onready var button = $RecaptureButton
 
 func _ready() -> void:
 	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -7,13 +8,13 @@ func _ready() -> void:
 
 func _on_focus_lost() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	$RecaptureButton.show()
+	fade_in(button, 0.2)
 
 func _on_recapture_button_pressed() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	$RecaptureButton.hide()
+	fade_out(button, 0.4)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		$RecaptureButton.show()
+		fade_in(button, 0.2)
