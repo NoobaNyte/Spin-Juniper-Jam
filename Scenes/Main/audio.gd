@@ -5,8 +5,10 @@ var all_footstep_sfx: Node
 
 var _shop_music_playing: bool = false
 var _shop_fade_tween: Tween = null
+var _shop_loop_generation: int = 0
 
 var _level_music_playing: bool = false
+var _level_music_generation: int = 0
 var _current_intro: AudioStreamPlayer = null
 var _current_loop: AudioStreamPlayer = null
 
@@ -104,15 +106,26 @@ func play_win_level_sfx():
 func play_shop_music():
 	print("playing shop music")
 	_shop_music_playing = true
+	_shop_loop_generation += 1
+	var my_generation := _shop_loop_generation
 	if _shop_fade_tween and _shop_fade_tween.is_valid():
 		_shop_fade_tween.kill()
-	var music = find_child("ShopCharivari", true, false)
+	var music: AudioStreamPlayer = find_child("ShopCharivari", true, false)
 	music.volume_db = 0.0
 	music.play()
 
+	while _shop_music_playing and _shop_loop_generation == my_generation:
+		await get_tree().create_timer(music.stream.get_length() - 0.1).timeout
+		if not _shop_music_playing or _shop_loop_generation != my_generation:
+			break
+		music.play()
+
 func fade_out_shop_music(fade_time: float = 1.0):
 	_shop_music_playing = false
-	var music = find_child("ShopCharivari", true, false)
+	_shop_loop_generation += 1 # kills the loop coroutine
+	var music: AudioStreamPlayer = find_child("ShopCharivari", true, false)
+	if _shop_fade_tween and _shop_fade_tween.is_valid():
+		_shop_fade_tween.kill()
 	_shop_fade_tween = create_tween()
 	_shop_fade_tween.tween_property(music, "volume_db", -80.0, fade_time)
 	_shop_fade_tween.tween_callback(func():
@@ -164,6 +177,18 @@ func play_level_music(fade_in_time: float = 5):
 		push_error("play_level_music: could not find intro or loop for level ", PlayerGlobals.selected_level)
 		return
 
+	# Increment generation to kill any previous coroutine still awaiting
+	_level_music_generation += 1
+	var my_generation := _level_music_generation
+
+	# Stop any currently playing level music immediately before starting new
+	if _current_intro and _current_intro.playing:
+		_current_intro.stop()
+		_current_intro.volume_db = 0.0
+	if _current_loop and _current_loop.playing:
+		_current_loop.stop()
+		_current_loop.volume_db = 0.0
+
 	_level_music_playing = true
 	_current_intro = intro
 	_current_loop = loop
@@ -175,23 +200,24 @@ func play_level_music(fade_in_time: float = 5):
 
 	# wait for intro to finish then hand off to loop
 	await get_tree().create_timer(intro.stream.get_length() - intro_to_loop_offset).timeout
-	if not _level_music_playing:
+	if not _level_music_playing or _level_music_generation != my_generation:
 		return
 
 	loop.play()
 
 	# loop infinitely until stopped
-	while _level_music_playing:
+	while _level_music_playing and _level_music_generation == my_generation:
 		await get_tree().create_timer(loop.stream.get_length() - loop_to_loop_offset).timeout
-		if not _level_music_playing:
+		if not _level_music_playing or _level_music_generation != my_generation:
 			break
 		loop.play()
 
 func fade_out_level_music(fade_out_time: float = 1.0):
 	_level_music_playing = false
+	_level_music_generation += 1 # kills the loop coroutine immediately
 
-	var tween = create_tween()
 	var fading: bool = false
+	var tween = create_tween().set_parallel(true) # fade both simultaneously
 	if _current_intro and _current_intro.playing:
 		tween.tween_property(_current_intro, "volume_db", -80.0, fade_out_time)
 		fading = true
