@@ -30,8 +30,8 @@ func _on_body_entered(body: Node3D) -> void:
 		body.destroy_after_cooldown()
 
 func give_player_invincibility_frames():
-	PlayerGlobals.set_player_collision_layers.emit([2])
+	PlayerGlobals.set_player_collision_layers.emit([2, 4])
 	PlayerGlobals.invincible = true
 	await get_tree().create_timer(PlayerGlobals.playertIFrameSeconds).timeout
 	PlayerGlobals.invincible = false
-	PlayerGlobals.set_player_collision_layers.emit([1])
+	PlayerGlobals.set_player_collision_layers.emit([1, 4])

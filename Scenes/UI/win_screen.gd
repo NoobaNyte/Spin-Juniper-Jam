@@ -59,11 +59,11 @@ func _start_earnings_sequence() -> void:
 
 	var earnings: int
 	match PlayerGlobals.selected_level:
-		1: earnings = 150
-		2: earnings = 350
-		3: earnings = 700
-		4: earnings = 1200
-		5: earnings = 9999
+		1: earnings = WheelGlobals.level_1_jackpot_amount
+		2: earnings = WheelGlobals.level_2_jackpot_amount
+		3: earnings = WheelGlobals.level_3_jackpot_amount
+		4: earnings = WheelGlobals.level_4_jackpot_amount
+		5: earnings = WheelGlobals.level_5_jackpot_amount
 
 	earnings_label.pivot_offset = earnings_label.size / 2.0
 	earnings_label.modulate.a = 0.0
@@ -107,7 +107,7 @@ func _start_peak_shake() -> void:
 	_shake_tween = create_tween().set_loops()
 	_shake_tween.tween_method(_apply_shake, 0.0, 1.0, shake_speed)
 
-func _apply_shake(t: float) -> void:
+func _apply_shake(_t: float) -> void:
 	earnings_label.position = _base_position + Vector2(
 		randf_range(-shake_intensity, shake_intensity),
 		randf_range(-shake_intensity * shake_vertical_ratio, shake_intensity * shake_vertical_ratio)

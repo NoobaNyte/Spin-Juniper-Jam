@@ -736,8 +736,6 @@ ball = ExtResource("27_4ohmo")
 levels = Array[ExtResource("10_ah3if")]([SubResource("Resource_4ohmo"), SubResource("Resource_8oboy"), SubResource("Resource_fy12w"), SubResource("Resource_m6uf5"), SubResource("Resource_hvw5u")])
 
 [node name="LevelPivot" type="Node3D" parent="." unique_id=1949748406]
-metadata/_edit_lock_ = true
-metadata/_edit_group_ = true
 
 [node name="MainCamera" type="Camera3D" parent="LevelPivot" unique_id=1331169492 node_paths=PackedStringArray("player", "zoom_pos", "playing_pos")]
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 2.489, -7.052)

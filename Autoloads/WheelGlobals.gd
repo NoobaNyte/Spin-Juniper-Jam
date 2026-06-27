@@ -64,4 +64,10 @@ func speed_transition(new_speed: float, transition_time: float = 1) -> void:
     await speed_tween.finished
 
 ## win screen
+@warning_ignore("unused_signal")
 signal start_win_screen
+var level_1_jackpot_amount: int = 150
+var level_2_jackpot_amount: int = 350
+var level_3_jackpot_amount: int = 700
+var level_4_jackpot_amount: int = 1200
+var level_5_jackpot_amount: int = 9999

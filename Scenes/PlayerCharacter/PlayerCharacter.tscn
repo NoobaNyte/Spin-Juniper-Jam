@@ -157,6 +157,8 @@ material = SubResource("ShaderMaterial_yu0t5")
 size = Vector2(2.4, 3)
 
 [node name="PlayerCharacter" type="CharacterBody3D" unique_id=1881213073 node_paths=PackedStringArray("animation_player")]
+collision_layer = 9
+collision_mask = 9
 script = ExtResource("1_7sflc")
 animation_player = NodePath("Main Character Animated/AnimationPlayer")
 
