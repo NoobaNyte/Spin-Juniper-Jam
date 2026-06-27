@@ -731,7 +731,7 @@ shadow_enabled = true
 environment = SubResource("Environment_qw60k")
 
 [node name="PlayerCharacter" parent="." unique_id=1881213073 groups=["Player"] instance=ExtResource("5_2a143")]
-transform = Transform3D(-1.5, 0, -1.3113416e-07, 0, 1.5, 0, 1.3113416e-07, 0, -1.5, -0.06946415, 0, 4.2219563)
+transform = Transform3D(-1.5, 0, -1.3113416e-07, 0, 1.5, 0, 1.3113416e-07, 0, -1.5, -0.06946415, 0, 8.476346)
 
 [node name="WheelScripts" type="Node" parent="." unique_id=1601265247]
 
@@ -1002,7 +1002,7 @@ outline_size = 36
 script = ExtResource("18_c4b4r")
 
 [node name="ShopSpawnPoint" type="Marker3D" parent="LevelPivot" unique_id=597088145]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.06946415, 0, 4.2219563)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.06946415, 0, 8.476346)
 
 [node name="Label3D" type="Label3D" parent="LevelPivot/ShopSpawnPoint" unique_id=2020855105]
 billboard = 1

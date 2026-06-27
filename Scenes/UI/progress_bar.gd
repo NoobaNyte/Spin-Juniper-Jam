@@ -49,12 +49,10 @@ func _play_tween(target_y: float) -> void:
 
 func start_progress_bar():
 	_stopped = false
+
+	# Instantly clear old points without tween so nothing is visible when bar slides down
 	for point in _active_ticket_points:
-		var sprite: Node = point.get_child(0)
-		if sprite and sprite.has_method("remove"):
-			sprite.remove()
-		else:
-			point.queue_free()
+		point.queue_free()
 	_active_ticket_points.clear()
 
 	show_progress_bar()

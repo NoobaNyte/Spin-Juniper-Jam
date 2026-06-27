@@ -32,6 +32,12 @@ var current_trans_speed: float = 0.0
 
 var playing_tween: Tween # NEW: Tracks the transition animation
 
+var _last_player_pos: Vector3 = Vector3.ZERO
+@export var teleport_threshold: float = 5.0 # units; tune to your map scale
+@export var teleport_recovery_time: float = 1.3
+
+var _teleport_tween: Tween = null
+
 var detached_from_player: bool = false:
 	set(value):
 		detached_from_player = value
@@ -48,6 +54,12 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if not player or detached_from_player:
 		return
+
+	# Detect teleport — if player moved more than threshold in one frame, smooth over it
+	var player_delta := player.global_position.distance_to(_last_player_pos)
+	if _last_player_pos != Vector3.ZERO and player_delta > teleport_threshold:
+		_on_player_teleported()
+	_last_player_pos = player.global_position
 
 	current_trans_speed = lerp(current_trans_speed, max_transition_speed, acceleration * delta)
 
@@ -129,3 +141,20 @@ func _on_zoom_area_body_exited(body: Node3D) -> void:
 		current_trans_speed = 0.0
 		current_speed_x = 0.0
 		current_speed_z = 0.0
+
+func _on_player_teleported() -> void:
+	if _teleport_tween and _teleport_tween.is_valid():
+		return # already recovering, don't restart
+
+	# Snap speeds to zero so lerp doesn't fight the tween
+	current_speed_x = 0.0
+	current_speed_z = 0.0
+	current_trans_speed = 0.0
+
+	var scene_node = get_parent()
+	var target_local: Vector3 = scene_node.to_local(player.global_position)
+	var target_pos := Vector3(target_local.x, position.y, target_local.z + current_z_target)
+
+	_teleport_tween = create_tween().set_parallel(true)
+	_teleport_tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	_teleport_tween.tween_property(self, "position", target_pos, teleport_recovery_time)
