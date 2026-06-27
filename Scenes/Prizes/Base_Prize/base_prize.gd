@@ -3,7 +3,7 @@ class_name BasePrize
 
 @export_group("Prize Data")
 @export var quantity_in_stock: int = 5
-@export var price_index: int = 1
+var price_index: int = 1
 @export var price: int = 0
 @export var price_2: int = 0
 @export var price_3: int = 0
@@ -71,16 +71,21 @@ func buy_prize():
 		bought = true
 		on_buy_cooldown = true
 		PlayerGlobals.tickets -= price
-		release_prize()
-		await fade_out_prize_prices()
 		price_index += 1
-		match price_index:
-			2: price = price_2
-			3: price = price_3
-			4: price = price_4
-			5: price = price_5
-		update_price()
-
+		if not price_index > quantity_in_stock:
+			release_prize()
+			await fade_out_prize_prices()
+			match price_index:
+				2: price = price_2
+				3: price = price_3
+				4: price = price_4
+				5: price = price_5
+			update_price()
+		
+		else:
+			release_prize()
+			fade_out_prize_prices()
+	
 func release_prize() -> void:
 	if not is_instance_valid(bottom_anchor_pin):
 		return
@@ -114,13 +119,20 @@ func release_prize() -> void:
 	
 	# 7. Restore the original prize!\
 	if price_index > quantity_in_stock:
-		return
-	
-	reset_prize()
+		reset_prize(true)
+	else:
+		reset_prize()
 
-func reset_prize() -> void:
+func reset_prize(out_of_stock: bool = false) -> void:
+	# FIX: Update the text to "OUT OF STOCK" before we fade the label back in
+	if out_of_stock:
+		var price_text = find_child("PriceText", true, false)
+		if price_text:
+			price_text.text = "OUT OF STOCK"
+
 	if not should_be_hidden:
 		on_show_prize_prices()
+		
 	var string_bottom: Marker3D = $Prize/StringBottom
 	
 	# 1. Zero out momentum
@@ -158,7 +170,11 @@ func reset_prize() -> void:
 
 	# --- NEW: Unfreeze it now that everything is safely attached! ---
 	current_prize_node.freeze = false
-	on_buy_cooldown = false
+	
+	# Only reset the cooldown if it's not out of stock
+	if not out_of_stock:
+		on_buy_cooldown = false
+
 
 func gen_strings():
 	var string_bottom: Marker3D = $Prize/StringBottom

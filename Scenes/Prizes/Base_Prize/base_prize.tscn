@@ -33,7 +33,7 @@ script = ExtResource("2_tiqnv")
 
 [node name="SubViewport" type="SubViewport" parent="Overlays/PriceLabel" unique_id=575096655]
 transparent_bg = true
-size = Vector2i(1024, 512)
+size = Vector2i(1417, 512)
 render_target_update_mode = 4
 
 [node name="PriceText" type="RichTextLabel" parent="Overlays/PriceLabel/SubViewport" unique_id=1123811529]
