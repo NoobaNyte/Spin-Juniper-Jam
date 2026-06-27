@@ -36,7 +36,6 @@ func assign_vars_to_global():
 				WheelGlobals.level_5_colors = base_level_data.colors
 				WheelGlobals.level_5_walls = base_level_data.walls
 		
-
 func run_level(level_index: int) -> void:
 	# make sure there are no walls or gaps so you don't get spawn killed
 	WheelGlobals.wall_gen_chance = 0
@@ -57,6 +56,7 @@ func run_level(level_index: int) -> void:
 	WheelGlobals.min_gap_angle_size = s.min_gap_angle_size
 	WheelGlobals.max_gap_angle_size = s.max_gap_angle_size
 
+	ProgressBarGlobals.current_level_ticket_points.clear()
 	for ticket_point in s.ticket_points:
 		ProgressBarGlobals.current_level_ticket_points.append(ticket_point)
 	

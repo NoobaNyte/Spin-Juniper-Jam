@@ -2,7 +2,13 @@ extends Node3D
 class_name BasePrize
 
 @export_group("Prize Data")
+@export var quantity_in_stock: int = 5
+@export var price_index: int = 1
 @export var price: int = 0
+@export var price_2: int = 0
+@export var price_3: int = 0
+@export var price_4: int = 0
+@export var price_5: int = 0
 var price_label: Sprite3D
 @export var quantity_owned: int = 0:
 	set(value):
@@ -65,8 +71,15 @@ func buy_prize():
 		bought = true
 		on_buy_cooldown = true
 		PlayerGlobals.tickets -= price
-		fade_out_prize_prices()
 		release_prize()
+		await fade_out_prize_prices()
+		price_index += 1
+		match price_index:
+			2: price = price_2
+			3: price = price_3
+			4: price = price_4
+			5: price = price_5
+		update_price()
 
 func release_prize() -> void:
 	if not is_instance_valid(bottom_anchor_pin):
@@ -99,7 +112,10 @@ func release_prize() -> void:
 	# 6. Wait exactly 1 second before magically restoring it
 	await get_tree().create_timer(1.0).timeout
 	
-	# 7. Restore the original prize!
+	# 7. Restore the original prize!\
+	if price_index > quantity_in_stock:
+		return
+	
 	reset_prize()
 
 func reset_prize() -> void:
@@ -231,8 +247,8 @@ func on_hide_prize_prices():
 	should_be_hidden = true
 	fade_out_prize_prices()
 
-func fade_out_prize_prices():
-	price_label.fade_out(price_label)
+func fade_out_prize_prices() -> void:
+	await price_label.fade_out(price_label)
 
 func restore_original_position():
 	await get_tree().create_timer(0.2).timeout # wait for scene to be fully rotated first before trying to restore positions

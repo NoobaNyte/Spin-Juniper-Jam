@@ -3,7 +3,6 @@ extends Node
 func _ready() -> void:
 	PlayerGlobals.game_over.connect(game_over)
 
-
 func game_over():
 	PlayerGlobals.game_ended = true
 	WheelGlobals.speed_transition(0, 1)

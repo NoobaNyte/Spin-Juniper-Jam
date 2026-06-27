@@ -16,6 +16,10 @@ radius = 4.0
 [node name="Jump_Prize" unique_id=2124177430 instance=ExtResource("1_2gxeh")]
 script = ExtResource("2_qiirr")
 price = 250
+price_2 = 400
+price_3 = 500
+price_4 = 600
+price_5 = 700
 item_name = "Jump Boost"
 item_description = "Increases your max jump height"
 

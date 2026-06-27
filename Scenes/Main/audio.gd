@@ -101,7 +101,6 @@ func play_win_level_sfx():
 	#sfx.pitch_scale = randf_range(0.7, 0.8)
 	sfx.play()
 
-
 func play_shop_music():
 	print("playing shop music")
 	_shop_music_playing = true

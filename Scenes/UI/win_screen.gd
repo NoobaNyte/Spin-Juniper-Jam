@@ -70,7 +70,7 @@ func _start_earnings_sequence() -> void:
 	earnings_label.scale = Vector2(0.35, 0.35)
 
 	_tick_tween = create_tween().set_parallel(true)
-	_tick_tween.tween_property(earnings_label, "modulate:a", 1.0, 0.4) \
+	_tick_tween.tween_property(earnings_label, "modulate:a", 1.0, 0.5) \
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	_tick_tween.tween_property(earnings_label, "scale", Vector2.ONE, 3.0) \
 		.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
@@ -96,7 +96,7 @@ func _pop_earnings(earnings) -> void:
 	_tick_tween.tween_callback(func():
 		await get_tree().create_timer(0.5).timeout
 		fade_out(self, 0.5)
-		await get_tree().create_timer(2.0).timeout
+		await get_tree().create_timer(2.75).timeout
 		PlayerGlobals.tickets += earnings
 )
 
